@@ -30,7 +30,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /*  Signature A: the 9-stage orchestration pipeline                    */
+  /*  Signature A: the 7-stage orchestration pipeline                    */
   /* ------------------------------------------------------------------ */
   function initPipeline() {
     var pipe = document.getElementById('pipeline');
@@ -38,17 +38,16 @@
     // reduced motion: keep the static <ol> (source of truth), no animation
     if (reduceMotion.matches) return;
 
-    // Exact §2 contribution order, lanes/NOT verbatim from governance.md
+    // Exact §2 single-pass sequence, lanes/NOT verbatim from governance.md
+    // Corrected in v1.1.0: UX is one lane (not two slots); no QA/Scoper.
     var stages = [
-      { n: 1, role: 'Director',    lane: 'Orchestration, decisions',            not: 'Hands-on coding' },
-      { n: 2, role: 'UX',          lane: 'Human experience, interface',          not: 'Backend logic' },
-      { n: 3, role: 'QA/Scoper',   lane: 'Scoping, cut overengineering',         not: 'Feature expansion' },
-      { n: 4, role: 'Researcher',  lane: 'Evidence, prior art, market scan',     not: 'Architecture decisions' },
-      { n: 5, role: 'Architect',   lane: 'Analysis, design (thinking only)',     not: 'Writing code' },
-      { n: 6, role: 'UX',          lane: 'UI/UX design',                         not: 'Backend logic' },
-      { n: 7, role: 'Coder',       lane: 'Software development (sole)',          not: 'Strategy prose' },
-      { n: 8, role: 'QA',          lane: "Verification, Occam's razor",          not: 'Feature expansion' },
-      { n: 9, role: 'Director',    lane: 'Summarize, report',                    not: 'Hands-on coding' }
+      { n: 1, role: 'Director',   lane: 'Frame: orchestration, decisions', not: 'Hands-on coding' },
+      { n: 2, role: 'Researcher', lane: 'Evidence, prior art, constraints', not: 'Architecture decisions' },
+      { n: 3, role: 'Architect',  lane: 'Analysis, design (thinking only)', not: 'Writing code' },
+      { n: 4, role: 'UX',         lane: 'Human experience, interface design', not: 'Backend logic' },
+      { n: 5, role: 'Coder',      lane: 'Software development (sole)',       not: 'Strategy prose' },
+      { n: 6, role: 'QA',         lane: 'Adversarial verify, scope-cut',     not: 'Feature expansion' },
+      { n: 7, role: 'Director',   lane: 'Integrate, summarize, report',      not: 'Hands-on coding' }
     ];
 
     var surface = pipe.querySelector('.pipeline-anim');

@@ -75,6 +75,50 @@ This is the single biggest gap the kit closes, and it closes it for the
 
 ---
 
+## Why the operating layer now includes supervision, durable state, provenance, and served-truth
+
+These four additions to the kit (v1.1.0) answer real failure modes the team
+kept hitting. Each is a *shape of failure we observed*, turned into a load-bearing
+rule — the kit's value is that the version you get has survived these, not that
+it is clever.
+
+**Supervision.** A team that recovers from a stalled worker by "try again, harder"
+is not supervised — it is hopeful. Erlang/OTP supervision trees give a precise
+shape: workers do work, a supervisor restarts them under an explicit budget
+(restart type, intensity per period, shutdown policy), and *exhaustion escalates*
+rather than retrying forever. We adopt that shape because our own stalled-worker
+recovery was unparameterized and ad hoc. `choreography/orchestration.md` §4 makes
+supervision an explicit, per-role contract.
+
+**Durable state.** In-context progress is lost the moment a worker restarts or
+stalls. If correctness depended on what was in a session's context, every stall
+was a silent reset. Ledgers and on-disk artifacts are the team's analogue of
+Erlang process state that survives a restart: a respawned worker *resumes from
+disk*, never from dead context. This is also what makes the team entropy-proof —
+correct after weeks untouched, because correctness derives from what is written
+down, not from what was observed (`governance.md` §6).
+
+**Provenance.** Once a single unlicensed or unfillably-attributed asset slipped
+into a build, every downstream public surface inherited the risk. Licensing is
+now a gate, not a hope: verify from the primary source, keep ledger-to-disk
+parity, and `ship:false` anything whose attribution can't be filled
+(`governance.md` §7, `LICENSING.md`). Provenance also reaches research — every
+claim is tagged with its source at retrieval, so the team never "remembers" a
+fact it cannot point to.
+
+**Served-truth verification.** "Works on my machine" and mock-only green suites
+shipped latent bugs repeatedly. The rule that replaced them: *the producer never
+passes the artifact*, and a change is not "live" until the actually-served bytes
+prove it — staging first, user approves, then promote (`orchestration.md` §7,
+§10). Per-side green suites were never enough; read-back receipts and
+live-served verification are the bar.
+
+These are design principles, not features — which is why they live in WHY.md and
+the choreography/governance doctrine, and why they apply to *any* team the kit
+instantiates, not just the one that built it.
+
+---
+
 ## What the kit does NOT provide (honesty section)
 
 - **No core-engine features.** The kit does not make a single agent
@@ -110,7 +154,21 @@ Hermes uses: open-source engine, paid service on top.
 
 ---
 
-## Status as of v1.0.0 (efficiency update)
+## Status — v1.1.0 (operating upgrades) on top of v1.0.0
+
+### v1.1.0 — operating upgrades (2026-09-09)
+
+- ✅ Supervision model (Erlang/OTP-style) encoded in `choreography/orchestration.md` §4
+- ✅ Supervised autonomous research loops (ledgered, check-pointed) — orchestration §5
+- ✅ Phase-gated pipeline + corrected single-pass role sequence (UX no longer duplicated) — orchestration §2–3
+- ✅ Producer/verifier separation + read-back receipts — orchestration §7
+- ✅ Durable-state & append-only-ledger doctrine — orchestration §6
+- ✅ Adversarial QA / simplicity gate + entropy-proof axiom — governance §3, §6
+- ✅ License/provenance gate — governance §7, LICENSING.md
+- ✅ Live check-ins & stall recovery + served-truth/staging-first — orchestration §8, §10
+- ✅ Public docs updated (README, WHY, choreography, CHANGELOG, website)
+
+### v1.0.0 — efficiency update
 
 - ✅ Open core public (Apache-2.0) on GitHub — renamed airefea-kit → Team6-kit
 - ✅ Licensing coherent (MIT provenance + Apache-2.0 kits + proprietary-by-contract packs)
@@ -122,11 +180,14 @@ Hermes uses: open-source engine, paid service on top.
 - 🔲 Upstream PR for the setup agent
 - 🔲 First vertical pack shipped (instance + service)
 
-The efficiency update makes the always-on memory footprint lean: knowledge
+The efficiency update made the always-on memory footprint lean: knowledge
 router + zero-context preservation are the two reusable patterns extracted
 from running a real six-agent fleet on bounded-context local models. The
-setup-agent install, the first pack, and the first end-to-end demonstration
-remain the proof gates that turn this from a repo into a product.
+operating-upgrade release encoded the *operating* layer those skills run on:
+supervision, durable state, provenance, and served-truth verification — the
+shape of failures the team actually hit, turned into rules. The setup-agent
+install, the first pack, and the first end-to-end demonstration remain the
+proof gates that turn this from a repo into a product.
 
 ---
 

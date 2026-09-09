@@ -29,6 +29,34 @@ git-history boundary. Read this before contributing.
 4. **The setup-agent, when it lands, is MIT** — it is the flagship upstream
    contribution and lives in the engine-derived zone.
 
+## The license / provenance gate (v1.1.0)
+
+No third-party code or asset enters this repo, a generated kit, or a public
+surface until its license and provenance are verified against a **primary
+source** and recorded in an attribution ledger. This is a standing gate
+(`governance.md` §7), not a one-time audit.
+
+- **Read the actual LICENSE / README first.** Never infer reuse rights from
+  filenames or repo origin.
+- **Ledger-to-disk parity** — machine-counted, never sampled.
+- **Unfillable attribution → `ship:false` / REJECTED**, and the file stays out
+  of the served build (e.g. audio with no surviving composer credit).
+- **A README-only license declaration is a weaker grant than a committed
+  LICENSE.** A repo whose README says "MIT" but ships no `LICENSE` file is
+  treated as all-rights-reserved in default jurisdictions.
+- **Copying an asset carries its own provenance** (e.g. anti-slop word lists
+  inherit the attribution of the benchmark/forensics set they came from).
+
+### Conceptual-adoption boundary (v1.1.0 doctrine sources)
+
+The v1.1.0 operating doctrine references Erlang/OTP supervision, the
+autoresearch loop, and the autonovel phase machine as **conceptual sources**.
+This repo summarizes and links to their *principles* with attribution; it does
+**not** copy their source code, prompts, anti-slop lists, or text. `autoresearch`
+declares MIT in its README but ships no committed `LICENSE`; `autonovel` ships
+no committed `LICENSE` — both are therefore used for concept only and carry no
+code into this tree. See `CHANGELOG.md` for per-upgrade evidence classes.
+
 ## Provenance
 
 - Engine: Hermes by Nous Research — MIT (https://github.com/NousResearch/hermes-agent)

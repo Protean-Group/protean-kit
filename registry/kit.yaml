@@ -3,11 +3,14 @@
 # Install: `kit install <registry>/<team>` (Claude Code marketplace pattern).
 
 name: team6-kit
-version: 1.0.0
+version: 1.1.0
 description: >
   Multi-agent team kit — identity archetypes, orchestration
-  choreography, governance rules, and an instantiable generator. Open core
-  under Apache-2.0; vertical packs are proprietary parameter files.
+  choreography, governance rules, and an instantiable generator. v1.1.0
+  encodes the supervised operating layer (OTP-style supervision, durable
+  append-only state, phase-gated pipeline, adversarial QA, served-truth and
+  license/provenance gates). Open core under Apache-2.0; vertical packs are
+  proprietary parameter files.
 
 registry: git@github.com:{ORG}/team6-kit.git
 

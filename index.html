@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team6-kit — A governed team. From one agent engine.</title>
-<meta name="description" content="Team6-kit v1.0.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT).">
+<meta name="description" content="Team6-kit v1.1.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT).">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e12'/%3E%3Cpath d='M2 10h4l2 3 2-3h4' stroke='%23f2b63d' stroke-width='1.5' fill='none'/%3E%3Crect x='2' y='3' width='12' height='3' fill='%23f2b63d'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/main.css?v=1.1.0">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -23,6 +23,7 @@
       <a href="#crew">Crew</a>
       <a href="#how">How it works</a>
       <a href="#why">Why this</a>
+      <a href="#upgrades">What changed</a>
       <a href="#status">Status</a>
       <a href="#install">Get started</a>
       <a href="#license">License</a>
@@ -36,9 +37,9 @@
   <!-- 5.1 HERO -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="hero-inner">
-      <p class="kicker">TEAM6-KIT · v1.0.0 &ldquo;EFFICIENCY UPDATE&rdquo;</p>
+      <p class="kicker">TEAM6-KIT · v1.1.0 &ldquo;OPERATING UPGRADES&rdquo;</p>
       <h1 id="hero-title">A governed team.<br>From one agent engine.</h1>
-      <p class="lead">The reusable layer that turns a single agent engine into a disciplined multi-agent team &mdash; identity archetypes, orchestration choreography, governance rules, knowledge routing, and a generator that assembles them.</p>
+      <p class="lead">The reusable layer that turns a single agent engine into a disciplined multi-agent team &mdash; identity archetypes, orchestration choreography, governance rules, knowledge routing, and a generator that assembles them. v1.1.0 adds the supervised operating layer: Erlang/OTP-style supervision, durable append-only state, and served-truth verification.</p>
       <p class="open-core">Open core · built on Hermes (MIT) · Apache-2.0 kits layer</p>
       <div class="cta-row">
         <a class="btn" href="https://github.com/ahrazzle/team6-kit">View on GitHub</a>
@@ -140,7 +141,7 @@
         <article class="crew-card">
           <p class="crew-instance">HALAKUKHAN</p>
           <h3>QA</h3>
-          <p class="lane">Verification, Occam&rsquo;s razor, scoping</p>
+          <p class="lane">Verification, adversarial review, scope-cut</p>
           <p class="not">NOT · Feature expansion</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
@@ -154,23 +155,21 @@
     <div class="container">
       <p class="kicker">HOW IT WORKS</p>
       <h2 id="how-title">The choreography is the product.</h2>
-      <p class="lead measure">A task moves through the team in a fixed role-based sequence. The interaction contract &mdash; who speaks first, who hands off to whom, how completion is read back &mdash; is what turns six persona cards into a team.</p>
+      <p class="lead measure">A task moves through the team in a fixed, single-pass role sequence &mdash; frame, research, architecture, design, build, QA, report. Each stage carries a Definition-of-Done gate; a stage is not dispatched until the prior gate passes. The interaction contract is what turns six persona cards into a supervised team.</p>
 
-      <div class="pipeline" id="pipeline" aria-label="Nine-stage orchestration pipeline">
+      <div class="pipeline" id="pipeline" aria-label="Seven-stage orchestration pipeline">
         <ol class="pipeline-static">
-          <li><span class="ps-role">1. Director</span><span class="ps-lane">Orchestration, decisions</span><span class="ps-not">NOT · Hands-on coding</span></li>
-          <li><span class="ps-role">2. UX</span><span class="ps-lane">Human experience, interface</span><span class="ps-not">NOT · Backend logic</span></li>
-          <li><span class="ps-role">3. QA/Scoper</span><span class="ps-lane">Scoping, cut overengineering</span><span class="ps-not">NOT · Feature expansion</span></li>
-          <li><span class="ps-role">4. Researcher</span><span class="ps-lane">Evidence, prior art, market scan</span><span class="ps-not">NOT · Architecture decisions</span></li>
-          <li><span class="ps-role">5. Architect</span><span class="ps-lane">Analysis, design (thinking only)</span><span class="ps-not">NOT · Writing code</span></li>
-          <li><span class="ps-role">6. UX</span><span class="ps-lane">UI/UX design</span><span class="ps-not">NOT · Backend logic</span></li>
-          <li><span class="ps-role">7. Coder</span><span class="ps-lane">Software development (sole)</span><span class="ps-not">NOT · Strategy prose</span></li>
-          <li><span class="ps-role">8. QA</span><span class="ps-lane">Verification, Occam&rsquo;s razor</span><span class="ps-not">NOT · Feature expansion</span></li>
-          <li><span class="ps-role">9. Director</span><span class="ps-lane">Summarize, report</span><span class="ps-not">NOT · Hands-on coding</span></li>
+          <li><span class="ps-role">1. Director</span><span class="ps-lane">Frame: orchestration, decisions</span><span class="ps-not">NOT · Hands-on coding</span></li>
+          <li><span class="ps-role">2. Researcher</span><span class="ps-lane">Evidence, prior art, constraints</span><span class="ps-not">NOT · Architecture decisions</span></li>
+          <li><span class="ps-role">3. Architect</span><span class="ps-lane">Analysis, design (thinking only)</span><span class="ps-not">NOT · Writing code</span></li>
+          <li><span class="ps-role">4. UX</span><span class="ps-lane">Human experience, interface design</span><span class="ps-not">NOT · Backend logic</span></li>
+          <li><span class="ps-role">5. Coder</span><span class="ps-lane">Software development (sole)</span><span class="ps-not">NOT · Strategy prose</span></li>
+          <li><span class="ps-role">6. QA</span><span class="ps-lane">Adversarial verify, scope-cut</span><span class="ps-not">NOT · Feature expansion</span></li>
+          <li><span class="ps-role">7. Director</span><span class="ps-lane">Integrate, summarize, report</span><span class="ps-not">NOT · Hands-on coding</span></li>
         </ol>
         <div class="pipeline-anim" aria-hidden="true"></div>
       </div>
-      <p class="loop-note">Deliverables return via verifiable handles &mdash; a child&rsquo;s self-report is not verification.</p>
+      <p class="loop-note">Deliverables return via verifiable handles &mdash; a child&rsquo;s self-report is not verification. Corrected in v1.1.0: UX is a single design lane, not two slots.</p>
     </div>
   </section>
 
@@ -211,12 +210,50 @@
     </div>
   </section>
 
+  <!-- 5.55 OPERATING UPGRADES / WHAT CHANGED -->
+  <section class="section" id="upgrades" aria-labelledby="upgrades-title">
+    <div class="container">
+      <p class="kicker">WHAT CHANGED · v1.1.0 OPERATING UPGRADES</p>
+      <h2 id="upgrades-title">A supervised, durable, provenance-aware operating layer.</h2>
+      <p class="lead measure">v1.1.0 encodes the operating doctrine the running fleet converged on &mdash; each item is a shape of failure the team actually hit, turned into a load-bearing rule. Full doctrine lives in the repo: <span class="mono">choreography/orchestration.md</span> and <span class="mono">choreography/governance.md</span>.</p>
+
+      <div class="up-grid">
+        <article class="up-card">
+          <p class="up-title">01 / SUPERVISION</p>
+          <p class="up-body">Workers do work; the orchestrator supervises and restarts under an explicit per-role task contract &mdash; restart type, intensity/period budget, shutdown policy, verification bar. Budget exhaustion escalates; nothing retries forever. Modeled on Erlang/OTP supervision trees (concept, not code).</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">02 / SUPERVISED RESEARCH LOOPS</p>
+          <p class="up-body">Long research runs as a ledgered, check-pointed loop &mdash; one mutable input, a frozen evaluator, keep/discard/crash advancement &mdash; that pauses, checkpoints, and surfaces for review. Never silent, never indefinite.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">03 / DURABLE STATE &amp; LEDGERS</p>
+          <p class="up-body">Correctness as a pure function of append-only on-disk state. A respawned worker resumes from disk, never from dead context. This is what makes the team entropy-proof after months untouched.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">04 / PRODUCER &ne; VERIFIER</p>
+          <p class="up-body">The agent that produces an artifact never passes it. Gates ground in read-back receipts and served bytes &mdash; never a producer&rsquo;s &ldquo;done&rdquo; self-report. Staging first; user approves; then promote.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">05 / ADVERSARIAL QA GATE</p>
+          <p class="up-body">Mechanical gate first, then an independent judge. Simplicity criterion, explicit retry caps, and plateau detection stop unbounded polish. QA owns scope-cut and loops back to the owning role.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">06 / CORRECTED PIPELINE</p>
+          <p class="up-body">A single-pass, phase-gated sequence &mdash; Director &rarr; Researcher &rarr; Architect &rarr; UX &rarr; Coder &rarr; QA &rarr; Director. UX is one design lane (no duplication); the architect never codes; the coder is the sole developer.</p>
+        </article>
+      </div>
+
+      <p class="instance-foot">Each rule is traceable to a dated internal operating record or to a public conceptual source (Erlang/OTP supervision, autoresearch / autonovel phase machines &mdash; principles with attribution, never copied code or prose). See <span class="mono">CHANGELOG.md</span> for the per-item &ldquo;why&rdquo; and evidence class. Cross-profile fleet spawning is documented as <strong>verified in practice</strong>; its formal spec remains <strong>proposed / pending</strong> and is not presented as shipped doctrine.</p>
+    </div>
+  </section>
+
   <!-- 5.6 STATUS & ROADMAP -->
   <section class="section" id="status" aria-labelledby="status-title">
     <div class="container">
       <p class="kicker">STATUS · SHIPPED VS. PROOF GATES</p>
       <h2 id="status-title">Open core today. Proof gates ahead &mdash; stated plainly.</h2>
-      <p class="lead measure">The kit asserts value and says so. What turns these claims true is the first vertical pack and a working setup-agent install &mdash; not the claims themselves.</p>
+      <p class="lead measure">The kit asserts value and says so. v1.1.0 ships the operating doctrine &mdash; documented and reviewed, not yet <em>proven</em> by an external instance. What turns these claims true remains the first vertical pack and a working setup-agent install &mdash; not the claims themselves.</p>
       <div class="status-cols">
         <div class="status-group">
           <p class="group-kicker shipped">SHIPPED</p>
@@ -227,6 +264,8 @@
             <li><span class="status-tag ok">✅</span><span class="status-text">Knowledge router skill (MoE-style activation) &mdash; shipped in templates/</span></li>
             <li><span class="status-tag ok">✅</span><span class="status-text">Zero-context preservation skill (direct-execution pivot) &mdash; shipped in templates/</span></li>
             <li><span class="status-tag ok">✅</span><span class="status-text">Open-core assembly gated (sweep + review + generate) + instantiation proof-point (demo/, examples/)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.1.0 operating doctrine shipped &mdash; supervision, phase-gated pipeline + corrected single-pass role sequence, durable ledgers, adversarial QA gate, license/provenance gate, entropy-proof + served-truth axioms (README, WHY, choreography, CHANGELOG)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.1.0 &mdash; corrected 7-stage pipeline + &ldquo;What changed&rdquo; section (this page)</span></li>
           </ul>
         </div>
         <div class="status-group">
@@ -235,6 +274,7 @@
             <li><span class="status-tag open">🔲</span><span class="status-text">Setup agent authored and passing the 8-surface gate</span></li>
             <li><span class="status-tag open">🔲</span><span class="status-text">Upstream PR for the setup agent</span></li>
             <li><span class="status-tag open">🔲</span><span class="status-text">First vertical pack shipped (instance + service)</span></li>
+            <li><span class="status-tag open">🔲</span><span class="status-text">Formal cross-profile fleet-orchestration spec (practice verified; spec proposed/pending)</span></li>
           </ul>
         </div>
       </div>
@@ -304,8 +344,8 @@ $ python3 build/generate.py --out &lt;kit-dir&gt; [--params &lt;pack.yaml&gt;]
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p class="foot-brand">TEAM6-KIT · v1.0.0</p>
-    <p class="foot-meta">This site was shipped by the kit&rsquo;s own pipeline &mdash; research, spec, design, build, QA &mdash; end to end.</p>
+    <p class="foot-brand">TEAM6-KIT · v1.1.0</p>
+    <p class="foot-meta">This site was shipped by the kit&rsquo;s own pipeline &mdash; research, architecture, design, build, adversarial QA &mdash; end to end. v1.1.0 adds the supervised operating layer.</p>
     <p class="foot-static">Static-only. No telemetry. No external requests.</p>
     <p class="foot-links">
       <a href="https://github.com/ahrazzle/team6-kit">github.com/ahrazzle/team6-kit</a>
@@ -318,6 +358,6 @@ $ python3 build/generate.py --out &lt;kit-dir&gt; [--params &lt;pack.yaml&gt;]
   </div>
 </footer>
 
-<script src="assets/js/main.js" defer></script>
+<script src="assets/js/main.js?v=1.1.0" defer></script>
 </body>
 </html>
