@@ -6,7 +6,7 @@
 <title>Team6-kit — A governed team. From one agent engine.</title>
 <meta name="description" content="Team6-kit v1.1.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT).">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e12'/%3E%3Cpath d='M2 10h4l2 3 2-3h4' stroke='%23f2b63d' stroke-width='1.5' fill='none'/%3E%3Crect x='2' y='3' width='12' height='3' fill='%23f2b63d'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/main.css?v=1.1.0">
+<link rel="stylesheet" href="assets/css/main.css?v=1.1.0-setup">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -26,6 +26,7 @@
       <a href="#upgrades">What changed</a>
       <a href="#status">Status</a>
       <a href="#install">Get started</a>
+      <a href="#setup">Setup</a>
       <a href="#license">License</a>
       <a class="nav-cta" href="https://github.com/ahrazzle/team6-kit">GitHub</a>
     </div>
@@ -297,6 +298,118 @@
     </div>
   </section>
 
+  <!-- 5.75 SET UP, CONFIGURE & USE -->
+  <section class="section" id="setup" aria-labelledby="setup-title">
+    <div class="container">
+      <p class="kicker">SET UP, CONFIGURE &amp; USE TEAM6</p>
+      <h2 id="setup-title">Set up, configure, and use Team6.</h2>
+      <p class="lead measure">Everything a Hermes user needs to stand the kit up: prerequisites, getting the code, editing the one parameter file, running the gates in order, placing the generated team into a Hermes environment, operating it, and updating it safely. The build gates, generator, templates and doctrine below ship today and run now.</p>
+
+      <div class="setup-boundary">
+        <span class="sb-title">SHIPPED VS. NOT-YET-SHIPPED — READ THIS FIRST</span>
+        <p><span class="tag-shipped">✅ SHIPPED — runnable now</span> the <span class="mono">build/</span> gates (<span class="mono">sweep-gate.py</span>, <span class="mono">review-gate.py</span>, <span class="mono">generate.py</span>), the persona &amp; skill templates, the <span class="mono">choreography/</span> and governance doctrine, the frozen-manifest instantiation proof point, and this site.</p>
+        <p><span class="tag-unshipped">🔲 NOT SHIPPED — open gate</span> the <strong>setup agent</strong> (identity-onboarding that interviews you and writes the parameter file for you). It is an open proof gate, not a feature. There is also no shipped one-command installer: the <span class="mono">kit install &lt;registry&gt;/&lt;team&gt;</span> contract in <span class="mono">registry/kit.yaml</span> is a declared distribution target today, not a working command.</p>
+      </div>
+
+      <div class="setup-steps">
+        <article class="setup-step">
+          <span class="step-num">STEP 1 / PREREQUISITES</span>
+          <h3>Engine, Python, environment, model choice.</h3>
+          <ul>
+            <li><strong>Hermes engine</strong> &mdash; installed and running. Team6 is a layer on top of Hermes, not a fork of it; the engine stays upstream (MIT).</li>
+            <li><strong>Python 3.8+</strong> with the standard library only &mdash; the gates and generator import nothing outside stdlib (verified on 3.9&ndash;3.13).</li>
+            <li><strong>Git + a POSIX shell</strong> (macOS/Linux, or WSL on Windows).</li>
+            <li><strong>Model / provider decision</strong> &mdash; the parameter file declares <code>MODEL_PROVIDER</code> and <code>MODEL_NAME</code>. The open-core default is the Hermes/Nous provider; you may point it at any provider your engine supports, including a local model endpoint.</li>
+            <li><strong>Local vs. hosted</strong> &mdash; decide where the Hermes runtime and the model run. A fully local deployment keeps data on-premise; a hosted provider trades that for convenience and needs network access plus API credentials.</li>
+            <li><strong>Hardware / network / security</strong> &mdash; size hardware to the model you choose (CPU/RAM/VRAM). The kit itself makes no network calls and ships no telemetry by construction, so it adds no egress of its own; if you use a hosted provider, review data-egress and provider terms. Air-gapped operation is possible when the model runs locally.</li>
+          </ul>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 2 / GET THE KIT</span>
+          <h3>Clone the repository.</h3>
+          <div class="cmd-block">
+            <pre><code><span class="prompt">$ </span>git clone https://github.com/ahrazzle/team6-kit.git
+<span class="prompt">$ </span>cd team6-kit</code></pre>
+          </div>
+          <p>Read <span class="mono">README.md</span> first, then <span class="mono">choreography/orchestration.md</span> and <span class="mono">choreography/governance.md</span> &mdash; the two files that carry the operating doctrine. A fresh clone is self-contained: it ships a frozen manifest and review so the build runs without your local profile fleet.</p>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 3 / INSPECT &amp; EDIT THE PARAMETER FILE</span>
+          <h3>Nine keys is the whole input.</h3>
+          <p>The parameter file is a plain YAML of declared keys. Start from the shipped example and edit the values for your team:</p>
+          <div class="cmd-block">
+            <pre><code><span class="prompt">$ </span>cat examples/demo-consulting.yaml</code></pre>
+          </div>
+          <p>Keys: <code>TEAM_NAME</code>, <code>DIRECTOR_NAME</code>, <code>AGENT_NAME</code>, <code>PROFILE_NAME</code>, <code>ROLE_NAME</code>, <code>ROLE_MISSION</code>, <code>ROLE_PURPOSE</code>, <code>MODEL_PROVIDER</code>, <code>MODEL_NAME</code>, plus an optional <code>BASE_URL</code> for a local or custom endpoint. Copy it, edit it, and keep it &mdash; this file is the vertical pack, and it never goes into the public repo.</p>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 4 / RUN THE GATES, IN ORDER</span>
+          <h3>Fail-closed: nothing assembles on a failed gate.</h3>
+          <div class="cmd-block">
+            <pre><code><span class="prompt">$ </span>python3 build/sweep-gate.py      <span class="cmt"># PASS(0) → continue; FAIL(1) → stop</span>
+<span class="prompt">$ </span>python3 build/review-gate.py     <span class="cmt"># 4/4 checkboxes on every shipping row</span>
+<span class="prompt">$ </span>python3 build/generate.py --params examples/demo-consulting.yaml --out /tmp/demo-team</code></pre>
+          </div>
+          <p><span class="mono">sweep-gate</span> proves the extraction source is clean and fully classified. <span class="mono">review-gate</span> enforces the semantic sign-off. <span class="mono">generate.py</span> re-runs both as preconditions, then assembles. On a fresh clone the gates run in self-contained <em>frozen</em> mode against the committed manifest/review (the generator selects this automatically); when you maintain a live extraction source, add <code>--strict</code> to make an unresolved placeholder a hard failure.</p>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 5 / WHAT COMES OUT &amp; WHERE IT GOES</span>
+          <h3>A configured team, plus an honest audit trail.</h3>
+          <div class="cmd-block">
+            <pre><code>/tmp/demo-team/
+├── AUDIT.md     <span class="cmt"># rows shipped, reconciled to what's on disk</span>
+├── personas/    <span class="cmt"># instantiated identity (SOUL + profile config)</span>
+├── skills/      <span class="cmt"># the skills the roles run with</span>
+└── keep-review/ <span class="cmt"># signed KEEP-REVIEW rows, when present</span></code></pre>
+          </div>
+          <p>Place them into a Hermes profile: copy the generated persona files into <code>~/.hermes/profiles/&lt;PROFILE_NAME&gt;/</code> (identity plus <span class="mono">profile.yaml</span> config) and the generated <span class="mono">skills/</span> into that profile's skills directory, then set the required environment (<code>MODEL_PROVIDER</code>, <code>MODEL_NAME</code>).</p>
+          <p class="honest-cap"><strong>Honesty note:</strong> the generator <em>produces</em> the artifacts; the copy-into-profile step is currently manual. No shipped installer performs it for you &mdash; that is the open setup-agent gate. Treat the placement above as the documented mapping, not an automated command.</p>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 6 / OPERATE IT</span>
+          <h3>Roles, choreography, governance, state, QA, recovery.</h3>
+          <ul>
+            <li><strong>Roles &amp; choreography</strong> &mdash; a single-pass pipeline Director &rarr; Researcher &rarr; Architect &rarr; UX &rarr; Coder &rarr; QA &rarr; Director, each lane with an explicit boundary and a Definition-of-Done gate. See <span class="mono">choreography/orchestration.md</span>.</li>
+            <li><strong>Governance</strong> &mdash; viability funnel, spin-off SoP, structured verdicts and read-back receipts; the rules that keep the team honest live in <span class="mono">choreography/governance.md</span>.</li>
+            <li><strong>Durable state &amp; ledgers</strong> &mdash; correctness as a pure function of append-only on-disk state (for example a <span class="mono">results.tsv</span> ledger with keep/discard/crash and frontier tracking). A respawned worker resumes from disk, never from dead context.</li>
+            <li><strong>QA</strong> &mdash; producer &ne; verifier: a mechanical gate first, then an independent adversarial judge; the adversarial-review skill ships in <span class="mono">templates/skills/adversarial-review/</span>.</li>
+            <li><strong>Recovery</strong> &mdash; Erlang/OTP-style supervision: bounded restarts per role, escalation on budget exhaustion, five-minute check-ins, and JIT forwarding of stable partials so a stall is never silent.</li>
+          </ul>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 7 / UPDATE, REBUILD &amp; VERIFY</span>
+          <h3>Re-run the gates; verify what is served.</h3>
+          <div class="cmd-block">
+            <pre><code><span class="prompt">$ </span>git pull
+<span class="prompt">$ </span>python3 build/sweep-gate.py
+<span class="prompt">$ </span>python3 build/review-gate.py
+<span class="prompt">$ </span>python3 build/generate.py --params &lt;your-pack.yaml&gt; --out /tmp/team-v2</code></pre>
+          </div>
+          <p>Regenerate into a fresh <code>--out</code> directory and diff the new <span class="mono">AUDIT.md</span> against the previous one before promoting. If you serve a site or artifact from the output, verify the served bytes with a cache-busted fetch &mdash; never announce a change from local files alone. Staging first, then promote.</p>
+        </article>
+
+        <article class="setup-step">
+          <span class="step-num">STEP 8 / TROUBLESHOOTING</span>
+          <h3>Common failures and what they mean.</h3>
+          <ul>
+            <li><strong>sweep-gate: UNCLASSIFIED SOURCE</strong> &mdash; a new source file has no manifest verdict. Run <span class="mono">build/build-manifest.py</span>, then sign the row in <span class="mono">REVIEW.md</span>.</li>
+            <li><strong>review-gate: UNSIGNED REVIEW</strong> &mdash; a shipping row's 4/4 soft-leak checklist is not fully ticked. Complete the semantic pass before assembling.</li>
+            <li><strong>generate: DECLARED PLACEHOLDER(S) NOT RESOLVED</strong> &mdash; the pack promised a placeholder the parameter file did not supply (usually a typo). Fix the YAML key.</li>
+            <li><strong>generate: UNRESOLVED PLACEHOLDERS (warning)</strong> &mdash; expected in open-core mode, which ships generic by design; becomes a failure under <code>--strict</code>, so a paid pack cannot ship mangled.</li>
+            <li><strong>FileNotFoundError: REVIEW.md</strong> &mdash; you are on an older checkout; a current clone's gates fall back to the committed frozen artifacts automatically.</li>
+          </ul>
+          <p>Support: open an issue at <a href="https://github.com/ahrazzle/team6-kit/issues">github.com/ahrazzle/team6-kit</a>, or for the ASKA Team6 service email <a href="mailto:info@askaconsult.com">info@askaconsult.com</a>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- 5.8 LICENSE -->
   <section class="section" id="license" aria-labelledby="license-title">
     <div class="container">
@@ -351,6 +464,8 @@ $ python3 build/generate.py --out &lt;kit-dir&gt; [--params &lt;pack.yaml&gt;]
       <a href="https://github.com/ahrazzle/team6-kit">github.com/ahrazzle/team6-kit</a>
       <span class="sep">·</span>
       <a href="#license">Apache-2.0 kits layer</a>
+      <span class="sep">·</span>
+      <a href="https://askaconsult.com/">Built by ASKA Consulting</a>
       <span class="sep">·</span>
       <a href="#top">↑</a>
     </p>

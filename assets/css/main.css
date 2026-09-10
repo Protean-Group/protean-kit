@@ -401,6 +401,51 @@ h3{font-size:var(--fs-h3);line-height:1.25;}
 .foot-copy{font-size:var(--fs-mono-sm);color:var(--text-low);}
 
 /* =========================================================================
+   5.75 Set up, configure & use (setup guide)
+   ========================================================================= */
+.setup-boundary{
+  border:1px solid var(--border);border-left:3px solid var(--accent);
+  background:var(--surf);border-radius:4px;padding:1.1rem 1.25rem;
+  margin:0 0 1.75rem;max-width:82ch;
+}
+.setup-boundary .sb-title{
+  font-family:ui-monospace,monospace;font-size:var(--fs-mono-sm);
+  color:var(--accent);letter-spacing:0.05em;display:block;margin-bottom:0.6rem;
+}
+.setup-boundary p{font-size:var(--fs-small);color:var(--text-mid);margin-bottom:0.6rem;}
+.setup-boundary p:last-child{margin-bottom:0;}
+.setup-steps{display:flex;flex-direction:column;gap:1.5rem;margin-top:0.5rem;}
+.setup-step{
+  border:1px solid var(--border);border-radius:4px;background:var(--surf);
+  padding:clamp(1.25rem,3vw,2rem);
+}
+.setup-step h3{margin-bottom:0.7rem;}
+.setup-step .step-num{
+  font-family:ui-monospace,monospace;font-size:var(--fs-mono-sm);
+  color:var(--accent);letter-spacing:0.08em;display:block;margin-bottom:0.4rem;
+}
+.setup-step p{color:var(--text-mid);font-size:var(--fs-small);line-height:1.65;margin-bottom:0.75rem;}
+.setup-step p:last-child{margin-bottom:0;}
+.setup-step ul{
+  color:var(--text-mid);font-size:var(--fs-small);line-height:1.7;
+  margin:0 0 0.75rem;padding-left:1.1rem;
+}
+.setup-step li{margin-bottom:0.45rem;}
+.setup-step code{
+  font-size:var(--fs-mono-sm);color:var(--text-hi);background:var(--raised);
+  border:1px solid var(--border);border-radius:2px;padding:0.1rem 0.35rem;
+}
+.setup-step .honest-cap{margin-top:0.6rem;}
+.tag-shipped,.tag-unshipped{
+  font-family:ui-monospace,monospace;font-size:var(--fs-mono-sm);
+  border:1px solid var(--border);border-radius:2px;padding:0.15rem 0.5rem;
+  margin-right:0.5rem;white-space:nowrap;
+}
+.tag-shipped{color:var(--ok);}
+.tag-unshipped{color:var(--open);}
+@media (max-width:560px){ .setup-step code{word-break:break-word;} }
+
+/* =========================================================================
    Responsive
    ========================================================================= */
 @media (max-width:1024px){

@@ -172,6 +172,22 @@ def main():
     problems = []
     notes = []
 
+    # Auto-frozen: on a fresh clone the live-fleet artifacts do not exist —
+    # manifest.tsv and REVIEW.md are gitignored and regenerated per instance.
+    # Without this fallback the documented build sequence
+    # (`python3 build/sweep-gate.py`) crashes on a missing REVIEW.md, because
+    # REGENERATE scans the live fleet and then expects a hand-signed review a
+    # fresh clone does not have. generate.py already auto-selects --frozen when
+    # the live manifest is absent; mirror it here so the gate is runnable
+    # standalone and self-contained by construction (same contract as
+    # review-gate.py's pick_artifact()).
+    live_manifest = os.path.join(HERE, "manifest.tsv")
+    if not frozen and not os.path.isfile(live_manifest) \
+            and not os.path.isfile(os.path.join(out, "REVIEW.md")):
+        frozen = True
+        notes.append("auto-frozen: no live manifest/REVIEW.md (fresh clone) "
+                     "— using committed frozen artifacts")
+
     # 1. REGENERATE — fresh manifest. Skipped in --frozen mode: the frozen
     #    manifest is the committed, self-contained artifact; regeneration
     #    would scan the live fleet, which a fresh clone doesn't have.
