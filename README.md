@@ -4,8 +4,6 @@ Official project site: https://team6.askaconsult.com/
 
 Team6-kit is an ASKA Digital open-source project. For the ASKA product and service context, visit https://askaconsult.com/digital/.
 
-GitHub Pages mirror: https://ahrazzle.github.io/team6-kit/
-
 
 > **What this is:** the reusable layer that turns a single agent engine into a
 > *disciplined multi-agent team* - identity archetypes, orchestration
@@ -142,13 +140,10 @@ and `CHANGELOG.md`:
 
 See `LICENSING.md` for the full four-zone statement.
 
-**Where Team6 lives (v1.2.0 public-domain decision):** the intended public
-Team6 site is **https://team6.askaconsult.com** — the ASKA site team connects
-the domain to this kit's GitHub Pages source. As a fallback/source mirror, the
-kit's GitHub Pages build also serves at **https://ahrazzle.github.io/team6-kit/**
-(the repo's existing Pages convention); the repo and source of truth remain
+**Where Team6 lives (v1.2.0 canonical-site decision):** the official Team6
+site is **https://team6.askaconsult.com**. The repository is the source of truth:
 **https://github.com/ahrazzle/team6-kit**. The Team6 site links back to the ASKA
-Digital site at **https://askaconsult.com/digital/**.
+Digital site at **https://askaconsult.com/digital/**. GitHub Pages is not used.
 
 ## Status
 

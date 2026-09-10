@@ -16,7 +16,7 @@ description: >
 
 registry: git@github.com:{ORG}/team6-kit.git
 home: https://team6.askaconsult.com/      # intended public Team6 site (v1.2.0 public-domain decision)
-source_mirror: https://ahrazzle.github.io/team6-kit/  # fallback/source Pages mirror (repo convention)
+source_mirror: ""  # GitHub Pages is not used; canonical site is home
 repo: https://github.com/ahrazzle/team6-kit
 links_back: https://askaconsult.com/digital/  # Team6 site -> ASKA Digital
 

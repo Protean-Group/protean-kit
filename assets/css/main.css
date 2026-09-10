@@ -446,6 +446,26 @@ h3{font-size:var(--fs-h3);line-height:1.25;}
 @media (max-width:560px){ .setup-step code{word-break:break-word;} }
 
 /* =========================================================================
+   ASKA site variant — top bar, back-link, continuity
+   ========================================================================= */
+.aska-bar{
+  background:var(--raised);border-bottom:1px solid var(--border);
+  font-family:ui-monospace,monospace;font-size:var(--fs-mono-sm);
+  display:flex;align-items:center;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;padding:0.55rem max(1rem, calc((100% - 1200px)/2));
+}
+.aska-bar a{color:var(--text-mid);}
+.aska-bar a:hover{color:var(--accent);}
+.aska-bar .aska-bar-link{color:var(--text-hi);}
+.aska-bar .aska-bar-tag{color:var(--text-low);}
+.aska-bar .aska-bar-cta{
+  color:var(--accent);border:1px solid var(--border);border-radius:2px;
+  padding:0.35rem 0.7rem;
+}
+.aska-bar .aska-bar-cta:hover{border-color:var(--accent-dim);}
+@media (max-width:720px){ .aska-bar{padding:0.55rem 1rem;} }
+
+/* =========================================================================
    Responsive
    ========================================================================= */
 @media (max-width:1024px){

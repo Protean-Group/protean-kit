@@ -77,16 +77,13 @@ the boundary is explicit:
 
 ### Public-domain hosting boundary (v1.2.0)
 
-v1.2.0 adopts the public-domain routing decision for the Team6 site:
+v1.2.0 adopts the canonical-site decision for the Team6 site:
 
-- **Intended public site:** `https://team6.askaconsult.com` — connected to this
-  kit's GitHub Pages source by the ASKA site team. DNS and GitHub Pages
-  custom-domain settings are **out of scope for this repo** and are not touched
-  here.
-- **Fallback / source mirror retained:** `https://ahrazzle.github.io/team6-kit/`
-  (the repo's existing Pages convention) remains the fallback/source URL when
-  the repo's conventions require it; the repo/source of truth is
-  `https://github.com/ahrazzle/team6-kit`.
+- **Canonical public site:** `https://team6.askaconsult.com/`.
+- **Repository/source of truth:** `https://github.com/ahrazzle/team6-kit`.
+- **GitHub Pages:** not used. The old Pages site was taken down.
+- **Deployment boundary:** the canonical site is served by the ASKA-managed
+  Team6 deployment; DNS and deployment settings are outside this repo.
 - **Visible navigation back to ASKA Digital:** the Team6 site (`index.html`)
   carries visible nav + footer links back to `https://askaconsult.com/digital/`.
 

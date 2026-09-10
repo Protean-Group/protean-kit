@@ -199,7 +199,7 @@ Hermes uses: open-source engine, paid service on top.
 - ✅ Desert Ant framed as one optional implementation; separate vendor model license distinct from Apache-2.0 kit
 - ✅ No invented performance/cost figures — expected benefits as intended outcomes
 - ✅ Public docs + website updated to v1.2.0 (README, WHY, CHANGELOG, registry/kit.yaml, LICENSING, index.html)
-- ✅ Public-domain routing: intended public site `team6.askaconsult.com`; fallback/source mirror `ahrazzle.github.io/team6-kit/`; visible nav back to `askaconsult.com/digital/` (DNS/Pages settings untouched)
+- ✅ Canonical-site routing: official site `team6.askaconsult.com`; GitHub Pages is not used; visible nav back to `askaconsult.com/digital/`
 
 ### v1.1.0 — operating upgrades (2026-09-09)
 

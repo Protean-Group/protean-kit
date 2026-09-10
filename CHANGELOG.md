@@ -28,18 +28,12 @@ license text. Desert Ant models carry a separate source-available vendor
 license that is distinct from the Apache-2.0 kit layer and does not extend to
 it. See `choreography/local-preprocessing.md` and `LICENSING.md`.
 
-v1.2.0 hosting note (public-domain decision): the **intended public Team6 site**
-is **https://team6.askaconsult.com** — the ASKA site team connects that domain to
-this kit's GitHub Pages source. The kit **retains a fallback/source mirror** at
-**https://ahrazzle.github.io/team6-kit/** (the repo's existing Pages convention),
-and the repo/source of truth stays at **https://github.com/ahrazzle/team6-kit**.
-The Team6 site carries **visible navigation back to ASKA Digital** at
-**https://askaconsult.com/digital/**. DNS and GitHub Pages custom-domain settings
-are out of scope for this repo — the source tree only declares the intended URL
-(`registry/kit.yaml` `home`/`source_mirror`/`links_back`) and the site surfaces
-it (`index.html` canonical + nav + footer). [VERIFIED — internal operating
-record] the public-domain routing decision; [VERIFIED — public conceptual
-source] the ASKA Digital site the Team6 site links back to.
+v1.2.0 hosting note (canonical-site decision): the **official public Team6 site**
+is **https://team6.askaconsult.com**. The repository is the source of truth at
+**https://github.com/ahrazzle/team6-kit**. GitHub Pages is not used and the old
+Pages site was taken down. The canonical site carries visible navigation back to
+**https://askaconsult.com/digital/**. The deployment and DNS boundary is managed
+outside this repository.
 
 ---
 
