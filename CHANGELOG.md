@@ -37,15 +37,20 @@ outside this repository.
 
 ---
 
-## 1.3.0 — Handover ingestion completeness & capability audit (2026-09-12)
+## 1.3.0 — Handover ingestion completeness & propagation loop (2026-09-12)
 
 This release documents the **ingestion definition of done**: storage and
 retrieval are the transport half of ingestion, not the finish line. A source
 that is **handed over directly** carries a capability claim, and an unexamined
-claim is not knowledge. The rule and its checklist now live in
+claim is not knowledge. It also documents the **propagation loop** that carries
+an audited candidate into the team's surfaces without making ingestion
+expensive enough to skip. The rules live in
 `templates/skills/knowledge-base-ingestion/SKILL.md`; an illustrative record
 exemplar ships in `AUDIT/handover-capability-audit.md`. No dependency is added
 and nothing is bundled.
+
+Items 1-7 below are the ingestion definition of done; items 8-10 are the
+propagation loop.
 
 ### 1. A handed-over source is not `reference-only` until it is audited
 
@@ -125,6 +130,52 @@ and nothing is bundled.
   drifts, and a local build is not a served truth.
 - **Evidence:** [VERIFIED - internal operating record] the served-truth and
   staging-first axioms (v1.1.0), applied to documentation propagation.
+
+### 8. One capability delta per candidate, routed by impact class
+
+- **What:** every ingestion that yields an adoption candidate emits one
+  machine-readable **capability delta** (source, evidence, capability change,
+  canonical home, proposed owner, public-safe summary, affected surfaces, risk,
+  proof status, disposition). Each delta is classified before routing:
+  `reference-only`, `internal-operational`, `kit-candidate`, `website-candidate`,
+  or `release-impacting`. Implementation routes to the **capability owner** -
+  not automatically to QA, which audits the resulting public change at batch or
+  release boundaries.
+- **Why it changed:** a full end-to-end review per ingestion is expensive enough
+  that it gets skipped, and an unrouted candidate is silently nobody's work. The
+  impact class decides the route and the review weight up front.
+- **Evidence:** [VERIFIED - internal operating record] the capability-delta and
+  impact-class routing rules the team adopted for ingestion propagation.
+
+### 9. One append-only journal, and batch compatible candidates
+
+- **What:** candidates live in a single **append-only propagation journal** with
+  the lifecycle `proposed -> accepted -> implementing -> verified -> staged ->
+  live` (or `deferred` / `rejected`), each entry naming its canonical home,
+  owner, queue/batch identifier, and next gate. Compatible `kit-candidate` and
+  `website-candidate` deltas are **batched** into one coherent update, triggered
+  by a safe threshold, a scheduled review window, or a `release-impacting`
+  change.
+- **Why it changed:** one public change per ingestion spends the scarce review
+  capacity on coordination instead of substance, and an unjournalled candidate
+  cannot be told apart from a forgotten one.
+- **Evidence:** [VERIFIED - internal operating record] the team's append-only
+  state and batch-review boundaries.
+
+### 10. Preflight per candidate, full audit per batch, parity + read-back
+
+- **What:** each candidate gets a lightweight **preflight** (public-safe
+  genericization, provenance/license status, owner, acceptance criteria,
+  affected-surface list); the **full pre-merge audit** is reserved for the
+  batched change or release candidate. Every batch keeps repository and site in
+  **parity**, passes each surface's own gate, and is read back by other than its
+  producer before merge or deployment. Naming migrations stay **separate**
+  coordinated release work - no partial renames during ordinary propagation.
+- **Why it changed:** a local artifact, a green build log, or a worker's success
+  claim is not live evidence, and a half-renamed surface is less coherent than a
+  consistently old-named one.
+- **Evidence:** [VERIFIED - internal operating record] the team's
+  producer-never-verifier, served-truth, and separate-naming-migration rules.
 
 ---
 

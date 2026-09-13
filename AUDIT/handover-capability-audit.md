@@ -59,7 +59,7 @@ recommended it.
 An empty table is itself a claim - it asserts nothing was left open. Write it
 empty only when that is true.
 
-## 6. Phase and propagation
+## 6. Phase, impact class, and propagation
 
 | Phase | State | Evidence |
 |---|---|---|
@@ -69,6 +69,37 @@ empty only when that is true.
 | QA | | |
 | Enforcement | | |
 
+**Impact class** (sets the route and the review weight - pick one):
+`reference-only` / `internal-operational` / `kit-candidate` / `website-candidate`
+/ `release-impacting`. Implementation routes to the **capability owner**; QA
+audits the resulting public change at the batch or release boundary, not per
+ingestion.
+
+**Capability delta** (illustrative shape - one per candidate):
+
+| Field | Value |
+|---|---|
+| source | ledger path + hash of the raw artifact |
+| evidence | what was inspected, with paths |
+| capability change | what the team can do after this that it could not before |
+| canonical home | the one durable home the change belongs in |
+| proposed owner | the role the delta is routed to |
+| public-safe summary | the delta's text after genericization |
+| affected surfaces | every surface the change would touch |
+| risk | what breaks if the change is wrong |
+| proof status | none / proof pending / proven, with the gate named |
+| disposition | adopt now / candidate - proof pending / defer / reject |
+
+**Propagation-journal entry** (one append-only entry per candidate):
+
+| Field | Value |
+|---|---|
+| status | proposed / accepted / implementing / verified / staged / live / deferred / rejected |
+| canonical home | |
+| owner | |
+| queue or batch id | |
+| next gate | |
+
 Affected surfaces, and the gate each one passed:
 
 | Surface | Gate | Result |
@@ -77,6 +108,13 @@ Affected surfaces, and the gate each one passed:
 | documentation | review gate | |
 | skills layer | build + review | |
 | site | served-byte check | |
+
+Repository and site must be in **parity**, and the result read back by other
+than its producer, before merge or deployment. A local artifact, a green build
+log, or a worker's success claim is not live evidence. Naming migrations are
+**separate** coordinated release work - no partial renames during ordinary
+propagation. A candidate whose proof is pending, or whose status is unresolved,
+blocked, or dead, stays in the internal queue with its state named.
 
 ## 7. Read-back
 

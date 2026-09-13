@@ -206,6 +206,116 @@ public or internal site - and pass each through its **own** gate (build, review,
 leak/genericization scan, served-byte check). A rule that lands in one surface
 and not the others drifts.
 
+## The propagation loop - from an ingesta to the team's surfaces
+
+Ingestion does not end at the audit. A useful source can change the team's
+operating model, its implementations, its documentation, or its public
+surfaces. Reviewing every candidate at full weight makes ingestion expensive
+enough to skip; propagating nothing leaves the team claiming capabilities it
+does not have. Run it as an **impact-routed, artifact-first loop** instead.
+
+### 1. One machine-readable capability delta per candidate
+
+Every ingestion that yields an adoption candidate emits **one capability delta**
+- a record, not a prose summary:
+
+| Field | What it carries |
+|---|---|
+| source | the ingested item, its ledger path, and its hash |
+| evidence | what was actually inspected, with paths |
+| capability change | what the team can do after this that it could not before |
+| canonical home | the single durable home the change belongs in |
+| proposed owner | the role the change is routed to - a role, not a queue |
+| public-safe summary | the delta's text after genericization; the only text allowed to reach a public surface |
+| affected surfaces | every surface the change would touch |
+| risk | what breaks if the change is wrong |
+| proof status | none / proof pending / proven, with the gate named |
+| disposition | adopt now / candidate - proof pending / defer / reject |
+
+### 2. Classify the impact before routing
+
+| Impact class | Propagation |
+|---|---|
+| `reference-only` | store and index; no team surface changes |
+| `internal-operational` | route to the canonical owner (skill / knowledge module / agent); no public change unless the public contract changes |
+| `kit-candidate` | queue a bounded implementation task for the repository, its templates, and its build gates |
+| `website-candidate` | queue a coordinated repository-plus-site documentation/design update |
+| `release-impacting` | requires owner review, a public-safety review, and release/deployment gates |
+
+The class sets the route and the review weight. It is not a severity label, and
+it is not a promise that the change will ship.
+
+### 3. Route to the capability owner, not to QA by default
+
+Route implementation to the owner of the capability being changed - the skill's
+owner, the module's owner, the repository owner - not automatically to the QA
+lane. QA owns the canonical knowledge home and final verification, and audits the
+resulting *public* change at batch or release boundaries rather than auditing
+every ingestion.
+
+### 4. One append-only propagation journal
+
+Keep a single append-only journal for all candidates, with a status lifecycle:
+
+```
+proposed -> accepted -> implementing -> verified -> staged -> live
+deferred / rejected   (from any stage, with the reason kept)
+```
+
+Each entry names its canonical home, its owner, its queue/batch identifier, and
+the next gate. Mirrors carry pointers to the canonical home, never a copy. The
+journal is the coordination surface; the repository and the site change only
+through their own reviewed gates.
+
+### 5. Batch compatible candidates
+
+Batch compatible `kit-candidate` and `website-candidate` deltas into **one**
+coherent update. Trigger a batch when a safe threshold of compatible candidates
+is reached, at a scheduled review window, or when a `release-impacting` change
+requires it. Do not open one public change per ingestion: review capacity is the
+scarce resource, and a stream of single-item changes spends it on coordination
+instead of substance.
+
+### 6. Lightweight preflight per candidate, the full audit per batch
+
+Every candidate gets a cheap preflight before it is queued: public-safe
+genericization, provenance and license status, an owner, acceptance criteria,
+and the affected-surface list. Reserve the **full pre-merge audit** for the
+batched change or the release candidate. A candidate that fails preflight
+returns to the internal queue - it is never pushed through by lowering the bar.
+
+### 7. Parity and independent read-back before merge or deploy
+
+Every batched update keeps the repository and the site in parity, passes **each**
+surface's own gate, and is read back by other than its producer before merge or
+deployment. A local artifact, a green build log, or a worker's success claim is
+not live evidence: verify the served bytes.
+
+### 8. Keep naming migrations separate
+
+Public naming changes are **coordinated release work**, kept apart from
+capability updates. Do not partially rename surfaces during ordinary
+propagation - a half-renamed surface is less coherent than a consistently
+old-named one. When a naming migration is approved, run it as its own bounded
+change across every surface at once.
+
+### 9. Public safety and open candidates
+
+Never copy private paths, private agent or user names, identifiers, credentials,
+internal knowledge content, internal project names, or instance tokens into a
+public surface. A public-surface candidate that cannot be genericized without
+losing its meaning stays internal. Candidates whose proof is still pending, or
+whose status is unresolved, blocked, or dead, stay in the internal queue with
+their state named until their owner closes them.
+
+### What the ingestion receipt adds
+
+For a handed-over source, the receipt names - besides the ledger and audit paths
+- the **impact class**, the **delta artifact path**, the **canonical home**, the
+**owner**, the **queue or batch identifier**, and the **next gate**. An ingestion
+whose propagation is unrecorded cannot be told apart from one whose propagation
+was forgotten.
+
 ## Quality Filtering
 
 ### Skip Criteria
@@ -292,3 +402,10 @@ Only for a source handed over directly:
 - [ ] Ledger, matrix, and disposition exist as durable artifacts and were read back
 - [ ] Unresolved / dead / blocked facts are preserved with their state named
 - [ ] Every affected surface (repository, docs, skills, site) passed its own gate
+- [ ] The ingestion emitted one capability delta, with its impact class named
+- [ ] The delta is routed to the capability owner - not to QA by default
+- [ ] The candidate has a propagation-journal entry with its status named
+- [ ] Compatible candidates were batched, not opened as one public change each
+- [ ] The candidate passed preflight; the full audit ran at the batch/release boundary
+- [ ] No private path, name, identifier, credential, or instance token reached a public surface
+- [ ] Repository and site are in parity, read back by other than their producer

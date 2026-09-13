@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team6-kit — A governed team. From one agent engine.</title>
-<meta name="description" content="Team6-kit v1.3.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT). Now with a vendor-neutral local preprocessing adapter contract and the ingestion definition of done for handed-over sources.">
+<meta name="description" content="Team6-kit v1.3.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT). Now with a vendor-neutral local preprocessing adapter contract, the ingestion definition of done for handed-over sources, and the impact-routed propagation loop that carries an audited candidate into the team's surfaces.">
 <link rel="canonical" href="https://team6.askaconsult.com/">
 <meta property="og:url" content="https://team6.askaconsult.com/">
 <meta property="og:title" content="Team6-kit — A governed team. From one agent engine.">
@@ -293,9 +293,9 @@
   <!-- 5.57 INGESTION DEFINITION OF DONE (v1.3.0) -->
   <section class="section" id="ingestion" aria-labelledby="ingestion-title">
     <div class="container">
-      <p class="kicker">WHAT CHANGED &middot; v1.3.0 INGESTION DEFINITION OF DONE</p>
+      <p class="kicker">WHAT CHANGED &middot; v1.3.0 INGESTION DEFINITION OF DONE + PROPAGATION LOOP</p>
       <h2 id="ingestion-title">Indexing is transport. It is not the finish line.</h2>
-      <p class="lead measure">v1.3.0 documents the <strong>ingestion definition of done</strong> for sources handed over directly. Storage and retrieval are the transport half of ingestion; a handed-over source carries a capability claim, and an unexamined claim is not knowledge. The rule and its checklist live in <span class="mono">templates/skills/knowledge-base-ingestion/SKILL.md</span>; an illustrative record ships in <span class="mono">AUDIT/handover-capability-audit.md</span>. No dependency is added and nothing is bundled.</p>
+      <p class="lead measure">v1.3.0 documents the <strong>ingestion definition of done</strong> for sources handed over directly, and the <strong>propagation loop</strong> that carries an audited candidate into the team's surfaces. Storage and retrieval are the transport half of ingestion; a handed-over source carries a capability claim, and an unexamined claim is not knowledge. The rules and their checklists live in <span class="mono">templates/skills/knowledge-base-ingestion/SKILL.md</span>; an illustrative record ships in <span class="mono">AUDIT/handover-capability-audit.md</span>. No dependency is added and nothing is bundled.</p>
 
       <div class="up-grid">
         <article class="up-card">
@@ -321,6 +321,18 @@
         <article class="up-card">
           <p class="up-title">06 / RECEIPTS, READ-BACK, PROPAGATION</p>
           <p class="up-body">Ledger, matrix, and disposition are durable artifacts, read back by other than their producer before they are reported. An adopted change names every surface it touches &mdash; repository, documentation, skills, site &mdash; each passed through its own gate.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">07 / ONE DELTA, ROUTED BY IMPACT CLASS</p>
+          <p class="up-body">Each candidate emits one machine-readable capability delta. Its impact class &mdash; reference-only, internal-operational, kit-candidate, website-candidate, or release-impacting &mdash; sets the route and the review weight, and implementation goes to the capability owner rather than to QA by default.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">08 / ONE APPEND-ONLY JOURNAL, BATCHED CHANGES</p>
+          <p class="up-body">Candidates live in a single append-only journal &mdash; proposed, accepted, implementing, verified, staged, live, or deferred/rejected. Compatible candidates are batched into one coherent update instead of opening one public change per ingestion.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">09 / PREFLIGHT EACH, AUDIT THE BATCH</p>
+          <p class="up-body">Every candidate gets a cheap preflight &mdash; public-safe genericization, provenance and license, owner, acceptance criteria, affected surfaces. The full pre-merge audit is reserved for the batch or release candidate, and repository/site parity is read back before merge or deploy. Naming migrations stay separate release work.</p>
         </article>
       </div>
 
@@ -350,6 +362,7 @@
             <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.2.0 &mdash; local preprocessing capability section + version markers (this page)</span></li>
             <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 ingestion definition of done shipped &mdash; handover capability audit (surfaces inspected, capability matrix, owner + disposition per candidate, five phases, bounded proof, durable receipts + independent read-back, propagation per surface) in templates/skills/knowledge-base-ingestion/SKILL.md, with a record exemplar in AUDIT/handover-capability-audit.md (README, CHANGELOG)</span></li>
             <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.3.0 &mdash; ingestion definition-of-done section + version markers (this page)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 propagation loop documented &mdash; capability delta per candidate, impact-class routing (reference-only / internal-operational / kit-candidate / website-candidate / release-impacting), one append-only journal with a named lifecycle, batched candidates instead of one public change per ingestion, per-candidate preflight with the full audit at the batch/release boundary, repository/site parity with independent read-back, and separate naming migrations (templates/skills/knowledge-base-ingestion/SKILL.md, README, CHANGELOG)</span></li>
           </ul>
         </div>
         <div class="status-group">
