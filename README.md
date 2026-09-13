@@ -5,6 +5,12 @@ Turn one AI agent engine (Hermes, from Nous Research) into a small team of AI ag
 Official site: https://team6.askaconsult.com/
 Part of ASKA Digital: https://askaconsult.com/digital/
 
+Interactive experience: https://www.askaconsult.com/team6
+
+The official site is the canonical public documentation for Team6-kit. The
+interactive experience is served by the Team6 Frontier Vercel project through
+ASKA's `/team6` route.
+
 ## What problem does it solve?
 
 One AI agent can lose track, skip steps, or claim work is done when it isn't. Team6-kit sets up several agents with separate jobs — planner, builder, checker — and rules so that:
