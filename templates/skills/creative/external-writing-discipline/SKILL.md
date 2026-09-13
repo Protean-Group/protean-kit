@@ -21,17 +21,7 @@ Some writing faces readers whose first language is not English, or who have zero
 - **Concrete over abstract.** "One agent plans, one builds, one checks" beats "supervised multi-agent coordination".
 - **The stranger test:** could someone who has never heard of this project, reading in a second language, tell a friend what it does after reading the top of the page? If not, rewrite before adding anything else.
 
-## Plain-language floor (audience test)
 
-Some writing faces readers whose first language is not English, or who have zero context on the project — a README, an About line, a public landing page. Before publishing, test against this floor:
-
-- **Say what the thing IS and DOES in the first three lines.** What it is, what it does, who it is for. If a reader cannot answer "what is this project?" after those lines, everything after is wasted.
-- **Ban jargon and lesser-known words** when a plain word exists: "orchestration choreography" → "how the team works together"; "durable state" → "saved to disk"; "provenance" → "where it came from"; "invariant" → "the rule". A technical term stays only when no plain substitute carries the meaning and the audience is technical.
-- **Short sentences.** One idea per sentence. Prefer a period over an em dash or a semicolon.
-- **Concrete over abstract.** "One agent plans, one builds, one checks" beats "supervised multi-agent coordination".
-- **The stranger test:** could someone who has never heard of this project, reading in a second language, tell a friend what it does after reading the top of the page? If not, rewrite before adding anything else.
-
-### Hyphen compounds
 
 Every time you connect two words with a dash, ask whether the compound is jargon. "frozen-manifest build example", "paid-pack material", "files-as-state", "third-party-tool audit", "hold-for-review rule" — all of these were written in good faith and all of them failed the stranger test. Real file paths and product names (knowledge-base-ingestion, Apache-2.0) are exempt; invented concept compounds are not. If the compound needs a pause to decode, unpack it: "a skill that saves all work state to disk", not "save-state-to-disk skill".
 
