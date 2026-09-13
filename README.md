@@ -1,202 +1,61 @@
-# Team6-kit — Multi-Agent Team Kit (open core)
+# Team6-kit
 
-Official project site: https://team6.askaconsult.com/
+Turn one AI agent engine (Hermes, from Nous Research) into a small team of AI agents that work together under clear rules — with a supervisor, a quality checker, and a builder that assembles your own team from ready-made parts.
 
-Team6-kit is an ASKA Digital open-source project. For the ASKA product and service context, visit https://askaconsult.com/digital/.
+Official site: https://team6.askaconsult.com/
+Part of ASKA Digital: https://askaconsult.com/digital/
 
+## What problem does it solve?
 
-> **What this is:** the reusable layer that turns a single agent engine into a
-> *disciplined multi-agent team* - identity archetypes, orchestration
-> choreography, governance rules, knowledge routing, and a generator that
-> assembles them.
->
-> **Why it's standalone, not a fork:** we build on Hermes (MIT) rather than
-> vendoring it. That keeps the kit's boundary honest - the engine stays
-> upstream and unmodified; everything this repo adds lives in its own licensed
-> zones. You get the same credibility as a fork with none of the tree
-> confusion: `Team6-kit` reads as a product, not a clone.
+One AI agent can lose track, skip steps, or claim work is done when it isn't. Team6-kit sets up several agents with separate jobs — planner, builder, checker — and rules so that:
 
-Instantiable multi-agent team: identity archetypes + orchestration choreography
-+ governance rules + knowledge routing + a generator. One engine, two products.
+- Work is checked by a different agent than the one that did it.
+- Progress is saved on disk, so a crashed agent can resume where it left off.
+- Long tasks pause for review instead of running silently forever.
+- Knowledge is stored in small files that load only when needed.
 
-```
-team6-kit/
-├── templates/          # persona archetypes (SOUL.md w/ {PLACEHOLDER}), profile.yaml, generic skills
-│   └── MANIFEST.md     # row → template mapping + provenance (locked)
-├── build/              # the ONLY assembly path
-│   ├── generate.py         # manifest → instantiated kit
-│   ├── sweep-gate.py       # precondition: source clean + fully classified
-│   ├── review-gate.py      # semantic sign-off enforcement (4/4)
-│   ├── extraction-inventory.py   # classifier + content sweep (source audit)
-│   └── build-manifest.py         # manifest generator
-├── registry/           # kit.yaml + vertical pack parameter files (NOT forks)
-├── choreography/       # THE differentiator: orchestration, governance, funnel SOPs, local-preprocessing adapter contract
-├── AUDIT/              # provenance records + the handover-audit record exemplar
-├── CHANGELOG.md        # dated per-upgrade log: what changed, why, evidence class
-├── WHY.md              # design axioms + why the operating layer is shaped this way
-└── LICENSE             # Apache-2.0 core; packs proprietary by contract
-```
+## How you use it
 
-Read `choreography/orchestration.md` (how the team works together),
-`choreography/governance.md` (the rules that keep it honest), and
-`choreography/local-preprocessing.md` (the optional local preprocessing
-adapter contract) first. `WHY.md` explains the operating layer; `CHANGELOG.md`
-tracks what changed per release.
-
-## The invariant
-
-> Every *source* file ships only when it has a manifest verdict of TEMPLATE or
-> KEEP-REVIEW with a signed REVIEW.md entry. Unclassified source = build
-> failure. (Scope: extraction source - profiles being mined. The kit's own
-> authored surfaces are out of scope by design.)
-
-## Build sequence
+1. Pick a ready-made agent profile from `templates/` (each has a role and rules).
+2. Add a settings file from `registry/` with your own values.
+3. Run the builder, which checks everything and creates your team folder:
 
 ```
-1. python3 build/sweep-gate.py    # PASS(0) → continue; FAIL(1) → stop
-2. python3 build/review-gate.py   # 4/4 checkboxes on every shipping row
-3. python3 build/generate.py --out <kit-dir> [--params <pack.yaml>]
+python3 build/sweep-gate.py      # check the source files are in order
+python3 build/review-gate.py     # check every item has been reviewed
+python3 build/generate.py --out my-team [--params my-settings.yaml]
 ```
 
-A kit that cannot be built by `build/` from `templates/` + a parameter file
-does not exist. The generator is the only assembly path.
+You get a folder with your team's agents, ready to run.
 
-## Key skills in this release
+## What's in the repo
 
-- **knowledge-router** - MoE-style activation for persistent memory: tiny
-  always-on router, compartmentalized knowledge modules loaded on demand.
-  Solves the growing always-on memory footprint on bounded-context models.
-- **zero-context-preservation** - the direct-execution pivot: preservation
-  dumps + mechanical fleet work done in the shell at zero context cost;
-  orchestrator preserves agent identity verbatim.
-- **knowledge-base-ingestion** - ingestion pipelines for heterogeneous
-  sources, now with the handover definition of done: a directly handed-over
-  source is not `reference-only` until a capability/usefulness audit exists
-  for it, with a capability matrix, an owner and disposition per candidate,
-  bounded proof instead of a wholesale install, and durable receipts with
-  independent read-back. It also carries the **propagation loop** that moves an
-  audited candidate into the team's surfaces: a machine-readable capability
-  delta per candidate, an impact class that routes it to its capability owner,
-  one append-only propagation journal, batching of compatible candidates
-  instead of one public change per ingestion, a lightweight preflight per
-  candidate against a full audit at the batch/release boundary, repository/site
-  parity with independent read-back, naming migrations kept separate, and
-  public-safety handling for unresolved candidates.
+| Folder | What it is |
+|---|---|
+| `templates/` | Ready-made agent profiles and generic skills |
+| `build/` | The builder scripts (the only way to create a team) |
+| `registry/` | Settings files you can customize |
+| `choreography/` | How the team works together and the rules it follows |
+| `AUDIT/` | Records of where content came from |
+| `WHY.md` | Why the system is designed this way |
+| `CHANGELOG.md` | What changed in each release |
 
-## Local preprocessing adapter (v1.2.0)
+## The main rules
 
-A **bounded, optional local preprocessing layer** that a generated
-installation may apply around approved outbound work — Redact before approved
-outbound text / durable external logs, Gist for bulk routing hints only, Title
-for draft metadata. It is a **contract, not a provider/router replacement**: it
-never handles high-stakes judgment and it never runs for ordinary conversation
-or final synthesis. The public kit documents the contract
-(`choreography/local-preprocessing.md`); a generated installation **implements**
-it only as an explicit operator policy, and the kit never edits a user's Hermes
-profile to enable it. Desert Ant is one possible implementation on macOS, not a
-required dependency, and the models carry a separate vendor license distinct
-from the Apache-2.0 kit layer. Expected benefits are stated as intended
-outcomes — no fabricated performance or cost numbers.
+1. **Everything on disk.** Progress is saved to files, so months later you can still pick up where you left off.
+2. **Check what is actually live.** Test on a staging copy, get approval, then publish. Never announce "done" from a local test.
+3. **The maker never marks their own work.** A different agent checks it and records the result.
+4. **Supervised, not autonomous.** Long tasks pause, save progress, and ask for review. Nothing runs forever unattended.
 
-## Operating upgrades in this release (v1.1.0)
+## What's new in this release (1.3.0)
 
-The choreography and governance now encode the verified operating doctrine of
-a supervised, durable, provenance-aware team. Highlights - full detail and
-per-item "why" in `choreography/orchestration.md`, `choreography/governance.md`,
-and `CHANGELOG.md`:
-
-- **Erlang/OTP-style supervision** - workers do work; the orchestrator
-  supervises and restarts under an explicit per-role task contract (restart
-  type, intensity/period budget, shutdown policy, verification bar), escalating
-  on budget exhaustion instead of retrying forever.
-- **Supervised autonomous research loops** - ledgered, check-pointed research
-  with exactly one mutable input, a frozen evaluator, keep/discard/crash
-  advancement, and pause/interrupt points - *not* silent indefinite autonomy.
-- **Phase-gated pipeline + corrected role sequence** - research → architecture
-  → design → build → QA, each with a Definition-of-Done gate, Andon
-  stop-the-line, and JIT stable-partial handoffs. The earlier duplicated
-  9-step sequence (UX twice, an early QA/Scoper) is corrected to a single pass.
-- **Producer/verifier separation** - the agent that produces an artifact never
-  passes it; verdicts ground in read-back receipts, never self-reports.
-- **Durable state & append-only ledgers** - correctness as a pure function of
-  on-disk state, so a respawned worker resumes from disk, not dead context.
-- **Five-minute live check-ins & stall recovery** - periodic progress beats
-  silence-then-timeout.
-- **Served-truth / staging-first verification** - verify what is actually
-  served, not a local claim.
-
-### Design axioms
-
-1. **Entropy-proof.** Correct as a pure function of durable state - still
-   correct on first read after months untouched. Absence is normal.
-2. **Served-truth.** Verify the thing actually served/live; staging first,
-   user approves, then promote. Never announce "live" from a local claim.
-3. **Producer ≠ verifier.** No one passes their own work; read-back receipts,
-   not self-reports.
-4. **Supervised, not autonomous.** Long loops pause, checkpoint, and surface
-   for review; nothing runs forever unattended.
+When a source is handed to the team, it now needs a proper review before use: what does it contain, what is it useful for, who owns each part, and proof it works — instead of just indexing the files. See `CHANGELOG.md`.
 
 ## License
 
-- **Built on Hermes (MIT)** - the engine is Nous Research's, MIT-licensed
-  (provenance; engine-derived tooling becomes MIT when it lands here, see
-  LICENSING.md). This repo is NOT a git-fork of Hermes; it is a standalone
-  product with a generated kits layer.
-- **Kits layer: Apache-2.0** (see LICENSE) - our identity archetypes,
-  orchestration, governance, knowledge routing, and build tooling.
-- **Vertical packs: proprietary by contract** - parameter files + service,
-  never committed to this repo, never a fork of the engine.
-- **Optional local preprocessing models: separate vendor license** — an
-  adapter may reference models (e.g. Desert Ant) that carry their own
-  source-available vendor license; that license governs the models and does
-  not extend to this Apache-2.0 kit layer. See `LICENSING.md` and
-  `choreography/local-preprocessing.md`.
+- **Engine:** Hermes by Nous Research, MIT license. This is not a fork; we build on top of it.
+- **This kit (profiles, rules, builder):** Apache-2.0.
+- **Vertical packs (paid settings files + service):** not in this repo; proprietary.
+- Optional local models used by an adapter have their own separate license.
 
-See `LICENSING.md` for the full four-zone statement.
-
-**Where Team6 lives (v1.2.0 canonical-site decision):** the official Team6
-site is **https://team6.askaconsult.com**. The repository is the source of truth:
-**https://github.com/ahrazzle/team6-kit**. The Team6 site links back to the ASKA
-Digital site at **https://askaconsult.com/digital/**. GitHub Pages is not used.
-
-## Status
-
-**1.3.0 — Handover ingestion completeness.** Documents the ingestion
-definition of done: indexing is transport, not the finish line. A directly
-handed-over source requires a capability/usefulness audit - the top-level tree,
-manifests, dependency wiring, agent-facing surfaces, workflows, tests,
-operational docs, and primary source paths - then a capability matrix compared
-against the live catalog, one disposition per candidate with an owner, bounded
-proof instead of a wholesale installation, durable receipts with independent
-read-back, unresolved/dead/blocked facts preserved rather than guessed, and a
-propagation pass per affected surface. An illustrative record exemplifies the
-shape in `AUDIT/handover-capability-audit.md`. The same release documents the
-**propagation loop** for getting an audited candidate into the team's surfaces:
-one machine-readable capability delta per candidate, an impact class
-(`reference-only` / `internal-operational` / `kit-candidate` /
-`website-candidate` / `release-impacting`) that routes it to its capability
-owner, a single append-only propagation journal with a named status lifecycle,
-batching of compatible candidates instead of one public change per ingestion, a
-lightweight preflight per candidate with the full audit reserved for the
-batch/release boundary, and repository/site parity with independent read-back.
-See `CHANGELOG.md`.
-
-**1.2.0 - Local preprocessing adapter contract.** Documents a bounded, optional
-local preprocessing layer (Redact / Gist / Title + opt-in media) as a
-vendor-neutral adapter contract in `choreography/local-preprocessing.md`. It is
-a contract, not a provider/router replacement; generated installations
-implement it only as an explicit operator policy, and the kit never edits a
-user's Hermes profile. Desert Ant is one optional implementation; its models
-carry a separate vendor license distinct from the Apache-2.0 kit. See
-`CHANGELOG.md`.
-
-**1.1.0 — Operating upgrades.** Supervision model, supervised research loops,
-phase-gated pipeline + corrected single-pass role sequence, producer/verifier
-separation, durable append-only ledgers, adversarial QA gate, live check-ins,
-served-truth/staging-first verification, and the entropy-proof + license/
-provenance axioms - now encoded in `choreography/`. See `CHANGELOG.md`.
-
-1.0.0 - first official release. Efficiency update (knowledge router +
-zero-context preservation), renamed from airefea-kit to Team6-kit. Open-core
-assembly gated (sweep + review + generate). See demo/ + examples/ for the
-instantiation proof-point.
+Full details: `LICENSING.md`.
