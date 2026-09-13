@@ -74,7 +74,14 @@ does not exist. The generator is the only assembly path.
   source is not `reference-only` until a capability/usefulness audit exists
   for it, with a capability matrix, an owner and disposition per candidate,
   bounded proof instead of a wholesale install, and durable receipts with
-  independent read-back.
+  independent read-back. It also carries the **propagation loop** that moves an
+  audited candidate into the team's surfaces: a machine-readable capability
+  delta per candidate, an impact class that routes it to its capability owner,
+  one append-only propagation journal, batching of compatible candidates
+  instead of one public change per ingestion, a lightweight preflight per
+  candidate against a full audit at the batch/release boundary, repository/site
+  parity with independent read-back, naming migrations kept separate, and
+  public-safety handling for unresolved candidates.
 
 ## Local preprocessing adapter (v1.2.0)
 
@@ -163,7 +170,16 @@ against the live catalog, one disposition per candidate with an owner, bounded
 proof instead of a wholesale installation, durable receipts with independent
 read-back, unresolved/dead/blocked facts preserved rather than guessed, and a
 propagation pass per affected surface. An illustrative record exemplifies the
-shape in `AUDIT/handover-capability-audit.md`. See `CHANGELOG.md`.
+shape in `AUDIT/handover-capability-audit.md`. The same release documents the
+**propagation loop** for getting an audited candidate into the team's surfaces:
+one machine-readable capability delta per candidate, an impact class
+(`reference-only` / `internal-operational` / `kit-candidate` /
+`website-candidate` / `release-impacting`) that routes it to its capability
+owner, a single append-only propagation journal with a named status lifecycle,
+batching of compatible candidates instead of one public change per ingestion, a
+lightweight preflight per candidate with the full audit reserved for the
+batch/release boundary, and repository/site parity with independent read-back.
+See `CHANGELOG.md`.
 
 **1.2.0 - Local preprocessing adapter contract.** Documents a bounded, optional
 local preprocessing layer (Redact / Gist / Title + opt-in media) as a

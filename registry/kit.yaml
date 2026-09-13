@@ -17,7 +17,12 @@ description: >
   storage/indexing - it requires a capability/usefulness audit, a capability
   matrix with an owner and a disposition per candidate, bounded proof rather
   than a wholesale install, and durable receipts with independent read-back.
-  Documentation only; no dependency added or bundled.
+  It also documents the propagation loop: one machine-readable capability delta
+  per candidate, impact-class routing to the capability owner, a single
+  append-only propagation journal, batching of compatible candidates instead of
+  one public change per ingestion, a per-candidate preflight with the full
+  audit reserved for the batch/release boundary, and repository/site parity with
+  independent read-back. Documentation only; no dependency added or bundled.
 
 registry: git@github.com:{ORG}/team6-kit.git
 home: https://team6.askaconsult.com/      # intended public Team6 site (v1.2.0 public-domain decision)
