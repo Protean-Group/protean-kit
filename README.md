@@ -72,6 +72,31 @@ handoff snapshot written out of it. Read
 The pattern is a conceptual adoption; no external orchestration code is
 included or required.
 
+## Router trust-boundary protection
+
+Model routers and relays can see plaintext requests and responses, and may sit
+between a model provider and the tools an agent runs. Read
+`choreography/router-security.md` before enabling one. It provides a generic
+preflight checklist for endpoint trust, credential minimization, high-risk tool
+gates, autonomous execution, metadata-only audit logs, and conditional or
+dependency-targeted tampering tests. It is guidance only: it does not install a
+router, change provider settings, or claim that a route has end-to-end response
+integrity.
+
+## Side-effect and cost preflight
+
+Before running an operation that edits files, contacts external systems, uses
+credentials, incurs paid operations, affects public surfaces, or needs
+rollback, write one preflight document: what changes, what it contacts, which
+credential *names* (never values) it needs, what it may cost, which actions
+are conditional, what becomes public, how to recover, who approves, and what
+is still unknown. `choreography/side-effect-cost-preflight.md` defines the
+contract; `build/preflight/check.py` is a dependency-free validator that fails
+closed on missing fields, credential values, unbounded waits, or missing
+rollback. It is a conceptual operating pattern adapted from the general idea
+of agency-orchestration preflight — no Agency Orchestrator code is copied —
+and the Team6 Kanban board remains the authoritative task record.
+
 ## The main rules
 
 1. **Everything on disk.** Progress is saved to files, so months later you can still pick up where you left off.
@@ -82,6 +107,15 @@ included or required.
 ## What's new in this release (1.5.0)
 
 Every stage boundary can now carry one machine-checkable handoff contract: expected artifacts, required sections, size bounds, tests, evidence refs, runtime state (local/staged/live), failure state, resume phase, feedback applied, artifacts to regenerate, and artifacts not to touch. See `choreography/artifact-contract.md` and `build/check-artifact-contract.py`; Team6 Kanban remains the state authority. The previous release added the route-based model-policy catalogue (`choreography/model-policy.md`). See `CHANGELOG.md`.
+
+For work performed with an AI coding agent, use the compact
+`choreography/ai-assisted-development.md` contract. It adds behavior-first
+testing, security checks, scope control, and evidence requirements without
+replacing the Team6 ownership and QA gates.
+
+## What's new in this release (1.4.1)
+
+The kit now includes a route-based model-policy catalogue for changing provider limits, plus a generic router trust-boundary and tool-execution safety contract. Unknown limits remain observe-only, while verified limits can use bounded admission and protected reserves. See `CHANGELOG.md`, `choreography/model-policy.md`, and `choreography/router-security.md`.
 
 ## License
 
