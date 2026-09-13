@@ -37,6 +37,24 @@ outside this repository.
 
 ---
 
+## Unreleased — AI-assisted development contract (2026-09-13)
+
+- **What:** add a tool-neutral contract for AI-assisted changes: explicit scope
+  and acceptance criteria, behavior-first boundary/error testing,
+  security-sensitive checks, isolated parallel work, and independent evidence
+  read-back.
+- **Why:** the public `jnMetaCode/ai-coding-guide` offers useful methods and
+  templates, but Team6 needs a smaller contract that preserves its existing
+  ownership, no-secret, QA, and verification rules. The source is used for
+  conceptual guidance only; no external template or executable surface is
+  bundled.
+- **Evidence:** [VERIFIED — public conceptual source] `jnMetaCode/ai-coding-guide`,
+  snapshot `c5dde338c68adaac6cffc70ab11f1b1b22e70b0f`; adapted and reviewed in
+  PR #5 (see [LICENSING.md → AI-assisted development contract boundary](LICENSING.md#ai-assisted-development-contract-boundary-unreleased-2026-09-13)).
+  Root source license is Apache-2.0; the source's `book/` content is separately
+  identified as CC BY-NC-SA 4.0 and is not used.
+- **Files:** `choreography/ai-assisted-development.md` and the README overview.
+
 ## 1.4.1 — Router trust-boundary and tool-execution safety (2026-09-13)
 
 - **What:** add `choreography/router-security.md`, a vendor-neutral preflight

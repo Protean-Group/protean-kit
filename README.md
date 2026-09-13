@@ -76,6 +76,11 @@ integrity.
 3. **The maker never marks their own work.** A different agent checks it and records the result.
 4. **Supervised, not autonomous.** Long tasks pause, save progress, and ask for review. Nothing runs forever unattended.
 
+For work performed with an AI coding agent, use the compact
+`choreography/ai-assisted-development.md` contract. It adds behavior-first
+testing, security checks, scope control, and evidence requirements without
+replacing the Team6 ownership and QA gates.
+
 ## What's new in this release (1.4.1)
 
 The kit now includes a route-based model-policy catalogue for changing provider limits, plus a generic router trust-boundary and tool-execution safety contract. Unknown limits remain observe-only, while verified limits can use bounded admission and protected reserves. See `CHANGELOG.md`, `choreography/model-policy.md`, and `choreography/router-security.md`.
