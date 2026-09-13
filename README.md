@@ -31,6 +31,7 @@ team6-kit/
 │   └── build-manifest.py         # manifest generator
 ├── registry/           # kit.yaml + vertical pack parameter files (NOT forks)
 ├── choreography/       # THE differentiator: orchestration, governance, funnel SOPs, local-preprocessing adapter contract
+├── AUDIT/              # provenance records + the handover-audit record exemplar
 ├── CHANGELOG.md        # dated per-upgrade log: what changed, why, evidence class
 ├── WHY.md              # design axioms + why the operating layer is shaped this way
 └── LICENSE             # Apache-2.0 core; packs proprietary by contract
@@ -68,6 +69,12 @@ does not exist. The generator is the only assembly path.
 - **zero-context-preservation** - the direct-execution pivot: preservation
   dumps + mechanical fleet work done in the shell at zero context cost;
   orchestrator preserves agent identity verbatim.
+- **knowledge-base-ingestion** - ingestion pipelines for heterogeneous
+  sources, now with the handover definition of done: a directly handed-over
+  source is not `reference-only` until a capability/usefulness audit exists
+  for it, with a capability matrix, an owner and disposition per candidate,
+  bounded proof instead of a wholesale install, and durable receipts with
+  independent read-back.
 
 ## Local preprocessing adapter (v1.2.0)
 
@@ -147,7 +154,18 @@ Digital site at **https://askaconsult.com/digital/**. GitHub Pages is not used.
 
 ## Status
 
-**1.2.0 — Local preprocessing adapter contract.** Documents a bounded, optional
+**1.3.0 — Handover ingestion completeness.** Documents the ingestion
+definition of done: indexing is transport, not the finish line. A directly
+handed-over source requires a capability/usefulness audit - the top-level tree,
+manifests, dependency wiring, agent-facing surfaces, workflows, tests,
+operational docs, and primary source paths - then a capability matrix compared
+against the live catalog, one disposition per candidate with an owner, bounded
+proof instead of a wholesale installation, durable receipts with independent
+read-back, unresolved/dead/blocked facts preserved rather than guessed, and a
+propagation pass per affected surface. An illustrative record exemplifies the
+shape in `AUDIT/handover-capability-audit.md`. See `CHANGELOG.md`.
+
+**1.2.0 - Local preprocessing adapter contract.** Documents a bounded, optional
 local preprocessing layer (Redact / Gist / Title + opt-in media) as a
 vendor-neutral adapter contract in `choreography/local-preprocessing.md`. It is
 a contract, not a provider/router replacement; generated installations

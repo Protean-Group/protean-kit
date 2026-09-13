@@ -1,8 +1,8 @@
 <!-- GENERICIZED: 1×{RELATIONSHIP} | source: skills/knowledge-base-ingestion/SKILL.md -->
 ---
 name: knowledge-base-ingestion
-description: "Ingest sources into a searchable knowledge base."
-version: 1.0.0
+description: "Ingest sources into a knowledge base; audit handed-over ones."
+version: 1.1.0
 author: {RELATIONSHIP}
 license: MIT
 platforms: [macos, linux]
@@ -23,6 +23,7 @@ Build ingestion pipelines that consolidate heterogeneous data sources into a uni
 - User wants to consolidate knowledge from multiple platforms (bookmarks, notes, chat logs, exports, APIs)
 - Setting up a searchable personal or team knowledge base
 - Adding a new data source to an existing knowledge base
+- A source is **handed over directly** ("ingest this", "this repo looks useful") - see the handover definition of done below; indexing alone does not complete it
 - Building RAG (Retrieval-Augmented Generation) systems
 
 ## Core Principles
@@ -103,6 +104,108 @@ Enforce: sample (50 items) → categorize → validate content quality → test 
 4. Filter: skip <10 words, numeric-only, gibberish
 5. Key by content hash (notes have no URLs)
 
+## Definition of Done - a handover is not complete at indexing
+
+Storage and retrieval are the *transport* half of ingestion. When a source is
+**handed over directly** - a repository, tool, or dataset someone chose for you -
+indexing it is not the finish line. A handed-over source carries a capability
+claim, and an unexamined claim is not knowledge.
+
+> **Rule:** a directly handed-over source is not `reference-only` until a
+> **capability/usefulness audit** exists for it. Metadata, a README, a license
+> read, and a retrievable row prove *source capture* only.
+
+This is the usefulness half of an adoption. The *trust* half - permissions,
+telemetry, network egress, license obligation - belongs to the third-party tool
+adoption audit; run that one before anything executes with access.
+
+### What the audit inspects
+
+Do not stop at the README. Walk the surfaces that decide whether the source is
+useful to *this* team, and record a path for every finding:
+
+| Surface | What it answers |
+|---|---|
+| Top-level tree | what is actually shipped vs. only described |
+| Package / lock manifests | runtime vs. dev dependencies; how versions are pinned |
+| Dependency wiring | the module that imports or shells out to the real dependency - where the adoption fact lives |
+| Agent-facing surfaces | skills, plugins, hooks, prompts, installers the source ships |
+| Workflows / CI | what the source's own gates test, and what it merely claims |
+| Tests | which behavior is pinned vs. asserted only in prose |
+| Operational docs | install, platform, upgrade, telemetry, and failure modes |
+| Primary source paths | the files that would actually be imported or executed on adoption |
+
+### The capability matrix
+
+Every candidate capability gets a row, compared against the live catalog and
+operating rules - **never against memory**:
+
+| Candidate capability | Existing equivalent | Gap | Action | Owner |
+|---|---|---|---|---|
+| ... | ... | ... | ... | ... |
+
+Classify each row: `already covered` / `partial` / `new` / `not suitable`. A row
+whose value is unknown is `unresolved` - never guessed to make the matrix look
+complete.
+
+### Disposition, and what is not a disposition
+
+Every `partial` or `new` row ends in exactly one disposition:
+
+- **adopt now** - with the acceptance evidence already named
+- **candidate - proof pending** - with the proof's owner and success gate
+- **defer** - with the trigger that would reopen it
+- **reject** - with the reason, kept on the record
+
+An audit recommendation is *not* adoption, and a promising source is *not* a
+build task until a separate adoption decision is made with an owner.
+
+### Separate the five phases
+
+| Phase | Ends when |
+|---|---|
+| Ingestion | the source is captured, indexed, and audited |
+| Adoption | one candidate is chosen, with an owner and acceptance evidence |
+| Implementation | the change is integrated in one bounded surface |
+| QA | an independent read-back passes the named success gate |
+| Enforcement | the rule holds in the team's standing rules, not just in one run |
+
+Collapsing these is how "we indexed it" becomes a silent commitment to build it.
+
+### Bounded proof, never a wholesale installation
+
+- One isolated scratch surface per proof; pinned version or commit; no
+  production data.
+- A written success/failure gate **before** the proof runs, so the result
+  cannot be reinterpreted afterwards.
+- Prefer copying a self-contained directory over running a third-party
+  installer: install scope should equal audit scope.
+- **Never install a source wholesale** to find out whether it is useful. Import
+  the decision, not the whole tree.
+
+### Durable receipts and independent read-back
+
+Write the ledger entry, the capability matrix, and the disposition to durable
+artifacts as you go - not into conversation. An ingestion that exists only in a
+session is not reproducible. Read the artifact back before reporting it: a write
+that returned success is not a verified record, and the agent that produced the
+record does not pass it.
+
+### Preserve unresolved, dead, and blocked
+
+A blocked, dead, or ambiguous fact stays on the record with its state named.
+Guessing a fact to close a row is the worse outcome - the guess becomes a rule
+nobody revisits, while a named open row is a queued decision. Re-attempt a
+failed proof only when the failure cause changes.
+
+### Propagation
+
+An adopted change is not finished when one surface changes. Name every surface
+it touches - the source repository, its documentation, the skills layer, and any
+public or internal site - and pass each through its **own** gate (build, review,
+leak/genericization scan, served-byte check). A rule that lands in one surface
+and not the others drifts.
+
 ## Quality Filtering
 
 ### Skip Criteria
@@ -112,6 +215,13 @@ Enforce: sample (50 items) → categorize → validate content quality → test 
 - Automated/spam patterns (noreply, notifications, digests)
 - Media files without extractable text (JPG, PNG, MOV, PSD)
 - Spreadsheets (hard to parse meaningfully)
+
+### Curated handovers are exempt from the thin-item filter
+
+The skip criteria below are for *bulk* sources, where volume forces triage. A
+source a human **handed over directly** is curated by definition - do not apply
+the automatic thin/short/media filter to it. Log a genuinely thin handover as
+`ledger-only` and say so; never drop it silently.
 
 ### Tier System
 
@@ -168,3 +278,17 @@ Three edge types for the knowledge graph:
 - [ ] Graph edges built for new items
 - [ ] Cluster snapshot created after major ingestion
 - [ ] State file updated for incremental sync
+
+## Handover Audit Checklist
+
+Only for a source handed over directly:
+
+- [ ] Every handed-over source has a capability matrix and a disposition
+- [ ] Candidate rows were compared against the live catalog and operating rules, not memory
+- [ ] Each candidate names its existing equivalent, gap, and owner
+- [ ] No row was guessed to look complete - unknown values are recorded `unresolved`
+- [ ] Each `adopt now` / `candidate` row names its acceptance evidence
+- [ ] No source was installed wholesale to evaluate it
+- [ ] Ledger, matrix, and disposition exist as durable artifacts and were read back
+- [ ] Unresolved / dead / blocked facts are preserved with their state named
+- [ ] Every affected surface (repository, docs, skills, site) passed its own gate

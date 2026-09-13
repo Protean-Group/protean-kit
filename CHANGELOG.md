@@ -37,6 +37,97 @@ outside this repository.
 
 ---
 
+## 1.3.0 — Handover ingestion completeness & capability audit (2026-09-12)
+
+This release documents the **ingestion definition of done**: storage and
+retrieval are the transport half of ingestion, not the finish line. A source
+that is **handed over directly** carries a capability claim, and an unexamined
+claim is not knowledge. The rule and its checklist now live in
+`templates/skills/knowledge-base-ingestion/SKILL.md`; an illustrative record
+exemplar ships in `AUDIT/handover-capability-audit.md`. No dependency is added
+and nothing is bundled.
+
+### 1. A handed-over source is not `reference-only` until it is audited
+
+- **What:** metadata, a README, a license read, and a retrievable row prove
+  *source capture* only. Until a **capability/usefulness audit** exists, a
+  directly handed-over source may not be classified `reference-only`.
+- **Why it changed:** the cheap classification is the one that files a
+  promising source into the knowledge base as "just a reference", after which
+  nobody revisits whether the team already owns the capability or should adopt
+  it.
+- **Evidence:** [VERIFIED - internal operating record] the team's retroactive
+  ingestion audit, where already-indexed sources were found to lack any
+  adoption decision.
+
+### 2. The audit inspects surfaces, not the README
+
+- **What:** the audit walks the top-level tree, package/lock manifests, the
+  **dependency-wiring module** (the file that imports or shells out to the real
+  dependency), agent-facing skills/plugins/hooks, workflows/CI, tests,
+  operational docs, and the primary source paths that would be imported or
+  executed on adoption - recording a path per finding.
+- **Why it changed:** in every traversal, the adoption-deciding fact lived in
+  the wiring module or a shipped agent-facing surface, not in the prose.
+- **Evidence:** [VERIFIED - internal operating record] the capability-audit
+  procedure the team adopted for handed-over sources.
+
+### 3. Capability matrix, owner, and disposition
+
+- **What:** each candidate capability gets a row - `existing equivalent`,
+  `gap`, `action`, `owner` - compared against the live catalog and operating
+  rules, never memory. Rows classify as `already covered` / `partial` / `new` /
+  `not suitable`, and every partial or new row ends in exactly one disposition:
+  `adopt now`, `candidate - proof pending`, `defer`, or `reject`.
+- **Why it changed:** an audit recommendation was being read as adoption. A row
+  with an owner and a disposition keeps "we looked at it" from becoming a
+  silent commitment to build it.
+- **Evidence:** [VERIFIED - internal operating record] the disposition
+  vocabulary and owner routing in force for adoption candidates.
+
+### 4. Separate the five phases
+
+- **What:** ingestion, adoption, implementation, QA, and enforcement are
+  distinct phases with distinct exits; ingestion ends at a source captured,
+  indexed, **and audited**.
+- **Why it changed:** collapsing the phases is how an indexed source becomes an
+  unowned build task.
+- **Evidence:** [VERIFIED - internal operating record] the team's phase
+  separation rule for adoption work.
+
+### 5. Bounded proof, receipts, and read-back
+
+- **What:** one isolated scratch surface per proof, pinned version, no
+  production data, and a written success/failure gate set *before* the proof
+  runs. **No wholesale installation** of a source to evaluate it. Ledger entry,
+  matrix, and disposition are durable artifacts, and an artifact is read back -
+  by other than its producer - before it is reported.
+- **Why it changed:** an installation is not an evaluation, install scope should
+  equal audit scope, and a write that returned success is not a verified record.
+- **Evidence:** [VERIFIED - internal operating record] the team's bounded-proof,
+  producer-never-verifier, and independent read-back rules.
+
+### 6. Preserve unresolved, dead, and blocked
+
+- **What:** a blocked, dead, or ambiguous fact stays on the record with its
+  state named. An open row is a better outcome than a guessed one.
+- **Why it changed:** a guessed fact becomes a rule nobody revisits, while a
+  named open row is a queued decision.
+- **Evidence:** [VERIFIED - internal operating record] the team's
+  never-infer-missing-facts rule.
+
+### 7. Propagation through each surface's own gate
+
+- **What:** an adopted change names every surface it touches - repository,
+  documentation, skills layer, and site - and each surface passes its **own**
+  gate (build, review, leak/genericization scan, served-byte check).
+- **Why it changed:** a rule that lands in one surface and not the others
+  drifts, and a local build is not a served truth.
+- **Evidence:** [VERIFIED - internal operating record] the served-truth and
+  staging-first axioms (v1.1.0), applied to documentation propagation.
+
+---
+
 ## 1.2.0 — Local preprocessing adapter contract (2026-09-10)
 
 This release documents a **bounded, optional local preprocessing adapter
