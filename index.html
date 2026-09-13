@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Team6-kit — A governed team. From one agent engine.</title>
-<meta name="description" content="Team6-kit v1.3.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT). Now with a vendor-neutral local preprocessing adapter contract, the ingestion definition of done for handed-over sources, and the impact-routed propagation loop that carries an audited candidate into the team's surfaces.">
+<title>Team6-kit — A team of AI agents, built from one agent engine.</title>
+<meta name="description" content="Team6-kit builds a team of AI agents that work together under clear rules — one plans, one builds, one checks. Open source, built on the Hermes agent engine.">
 <link rel="canonical" href="https://team6.askaconsult.com/">
 <meta property="og:url" content="https://team6.askaconsult.com/">
-<meta property="og:title" content="Team6-kit — A governed team. From one agent engine.">
+<meta property="og:title" content="Team6-kit — A team of AI agents, built from one agent engine.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e12'/%3E%3Cpath d='M2 10h4l2 3 2-3h4' stroke='%23f2b63d' stroke-width='1.5' fill='none'/%3E%3Crect x='2' y='3' width='12' height='3' fill='%23f2b63d'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/main.css?v=1.3.0">
 <script>document.documentElement.classList.add('js');</script>
@@ -49,10 +49,10 @@
   <!-- 5.1 HERO -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="hero-inner">
-      <p class="kicker">TEAM6-KIT · v1.3.0 &ldquo;INGESTION DEFINITION OF DONE&rdquo;</p>
-      <h1 id="hero-title">A governed team.<br>From one agent engine.</h1>
-      <p class="lead">The reusable layer that turns a single agent engine into a disciplined multi-agent team &mdash; identity archetypes, orchestration choreography, governance rules, knowledge routing, and a generator that assembles them. v1.1.0 added the supervised operating layer (Erlang/OTP-style supervision, durable append-only state, served-truth verification); v1.2.0 adds a vendor-neutral local preprocessing adapter contract &mdash; Redact, Gist, and Title as a bounded, optional preprocessing layer, never a provider/router replacement. v1.3.0 documents the ingestion definition of done: a directly handed-over source is not reference-only until a capability/usefulness audit exists for it.</p>
-      <p class="open-core">Open core · built on Hermes (MIT) · Apache-2.0 kits layer</p>
+      <p class="kicker">TEAM6-KIT · v1.3.0</p>
+      <h1 id="hero-title">A team of AI agents.<br>Built from one agent engine.</h1>
+      <p class="lead">Team6-kit turns a single AI agent engine (Hermes, by Nous Research) into a small team of agents that work together under clear rules — one plans, one builds, one checks the work. You pick ready-made agent profiles, fill in one settings file, and the builder puts your team together.</p>
+      <p class="open-core">Open source · built on Hermes (MIT) · Apache-2.0</p>
       <div class="cta-row">
         <a class="btn" href="https://team6.askaconsult.com/">Open Team6</a>
         <a class="link" href="https://github.com/ahrazzle/team6-kit">View on GitHub</a>
@@ -64,11 +64,11 @@
   <section class="section" id="what" aria-labelledby="what-title">
     <div class="container">
       <p class="kicker">WHAT IT IS</p>
-      <h2 id="what-title">Not a plugin. Not a fork. An operating layer.</h2>
-      <p class="lead measure">Hermes is the engine you install &mdash; profiles, skills, memory, plugins. Team6-kit is what you instantiate on top: a crew and a playbook that turn one agent into a disciplined multi-agent team. Different axis, not a feature add-on.</p>
+      <h2 id="what-title">Not a plugin. Not a fork. A layer on top.</h2>
+      <p class="lead measure">Hermes is the engine you install — it runs one AI agent. Team6-kit is what you put on top of it: agent profiles, a way of working, and a builder that turns one agent into a small team. It is a separate tool, not a feature of Hermes.</p>
       <div class="table-wrap">
         <table class="layer-table">
-          <caption class="visually-hidden">Comparison of Hermes (the engine) and Team6-kit (the operating layer)</caption>
+          <caption class="visually-hidden">Comparison of Hermes (the engine) and Team6-kit (the layer on top)</caption>
           <thead>
             <tr>
               <th scope="col" class="corner"></th>
@@ -80,17 +80,17 @@
             <tr>
               <th scope="row">What it is</th>
               <td class="col-hermes">The engine</td>
-              <td class="col-kit">The operating layer</td>
+              <td class="col-kit">The layer on top</td>
             </tr>
             <tr>
               <th scope="row">What you install</th>
               <td class="col-hermes">A binary + profiles</td>
-              <td class="col-kit">A parameter file + the kit</td>
+              <td class="col-kit">A settings file + the kit</td>
             </tr>
             <tr>
               <th scope="row">What you get</th>
               <td class="col-hermes">Profiles, skills, plugins, memory, <span class="mono">hermes setup</span></td>
-              <td class="col-kit">Persona archetypes, choreography, governance, generator, identity-onboarding</td>
+              <td class="col-kit">Agent roles, a way of working, rules, a builder script</td>
             </tr>
             <tr>
               <th scope="row">Unit of work</th>
@@ -112,53 +112,53 @@
   <section class="section" id="crew" aria-labelledby="crew-title">
     <div class="container">
       <p class="kicker">THE CREW</p>
-      <h2 id="crew-title">Six archetypes. Strict lanes.</h2>
-      <p class="lead measure">Six persona archetypes with a tested orchestration contract &mdash; each with a lane and an explicit boundary. The boundary is what prevents both overengineering and under-delivery. Below, the archetypes as the fleet that built this page.</p>
+      <h2 id="crew-title">Six roles. Clear boundaries.</h2>
+      <p class="lead measure">Each agent gets one role and one job — and an explicit list of things it must not do. The boundary is what stops the team from doing too much, or too little. These six are the roles that built this page.</p>
       <div class="crew-grid">
         <article class="crew-card">
           <p class="crew-instance">LUGIA</p>
           <h3>Director</h3>
-          <p class="lane">Orchestration, decisions, summaries</p>
+          <p class="lane">Leads the team: assigns work, makes decisions, reports results</p>
           <p class="not">NOT · Hands-on coding</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
         <article class="crew-card">
           <p class="crew-instance">SHEIKH AL-JABR</p>
           <h3>Researcher</h3>
-          <p class="lane">Evidence, prior art, market scan</p>
+          <p class="lane">Finds facts, prior work, and market information</p>
           <p class="not">NOT · Architecture decisions</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
         <article class="crew-card">
           <p class="crew-instance">AZARAKI</p>
           <h3>Architect</h3>
-          <p class="lane">Analysis, design, thinking</p>
+          <p class="lane">Plans how the work will be built (thinking only)</p>
           <p class="not">NOT · Writing code</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
         <article class="crew-card">
           <p class="crew-instance">SHAYBA</p>
           <h3>UX</h3>
-          <p class="lane">Human experience, interface design</p>
+          <p class="lane">Designs what the user sees and touches</p>
           <p class="not">NOT · Backend logic</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
         <article class="crew-card">
           <p class="crew-instance">KODEKOOT</p>
           <h3>Coder</h3>
-          <p class="lane">Software development (sole)</p>
+          <p class="lane">Writes the code (the only agent that does)</p>
           <p class="not">NOT · Strategy prose</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
         <article class="crew-card">
           <p class="crew-instance">HALAKUKHAN</p>
           <h3>QA</h3>
-          <p class="lane">Verification, adversarial review, scope-cut</p>
+          <p class="lane">Checks the work, hunts for bugs, cuts anything extra</p>
           <p class="not">NOT · Feature expansion</p>
           <p class="crew-built">Shipped this page via the kit&rsquo;s pipeline.</p>
         </article>
       </div>
-      <p class="instance-foot">These six &mdash; the running fleet that shipped this page through the kit&rsquo;s pipeline &mdash; are the live instance of the six archetypes. The roles and lanes are the product claim; the names are this instance.</p>
+      <p class="instance-foot">These six built this page using the kit&rsquo;s own process. The roles and their boundaries are what the kit sells; the names are just this team&rsquo;s instance of them.</p>
     </div>
   </section>
 
@@ -166,8 +166,8 @@
   <section class="section" id="how" aria-labelledby="how-title">
     <div class="container">
       <p class="kicker">HOW IT WORKS</p>
-      <h2 id="how-title">The choreography is the product.</h2>
-      <p class="lead measure">A task moves through the team in a fixed, single-pass role sequence &mdash; frame, research, architecture, design, build, QA, report. Each stage carries a Definition-of-Done gate; a stage is not dispatched until the prior gate passes. The interaction contract is what turns six persona cards into a supervised team.</p>
+      <h2 id="how-title">The way the team works is the product.</h2>
+      <p class="lead measure">A task moves through the team in a fixed order — lead, research, plan, design, build, check, report. Each step has a finish line that must be reached before the next one starts. These rules are what turn six agent profiles into a real team.</p>
 
       <div class="pipeline" id="pipeline" aria-label="Seven-stage orchestration pipeline">
         <ol class="pipeline-static">
@@ -181,7 +181,7 @@
         </ol>
         <div class="pipeline-anim" aria-hidden="true"></div>
       </div>
-      <p class="loop-note">Deliverables return via verifiable handles &mdash; a child&rsquo;s self-report is not verification. Corrected in v1.1.0: UX is a single design lane, not two slots.</p>
+      <p class="loop-note">Finished work comes back with proof — an agent&rsquo;s claim that it is done is never accepted as proof. Fixed in v1.1.0: UX is one design step, not two.</p>
     </div>
   </section>
 
@@ -189,32 +189,32 @@
   <section class="section" id="why" aria-labelledby="why-title">
     <div class="container">
       <p class="kicker">WHY THIS</p>
-      <h2 id="why-title">What the kit ships that the engine doesn&rsquo;t.</h2>
-      <p class="lead measure">Four deliverables Hermes does not provide, plus one flagship intent gated ahead.</p>
+      <h2 id="why-title">What the kit adds that the engine doesn&rsquo;t have.</h2>
+      <p class="lead measure">Four things Hermes does not provide, plus one planned.</p>
       <div class="diff-grid">
         <article class="diff-card">
-          <h3 class="diff-title">01 / GOVERNANCE AS CODE</h3>
-          <p class="diff-claim">The viability funnel, spin-off SoP, structured verdicts, and read-back receipts &mdash; a process you commit as a file, not a policy you maintain.</p>
+          <h3 class="diff-title">01 / RULES AS FILES</h3>
+          <p class="diff-claim">The team&rsquo;s working rules — how work is approved, how verdicts are recorded — are files you commit, not habits you have to maintain.</p>
           <p class="diff-ev">&ldquo;Hermes has no equivalent.&rdquo; &mdash; WHY.md</p>
         </article>
         <article class="diff-card">
-          <h3 class="diff-title">02 / INSTANTIATION &mdash; THE ONLY ASSEMBLY PATH</h3>
-          <p class="diff-claim">generate.py --params turns one parameter file into a configured, governed team. A kit that cannot be built by the generator does not exist.</p>
+          <h3 class="diff-title">02 / ONE BUILDER SCRIPT</h3>
+          <p class="diff-claim">generate.py turns one settings file into a full configured team. If the builder can&rsquo;t produce it, it doesn&rsquo;t count as a kit.</p>
           <p class="diff-ev">&ldquo;The generator is the only assembly path.&rdquo; &mdash; README.md</p>
         </article>
         <article class="diff-card">
-          <h3 class="diff-title">03 / KNOWLEDGE ROUTER (MOE-STYLE)</h3>
-          <p class="diff-claim">A tiny always-on router loads only the knowledge modules the task needs &mdash; a lean memory footprint on bounded-context models.</p>
+          <h3 class="diff-title">03 / LOAD-KNOWLEDGE-ONLY-WHEN-NEEDED</h3>
+          <p class="diff-claim">A small always-on index loads only the knowledge files the current task needs. This keeps memory use low, which matters on models with a small context window.</p>
           <p class="diff-ev">&ldquo;MoE-style activation for persistent memory.&rdquo; &mdash; README.md</p>
         </article>
         <article class="diff-card">
-          <h3 class="diff-title">04 / ZERO-CONTEXT PRESERVATION</h3>
-          <p class="diff-claim">Preservation dumps + mechanical fleet work run in the shell at zero context cost; the orchestrator preserves agent identity verbatim.</p>
+          <h3 class="diff-title">04 / SAVE EVERYTHING, FORGET NOTHING</h3>
+          <p class="diff-claim">Work state is written to disk as it happens. A crashed agent restarts from the last file, not from memory that no longer exists.</p>
           <p class="diff-ev">&ldquo;Extracted from running a real six-agent fleet on bounded-context local models.&rdquo; &mdash; WHY.md</p>
         </article>
         <article class="diff-card diff-intent">
-          <h3 class="diff-title">05 / SETUP AGENT &mdash; FLAGSHIP INTENT, GATE OPEN</h3>
-          <p class="diff-claim">Identity-onboarding that captures who you are and emits a parameter file &mdash; MIT-relensed back to Hermes so every Hermes user benefits.</p>
+          <h3 class="diff-title">05 / SETUP AGENT &mdash; PLANNED</h3>
+          <p class="diff-claim">A setup agent that interviews you and writes the settings file for you — given back to Hermes under MIT so every Hermes user gets it.</p>
           <p class="diff-gate"><span class="status-tag open">🔲 Gate open</span> upstream PR not yet shipped.</p>
           <p class="diff-ev">&ldquo;The flagship upstream PR.&rdquo; &mdash; WHY.md</p>
         </article>
@@ -226,117 +226,117 @@
   <section class="section" id="upgrades" aria-labelledby="upgrades-title">
     <div class="container">
       <p class="kicker">WHAT CHANGED · v1.1.0 OPERATING UPGRADES</p>
-      <h2 id="upgrades-title">A supervised, durable, provenance-aware operating layer.</h2>
-      <p class="lead measure">v1.1.0 encodes the operating doctrine the running fleet converged on &mdash; each item is a shape of failure the team actually hit, turned into a load-bearing rule. Full doctrine lives in the repo: <span class="mono">choreography/orchestration.md</span> and <span class="mono">choreography/governance.md</span>.</p>
+      <h2 id="upgrades-title">How the team stays reliable.</h2>
+      <p class="lead measure">These rules each exist because the team hit that exact failure and fixed it. Full details in the repo: <span class="mono">choreography/orchestration.md</span> and <span class="mono">choreography/governance.md</span>.</p>
 
       <div class="up-grid">
         <article class="up-card">
           <p class="up-title">01 / SUPERVISION</p>
-          <p class="up-body">Workers do work; the orchestrator supervises and restarts under an explicit per-role task contract &mdash; restart type, intensity/period budget, shutdown policy, verification bar. Budget exhaustion escalates; nothing retries forever. Modeled on Erlang/OTP supervision trees (concept, not code).</p>
+          <p class="up-body">Workers do the work; the lead watches and restarts them when needed — with a limit on how many restarts are allowed. When the limit is hit, the problem goes to a human instead of retrying forever. Modeled on Erlang/OTP supervision trees (the concept, not the code).</p>
         </article>
         <article class="up-card">
-          <p class="up-title">02 / SUPERVISED RESEARCH LOOPS</p>
-          <p class="up-body">Long research runs as a ledgered, check-pointed loop &mdash; one mutable input, a frozen evaluator, keep/discard/crash advancement &mdash; that pauses, checkpoints, and surfaces for review. Never silent, never indefinite.</p>
+          <p class="up-title">02 / RESEARCH THAT STOPS AND ASKS</p>
+          <p class="up-body">Long research runs in steps that save their progress, check the results, and pause for a human to review. It never runs silently for hours.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">03 / DURABLE STATE &amp; LEDGERS</p>
-          <p class="up-body">Correctness as a pure function of append-only on-disk state. A respawned worker resumes from disk, never from dead context. This is what makes the team entropy-proof after months untouched.</p>
+          <p class="up-title">03 / EVERYTHING SAVED TO DISK</p>
+          <p class="up-body">All work state is written to files as it happens, and old entries are never overwritten. A restarted agent continues from the files, not from memory that died with it. This is what keeps the team correct even after months untouched.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">04 / PRODUCER &ne; VERIFIER</p>
-          <p class="up-body">The agent that produces an artifact never passes it. Gates ground in read-back receipts and served bytes &mdash; never a producer&rsquo;s &ldquo;done&rdquo; self-report. Staging first; user approves; then promote.</p>
+          <p class="up-title">04 / THE MAKER NEVER MARKS THEIR OWN WORK</p>
+          <p class="up-body">The agent that produces something is never the one that approves it. Approval is based on reading the actual result — never on the producer saying &ldquo;done&rdquo;. Test on a staging copy first, get approval, then publish.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">05 / ADVERSARIAL QA GATE</p>
-          <p class="up-body">Mechanical gate first, then an independent judge. Simplicity criterion, explicit retry caps, and plateau detection stop unbounded polish. QA owns scope-cut and loops back to the owning role.</p>
+          <p class="up-title">05 / STRICT QA</p>
+          <p class="up-body">An automated check first, then an independent reviewer. Rules that stop endless polishing: keep it simple, cap the retries, stop when improvements level off. QA can send work back with less scope, not more.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">06 / CORRECTED PIPELINE</p>
-          <p class="up-body">A single-pass, phase-gated sequence &mdash; Director &rarr; Researcher &rarr; Architect &rarr; UX &rarr; Coder &rarr; QA &rarr; Director. UX is one design lane (no duplication); the architect never codes; the coder is the sole developer.</p>
+          <p class="up-title">06 / ONE FIXED ORDER OF WORK</p>
+          <p class="up-body">Lead &rarr; Researcher &rarr; Architect &rarr; UX &rarr; Coder &rarr; QA &rarr; Lead, once through. UX is one step (not two); the architect never codes; the coder is the only one who writes code.</p>
         </article>
       </div>
 
-      <p class="instance-foot">Each rule is traceable to a dated internal operating record or to a public conceptual source (Erlang/OTP supervision, autoresearch / autonovel phase machines &mdash; principles with attribution, never copied code or prose). See <span class="mono">CHANGELOG.md</span> for the per-item &ldquo;why&rdquo; and evidence class. Cross-profile fleet spawning is documented as <strong>verified in practice</strong>; its formal spec remains <strong>proposed / pending</strong> and is not presented as shipped doctrine.</p>
+      <p class="instance-foot">Each rule is traceable to a dated internal record or to a public source (Erlang/OTP supervision, autoresearch / autonovel phase machines — principles with attribution, never copied code or prose). See <span class="mono">CHANGELOG.md</span> for the per-item &ldquo;why&rdquo; and evidence class. Cross-profile fleet spawning is documented as <strong>verified in practice</strong>; its formal spec remains <strong>proposed / pending</strong> and is not presented as shipped doctrine.</p>
     </div>
   </section>
 
   <!-- 5.56 LOCAL PREPROCESSING ADAPTER (v1.2.0) -->
   <section class="section" id="preprocessing" aria-labelledby="preprocessing-title">
     <div class="container">
-      <p class="kicker">WHAT CHANGED · v1.2.0 LOCAL PREPROCESSING ADAPTER</p>
-      <h2 id="preprocessing-title">A bounded, local preprocessing layer &mdash; documented, not bundled.</h2>
-      <p class="lead measure">v1.2.0 documents a vendor-neutral <strong>adapter contract</strong> (<span class="mono">choreography/local-preprocessing.md</span>): cheap local preprocessing run automatically, when the policy matches, before approved outbound work leaves the device. It is <strong>not</strong> a provider/router replacement and it never handles high-stakes judgment. Generated installations implement it only as an explicit operator policy &mdash; the kit never edits a user&rsquo;s Hermes profile.</p>
+      <p class="kicker">WHAT&rsquo;S NEW · v1.2.0 LOCAL CLEANUP BEFORE SENDING</p>
+      <h2 id="preprocessing-title">An optional local cleanup step, run on your own machine.</h2>
+      <p class="lead measure">v1.2.0 documents an optional step that runs small local models on your own machine to clean up work before it leaves the device. It is an add-on, not a replacement for the model provider, and it never makes important decisions. A generated team only uses it if you turn it on explicitly — the kit never edits your Hermes setup by itself.</p>
 
       <div class="up-grid">
         <article class="up-card">
           <p class="up-title">REDACT</p>
-          <p class="up-body">A guarded local first-pass filter before approved outbound text and durable external logs. Address, numeric, or uncertain findings hold for review before anything is transmitted. A filter &mdash; not legal anonymization.</p>
+          <p class="up-body">A first-pass filter for text about to be sent out or saved to outside logs. If it finds an address, a number that looks sensitive, or anything it is unsure about, the text is held for a human to review first. A filter — not legal anonymization.</p>
         </article>
         <article class="up-card">
           <p class="up-title">GIST</p>
-          <p class="up-body">Cheap topic grouping for bulk notes, transcripts, and intake. A routing <em>hint only</em> &mdash; never the sole authority for a decision.</p>
+          <p class="up-body">Sorts large piles of notes and transcripts into rough topics. A hint for where things belong — never the final word on a decision.</p>
         </article>
         <article class="up-card">
           <p class="up-title">TITLE</p>
-          <p class="up-body">Draft metadata &mdash; titles and short descriptions for artifacts, transcripts, and research captures. Read before exposing to a user.</p>
+          <p class="up-body">Suggests titles and short descriptions for files, transcripts, and research notes. A human reads them before they reach a user.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">BOUNDED BY DESIGN</p>
-          <p class="up-body">Ordinary conversation, final synthesis, and legal/financial/security/architecture judgment are excluded by policy. Media models are opt-in only and never pull weights automatically during active work.</p>
+          <p class="up-title">LIMITS BY DESIGN</p>
+          <p class="up-body">Normal conversation, final answers, and legal/financial/security/architecture decisions are all outside its job. Media models only run if you opt in, and they never download weights during active work.</p>
         </article>
       </div>
 
-      <p class="instance-foot">The contract requires any implementation to be <strong>local, guarded, log no raw PII</strong>, check model availability before use and exit-code + JSON parse after use, and record provenance when a result becomes durable. <strong>Desert Ant</strong> is one optional implementation on macOS &mdash; not a required dependency; its models carry a separate source-available vendor license distinct from the Apache-2.0 kit. Expected benefits are stated as intended outcomes; no performance or cost figures are invented. See <span class="mono">CHANGELOG.md</span>.</p>
+      <p class="instance-foot">Any implementation must run locally, be guarded, log no raw personal data, check that the model exists before use and that its output parses after use, and record where each result came from before saving it. <strong>Desert Ant</strong> is one optional implementation on macOS — not a required part; its models carry a separate vendor license from the Apache-2.0 kit. Expected benefits are described as goals — no performance or cost numbers are invented. See <span class="mono">CHANGELOG.md</span>.</p>
     </div>
   </section>
 
   <!-- 5.57 INGESTION DEFINITION OF DONE (v1.3.0) -->
   <section class="section" id="ingestion" aria-labelledby="ingestion-title">
     <div class="container">
-      <p class="kicker">WHAT CHANGED &middot; v1.3.0 INGESTION DEFINITION OF DONE + PROPAGATION LOOP</p>
-      <h2 id="ingestion-title">Indexing is transport. It is not the finish line.</h2>
-      <p class="lead measure">v1.3.0 documents the <strong>ingestion definition of done</strong> for sources handed over directly, and the <strong>propagation loop</strong> that carries an audited candidate into the team's surfaces. Storage and retrieval are the transport half of ingestion; a handed-over source carries a capability claim, and an unexamined claim is not knowledge. The rules and their checklists live in <span class="mono">templates/skills/knowledge-base-ingestion/SKILL.md</span>; an illustrative record ships in <span class="mono">AUDIT/handover-capability-audit.md</span>. No dependency is added and nothing is bundled.</p>
+      <p class="kicker">WHAT&rsquo;S NEW · v1.3.0 CHECKING NEW SOURCES BEFORE TRUSTING THEM</p>
+      <h2 id="ingestion-title">Storing a document is not the same as knowing it.</h2>
+      <p class="lead measure">v1.3.0 sets the rule for when a source handed to the team counts as usable, and how an approved change then reaches every place it needs to reach. Saving and indexing a file is just moving it; a source also carries a claim about what it can do, and an unexamined claim is not knowledge. The rules and checklists live in <span class="mono">templates/skills/knowledge-base-ingestion/SKILL.md</span>; a worked example ships in <span class="mono">AUDIT/handover-capability-audit.md</span>. Nothing new is bundled and no dependency is added.</p>
 
       <div class="up-grid">
         <article class="up-card">
-          <p class="up-title">01 / NOT REFERENCE-ONLY UNTIL AUDITED</p>
-          <p class="up-body">Metadata, a README, a license read, and a retrievable row prove <em>source capture</em> only. A directly handed-over source may not be classified reference-only until a capability/usefulness audit exists for it.</p>
+          <p class="up-title">01 / NO LABELS UNTIL CHECKED</p>
+          <p class="up-body">A README, a license, and a working search index only prove the source was captured. It cannot be filed away as &ldquo;just a reference&rdquo; until someone has checked what it is actually useful for.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">02 / AUDIT THE SURFACES, NOT THE README</p>
-          <p class="up-body">The audit walks the top-level tree, package/lock manifests, the dependency-wiring module, agent-facing skills/plugins/hooks, workflows/CI, tests, operational docs, and the primary source paths &mdash; with a recorded path per finding.</p>
+          <p class="up-title">02 / LOOK AT THE REAL THING, NOT THE BROCHURE</p>
+          <p class="up-body">The check walks the actual file tree, package lists, wiring, skills and plugins, CI workflows, tests, and docs — recording the path for every finding.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">03 / MATRIX, OWNER, DISPOSITION</p>
-          <p class="up-body">Every candidate capability gets a row &mdash; existing equivalent, gap, action, owner &mdash; compared against the live catalog, never memory. Each row ends in one disposition: adopt now, candidate &mdash; proof pending, defer, or reject.</p>
+          <p class="up-title">03 / ONE ROW PER FINDING, WITH AN OWNER</p>
+          <p class="up-body">Every capability found gets a row — do we already have this, what&rsquo;s missing, what happens next, who owns it — compared against the live catalog, not memory. Each row ends in a decision: use it now, test it, postpone it, or reject it.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">04 / FIVE PHASES, NOT ONE</p>
-          <p class="up-body">Ingestion, adoption, implementation, QA, and enforcement are separate phases with separate exits. Ingestion ends at a source captured, indexed, <em>and audited</em> &mdash; an indexed source is not an unowned build task.</p>
+          <p class="up-title">04 / FIVE STEPS, NOT ONE</p>
+          <p class="up-body">Bringing a source in, adopting it, building with it, checking it, and enforcing the result are separate steps with separate finish lines. Step one ends at a source captured, indexed, and checked — an indexed source is not a build task someone forgot.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">05 / BOUNDED PROOF, NEVER A WHOLESALE INSTALL</p>
-          <p class="up-body">One isolated scratch surface per proof, pinned version, no production data, and a written success/failure gate set before it runs. Install scope should equal audit scope &mdash; no source is installed wholesale to find out whether it is useful.</p>
+          <p class="up-title">05 / PROVE IT IN A SANDBOX FIRST</p>
+          <p class="up-body">One isolated test area per proof, a pinned version, no production data, and the pass/fail bar written down before it runs. Nothing is installed wholesale just to find out whether it works.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">06 / RECEIPTS, READ-BACK, PROPAGATION</p>
-          <p class="up-body">Ledger, matrix, and disposition are durable artifacts, read back by other than their producer before they are reported. An adopted change names every surface it touches &mdash; repository, documentation, skills, site &mdash; each passed through its own gate.</p>
+          <p class="up-title">06 / WRITTEN RECORDS, READ BACK</p>
+          <p class="up-body">The ledger, the findings table, and the decisions are saved as files and read back by someone other than whoever wrote them. An adopted change names every place it touches — repo, docs, skills, site — and each goes through its own check.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">07 / ONE DELTA, ROUTED BY IMPACT CLASS</p>
-          <p class="up-body">Each candidate emits one machine-readable capability delta. Its impact class &mdash; reference-only, internal-operational, kit-candidate, website-candidate, or release-impacting &mdash; sets the route and the review weight, and implementation goes to the capability owner rather than to QA by default.</p>
+          <p class="up-title">07 / EACH CHANGE ROUTED TO ITS OWNER</p>
+          <p class="up-body">Each candidate produces one machine-readable summary of what it adds or changes. Its impact level — reference only, internal use, kit change, website change, or release-worthy — decides who reviews it and how carefully.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">08 / ONE APPEND-ONLY JOURNAL, BATCHED CHANGES</p>
-          <p class="up-body">Candidates live in a single append-only journal &mdash; proposed, accepted, implementing, verified, staged, live, or deferred/rejected. Compatible candidates are batched into one coherent update instead of opening one public change per ingestion.</p>
+          <p class="up-title">08 / ONE LOG, BATCHED CHANGES</p>
+          <p class="up-body">Candidates live in one append-only log with clear states: proposed, accepted, implementing, verified, staged, live, or dropped. Compatible candidates are combined into one coherent update instead of one public change per source.</p>
         </article>
         <article class="up-card">
-          <p class="up-title">09 / PREFLIGHT EACH, AUDIT THE BATCH</p>
-          <p class="up-body">Every candidate gets a cheap preflight &mdash; public-safe genericization, provenance and license, owner, acceptance criteria, affected surfaces. The full pre-merge audit is reserved for the batch or release candidate, and repository/site parity is read back before merge or deploy. Naming migrations stay separate release work.</p>
+          <p class="up-title">09 / QUICK CHECK EACH, FULL AUDIT THE BATCH</p>
+          <p class="up-body">Every candidate gets a cheap pre-check: safe for public, license clear, owner named, pass/fail bar set, affected places listed. The full pre-merge audit is saved for the batch or release candidate, and the repo and site are checked against each other before merging or deploying.</p>
         </article>
       </div>
 
-      <p class="instance-foot">Open rows stay open: a blocked, dead, or ambiguous fact is preserved with its state named rather than guessed to complete a matrix. Trust, permissions, telemetry, and license obligation remain the third-party tool adoption audit&rsquo;s job &mdash; this release documents the usefulness and adoption half. The record in <span class="mono">AUDIT/</span> is an <strong>illustrative exemplar of the shape</strong>, not a finding about any named repository. See <span class="mono">CHANGELOG.md</span> for the per-item &ldquo;why&rdquo; and evidence class.</p>
+      <p class="instance-foot">Open questions stay open: a blocked, dead, or unclear fact is kept with its state named rather than guessed to fill in a table. Trust, permissions, telemetry, and license duties are the job of the separate audit for outside tools — this release covers the usefulness and adoption half. The record in <span class="mono">AUDIT/</span> is a <strong>worked example of the format</strong>, not a finding about any named repository. See <span class="mono">CHANGELOG.md</span> for the per-item &ldquo;why&rdquo; and evidence class.</p>
     </div>
   </section>
 
@@ -344,34 +344,34 @@
   <section class="section" id="status" aria-labelledby="status-title">
     <div class="container">
       <p class="kicker">STATUS · SHIPPED VS. PROOF GATES</p>
-      <h2 id="status-title">Open core today. Proof gates ahead &mdash; stated plainly.</h2>
-      <p class="lead measure">The kit asserts value and says so. v1.1.0 ships the operating doctrine; v1.2.0 ships a vendor-neutral local preprocessing adapter contract; v1.3.0 documents the ingestion definition of done for handed-over sources &mdash; all documented and reviewed, not yet <em>proven</em> by an external instance. What turns these claims true remains the first vertical pack and a working setup-agent install &mdash; not the claims themselves.</p>
+      <h2 id="status-title">Open source today. Still to prove — stated plainly.</h2>
+      <p class="lead measure">The kit says what it does and also says what it has not proven. v1.1.0 ships the working rules; v1.2.0 ships the optional local cleanup step; v1.3.0 sets the bar for checking new sources. All are documented and reviewed — but no outside team has run them yet. What turns these claims into proof is the first paid deployment and a working setup agent — not more writing.</p>
       <div class="status-cols">
         <div class="status-group">
           <p class="group-kicker shipped">SHIPPED</p>
           <ul class="status-list">
-            <li><span class="status-tag ok">✅</span><span class="status-text">Open core public (Apache-2.0) on GitHub &mdash; renamed airefea-kit &rarr; Team6-kit</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Licensing coherent (MIT provenance + Apache-2.0 kits + proprietary-by-contract packs)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">8-surface hygiene gate &mdash; including network-egress, no-telemetry by construction</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Knowledge router skill (MoE-style activation) &mdash; shipped in templates/</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Zero-context preservation skill (direct-execution pivot) &mdash; shipped in templates/</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Open-core assembly gated (sweep + review + generate) + instantiation proof-point (demo/, examples/)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">v1.1.0 operating doctrine shipped &mdash; supervision, phase-gated pipeline + corrected single-pass role sequence, durable ledgers, adversarial QA gate, license/provenance gate, entropy-proof + served-truth axioms (README, WHY, choreography, CHANGELOG)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.1.0 &mdash; corrected 7-stage pipeline + &ldquo;What changed&rdquo; section (this page)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">v1.2.0 local preprocessing adapter contract shipped &mdash; vendor-neutral Redact/Gist/Title + opt-in media policy, hold-for-review rule, adapter requirements, Desert Ant framed as one optional implementation with a separate vendor license (choreography/local-preprocessing.md, README, WHY, CHANGELOG, LICENSING)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.2.0 &mdash; local preprocessing capability section + version markers (this page)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 ingestion definition of done shipped &mdash; handover capability audit (surfaces inspected, capability matrix, owner + disposition per candidate, five phases, bounded proof, durable receipts + independent read-back, propagation per surface) in templates/skills/knowledge-base-ingestion/SKILL.md, with a record exemplar in AUDIT/handover-capability-audit.md (README, CHANGELOG)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.3.0 &mdash; ingestion definition-of-done section + version markers (this page)</span></li>
-            <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 propagation loop documented &mdash; capability delta per candidate, impact-class routing (reference-only / internal-operational / kit-candidate / website-candidate / release-impacting), one append-only journal with a named lifecycle, batched candidates instead of one public change per ingestion, per-candidate preflight with the full audit at the batch/release boundary, repository/site parity with independent read-back, and separate naming migrations (templates/skills/knowledge-base-ingestion/SKILL.md, README, CHANGELOG)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Open source on GitHub (Apache-2.0) — renamed airefea-kit &rarr; Team6-kit</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Licensing in order (MIT engine + Apache-2.0 kit + paid packs kept out of the repo)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Hygiene checks across 8 areas — including no network calls and no telemetry</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">A skill that loads knowledge only when needed — shipped in templates/</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">A skill that saves all work state to disk — shipped in templates/</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Gated build (sweep + review + generate) with a working example in demo/ and examples/</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.1.0 working rules — supervision, one fixed order of work, everything saved to disk, strict QA, license checks (README, WHY, choreography, CHANGELOG)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.1.0 — corrected 7-step pipeline + &ldquo;What changed&rdquo; section (this page)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.2.0 local cleanup step documented — Redact/Gist/Title + opt-in media, hold-for-review rule, implementation requirements, Desert Ant as one optional implementation with its own license (choreography/local-preprocessing.md, README, WHY, CHANGELOG, LICENSING)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.2.0 — local cleanup section + version markers (this page)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 source-checking rules shipped — what to inspect, findings table, owner + decision per item, five steps, sandbox-first proof, written records read back by others (templates/skills/knowledge-base-ingestion/SKILL.md, with a worked example in AUDIT/handover-capability-audit.md)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.3.0 — source-checking section + version markers (this page)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 change-propagation rules documented — one change summary per candidate, impact-level routing, one append-only log, batched updates, quick pre-check per candidate with full audit at release time, repo/site checked against each other (templates/skills/knowledge-base-ingestion/SKILL.md, README, CHANGELOG)</span></li>
           </ul>
         </div>
         <div class="status-group">
-          <p class="group-kicker open">OPEN GATES</p>
+          <p class="group-kicker open">NOT YET DONE</p>
           <ul class="status-list">
-            <li><span class="status-tag open">🔲</span><span class="status-text">Setup agent authored and passing the 8-surface gate</span></li>
+            <li><span class="status-tag open">🔲</span><span class="status-text">Setup agent written and passing the hygiene checks</span></li>
             <li><span class="status-tag open">🔲</span><span class="status-text">Upstream PR for the setup agent</span></li>
-            <li><span class="status-tag open">🔲</span><span class="status-text">First vertical pack shipped (instance + service)</span></li>
-            <li><span class="status-tag open">🔲</span><span class="status-text">Formal cross-profile fleet-orchestration spec (practice verified; spec proposed/pending)</span></li>
+            <li><span class="status-tag open">🔲</span><span class="status-text">First paid deployment (team instance + service)</span></li>
+            <li><span class="status-tag open">🔲</span><span class="status-text">Formal spec for running agents across profiles (works in practice; spec written but pending)</span></li>
           </ul>
         </div>
       </div>
@@ -382,14 +382,14 @@
   <section class="section" id="install" aria-labelledby="install-title">
     <div class="container">
       <p class="kicker">GET STARTED</p>
-      <h2 id="install-title">One parameter file in. A configured, governed team out. Gated end to end.</h2>
-      <p class="lead measure">Clone the repo, run the generator against a parameter file, get a configured, governed team &mdash; gated at every step.</p>
-      <p class="param-note">The parameter file is a plain YAML of 9 declared keys &mdash; team name, director, agent role, model provider. That&rsquo;s the whole input.</p>
+      <h2 id="install-title">One settings file in. A working team out.</h2>
+      <p class="lead measure">Clone the repo, run the builder with your settings file, get a configured team — checked at every step.</p>
+      <p class="param-note">The settings file is plain YAML with 9 keys — team name, director, agent role, model provider. That&rsquo;s the whole input.</p>
       <div class="cmd-block">
         <pre><code><span class="prompt">$ </span>python3 build/generate.py --params examples/demo-consulting.yaml --out /tmp/demo-team</code></pre>
         <button class="copy-btn" type="button" hidden>Copy</button>
       </div>
-      <p class="honest-cap">It proves the contract end-to-end &mdash; it does not yet prove that a team instantiated this way ships a real product. That is the next proof-point.</p>
+      <p class="honest-cap">This proves the builder works end to end. It does not yet prove that a team built this way can ship a real product — that is the next milestone.</p>
       <p class="repo-link"><a href="https://github.com/ahrazzle/team6-kit">github.com/ahrazzle/team6-kit</a> &middot; public site: <a href="https://team6.askaconsult.com/">team6.askaconsult.com</a></p>
     </div>
   </section>
@@ -399,12 +399,12 @@
     <div class="container">
       <p class="kicker">SET UP, CONFIGURE &amp; USE TEAM6</p>
       <h2 id="setup-title">Set up, configure, and use Team6.</h2>
-      <p class="lead measure">Everything a Hermes user needs to stand the kit up: prerequisites, getting the code, editing the one parameter file, running the gates in order, placing the generated team into a Hermes environment, operating it, and updating it safely. The build gates, generator, templates and doctrine below ship today and run now.</p>
+      <p class="lead measure">Everything a Hermes user needs to get the kit running: prerequisites, getting the code, editing the one settings file, running the checks in order, placing the finished team into Hermes, operating it, and updating it safely. The build checks, builder script, templates, and rules below work today.</p>
 
       <div class="setup-boundary">
-        <span class="sb-title">SHIPPED VS. NOT-YET-SHIPPED — READ THIS FIRST</span>
-        <p><span class="tag-shipped">✅ SHIPPED — runnable now</span> the <span class="mono">build/</span> gates (<span class="mono">sweep-gate.py</span>, <span class="mono">review-gate.py</span>, <span class="mono">generate.py</span>), the persona &amp; skill templates, the <span class="mono">choreography/</span> and governance doctrine, the frozen-manifest instantiation proof point, and this site.</p>
-        <p><span class="tag-unshipped">🔲 NOT SHIPPED — open gate</span> the <strong>setup agent</strong> (identity-onboarding that interviews you and writes the parameter file for you). It is an open proof gate, not a feature. There is also no shipped one-command installer: the <span class="mono">kit install &lt;registry&gt;/&lt;team&gt;</span> contract in <span class="mono">registry/kit.yaml</span> is a declared distribution target today, not a working command.</p>
+        <span class="sb-title">READY VS. NOT READY — READ THIS FIRST</span>
+        <p><span class="tag-shipped">✅ READY — runnable now</span> the <span class="mono">build/</span> checks (<span class="mono">sweep-gate.py</span>, <span class="mono">review-gate.py</span>, <span class="mono">generate.py</span>), the agent and skill templates, the rules in <span class="mono">choreography/</span>, a working build example, and this site.</p>
+        <p><span class="tag-unshipped">🔲 NOT READY — still to build</span> the <strong>setup agent</strong> (interviews you and writes the settings file for you). There is also no one-command installer yet: the <span class="mono">kit install &lt;registry&gt;/&lt;team&gt;</span> entry in <span class="mono">registry/kit.yaml</span> is a planned target, not a working command.</p>
       </div>
 
       <div class="setup-steps">
@@ -412,12 +412,12 @@
           <span class="step-num">STEP 1 / PREREQUISITES</span>
           <h3>Engine, Python, environment, model choice.</h3>
           <ul>
-            <li><strong>Hermes engine</strong> &mdash; installed and running. Team6 is a layer on top of Hermes, not a fork of it; the engine stays upstream (MIT).</li>
-            <li><strong>Python 3.8+</strong> with the standard library only &mdash; the gates and generator import nothing outside stdlib (verified on 3.9&ndash;3.13).</li>
+            <li><strong>Hermes engine</strong> &mdash; installed and running. Team6 is a layer on top of Hermes, not a fork; the engine stays upstream (MIT).</li>
+            <li><strong>Python 3.8+</strong> with the standard library only — the checks and builder import nothing outside the standard library (verified on 3.9&ndash;3.13).</li>
             <li><strong>Git + a POSIX shell</strong> (macOS/Linux, or WSL on Windows).</li>
-            <li><strong>Model / provider decision</strong> &mdash; the parameter file declares <code>MODEL_PROVIDER</code> and <code>MODEL_NAME</code>. The open-core default is the Hermes/Nous provider; you may point it at any provider your engine supports, including a local model endpoint.</li>
-            <li><strong>Local vs. hosted</strong> &mdash; decide where the Hermes runtime and the model run. A fully local deployment keeps data on-premise; a hosted provider trades that for convenience and needs network access plus API credentials.</li>
-            <li><strong>Hardware / network / security</strong> &mdash; size hardware to the model you choose (CPU/RAM/VRAM). The kit itself makes no network calls and ships no telemetry by construction, so it adds no egress of its own; if you use a hosted provider, review data-egress and provider terms. Air-gapped operation is possible when the model runs locally.</li>
+            <li><strong>Model / provider choice</strong> &mdash; the settings file declares <code>MODEL_PROVIDER</code> and <code>MODEL_NAME</code>. The default is the Hermes/Nous provider; you can point it at any provider your engine supports, including a local model.</li>
+            <li><strong>Local vs. hosted</strong> &mdash; decide where the Hermes runtime and the model run. Fully local keeps your data on your machine; a hosted provider is more convenient but needs network access and API keys.</li>
+            <li><strong>Hardware / network / security</strong> &mdash; match the hardware to the model you choose (CPU/RAM/VRAM). The kit itself makes no network calls and ships no telemetry, so it adds no data leaving your machine; if you use a hosted provider, check its data and terms. Fully air-gapped operation works when the model runs locally.</li>
           </ul>
         </article>
 
@@ -428,77 +428,77 @@
             <pre><code><span class="prompt">$ </span>git clone https://github.com/ahrazzle/team6-kit.git
 <span class="prompt">$ </span>cd team6-kit</code></pre>
           </div>
-          <p>Read <span class="mono">README.md</span> first, then <span class="mono">choreography/orchestration.md</span> and <span class="mono">choreography/governance.md</span> &mdash; the two files that carry the operating doctrine. A fresh clone is self-contained: it ships a frozen manifest and review so the build runs without your local profile fleet.</p>
+          <p>Read <span class="mono">README.md</span> first, then <span class="mono">choreography/orchestration.md</span> and <span class="mono">choreography/governance.md</span> — the two files with the team&rsquo;s working rules. A fresh clone is self-contained: it includes a frozen manifest and review so the build runs without any local setup.</p>
         </article>
 
         <article class="setup-step">
           <span class="step-num">STEP 3 / INSPECT &amp; EDIT THE PARAMETER FILE</span>
           <h3>Nine keys is the whole input.</h3>
-          <p>The parameter file is a plain YAML of declared keys. Start from the shipped example and edit the values for your team:</p>
+          <p>The settings file is plain YAML. Start from the shipped example and change the values for your team:</p>
           <div class="cmd-block">
             <pre><code><span class="prompt">$ </span>cat examples/demo-consulting.yaml</code></pre>
           </div>
-          <p>Keys: <code>TEAM_NAME</code>, <code>DIRECTOR_NAME</code>, <code>AGENT_NAME</code>, <code>PROFILE_NAME</code>, <code>ROLE_NAME</code>, <code>ROLE_MISSION</code>, <code>ROLE_PURPOSE</code>, <code>MODEL_PROVIDER</code>, <code>MODEL_NAME</code>, plus an optional <code>BASE_URL</code> for a local or custom endpoint. Copy it, edit it, and keep it &mdash; this file is the vertical pack, and it never goes into the public repo.</p>
+          <p>Keys: <code>TEAM_NAME</code>, <code>DIRECTOR_NAME</code>, <code>AGENT_NAME</code>, <code>PROFILE_NAME</code>, <code>ROLE_NAME</code>, <code>ROLE_MISSION</code>, <code>ROLE_PURPOSE</code>, <code>MODEL_PROVIDER</code>, <code>MODEL_NAME</code>, plus an optional <code>BASE_URL</code> for a local or custom endpoint. Copy it, edit it, and keep it — this file defines your team, and it never goes into the public repo.</p>
         </article>
 
         <article class="setup-step">
           <span class="step-num">STEP 4 / RUN THE GATES, IN ORDER</span>
-          <h3>Fail-closed: nothing assembles on a failed gate.</h3>
+          <h3>Fail-closed: nothing assembles if a check fails.</h3>
           <div class="cmd-block">
             <pre><code><span class="prompt">$ </span>python3 build/sweep-gate.py      <span class="cmt"># PASS(0) → continue; FAIL(1) → stop</span>
 <span class="prompt">$ </span>python3 build/review-gate.py     <span class="cmt"># 4/4 checkboxes on every shipping row</span>
 <span class="prompt">$ </span>python3 build/generate.py --params examples/demo-consulting.yaml --out /tmp/demo-team</code></pre>
           </div>
-          <p><span class="mono">sweep-gate</span> proves the extraction source is clean and fully classified. <span class="mono">review-gate</span> enforces the semantic sign-off. <span class="mono">generate.py</span> re-runs both as preconditions, then assembles. On a fresh clone the gates run in self-contained <em>frozen</em> mode against the committed manifest/review (the generator selects this automatically); when you maintain a live extraction source, add <code>--strict</code> to make an unresolved placeholder a hard failure.</p>
+          <p><span class="mono">sweep-gate</span> checks that every source file is accounted for and classified. <span class="mono">review-gate</span> checks that every shipping row has been signed off. <span class="mono">generate.py</span> runs both checks first, then builds. On a fresh clone the checks run against the files already committed to the repo (the builder picks this automatically); if you maintain your own source files, add <code>--strict</code> so an unfilled placeholder is a hard failure instead of a warning.</p>
         </article>
 
         <article class="setup-step">
           <span class="step-num">STEP 5 / WHAT COMES OUT &amp; WHERE IT GOES</span>
-          <h3>A configured team, plus an honest audit trail.</h3>
+          <h3>A configured team, plus a record of what was built.</h3>
           <div class="cmd-block">
             <pre><code>/tmp/demo-team/
-├── AUDIT.md     <span class="cmt"># rows shipped, reconciled to what's on disk</span>
-├── personas/    <span class="cmt"># instantiated identity (SOUL + profile config)</span>
-├── skills/      <span class="cmt"># the skills the roles run with</span>
-└── keep-review/ <span class="cmt"># signed KEEP-REVIEW rows, when present</span></code></pre>
+├── AUDIT.md     <span class="cmt"># what was built, checked against what's on disk</span>
+├── personas/    <span class="cmt"># your agents (identity + config)</span>
+├── skills/      <span class="cmt"># the skills the agents run with</span>
+└── keep-review/ <span class="cmt"># reviewed items, when present</span></code></pre>
           </div>
-          <p>Place them into a Hermes profile: copy the generated persona files into <code>~/.hermes/profiles/&lt;PROFILE_NAME&gt;/</code> (identity plus <span class="mono">profile.yaml</span> config) and the generated <span class="mono">skills/</span> into that profile's skills directory, then set the required environment (<code>MODEL_PROVIDER</code>, <code>MODEL_NAME</code>).</p>
-          <p class="honest-cap"><strong>Honesty note:</strong> the generator <em>produces</em> the artifacts; the copy-into-profile step is currently manual. No shipped installer performs it for you &mdash; that is the open setup-agent gate. Treat the placement above as the documented mapping, not an automated command.</p>
+          <p>Place them into a Hermes profile: copy the generated agent files into <code>~/.hermes/profiles/&lt;PROFILE_NAME&gt;/</code> (identity plus <span class="mono">profile.yaml</span> config) and the generated <span class="mono">skills/</span> into that profile&rsquo;s skills directory, then set the required environment (<code>MODEL_PROVIDER</code>, <code>MODEL_NAME</code>).</p>
+          <p class="honest-cap"><strong>Honesty note:</strong> the builder <em>creates</em> the files; copying them into your profile is currently manual. No installer does it for you yet — that is what the planned setup agent will handle. Treat the placement above as the documented manual step, not an automated command.</p>
         </article>
 
         <article class="setup-step">
           <span class="step-num">STEP 6 / OPERATE IT</span>
-          <h3>Roles, choreography, governance, state, QA, recovery.</h3>
+          <h3>Roles, way of working, rules, saved state, QA, recovery.</h3>
           <ul>
-            <li><strong>Roles &amp; choreography</strong> &mdash; a single-pass pipeline Director &rarr; Researcher &rarr; Architect &rarr; UX &rarr; Coder &rarr; QA &rarr; Director, each lane with an explicit boundary and a Definition-of-Done gate. See <span class="mono">choreography/orchestration.md</span>.</li>
-            <li><strong>Governance</strong> &mdash; viability funnel, spin-off SoP, structured verdicts and read-back receipts; the rules that keep the team honest live in <span class="mono">choreography/governance.md</span>.</li>
-            <li><strong>Durable state &amp; ledgers</strong> &mdash; correctness as a pure function of append-only on-disk state (for example a <span class="mono">results.tsv</span> ledger with keep/discard/crash and frontier tracking). A respawned worker resumes from disk, never from dead context.</li>
-            <li><strong>QA</strong> &mdash; producer &ne; verifier: a mechanical gate first, then an independent adversarial judge; the adversarial-review skill ships in <span class="mono">templates/skills/adversarial-review/</span>.</li>
-            <li><strong>Recovery</strong> &mdash; Erlang/OTP-style supervision: bounded restarts per role, escalation on budget exhaustion, five-minute check-ins, and JIT forwarding of stable partials so a stall is never silent.</li>
+            <li><strong>Roles &amp; order of work</strong> &mdash; one pass through Lead &rarr; Researcher &rarr; Architect &rarr; UX &rarr; Coder &rarr; QA &rarr; Lead, each role with clear boundaries and a finish line. See <span class="mono">choreography/orchestration.md</span>.</li>
+            <li><strong>Rules</strong> &mdash; how work is approved and recorded; the rules that keep the team honest live in <span class="mono">choreography/governance.md</span>.</li>
+            <li><strong>Saved state</strong> &mdash; all work state is written to files (for example a <span class="mono">results.tsv</span> log with keep/discard/crash entries) and never overwritten. A restarted agent continues from the files, not from memory that died with it.</li>
+            <li><strong>QA</strong> &mdash; the maker never marks their own work: an automated check first, then an independent reviewer; the adversarial-review skill ships in <span class="mono">templates/skills/adversarial-review/</span>.</li>
+            <li><strong>Recovery</strong> &mdash; Erlang/OTP-style supervision: limited restarts per role, escalate when the limit is hit, five-minute check-ins, and forwarding of finished partial results so a stall is never silent.</li>
           </ul>
         </article>
 
         <article class="setup-step">
           <span class="step-num">STEP 7 / UPDATE, REBUILD &amp; VERIFY</span>
-          <h3>Re-run the gates; verify what is served.</h3>
+          <h3>Re-run the checks; verify what is live.</h3>
           <div class="cmd-block">
             <pre><code><span class="prompt">$ </span>git pull
 <span class="prompt">$ </span>python3 build/sweep-gate.py
 <span class="prompt">$ </span>python3 build/review-gate.py
 <span class="prompt">$ </span>python3 build/generate.py --params &lt;your-pack.yaml&gt; --out /tmp/team-v2</code></pre>
           </div>
-          <p>Regenerate into a fresh <code>--out</code> directory and diff the new <span class="mono">AUDIT.md</span> against the previous one before promoting. If you serve a site or artifact from the output, verify the served bytes with a cache-busted fetch &mdash; never announce a change from local files alone. Staging first, then promote.</p>
+          <p>Build into a fresh <code>--out</code> directory and compare the new <span class="mono">AUDIT.md</span> with the previous one before publishing. If you serve a website or other output, fetch the live page (with a cache-busting query) and confirm what is actually served — never announce a change from local files alone. Test on a staging copy first, then publish.</p>
         </article>
 
         <article class="setup-step">
           <span class="step-num">STEP 8 / TROUBLESHOOTING</span>
-          <h3>Common failures and what they mean.</h3>
+          <h3>Common problems and what they mean.</h3>
           <ul>
-            <li><strong>sweep-gate: UNCLASSIFIED SOURCE</strong> &mdash; a new source file has no manifest verdict. Run <span class="mono">build/build-manifest.py</span>, then sign the row in <span class="mono">REVIEW.md</span>.</li>
-            <li><strong>review-gate: UNSIGNED REVIEW</strong> &mdash; a shipping row's 4/4 soft-leak checklist is not fully ticked. Complete the semantic pass before assembling.</li>
-            <li><strong>generate: DECLARED PLACEHOLDER(S) NOT RESOLVED</strong> &mdash; the pack promised a placeholder the parameter file did not supply (usually a typo). Fix the YAML key.</li>
-            <li><strong>generate: UNRESOLVED PLACEHOLDERS (warning)</strong> &mdash; expected in open-core mode, which ships generic by design; becomes a failure under <code>--strict</code>, so a paid pack cannot ship mangled.</li>
-            <li><strong>FileNotFoundError: REVIEW.md</strong> &mdash; you are on an older checkout; a current clone's gates fall back to the committed frozen artifacts automatically.</li>
+            <li><strong>sweep-gate: UNCLASSIFIED SOURCE</strong> &mdash; a new source file has no verdict in the manifest. Run <span class="mono">build/build-manifest.py</span>, then sign the row in <span class="mono">REVIEW.md</span>.</li>
+            <li><strong>review-gate: UNSIGNED REVIEW</strong> &mdash; a shipping row&rsquo;s 4/4 leak checklist is not fully ticked. Complete the review before building.</li>
+            <li><strong>generate: DECLARED PLACEHOLDER(S) NOT RESOLVED</strong> &mdash; the settings file was missing a value the template expected (usually a typo). Fix the YAML key.</li>
+            <li><strong>generate: UNRESOLVED PLACEHOLDERS (warning)</strong> &mdash; expected in the open-source version, which ships generic by design; becomes a hard failure under <code>--strict</code>, so a paid pack cannot ship broken.</li>
+            <li><strong>FileNotFoundError: REVIEW.md</strong> &mdash; you are on an older checkout; a current clone&rsquo;s checks fall back to the committed files automatically.</li>
           </ul>
           <p>Support: open an issue at <a href="https://github.com/ahrazzle/team6-kit/issues">github.com/ahrazzle/team6-kit</a>, or for the ASKA Team6 service email <a href="mailto:info@askaconsult.com">info@askaconsult.com</a>. Official Team6 site: <a href="https://team6.askaconsult.com/">team6.askaconsult.com</a>.</p>
         </article>
@@ -510,22 +510,22 @@
   <section class="section" id="license" aria-labelledby="license-title">
     <div class="container">
       <p class="kicker">LICENSE</p>
-      <h2 id="license-title">Three zones. Honest provenance.</h2>
+      <h2 id="license-title">Three parts. Clear licenses.</h2>
       <div class="zone-grid">
         <article class="zone-card">
-          <p class="zone-kicker">ZONE 1 · BUILT ON HERMES (MIT)</p>
-          <p class="zone-body">The engine is Nous Research&rsquo;s, MIT-licensed. This repo is NOT a git-fork of Hermes; it is a standalone product with a generated kits layer.</p>
+          <p class="zone-kicker">PART 1 · BUILT ON HERMES (MIT)</p>
+          <p class="zone-body">The engine is Nous Research&rsquo;s, MIT-licensed. This repo is NOT a fork of Hermes; it is a separate product built on top of it.</p>
         </article>
         <article class="zone-card">
-          <p class="zone-kicker">ZONE 2 · KITS LAYER (APACHE-2.0)</p>
-          <p class="zone-body">Identity archetypes, orchestration, governance, knowledge routing, and build tooling &mdash; Apache-2.0. See LICENSE.</p>
+          <p class="zone-kicker">PART 2 · THE KIT ITSELF (APACHE-2.0)</p>
+          <p class="zone-body">Agent roles, ways of working, rules, and build tooling — Apache-2.0. See LICENSE.</p>
         </article>
         <article class="zone-card">
-          <p class="zone-kicker">ZONE 3 · VERTICAL PACKS (PROPRIETARY BY CONTRACT)</p>
-          <p class="zone-body">Parameter files + service &mdash; never committed to this repo, never a fork of the engine.</p>
+          <p class="zone-kicker">PART 3 · PAID PACKS (NOT OPEN SOURCE)</p>
+          <p class="zone-body">Settings files + service — never committed to this repo, never a fork of the engine.</p>
         </article>
       </div>
-      <p class="instance-foot">v1.2.0 boundary: optional local preprocessing models (e.g. Desert Ant) carry a <strong>separate source-available vendor license</strong> distinct from this Apache-2.0 kit layer &mdash; the kit documents the adapter contract and bundles no implementation, model files, or license text. See <span class="mono">choreography/local-preprocessing.md</span> and <span class="mono">LICENSING.md</span>.</p>
+      <p class="instance-foot">v1.2.0 note: optional local models (e.g. Desert Ant) carry a <strong>separate vendor license</strong> from this Apache-2.0 kit — the kit documents how to use them but bundles no implementation, model files, or license text. See <span class="mono">choreography/local-preprocessing.md</span> and <span class="mono">LICENSING.md</span>.</p>
     </div>
   </section>
 
@@ -533,8 +533,8 @@
   <section class="section" id="demo" aria-labelledby="demo-title">
     <div class="container">
       <p class="kicker">SEE IT RUN</p>
-      <h2 id="demo-title">The build sequence, replayed.</h2>
-      <p class="lead measure">Three commands gate every assembly. This terminal replays them &mdash; a documented process, not a live one.</p>
+      <h2 id="demo-title">The build steps, replayed.</h2>
+      <p class="lead measure">Three commands run every build. This terminal replays them — a documented example, not a live process.</p>
       <div class="terminal" id="demo-terminal">
         <div class="term-chrome">
           <span class="dot" aria-hidden="true"></span><span class="dot" aria-hidden="true"></span><span class="dot" aria-hidden="true"></span>
@@ -555,7 +555,7 @@ $ python3 build/generate.py --out &lt;kit-dir&gt; [--params &lt;pack.yaml&gt;]
 <footer class="site-footer">
   <div class="container footer-inner">
     <p class="foot-brand">TEAM6-KIT · v1.3.0</p>
-    <p class="foot-meta">This site was shipped by the kit&rsquo;s own pipeline &mdash; research, architecture, design, build, adversarial QA &mdash; end to end. v1.1.0 added the supervised operating layer; v1.2.0 adds the local preprocessing adapter contract; v1.3.0 documents the ingestion definition of done for handed-over sources.</p>
+    <p class="foot-meta">This site was built by the kit&rsquo;s own process — research, planning, design, build, QA — end to end. v1.1.0 added the supervision rules; v1.2.0 added the optional local cleanup step; v1.3.0 set the bar for checking new sources.</p>
     <p class="foot-static">Static-only. No telemetry. No external requests.</p>
     <p class="foot-links">
       <a href="https://team6.askaconsult.com/">team6.askaconsult.com</a>
