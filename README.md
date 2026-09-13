@@ -40,6 +40,18 @@ You get a folder with your team's agents, ready to run.
 | `WHY.md` | Why the system is designed this way |
 | `CHANGELOG.md` | What changed in each release |
 
+## Model rate-limit protection
+
+The kit includes a route-based model-policy catalogue. It follows a model by
+provider, model identifier, and API host, so the policy remains correct when a
+model moves between agents, tasks, fallback chains, or worker processes. Known
+limits can be enforced with bounded waiting and protected request/token
+reserves. Unknown limits stay observe-only; the kit never invents a quota.
+
+Start with `registry/model-rate-limits.yaml.example` and read
+`choreography/model-policy.md` before adding provider values. Keep the policy
+catalogue separate from profile names and account credentials.
+
 ## The main rules
 
 1. **Everything on disk.** Progress is saved to files, so months later you can still pick up where you left off.
@@ -47,9 +59,9 @@ You get a folder with your team's agents, ready to run.
 3. **The maker never marks their own work.** A different agent checks it and records the result.
 4. **Supervised, not autonomous.** Long tasks pause, save progress, and ask for review. Nothing runs forever unattended.
 
-## What's new in this release (1.3.0)
+## What's new in this release (1.4.0)
 
-When a source is handed to the team, it now needs a proper review before use: what does it contain, what is it useful for, who owns each part, and proof it works — instead of just indexing the files. See `CHANGELOG.md`.
+The kit now includes a route-based model-policy catalogue for changing provider limits. Unknown limits remain observe-only, while verified limits can use bounded admission and protected reserves. See `CHANGELOG.md` and `choreography/model-policy.md`.
 
 ## License
 
