@@ -1,9 +1,8 @@
-<!-- GENERICIZED: 1×{RELATIONSHIP} | source: skills/github/github-pr-audit/SKILL.md -->
 ---
 name: github-pr-audit
 description: "Use when auditing a GitHub PR or issue before merge."
-version: 1.0.0
-author: Team6 / {RELATIONSHIP}
+version: 1.1.0
+author: Team6 / Halakukhan
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
@@ -87,11 +86,168 @@ Read the repo's `AGENTS.md` / `CONTRIBUTING.md`. Check specifically:
 - Post a transparent QA-pass COMMENT instead: `gh pr comment N --repo O/R
   --body-file <file>`. Lead with "Team6 QA pass" (honest provenance), document
   the substance, the test numbers you actually ran, and any housekeeping fixed.
+### 6b. When you also own the MERGE lane
+Self-approval being impossible does NOT block the merge — review and merge are
+separate permissions. Check the real gates instead of assuming a human must act:
+`gh api repos/O/R/branches/main --jq .protected` and `gh api repos/O/R --jq .permissions`.
+With no branch protection and `admin`, merge it yourself (`gh pr merge N --repo O/R
+--<method>`), then post the QA-pass comment on the merged PR and read the merge back.
+- Take the merge METHOD from the repo's own history, not the provider default:
+  `git rev-list --count --merges origin/main`. Zero merges = linear history, so use
+  `--rebase` or `--squash`; a bare `--merge` would add the repo's first merge commit.
+  Record the choice and the rejected alternative in the receipt.
+- Rebase/squash REWRITE the SHAs you audited. State the new main SHA and note that the
+  pre-merge SHA still exists on the branch/PR refs, or the receipt contradicts the audit.
 - For issues: post scoping nits (e.g. "proposed `sessions list --model` collides
   with the existing `sessions list` command — extend it instead") as
   `gh issue comment`.
 
+## Offering a policy choice
+
+When a fix has two defensible policies and the maintainer should pick one, ship
+both as independent commits on one branch rather than asking first. One review
+thread, no second branch to rebase, and their pick is a single revert instead of
+a request for you to redo the work.
+
+- Commit 1 is the base fix; commit 2 swaps in the alternative, so HEAD carries
+the alternative and one revert returns the base.
+- In the body, say what each does, which is HEAD, and that a revert switches
+policies. Name the trade-off in one line each (what is lost, what is paid).
+- Keep both commits green on their own. A commit that only passes on top of the
+  other is not a choice.
+- Keep the title neutral about which commit is HEAD. A title lifted from one
+  commit's subject (or a checkmark on one policy) reads as the recommendation you
+  were trying not to make. Name the shared outcome — "no card renders without a
+  title" — and let the body say what each policy does.
+
+## Keep the public text short
+
+Reviewers pay for every word. The audit work is verbose; the PR text is not.
+
+- **Plain-language floor applies to PR/issue text.** If the repo's audience is
+  not all-native-English or not all-steeped-in-the-project, the PR title, body
+  and comments follow the same bar as a README: say what the change does in the
+  first lines, no jargon when a plain word exists, one idea per sentence, no
+  invented hyphen compounds. A reviewer who cannot parse the body will not parse
+  the diff either.
+- **PR body: one screen.** What it does, why it matters, repro, one test line, the
+  checklist. Cut the reasoning that the diff and tests already show.
+- **Comments: a few lines.** State what changed and anything a reviewer must know to
+  judge it. Do not restate the body or narrate the investigation.
+- **Superseded comments get deleted, not stacked.** Self-correcting in a new comment
+  leaves a stale claim in the thread; edit or delete it and post one current comment
+  (the user reads the whole thread cost first).
+- **Cut prose, never the template.** Condensing a PR body means trimming narrative,
+  restated evidence and hedging — keep the repo's template sections in their order, every
+  checklist box, the code fences and the links. A short body that no longer matches
+  `pull_request_template.md` reads as sloppiness, not concision.
+- **Only condense where nobody has engaged.** Editing the description of a PR or issue that
+  already has comments or reviews makes contributors re-read text they had already judged
+  (and looks like rewriting history under discussion). Zero third-party comments/reviews is
+  the bar; leave the rest alone.
+- **Check where a long explanation lands before parking it.** A code comment or commit
+  body is read only by someone already in that file or history — but "in that file" is not
+  automatically cheap: a file that is `@embedFile`'d into a binary, or written to disk by an
+  installer, ships its comments to every installation. Grep the ship path first, then match
+  the neighbouring comments' length (2-3 lines is the usual register) and keep only the why.
+- **Measure the prose share of an asset diff.** Count added comment bytes against total
+  added bytes; a file grown mostly by prose is a review liability and a per-install
+  footprint at once. Trim to the why and let the tests carry the rest.
+- **Match the maintainer's real register for commit bodies.** Sample their recent commits
+  (`gh api repos/O/R/commits?author=X`) and count non-blank body lines instead of guessing;
+  a body several times the house median reads as a diary. Keep root cause plus a pointer to
+  the proof, leave raw test output in the PR body where a reviewer looks for it, and keep
+  the subject on one line.
+
 ## Pitfalls
+- **A scanner that only sees the diff is not a scanner.** A repo gate that
+  enumerates via `git add -A -n` (or `git status`) lists only index-relative
+  changes — on a clean checkout it scans **zero files** and prints PASS. Prove a
+  gate enumerated something before trusting its PASS: in a throwaway clone run
+  `git read-tree --empty`, then re-run it. The first PASS on a pristine clone is
+  usually vacuous; the real failure appears only once a file is modified.
+- **Count the terms a scan loaded, not the ones you assume.** A term/denylist
+  built from environment or a gitignored config is empty in your checkout, so one
+  scan can miss most names actually present. Check the inventory size, and use a
+  direct `grep` per known name to get the true exposure count before reporting
+  either a leak or a clean pass.
+- **A pre-existing gate failure is still a merge gate.** If a branch's
+  public-safety scan also fails on `main`, reproduce it in a `main` worktree and
+  report it as a blocker with an owner decision — never silently edit a deliberate
+  authored artifact (branding copy, published names) just to force green.
+- **Review comments are claims, not results.** When an automated/peer review flags
+  your PR, reproduce the finding against the PR HEAD in a throwaway worktree
+  (`git worktree add /tmp/prN <sha>`) before replying: the substance can be right
+  while the detail is wrong (a bot claimed PyYAML folds `y`/`n` to bools — it does
+  not; they resolve as strings). Then run the PR body's OWN "how to test" steps —
+  a body that documents a repro which doesn't reproduce is worse than no repro,
+  because the next reviewer runs it. Best reply = confirm what's real, correct the
+  wrong detail, add the case the comment missed, and name what is deliberately out
+  of scope.
+- **Check for an adjacent instance of the same bug class the comment missed.** A
+  guard keyed on a parsed type silently ignores the same value written in another
+  form (e.g. a `isinstance(value, bool)` gate misses the quoted STRING `'false'`
+  that the CLI itself writes for string-typed defaults). Probe the neighbouring
+  writer/entry point, not just the reported token.
+- **Read the consumer's precedence before judging a fallback's policy.** When a PR
+  adds a fallback value to a payload field, the component that READS the field may
+  prefer it over a different fallback it already applies further down, so the new
+  value displaces a better existing label/behaviour — and the variant the body calls
+  the "safer default" can be the one that loses information. Grep the field to its
+  read site and name which source wins the `orelse`/`??`/`||` chain. Live user data
+  is the tiebreak: the artefact on the author's own machine showed the displaced
+  value in use while the prose claimed otherwise.
+- **A new test can pass with the change deleted — test the trigger, not the tick.**
+  Attribute each new case individually. If an earlier fallback short-circuits the
+  condition the case is meant to exercise, its assertion is vacuous (delete the new
+  clause and it still passes). Build the input only the new branch can decide (the
+  unreadable/keyless case, not the readable one an existing fallback already covers)
+  and confirm that case goes red without the code.
+- **Intent comes from the repo's own user-facing surfaces, not from inference.** To
+  settle "is this behaviour a bug or intended", quote the maintainers' own artefacts:
+  a settings label, a documented model, the framing of the linked issue. A defect-filed
+  issue plus a merged guard on the same class settles it; a behaviour the author merely
+  likes is a fork concern, not a reason to re-open PR scope.
+- **Detector/linter additions must be idempotent and meaning-preserving.** For any
+  check that rewrites config on `--fix`: run it twice and assert the second pass
+  reports and rewrites nothing (a guard that re-fires every run is worse than no
+  check), and pin that the rewrite never changes the resolved runtime behavior.
+  Prefer the value the runtime already resolves to over "the sane default" — the
+  fix's job is to make an existing state legible, not to choose for the user.
+- **Flag resolver-side accidents instead of cementing them.** When a legacy value
+  only resolves the way it does through an accident (e.g. a blank/null value
+  stringified to `"none"` and caught by an alias map), the surface fix should name
+  it and preserve behavior, and the PR/comment should hand the underlying quirk to
+  the resolver's owners as its own item.
+- **A text search for a key's value is wrong in both directions — read the parsed node.**
+  Detection that greps a file for the value while reading the effective value from a
+  dotted key will report a documented value as drift when a decoy line exists
+  elsewhere (another section, a block scalar, a duplicate block), AND miss the shapes
+  a value really takes: flow style, a quoted key, an anchored `*alias`, and a
+  duplicate block whose last entry wins. `yaml.compose()` + walking to the key's own
+  node gives the scalar as written (quoted vs plain, `off` vs `false`) with no
+  false-positive surface. Write the test table with both classes: decoys that must
+  stay silent, and shapes that must be caught.
+- **A repo's self-test that clones HEAD tests the last COMMIT, not your working tree.**
+  A `fresh-clone-test.sh`-style gate (`git clone <repo> <tmp>` internally) silently
+  re-verifies the previous commit while your new edits sit uncommitted — it passes, and
+  proves nothing about the change you are about to push. Commit first, then re-run the
+  gate, and check the gate's own printed SHA equals your new HEAD.
+- **A fresh `git clone` lands on the DEFAULT branch, not the PR.** `git clone` then
+  `git diff origin/main...origin/pr` audits correctly, but running the repo's gates in
+  that working tree runs them against `main` — and they PASS, so nothing looks wrong.
+  Fetch `refs/pull/N/head`, `git checkout --detach <head-sha>`, assert
+  `git rev-parse HEAD` equals the audited head, and only then run the gates. Re-run after
+  any such slip and say so; a green suite on the wrong tree is a fabricated result.
+- **Merging is not publishing.** Before claiming a site or deploy update, prove a deployer
+  exists: a CI workflow, a git-linked hosting project (a Vercel `link: null` plus deployments
+  carrying no commit sha = manual CLI uploads only), or hosting enabled (`GET /repos/O/R/pages`
+  → 404 = disabled). A merged docs PR with no linked deployer changes zero served bytes.
+- **Credentials + a found project do not authorise a production write.** Knowing where the
+  site lives and holding a valid token is not a documented deployment path. When no repo,
+  KB or runbook defines the artifact set and the deploy would publish more than the audited
+  diff, report "merged, site pending external deployment" and hand the user the decision
+  instead of inventing a deploy — and never let a merge imply a live change.
 - **Stale handoff diff** → you review phantom code. Always re-diff live.
 - **Trusting PR-body test counts** → false evidence a reviewer catches. Run it.
 - **`gh pr diff` needs `--repo O/R`** when not inside a cloned repo context.
@@ -99,6 +255,56 @@ Read the repo's `AGENTS.md` / `CONTRIBUTING.md`. Check specifically:
 - **`python` missing from PATH** → use `./venv/bin/python` or `uv run`.
 - **Unqualified test IDs** → class-qualify them (`TestClass::test_method`).
 - **Editing a PR body you don't own** → only do it on your own account's PRs.
+- **Prove red on the real base, not in prose.** Do not assert the old behaviour
+  in the body. Swap the base version of the touched file into the working tree
+  (`git show origin/main:<path> > <path>`), run the new tests, restore, and quote
+  the exact failure. A test that never failed against the base can pass for the
+  wrong reason, and a reviewer who runs it will find out.
+- **Do not claim an unverified half.** When the repo's toolchain is missing
+  locally (no zig, no rust, no pnpm), fix and test the surface you can execute
+  and say in the body which surface you could not build. Never let a green local
+  run imply the unbuilt half passes; drop it from the diff or flag it plainly.
+- **Verify which artifact carries a cost before acting on it — or dismissing it.** "This
+  ships with every install" is a claim about one specific surface: git metadata, an
+  embedded/installed file, or reviewer attention. Measure the mechanism before agreeing or
+  pushing back (grep how the file reaches the user, size the delta) and name the surface
+  that pays. The fix often lands in a different artifact than the claim names — and when the
+  named surface is right, the delta can still be too small to matter (hundreds of bytes in a
+  multi-MB binary). Argue from the measurement, not from the instinct.
+- **Writing into a live install: verify both ends by hash, and quote the restore path from
+  a listing you read.** Prove the backup equals the pre-change source and the installed file
+  equals the new source (`shasum` on both sides, `git show ref:path | shasum` as the
+  reference), then state the rollback command from the real filenames — tooling flattens or
+  renames copies (`_Users_name_.hermes_plugins_x___init__.py`), so a path you assembled from
+  memory does not exist. An unverified restore instruction is worse than none, because it is
+  followed at the worst moment.
+
+## When a docs pass is the actual task
+
+Sometimes the request is not "audit this PR" but "this text confused a reader,
+fix the writing". The audit discipline still applies, scoped down:
+
+- Verify the served/repo text live (API or curl), not a cached copy. Baseline
+  the SHA before editing; read the result back from the API after pushing — a
+  push that reports success but changes no served bytes is a failed push.
+- Edit on a branch even for docs-only changes; commit with a message naming the
+  pass (`docs: rewrite README in plain language`), not a vague `docs update`.
+- Enumerate the reader-facing surfaces before editing: README, repo About line
+  (`gh repo view --json description`), site HTML (often `index.html` in the repo
+  root, served from the same repo), landing-page meta description. One branch,
+  one PR, all surfaces — so the reviewer sees the whole pass in one thread.
+- Copy in place when the asset lives in the same repo: a site rewrite is a
+  normal file edit, no new repo or deploy step. Verify what is actually served
+  with a cache-busted fetch before and after.
+- Structure is not copy: in a page rewrite touch only text nodes, `title`,
+  `meta description`, `og:title`. CSS classes, ids, anchors, asset references
+  and the nav stay byte-identical or rendering breaks. Verify: HTML parses, all
+  `#anchor` links resolve to existing ids, local serve returns 200 for the page
+  and each referenced asset.
+- Specific method names (Erlang/OTP, YAML, Apache-2.0) stay — introduced with
+  one plain sentence each, not stripped.
+- If the text sits in an open PR thread a human already judged, the
+  only-condense-where-nobody-has-engaged rule applies to it too.
 
 ## References
 - `references/verification-recipe.md` — copy-paste command sequence for a full
