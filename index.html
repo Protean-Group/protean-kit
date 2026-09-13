@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Team6-kit — A governed team. From one agent engine.</title>
-<meta name="description" content="Team6-kit v1.2.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT). Now with a vendor-neutral local preprocessing adapter contract.">
+<meta name="description" content="Team6-kit v1.3.0: the reusable layer that turns a single agent engine into a disciplined multi-agent team — open core, built on Hermes (MIT). Now with a vendor-neutral local preprocessing adapter contract and the ingestion definition of done for handed-over sources.">
 <link rel="canonical" href="https://team6.askaconsult.com/">
 <meta property="og:url" content="https://team6.askaconsult.com/">
 <meta property="og:title" content="Team6-kit — A governed team. From one agent engine.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a0e12'/%3E%3Cpath d='M2 10h4l2 3 2-3h4' stroke='%23f2b63d' stroke-width='1.5' fill='none'/%3E%3Crect x='2' y='3' width='12' height='3' fill='%23f2b63d'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/css/main.css?v=1.2.0">
+<link rel="stylesheet" href="assets/css/main.css?v=1.3.0">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -34,6 +34,7 @@
       <a href="#why">Why this</a>
       <a href="#upgrades">What changed</a>
       <a href="#preprocessing">Preprocessing</a>
+      <a href="#ingestion">Ingestion</a>
       <a href="#status">Status</a>
       <a href="#install">Get started</a>
       <a href="#setup">Setup</a>
@@ -48,9 +49,9 @@
   <!-- 5.1 HERO -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="hero-inner">
-      <p class="kicker">TEAM6-KIT · v1.2.0 &ldquo;LOCAL PREPROCESSING ADAPTER&rdquo;</p>
+      <p class="kicker">TEAM6-KIT · v1.3.0 &ldquo;INGESTION DEFINITION OF DONE&rdquo;</p>
       <h1 id="hero-title">A governed team.<br>From one agent engine.</h1>
-      <p class="lead">The reusable layer that turns a single agent engine into a disciplined multi-agent team &mdash; identity archetypes, orchestration choreography, governance rules, knowledge routing, and a generator that assembles them. v1.1.0 added the supervised operating layer (Erlang/OTP-style supervision, durable append-only state, served-truth verification); v1.2.0 adds a vendor-neutral local preprocessing adapter contract &mdash; Redact, Gist, and Title as a bounded, optional preprocessing layer, never a provider/router replacement.</p>
+      <p class="lead">The reusable layer that turns a single agent engine into a disciplined multi-agent team &mdash; identity archetypes, orchestration choreography, governance rules, knowledge routing, and a generator that assembles them. v1.1.0 added the supervised operating layer (Erlang/OTP-style supervision, durable append-only state, served-truth verification); v1.2.0 adds a vendor-neutral local preprocessing adapter contract &mdash; Redact, Gist, and Title as a bounded, optional preprocessing layer, never a provider/router replacement. v1.3.0 documents the ingestion definition of done: a directly handed-over source is not reference-only until a capability/usefulness audit exists for it.</p>
       <p class="open-core">Open core · built on Hermes (MIT) · Apache-2.0 kits layer</p>
       <div class="cta-row">
         <a class="btn" href="https://team6.askaconsult.com/">Open Team6</a>
@@ -289,12 +290,50 @@
     </div>
   </section>
 
+  <!-- 5.57 INGESTION DEFINITION OF DONE (v1.3.0) -->
+  <section class="section" id="ingestion" aria-labelledby="ingestion-title">
+    <div class="container">
+      <p class="kicker">WHAT CHANGED &middot; v1.3.0 INGESTION DEFINITION OF DONE</p>
+      <h2 id="ingestion-title">Indexing is transport. It is not the finish line.</h2>
+      <p class="lead measure">v1.3.0 documents the <strong>ingestion definition of done</strong> for sources handed over directly. Storage and retrieval are the transport half of ingestion; a handed-over source carries a capability claim, and an unexamined claim is not knowledge. The rule and its checklist live in <span class="mono">templates/skills/knowledge-base-ingestion/SKILL.md</span>; an illustrative record ships in <span class="mono">AUDIT/handover-capability-audit.md</span>. No dependency is added and nothing is bundled.</p>
+
+      <div class="up-grid">
+        <article class="up-card">
+          <p class="up-title">01 / NOT REFERENCE-ONLY UNTIL AUDITED</p>
+          <p class="up-body">Metadata, a README, a license read, and a retrievable row prove <em>source capture</em> only. A directly handed-over source may not be classified reference-only until a capability/usefulness audit exists for it.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">02 / AUDIT THE SURFACES, NOT THE README</p>
+          <p class="up-body">The audit walks the top-level tree, package/lock manifests, the dependency-wiring module, agent-facing skills/plugins/hooks, workflows/CI, tests, operational docs, and the primary source paths &mdash; with a recorded path per finding.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">03 / MATRIX, OWNER, DISPOSITION</p>
+          <p class="up-body">Every candidate capability gets a row &mdash; existing equivalent, gap, action, owner &mdash; compared against the live catalog, never memory. Each row ends in one disposition: adopt now, candidate &mdash; proof pending, defer, or reject.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">04 / FIVE PHASES, NOT ONE</p>
+          <p class="up-body">Ingestion, adoption, implementation, QA, and enforcement are separate phases with separate exits. Ingestion ends at a source captured, indexed, <em>and audited</em> &mdash; an indexed source is not an unowned build task.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">05 / BOUNDED PROOF, NEVER A WHOLESALE INSTALL</p>
+          <p class="up-body">One isolated scratch surface per proof, pinned version, no production data, and a written success/failure gate set before it runs. Install scope should equal audit scope &mdash; no source is installed wholesale to find out whether it is useful.</p>
+        </article>
+        <article class="up-card">
+          <p class="up-title">06 / RECEIPTS, READ-BACK, PROPAGATION</p>
+          <p class="up-body">Ledger, matrix, and disposition are durable artifacts, read back by other than their producer before they are reported. An adopted change names every surface it touches &mdash; repository, documentation, skills, site &mdash; each passed through its own gate.</p>
+        </article>
+      </div>
+
+      <p class="instance-foot">Open rows stay open: a blocked, dead, or ambiguous fact is preserved with its state named rather than guessed to complete a matrix. Trust, permissions, telemetry, and license obligation remain the third-party tool adoption audit&rsquo;s job &mdash; this release documents the usefulness and adoption half. The record in <span class="mono">AUDIT/</span> is an <strong>illustrative exemplar of the shape</strong>, not a finding about any named repository. See <span class="mono">CHANGELOG.md</span> for the per-item &ldquo;why&rdquo; and evidence class.</p>
+    </div>
+  </section>
+
   <!-- 5.6 STATUS & ROADMAP -->
   <section class="section" id="status" aria-labelledby="status-title">
     <div class="container">
       <p class="kicker">STATUS · SHIPPED VS. PROOF GATES</p>
       <h2 id="status-title">Open core today. Proof gates ahead &mdash; stated plainly.</h2>
-      <p class="lead measure">The kit asserts value and says so. v1.1.0 ships the operating doctrine; v1.2.0 ships a vendor-neutral local preprocessing adapter contract &mdash; both documented and reviewed, not yet <em>proven</em> by an external instance. What turns these claims true remains the first vertical pack and a working setup-agent install &mdash; not the claims themselves.</p>
+      <p class="lead measure">The kit asserts value and says so. v1.1.0 ships the operating doctrine; v1.2.0 ships a vendor-neutral local preprocessing adapter contract; v1.3.0 documents the ingestion definition of done for handed-over sources &mdash; all documented and reviewed, not yet <em>proven</em> by an external instance. What turns these claims true remains the first vertical pack and a working setup-agent install &mdash; not the claims themselves.</p>
       <div class="status-cols">
         <div class="status-group">
           <p class="group-kicker shipped">SHIPPED</p>
@@ -309,6 +348,8 @@
             <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.1.0 &mdash; corrected 7-stage pipeline + &ldquo;What changed&rdquo; section (this page)</span></li>
             <li><span class="status-tag ok">✅</span><span class="status-text">v1.2.0 local preprocessing adapter contract shipped &mdash; vendor-neutral Redact/Gist/Title + opt-in media policy, hold-for-review rule, adapter requirements, Desert Ant framed as one optional implementation with a separate vendor license (choreography/local-preprocessing.md, README, WHY, CHANGELOG, LICENSING)</span></li>
             <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.2.0 &mdash; local preprocessing capability section + version markers (this page)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">v1.3.0 ingestion definition of done shipped &mdash; handover capability audit (surfaces inspected, capability matrix, owner + disposition per candidate, five phases, bounded proof, durable receipts + independent read-back, propagation per surface) in templates/skills/knowledge-base-ingestion/SKILL.md, with a record exemplar in AUDIT/handover-capability-audit.md (README, CHANGELOG)</span></li>
+            <li><span class="status-tag ok">✅</span><span class="status-text">Website reflects v1.3.0 &mdash; ingestion definition-of-done section + version markers (this page)</span></li>
           </ul>
         </div>
         <div class="status-group">
@@ -500,8 +541,8 @@ $ python3 build/generate.py --out &lt;kit-dir&gt; [--params &lt;pack.yaml&gt;]
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <p class="foot-brand">TEAM6-KIT · v1.2.0</p>
-    <p class="foot-meta">This site was shipped by the kit&rsquo;s own pipeline &mdash; research, architecture, design, build, adversarial QA &mdash; end to end. v1.1.0 added the supervised operating layer; v1.2.0 adds the local preprocessing adapter contract.</p>
+    <p class="foot-brand">TEAM6-KIT · v1.3.0</p>
+    <p class="foot-meta">This site was shipped by the kit&rsquo;s own pipeline &mdash; research, architecture, design, build, adversarial QA &mdash; end to end. v1.1.0 added the supervised operating layer; v1.2.0 adds the local preprocessing adapter contract; v1.3.0 documents the ingestion definition of done for handed-over sources.</p>
     <p class="foot-static">Static-only. No telemetry. No external requests.</p>
     <p class="foot-links">
       <a href="https://team6.askaconsult.com/">team6.askaconsult.com</a>
@@ -517,6 +558,6 @@ $ python3 build/generate.py --out &lt;kit-dir&gt; [--params &lt;pack.yaml&gt;]
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=1.2.0" defer></script>
+<script src="assets/js/main.js?v=1.3.0" defer></script>
 </body>
 </html>
