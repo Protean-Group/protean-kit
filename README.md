@@ -58,6 +58,20 @@ Start with `registry/model-rate-limits.yaml.example` and read
 `choreography/model-policy.md` before adding provider values. Keep the policy
 catalogue separate from profile names and account credentials.
 
+## Artifact contracts and resume handoffs
+
+Every stage boundary — producer to verifier, failed run to resumed run —
+carries one handoff file: expected artifacts, required sections, size bounds,
+tests, evidence refs, runtime state (local/staged/live), failure state, last
+stable phase, resume phase, feedback applied, what to regenerate, and what not
+to touch. Team6 Kanban remains the state authority; the contract is the
+handoff snapshot written out of it. Read
+`choreography/artifact-contract.md`, start from
+`templates/contracts/artifact-contract.md.tmpl`, and gate with
+`python3 build/check-artifact-contract.py <contract>` (or `--self-test`).
+The pattern is a conceptual adoption; no external orchestration code is
+included or required.
+
 ## The main rules
 
 1. **Everything on disk.** Progress is saved to files, so months later you can still pick up where you left off.
@@ -65,9 +79,9 @@ catalogue separate from profile names and account credentials.
 3. **The maker never marks their own work.** A different agent checks it and records the result.
 4. **Supervised, not autonomous.** Long tasks pause, save progress, and ask for review. Nothing runs forever unattended.
 
-## What's new in this release (1.4.0)
+## What's new in this release (1.5.0)
 
-The kit now includes a route-based model-policy catalogue for changing provider limits. Unknown limits remain observe-only, while verified limits can use bounded admission and protected reserves. See `CHANGELOG.md` and `choreography/model-policy.md`.
+Every stage boundary can now carry one machine-checkable handoff contract: expected artifacts, required sections, size bounds, tests, evidence refs, runtime state (local/staged/live), failure state, resume phase, feedback applied, artifacts to regenerate, and artifacts not to touch. See `choreography/artifact-contract.md` and `build/check-artifact-contract.py`; Team6 Kanban remains the state authority. The previous release added the route-based model-policy catalogue (`choreography/model-policy.md`). See `CHANGELOG.md`.
 
 ## License
 
