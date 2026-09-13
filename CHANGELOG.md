@@ -37,6 +37,25 @@ outside this repository.
 
 ---
 
+## 1.4.0 — Dynamic model-policy catalogue (2026-09-13)
+
+### Route-based rate-limit protection
+
+- **What:** add a generic provider/model policy catalogue example and
+  operational guidance. Policies match canonical provider, model identifier,
+  and API host; they support enforced, observe-only, and unknown states,
+  explicit reserves, bounded waiting, response-header learning, and fallback
+  re-resolution.
+- **Why it changed:** model assignments and provider limits change
+  independently. A profile-specific guard becomes stale when a model moves to
+  another agent or when a fallback uses a different quota domain.
+- **Evidence:** [VERIFIED — internal operating record] the dynamic policy
+  implementation and 9,181 affected tests passed with 0 failures. The public
+  files contain generic examples only and do not publish account-specific
+  limits or identifiers.
+- **Files:** `registry/model-rate-limits.yaml.example`,
+  `choreography/model-policy.md`, and the README overview.
+
 ## 1.3.0 — Handover ingestion completeness & propagation loop (2026-09-12)
 
 This release documents the **ingestion definition of done**: storage and

@@ -1,0 +1,37 @@
+# Dynamic model-policy catalogue
+# Copy this file to your deployment settings and edit verified values only.
+# Unknown routes must remain observe-only until their limits are confirmed.
+version: 1
+
+policies:
+  - id: provider-model-contributor
+    providers: [example-provider]
+    model_prefixes: [example-model-]
+    tier: contributor
+    mode: enforce
+    limits:
+      requests_per_minute: 100
+      tokens_per_minute: 3000000
+      max_concurrent: 0
+      request_reserve: 5
+      token_reserve: 100000
+      max_wait_seconds: 30
+    source: replace-with-provider-documentation
+
+  - id: provider-model-observed
+    providers: [another-provider]
+    model_prefixes: [another-model-]
+    tier: observed
+    mode: observe
+    limits:
+      requests_per_minute: 0
+      tokens_per_minute: 0
+      max_concurrent: 0
+      request_reserve: 0
+      token_reserve: 0
+      max_wait_seconds: 0
+    source: pending-verification
+
+# Optional local overrides are keyed by policy id. They must not silently
+# weaken an enforced policy. Keep secrets and account identifiers out of this file.
+overrides: {}
