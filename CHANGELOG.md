@@ -72,6 +72,7 @@ outside this repository.
   fresh-clone gates and independent review required before release.
 - **Files:** `choreography/io-delegation.md`, `registry/io-delegation.yaml.example`,
   and the README overview.
+
 ## Unreleased — Side-effect and cost preflight (2026-09-13)
 
 - **What:** add a general side-effect and cost preflight: `choreography/side-effect-cost-preflight.md`
@@ -115,6 +116,51 @@ outside this repository.
   Root source license is Apache-2.0; the source's `book/` content is separately
   identified as CC BY-NC-SA 4.0 and is not used.
 - **Files:** `choreography/ai-assisted-development.md` and the README overview.
+
+## 1.5.0 — Artifact contract and resume/feedback handoff (2026-09-13)
+
+### Machine-checkable handoff contracts
+
+- **What:** add a generic handoff-contract format and its dependency-free
+  validator. One file per stage boundary carries: expected artifacts,
+  required sections/markers, size bounds, tests/commands, evidence refs,
+  runtime state (`local` / `staged` / `live`), explicit failure state, last
+  stable phase, resume phase, feedback to apply, artifacts to regenerate, and
+  artifacts **not** to touch. Ships as `choreography/artifact-contract.md`
+  (format + rules), `templates/contracts/artifact-contract.md.tmpl` (fill-in
+  template), `build/check-artifact-contract.py` (validator + 16-case
+  self-test), and valid/invalid examples in `examples/`. The generator ships
+  all five under `contracts/` in the instantiated kit. No second orchestration
+  runtime is added: the checker validates the *document*, never executes a
+  pipeline.
+- **Why it changed:** resumed and review-cycle handoffs kept failing at the
+  artifact level even though `orchestration.md` §6/§7/§11 already demand
+  durable state, read-back receipts, and producer-committed signals —
+  finished work got redone, approved artifacts got silently rewritten, and
+  "done" claims carried no machine-checkable evidence. The missing piece was
+  a *checked* format, not another stated norm.
+- **Provenance:** this is a Team6 internal operating record for artifact
+  handoffs. The pattern was designed by Team6 to solve resume/feedback
+  boundary issues in Kanban workflows; it is not derived from external code
+  or documentation, and no external orchestration code, prompts, or prose
+  are bundled. The field set, parser, and rules are Team6's own generic
+  form. **Team6 Kanban remains the state authority** — the contract is a
+  per-handoff snapshot written out of the Kanban record, never a
+  replacement for it.
+- **Evidence:** [VERIFIED — internal operating record] the fleet's
+  resume/handoff failure classes (read-then-die, STABLE-marker deadlock,
+  silent rewrites — see the 1.1.0 item 13 record). [VERIFIED] the checker's
+  self-test: 16/16 pass, including a missing-required-field case that fails
+  and a complete contract that passes, and both repo examples validate to
+  their expected verdicts (valid → exit 0, invalid → exit 1 for the
+  missing `resume_phase` and the illegal `runtime_state` enum). Public files
+  contain generic names only; the full 8-surface leak scan passes.
+- **Files:** `choreography/artifact-contract.md`,
+  `templates/contracts/artifact-contract.md.tmpl`,
+  `build/check-artifact-contract.py`, `build/generate.py` (contracts/ copy
+  step), `examples/artifact-contract.{valid,invalid}.yaml`, README, CHANGELOG.
+
+---
 
 ## 1.4.1 — Router trust-boundary and tool-execution safety (2026-09-13)
 
@@ -392,7 +438,7 @@ explains each upgrade and why it changed.
 - **What:** Stage execution is modeled on Erlang/OTP supervision trees. Workers
   do work; the orchestrator (Director) monitors and restarts; the hierarchy is
   the phase pipeline. Each dispatched stage carries an explicit per-role task
-  contract — role id, entry criteria, restart type
+  contract — role id, entry criteria, restart type,
   (permanent / transient / temporary), restart budget (intensity per period),
   shutdown policy (graceful-window vs hard-kill), deliverable path, and
   verification bar. Restarts are bounded; exhaustion escalates instead of
