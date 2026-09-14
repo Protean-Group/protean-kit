@@ -27,7 +27,7 @@ ORIGIN_BRANCH="${2:-main}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 KIT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 WORK="$(mktemp -d /tmp/fork-dryrun.XXXXXX)"
-trap 'rm -rf "$WORK"' EXIT
+trap 'cd /; rm -rf "$WORK" || true' EXIT
 
 echo "=== FORK UPDATE-SAFETY DRY RUN ==="
 echo "source: $SOURCE"
@@ -51,7 +51,7 @@ mkdir -p kits/personas
 # --- Scenario A: kits/ committed to the fork branch
 echo "[2/4] Scenario A: kits/ COMMITTED to fork branch..."
 echo "$SENTINEL_CONTENT" > kits/personas/sentinel-a.md
-git add kits/
+git add -f kits/
 git -c user.name=fork -c user.email=fork@test commit --quiet -m "add kits layer (committed)"
 echo "  committed. Simulating update: git reset --hard upstream/$ORIGIN_BRANCH"
 git fetch --quiet upstream
