@@ -67,6 +67,24 @@ outside this repository.
 - **Files:** `choreography/safe-run-packet.md`, `build/report/` (README, checker,
   fixtures), `README.md`, `CHANGELOG.md`.
 
+## Unreleased — Goal-state evidence guidance (2026-09-13)
+
+- **What:** add one operating rule to `choreography/artifact-contract.md`:
+  evidence must prove the achieved target state, not merely that a command or
+  procedure ran. A verifier rejects procedure-only evidence.
+- **Why it changed:** a passing command does not prove the requested state was
+  reached. Adjudicating a handoff on procedure execution alone lets an
+  unachieved target state through.
+- **Evidence:** [VERIFIED — public conceptual source] the state-versus-procedure
+  framing is inspired by Levin, M., "Ingressing Minds: Causal, Non-Physical
+  Patterns In-Form Natural, Synthetic, and Hybrid Embodiments," Philosophies
+  11(5), 161 (2026), https://doi.org/10.3390/philosophies11050161. Adopted as a
+  framing for evidence sufficiency only. The paper's metaphysical and ontology
+  claims are not adopted, cited, or relied on.
+- **Proof status:** [PROPOSED / PENDING] documentation rule; repository gates
+  and independent review required before release.
+- **Files:** `choreography/artifact-contract.md`, `CHANGELOG.md`.
+
 ## Unreleased — I/O delegation contract (2026-09-13)
 
 - **What:** add a public, vendor-neutral `choreography/io-delegation.md`
