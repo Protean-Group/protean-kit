@@ -505,25 +505,31 @@ def self_test():
             for d in detail[:3]:
                 print(f"         got: {d}")
 
-    # repo examples (when present)
-    ex = os.path.join(ROOT, "examples")
-    for fname, want_ok in (("artifact-contract.valid.yaml", True),
-                           ("artifact-contract.invalid.yaml", False)):
-        p = os.path.join(ex, fname)
-        if not os.path.isfile(p):
-            print(f"  [FAIL] repo example {fname} missing")
-            failed += 1
-            continue
-        v = check_file(p)
-        ok = (not v) if want_ok else bool(v)
-        mark = "PASS" if ok else "FAIL"
-        passed += ok
-        failed += not ok
-        print(f"  [{mark}] repo example {fname} "
-              f"{'valid' if want_ok else 'invalid'} as expected")
-        if not ok:
-            for d in v[:5]:
-                print(f"         {d}")
+    # Examples live at repo/examples in the source tree and at
+    # contracts/examples in generated kits.
+    example_roots = [os.path.join(HERE, "examples"),
+                     os.path.join(HERE, "..", "examples")]
+    ex = next((root for root in example_roots if os.path.isdir(root)), None)
+    if ex is None:
+        print("  [SKIP] artifact-contract examples are not present")
+    else:
+        for fname, want_ok in (("artifact-contract.valid.yaml", True),
+                               ("artifact-contract.invalid.yaml", False)):
+            p = os.path.join(ex, fname)
+            if not os.path.isfile(p):
+                print(f"  [FAIL] repo example {fname} missing")
+                failed += 1
+                continue
+            v = check_file(p)
+            ok = (not v) if want_ok else bool(v)
+            mark = "PASS" if ok else "FAIL"
+            passed += ok
+            failed += not ok
+            print(f"  [{mark}] repo example {fname} "
+                  f"{'valid' if want_ok else 'invalid'} as expected")
+            if not ok:
+                for d in v[:5]:
+                    print(f"         {d}")
 
     print(f"\n{passed} passed, {failed} failed")
     return 0 if failed == 0 else 1
