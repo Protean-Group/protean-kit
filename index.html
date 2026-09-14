@@ -34,6 +34,7 @@
       <a href="#why">Why this</a>
       <a href="#upgrades">What changed</a>
       <a href="#preprocessing">Preprocessing</a>
+      <a href="#evidence">Execution evidence</a>
       <a href="#ingestion">Ingestion</a>
       <a href="#status">Status</a>
       <a href="#install">Get started</a>
@@ -227,7 +228,7 @@
     <div class="container">
       <p class="kicker">WHAT CHANGED · v1.1.0 OPERATING UPGRADES</p>
       <h2 id="upgrades-title">How the team stays reliable.</h2>
-      <p class="lead measure">These rules each exist because the team hit that exact failure and fixed it. Full details in the repo: <span class="mono">choreography/orchestration.md</span>, <span class="mono">choreography/governance.md</span>, <span class="mono">choreography/ai-assisted-development.md</span>, <span class="mono">choreography/router-security.md</span>, <span class="mono">choreography/side-effect-cost-preflight.md</span>, <span class="mono">choreography/artifact-contract.md</span>, <span class="mono">choreography/io-delegation.md</span>, and <span class="mono">choreography/safe-run-packet.md</span>.</p>
+      <p class="lead measure">These rules each exist because the team hit that exact failure and fixed it. Full details in the repo: <span class="mono">choreography/orchestration.md</span>, <span class="mono">choreography/governance.md</span>, <span class="mono">choreography/ai-assisted-development.md</span>, <span class="mono">choreography/router-security.md</span>, <span class="mono">choreography/side-effect-cost-preflight.md</span>, <span class="mono">choreography/artifact-contract.md</span>, <span class="mono">choreography/io-delegation.md</span>, <span class="mono">choreography/safe-run-packet.md</span>, and <span class="mono">choreography/run-evidence.md</span>.</p>
 
       <div class="up-grid">
         <article class="up-card">
@@ -326,7 +327,16 @@
     </div>
   </section>
 
-  <!-- 5.57 INGESTION DEFINITION OF DONE (v1.3.0) -->
+  <!-- 5.57 EXECUTION EVIDENCE -->
+  <section class="section" id="evidence" aria-labelledby="evidence-title">
+    <div class="container">
+      <p class="kicker">WHAT'S NEW · EXECUTION EVIDENCE</p>
+      <h2 id="evidence-title">What an agent actually executed.</h2>
+      <p class="lead measure">Adds a vendor-neutral execution-evidence contract (<span class="mono">choreography/run-evidence.md</span>) defining evidence-record fields, procedure vs achieved-state evidence, token accounting (innermost spans only), cost honesty (unknown models remain unknown), run comparison with stable step keys, and bounded retention with no secrets or raw prompts by default.</p>
+    </div>
+  </section>
+
+  <!-- 5.58 INGESTION DEFINITION OF DONE (v1.3.0) -->
   <section class="section" id="ingestion" aria-labelledby="ingestion-title">
     <div class="container">
       <p class="kicker">WHAT&rsquo;S NEW · v1.3.0 CHECKING NEW SOURCES BEFORE TRUSTING THEM</p>
