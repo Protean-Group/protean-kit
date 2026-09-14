@@ -2,10 +2,11 @@
 
 Turn one AI agent engine (Hermes, from Nous Research) into a small team of AI agents that work together under clear rules — with a supervisor, a quality checker, and a builder that assembles your own team from ready-made parts.
 
-Official site: https://www.askaconsult.com/team6
-Technical guide: https://team6.askaconsult.com/
+Canonical site: https://team6.askaconsult.com/
+ASKA corporate page: https://www.askaconsult.com/team6
 
-The official site is the canonical public documentation for Team6-kit. The
+The canonical site is the public documentation for Team6-kit. The ASKA
+corporate page is the service listing for the team that uses it. The
 interactive experience is served by the Team6 Frontier Vercel project through
 ASKA's `/team6` route.
 
@@ -86,6 +87,15 @@ handoff snapshot written out of it. Read
 `python3 build/check-artifact-contract.py <contract>` (or `--self-test`).
 The pattern is a conceptual adoption; no external orchestration code is
 included or required.
+
+A finished worker stays reachable. When a one-shot run ends, it leaves its
+session saved, so a follow-up can be sent to that same session. The worker
+answers that single turn, then stops again.
+
+This lets you add one correction or ask one question after a task is done
+without starting a new session or losing the thread. Send a follow-up only
+after the worker has fully stopped, and only for a turn that reads state.
+Never attach a second live writer to a session that is still running.
 
 ## Release gate verification
 
