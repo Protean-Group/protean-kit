@@ -140,6 +140,8 @@ outside this repository.
   `build/check-contracts.py`, `build/verify-all.py`, `tests/test_gates.py`,
   `examples/reward-functions.{valid,invalid}.yaml`, `registry/kit.yaml`,
   README, CHANGELOG.
+- The registry file stays in-source only; the kit does not copy it into
+  generated kits (no executable reward registration code is bundled).
 - **Proof status:** [PROPOSED / PENDING] documentation contract plus local
   validator; independent QA must verify the validators run from a fresh
   generated kit and that all instance-token gates remain clean before release.
