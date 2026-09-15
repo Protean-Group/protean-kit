@@ -33,7 +33,7 @@ Each step requires the prior step to complete successfully before moving on. Lin
 
 ## 5. No-auto-posting
 
-Team6-kit never posts, publishes, or schedules on your behalf. The route ends at a local export you review. Any posting is a separate manual user action outside this route.
+Protean Kit never posts, publishes, or schedules on your behalf. The route ends at a local export you review. Any posting is a separate manual user action outside this route.
 
 ## 6. Quality and provenance gates
 
@@ -50,6 +50,6 @@ If OpenShorts is missing, broken, license-unclear, or the request is not a finis
 
 ## 8. Boundary statement
 
-OpenShorts (jnMetaCode/openshorts, commit 60317c2) is an external local-first short-video pipeline. Team6-kit does not render video by itself. Users must check the current upstream license and dependency terms before installing or using OpenShorts.
+OpenShorts (jnMetaCode/openshorts, commit 60317c2) is an external local-first short-video pipeline. Protean Kit does not render video by itself. Users must check the current upstream license and dependency terms before installing or using OpenShorts.
 
-This is an evaluated external reference, not a Team6 component; it is not adopted, installed, or approved by Team6-kit.
+This is an evaluated external reference, not a Protean Team component; it is not adopted, installed, or approved by Protean Kit.

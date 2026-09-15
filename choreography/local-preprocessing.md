@@ -1,6 +1,6 @@
 # Local Preprocessing Adapter Contract
 
-> A bounded, local preprocessing layer that a Team6-installed agent *may*
+> A bounded, local preprocessing layer that a Protean Team-installed agent *may*
 > apply around approved outbound work. It is **not** a provider/router
 > replacement and it **never** handles high-stakes judgment. This document
 > states the contract and the automatic decision policy in a vendor-neutral
@@ -88,10 +88,10 @@ Any implementation that claims to satisfy this contract MUST:
 ## Desert Ant as one implementation
 
 Desert Ant is a *possible* implementation of this contract on macOS, not a
-required dependency. Nothing in the Team6 kit requires it, and the public repo
+required dependency. Nothing in the Protean Team kit requires it, and the public repo
 does not bundle Desert Ant code, model files, or license text.
 
-- The **Team6 kit layer** is Apache-2.0 (see `../LICENSE`).
+- The **Protean Team kit layer** is Apache-2.0 (see `../LICENSE`).
 - The **Desert Ant models** carry a **separate vendor license** (source-available,
   not an OSI open-source license) that governs those models and does **not**
   extend to the kit. See the model vendor's public documentation for the
@@ -118,5 +118,5 @@ A generated installation **implements the contract** by:
 2. Wiring the decision policy above into the installed agent's skill set.
 3. Confirming the adapter satisfies every requirement in "Adapter requirements".
 
-Nothing in the Team6 open-core build turns this on by default or edits a
+Nothing in the Protean Team open-core build turns this on by default or edits a
 user's Hermes profile to do so.
