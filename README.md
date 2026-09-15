@@ -2,13 +2,10 @@
 
 Turn one AI agent engine (Hermes, from Nous Research) into a small team of AI agents that work together under clear rules — with a supervisor, a quality checker, and a builder that assembles your own team from ready-made parts.
 
-Canonical site: https://protean-team.askaconsult.com/
-ASKA corporate page: https://www.askaconsult.com/protean-team
+Canonical site: https://proteus.askaconsult.com/
 
-The canonical site is the public documentation for Protean Kit. The ASKA
-corporate page is the service listing for the team that uses it. The
-interactive experience is served by the Protean Team Frontier Vercel project through
-ASKA's `/protean-team` route.
+The canonical site is the public documentation for Protean Kit. For the
+service listing, see the canonical site.
 
 ## What problem does it solve?
 
