@@ -12,6 +12,7 @@ enforces the Team6 scored-rollout contract:
               `expected_samples` sample records (record_type: sample)
 
 The checker validates structure, cross-references, numeric/array shapes, the
+per-sample token-length cap against the header `max_token_length`, the
 evaluation-policy enum combination, the off-policy batch cap, and the
 allocation-minima sum. It does NOT decode tokens, infer prompts, compute
 advantages, normalise scores, or judge whether a score is good — those are
@@ -159,7 +160,7 @@ def _validate_group(group, lineno):
     return v
 
 
-def _validate_sample(sample, lineno):
+def _validate_sample(sample, lineno, max_token_length=None):
     v = []
     for key in sorted(set(sample) - SAMPLE_FIELDS):
         v.append(f"line {lineno}: SAMPLE unknown field '{key}'")
@@ -186,6 +187,9 @@ def _validate_sample(sample, lineno):
         v.append(f"line {lineno}: SAMPLE tokens must be non-negative integers")
     else:
         token_len = len(tokens)
+        if _is_int(max_token_length) and token_len > max_token_length:
+            v.append(f"line {lineno}: SAMPLE tokens length {token_len} exceeds "
+                     f"header max_token_length {max_token_length}")
 
     mask = sample.get("mask")
     if not isinstance(mask, list):
@@ -231,6 +235,8 @@ def validate_text(text):
         else None
     cap = header.get("max_offpolicy_batches") \
         if _is_int(header.get("max_offpolicy_batches")) else None
+    header_max_tokens = header.get("max_token_length") \
+        if _is_int(header.get("max_token_length")) else None
 
     if header.get("record_type") == "run":
         violations += _validate_header(header, first_lineno)
@@ -273,7 +279,8 @@ def validate_text(text):
                 samples_by_group.setdefault(gid, [])
             continue
         if rtype == "sample":
-            violations += _validate_sample(obj, lineno)
+            violations += _validate_sample(obj, lineno,
+                                           header_max_tokens)
             if obj.get("run_id") != header_run_id:
                 violations.append(f"line {lineno}: SAMPLE run_id must match the "
                                   f"header run_id {header_run_id!r}")
@@ -422,6 +429,11 @@ def self_test():
                   _jsonl(_hdr(max_offpolicy_batches=0), _grp("g1"),
                          _smp("g1", 0, batch="b1"),
                          _smp("g1", 1, batch="b2", off=True)), False))
+
+    cases.append(("token length exceeds cap fails",
+                  _jsonl(_hdr(max_token_length=2), _grp("g1"),
+                         _smp("g1", 0, tokens=[1, 2, 3], mask=[1, 1, 1]),
+                         _smp("g1", 1)), False))
 
     cases.append(("allocation sum fails",
                   _jsonl(_hdr(), _grp("g1", alloc=0.6), _smp("g1", 0),
