@@ -13,6 +13,7 @@ ORDER (as documented in choreography/release-gates.md):
   5. preflight/check.py self-test
   6. report/check.py self-test
   7. fresh-clone test (generate.py fork-dryrun check)
+  8. review-repair checker self-test + fixture corpus
 
 Exit: 0 = all gates pass; 1 = any gate failed.
 """
@@ -103,6 +104,15 @@ def main():
         # Alternative: verify generate.py works in fork mode
         gates.append(("fresh-clone generate test",
                       [sys.executable, os.path.join(HERE, "generate.py"), "--help"]))
+
+    # 8. review-repair checker — self-test + fixture corpus. Exercises the
+    #    guarded review/repair contract (choreography/review-repair-workflow.md)
+    #    across the review, adversarial, browser, and artifact lanes.
+    review_repair = os.path.join(HERE, "review-repair", "check.py")
+    gates.append(("review-repair self-test",
+                  [sys.executable, review_repair, "--selftest"]))
+    gates.append(("review-repair fixtures",
+                  [sys.executable, review_repair, "--fixtures"]))
 
     # Run all gates
     results = []

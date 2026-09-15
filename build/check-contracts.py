@@ -23,6 +23,8 @@ def main():
         ("build/check-artifact-contract.py --example-check", "artifact-contract examples"),
         ("build/preflight/check.py --selftest", "preflight validator"),
         ("build/report/check.py --selftest", "report validator"),
+        ("build/review-repair/check.py --selftest", "review-repair validator"),
+        ("build/review-repair/check.py --fixtures", "review-repair fixtures"),
     ]
 
     all_passed = True
