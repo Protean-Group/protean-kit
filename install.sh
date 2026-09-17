@@ -11,6 +11,10 @@
 # ingredient from its annotated tag, verifies the tag's peeled commit sha and the
 # ingredient tree hash, installs it, and reads every written file back.
 #
+# Contribution mode is an install-time choice with a safe default:
+#   --contribution-mode off|on   (default off; on requires --operator-ref)
+# The record is rendered from the ops ingredient's own installed template.
+#
 # Exit codes: 0 ok, 1 usage/input, 2 lock invalid, 3 dependency, 4 integrity,
 # 5 install, 6 post-install verification. A run that installs part of the
 # selection exits non-zero: there is no partial-success zero.

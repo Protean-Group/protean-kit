@@ -41,3 +41,6 @@ jobs:
 
       - name: Run the composition lock tests
         run: python3 -m unittest tests.test_kit_lock
+
+      - name: Run the contribution-mode tests
+        run: python3 -m unittest tests.test_contribution_mode

@@ -46,7 +46,7 @@ IDENTITY = ["-c", "user.name=fixture", "-c", "user.email=fixture@example.com"]
 
 def build_ingredient(base, slug, version="1.0.0", gate_exit=0, requires=None,
                      recommends=None, install_targets=None, contract=CONTRACT,
-                     tree_tweak=None):
+                     tree_tweak=None, extra_files=None):
     """A real fixture ingredient repository with an annotated tag."""
     path = os.path.join(base, slug)
     os.makedirs(path, exist_ok=True)
@@ -87,6 +87,11 @@ def build_ingredient(base, slug, version="1.0.0", gate_exit=0, requires=None,
     if tree_tweak:
         with open(os.path.join(path, tree_tweak), "w", encoding="utf-8") as fh:
             fh.write("extra\n")
+    for rel, content in (extra_files or {}).items():
+        dest = os.path.join(path, rel)
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        with open(dest, "w", encoding="utf-8") as fh:
+            fh.write(content)
     git(["add", "-A"], cwd=path)
     git(IDENTITY + ["commit", "--quiet", "-m", "%s %s" % (slug, version)], cwd=path)
     git(IDENTITY + ["tag", "-a", "v" + version, "-m", "%s %s" % (slug, version)], cwd=path)

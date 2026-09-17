@@ -6,6 +6,15 @@ Composition is manifest-only: this program fetches ingredients from their pinned
 tags and writes them into the target. It copies no ingredient payload into the
 composer and uses no git submodules.
 
+Contribution mode is an install-time choice with a safe default:
+
+  bash install.sh --all --target <dir> --contribution-mode off|on [--operator-ref <reference>]
+
+  off (the default) records the mode as off; on requires --operator-ref and is
+  refused without it. The composer vendors no schema: when the selection installs
+  the ops ingredient, the record is rendered from that ingredient's own template
+  and written beside it. An existing record is never overwritten.
+
   bash install.sh --all --target <dir>
   bash install.sh --ingredient <slug> --target <dir>
   bash install.sh --ingredient <slug> --no-deps --target <dir>
@@ -28,6 +37,7 @@ partial-success zero.
 
 Stdlib only. No third-party import.
 """
+import datetime
 import hashlib
 import json
 import os
@@ -44,6 +54,9 @@ LOCK_FILE = "kit.lock.json"
 ALGORITHM = "protean-tree-v1"
 CACHE_ENV = "PROTEAN_CACHE"
 STAGING = ".protean-staging"
+STATE_REL = "records/CONTRIB-STATE.md"
+STATE_TMPL_REL = "records/CONTRIB-STATE.md.tmpl"
+CONTRIBUTION_MODES = ("off", "on")
 
 
 class Failure(Exception):
@@ -78,7 +91,8 @@ def usage():
 
 def parse_args(argv):
     opts = {"all": False, "ingredients": [], "no_deps": False, "offline": False,
-            "dry_run": False, "target": None, "lock": LOCK_FILE, "cache": None}
+            "dry_run": False, "target": None, "lock": LOCK_FILE, "cache": None,
+            "contribution_mode": "off", "operator_ref": None}
     i = 0
     while i < len(argv):
         arg = argv[i]
@@ -120,6 +134,22 @@ def parse_args(argv):
                 raise Failure(1, "usage: --cache needs a directory")
             opts["cache"] = argv[i + 1]
             i += 2
+        elif arg == "--contribution-mode":
+            if i + 1 >= len(argv):
+                raise Failure(1, "usage: --contribution-mode needs off or on")
+            opts["contribution_mode"] = argv[i + 1].strip().lower()
+            i += 2
+        elif arg.startswith("--contribution-mode="):
+            opts["contribution_mode"] = arg.split("=", 1)[1].strip().lower()
+            i += 1
+        elif arg == "--operator-ref":
+            if i + 1 >= len(argv):
+                raise Failure(1, "usage: --operator-ref needs a reference")
+            opts["operator_ref"] = argv[i + 1]
+            i += 2
+        elif arg.startswith("--operator-ref="):
+            opts["operator_ref"] = arg.split("=", 1)[1]
+            i += 1
         else:
             raise Failure(1, "usage: unknown flag: %s" % arg)
     if not opts["all"] and not opts["ingredients"]:
@@ -130,6 +160,13 @@ def parse_args(argv):
         raise Failure(1, "usage: --no-deps applies to a single-ingredient selection")
     if not opts["dry_run"] and not opts["target"]:
         raise Failure(1, "usage: --target <dir> is required (or use --dry-run)")
+    if opts["contribution_mode"] not in CONTRIBUTION_MODES:
+        raise Failure(1, "usage: --contribution-mode must be off or on, got %r"
+                      % opts["contribution_mode"])
+    if opts["contribution_mode"] == "on" and not opts["operator_ref"]:
+        raise Failure(1, "--contribution-mode on requires --operator-ref <reference>: "
+                         "turning external contribution on is a recorded operator decision, "
+                         "and an unrecorded switch is refused")
     return opts
 
 
@@ -539,6 +576,76 @@ def install_one(entry, cache, opts, plan, entry_dir):
 
 
 # ---------------------------------------------------------------------------
+# Contribution mode (install-time toggle; the schema belongs to protean-ops)
+# ---------------------------------------------------------------------------
+
+def utc_stamp():
+    return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def row_cells(line):
+    if not line.strip().startswith("|"):
+        return []
+    return [c.strip() for c in line.strip().strip("|").split("|")]
+
+
+def set_header_value(text, key, value):
+    out = []
+    for line in text.splitlines():
+        cells = row_cells(line)
+        if len(cells) == 2 and cells[0].lower() == key.lower():
+            line = "| %s | %s |" % (cells[0], value)
+        out.append(line)
+    return "\n".join(out) + "\n"
+
+
+def contribution_switch_row(now, mode, operator_ref):
+    stamp = now.replace("-", "").replace(":", "").replace("T", "-").replace("Z", "")
+    return ("| cc-%s | switch | - | - | - | external | approval %s | external_contrib=%s "
+            "operator reference %s | installer | %s | - |"
+            % (stamp, operator_ref, mode, operator_ref, now))
+
+
+def contribution_state(target, mode, operator_ref):
+    """Write the contribution-state record. Returns (relative path, note).
+
+    The schema belongs to the ops ingredient, so this renders that ingredient's
+    own installed template instead of carrying a copy of it. An existing record
+    is left untouched: an install never silently widens a permission.
+    """
+    dest = os.path.join(target, STATE_REL)
+    if os.path.exists(dest):
+        return None, ("%s already exists and was left unchanged; an install never overwrites "
+                      "an existing contribution-state record" % STATE_REL)
+    template = os.path.join(target, STATE_TMPL_REL)
+    if not os.path.isfile(template):
+        if mode == "on":
+            raise Failure(5, "contribution mode 'on' was requested, but %s is not installed, "
+                             "so the contribution-state record cannot be rendered from its "
+                             "template" % STATE_TMPL_REL)
+        return None, ("%s not written: %s is not in this selection"
+                      % (STATE_REL, STATE_TMPL_REL))
+    with open(template, encoding="utf-8") as fh:
+        text = fh.read()
+    now = utc_stamp()
+    reason = "installer: contribution mode %s" % mode
+    if operator_ref:
+        reason += ", operator reference %s" % operator_ref
+    text = set_header_value(text, "internal_contrib", "on")
+    text = set_header_value(text, "external_contrib", mode)
+    text = set_header_value(text, "read_at", now)
+    text = set_header_value(text, "last_change", "%s %s" % (now, reason))
+    if mode == "on":
+        row = contribution_switch_row(now, mode, operator_ref)
+        text = "\n".join(row if "empty state" in line.lower() else line
+                         for line in text.splitlines()) + "\n"
+    os.makedirs(os.path.dirname(dest), exist_ok=True)
+    with open(dest, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return STATE_REL, None
+
+
+# ---------------------------------------------------------------------------
 # Driver
 # ---------------------------------------------------------------------------
 
@@ -549,6 +656,9 @@ def dry_run(lock, order, plan, cache, offline):
     info("dependency mode: %s" % ("degraded (--no-deps)" if plan["no_deps"] else "full"))
     info("install order: %s" % ", ".join(order))
     info("network mode: %s" % ("offline (cache only)" if offline else "online"))
+    info("contribution mode: %s%s" % (plan["contribution_mode"],
+                                      "" if plan["contribution_mode"] == "off"
+                                      else " (operator reference %s)" % plan["operator_ref"]))
     info("planned writes (target-relative), per ingredient:")
     for slug in order:
         entry = plan["entries"][slug]
@@ -590,6 +700,8 @@ def main(argv):
         "no_deps": opts["no_deps"],
         "degraded": degraded,
         "entries": seen,
+        "contribution_mode": opts["contribution_mode"],
+        "operator_ref": opts["operator_ref"],
     }
     cache = cache_root(opts)
     if opts["dry_run"]:
@@ -630,6 +742,13 @@ def main(argv):
     info("  installed: %s" % ", ".join(installed))
     info("  selection: %s" % plan["selection_label"])
     info("  read-back: every written file compared to its cached blob")
+    info("  contribution mode: %s" % opts["contribution_mode"])
+    state_rel, state_note = contribution_state(plan["target"], opts["contribution_mode"],
+                                               opts["operator_ref"])
+    if state_rel:
+        info("  contribution state: wrote %s" % state_rel)
+    elif state_note:
+        warnings.append(state_note)
     for message in warnings:
         info("  note: %s" % message)
     info("  next: read each installed ingredient's README.md under the target")
