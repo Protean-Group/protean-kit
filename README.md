@@ -7,6 +7,19 @@ Canonical site: https://proteus.askaconsult.com/
 The canonical site is the public documentation for Protean Kit. For the
 service listing, see the canonical site.
 
+## Do you need this?
+
+ROLE: The pinned composer for the kit. It resolves `--all` or `--ingredient` selections from `kit.lock.json`, fetches each pinned ingredient from its annotated tag, verifies the tag commit SHA and the ingredient tree hash, installs it, and reads every written file back.
+
+USE WHEN:
+- A machine must install the full kit or one ingredient at locked versions, in the lock install order starting with `protean-doctrine`, with `--no-deps` available to install exactly one ingredient and report requirements as degraded.
+- An install must run with zero network calls via `--offline` from the content-addressed cache, failing closed when the entry is absent, or as a `--dry-run` plan.
+- A team wants the multi-agent crew and playbook on top of the Hermes engine, per `WHY.md`, rather than a single agent with a tool.
+
+SKIP WHEN:
+- The need is the newest unpinned commit of an ingredient. The composer installs only pinned tags and a partial install exits non-zero with no partial-success zero.
+- The need is a single procedure, record, or protocol. Install that ingredient directly instead of the whole kit.
+
 ## What's new in this release (1.8.0)
 
 ### What
@@ -234,6 +247,22 @@ commit SHA and its tree hash, installed, and then read back file by file.
 
 The exact install targets, the pinned SHA, and the tree hash of each ingredient
 are recorded in `kit.lock.json`, which is authoritative.
+
+### Which ingredient do you need?
+
+One row per ingredient pinned in `kit.lock.json`, with the role of each and the fit that decides whether to install it.
+
+| Ingredient | Role | Use when | Skip when |
+|---|---|---|---|
+| [protean-doctrine](https://github.com/aska-digital/protean-doctrine) | Operating doctrine: the default five-stage pipeline, role delegation map, handoff protocol, QA gates, and external-writing discipline. | A project must run on the standard Protean pipeline with fixed stage order and ownership boundaries. Prose bound for a human must follow the shared verification and tone contract. | You need executable workflow automation. This ingredient carries doctrine skills and two reference gates, not runners. You expect it to depend on other ingredients. It requires and recommends none and sits at the bottom of the graph. |
+| [protean-ops](https://github.com/aska-digital/protean-ops) | Dispatch and rotation ops kit: five append-only record schemas with roster allowlist and deterministic read-only gates. | A run must track rotation state, inflight work, learnings, hot-path freeze, and decision reports as append-only records. A gate must check a record without ever writing to it, with read-only stdlib scripts. | You want the gates to maintain state. Every gate reads and exits 0 pass, 1 violation, or 2 missing input. You need prose or protocol checks. This ingredient carries record gates and nothing else. |
+| [protean-drafts](https://github.com/aska-digital/protean-drafts) | Draft-review pipeline: render a draft as one self-contained dark HTML review page through one command that runs the prose, identifier, quote-integrity, and render-fidelity gates. | A PR or issue draft must be shown to a human as a single reviewable page before posting. A draft must pass the prose gate and renderer defaults before it may be posted. | Rendering only. The ingredient approves nothing and merges nothing on GitHub. You need record or protocol gates. `check-prose.py` lives only here and record gates live only in `protean-ops`. |
+| [protean-github-flow](https://github.com/aska-digital/protean-github-flow) | GitHub workflow pack: five procedures that carry a repository from inbound issue to verified, reviewed pull request. | An issue must be triaged and carried to a verified PR with honest CI state. A merge decision needs a live-head audit and evidence register rather than a pasted snapshot. | The work is not on GitHub. Every procedure assumes issues, branches, PRs, and CI. You want the human-facing review page. That renderer lives in `protean-drafts`, which this repo only recommends. |
+| [protean-sym2p](https://github.com/aska-digital/protean-sym2p) | Protocol ingredient: normative SYM-2P message spec with stdlib validator, templates, worked example, and fixture suite. | Agents must exchange packets as one canonical JSON object per line in durable text artifacts. A receiver must validate a packet stream with typed diagnostics, including state-aware checks. | Open items O-1 to O-9 matter to you. The repo states none is closed or decided. You need routing-state record schemas. Those live in `protean-ops`, which this repo only recommends. |
+| [protean-control-plane](https://github.com/aska-digital/protean-control-plane) | Canonical procedure home: a trigger index that routes a request to the minimum skill bundle, with the dispatch preflight, gate table, and failure policy. | A dispatcher must pick exactly the skill bundle a request names instead of loading every skill. Cited record gates must run through one wrapper that reports degraded mode openly when `protean-ops` is absent. | `protean-doctrine` and `protean-ops` are not installed. Both are hard requirements and the plane ships no copy of either file. You want platform mechanics or supervision and recovery steps. This repo states the plane deliberately does not restate them. |
+| [protean-handoff](https://github.com/aska-digital/protean-handoff) | Phone orchestration at the existing skill edge: inspect, steer, and approve lane work from a phone with no new adapter or core change. | The operator must leave the laptop and still read lane state, steer a live lane, or approve consequential actions from a phone. Lane state must survive sleep as disk snapshots plus a replayable journal, with approvals bound to an exact target fingerprint. | The ingredient is not installed, configured, and verified on the serving machine. This repo names slash-command input as the supported surface until then. You expect automatic execution, self-approval, or credential handling in chat. This repo states it does none of these. |
+
+Every pin, install target, and tree hash behind this table comes from `kit.lock.json`, which is authoritative.
 
 ### Dependency behaviour
 
