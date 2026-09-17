@@ -108,14 +108,14 @@ the boundary is explicit:
 
 ### Public-domain hosting boundary (v1.2.0)
 
-v1.2.0 adopts the canonical-site decision for the Team6 site:
+v1.2.0 adopts the canonical-site decision for the Protean Team site:
 
-- **Canonical public site:** `https://team6.askaconsult.com/`.
+- **Canonical public site:** `https://proteus.askaconsult.com/`.
 - **Repository/source of truth:** `https://github.com/aska-digital/protean-kit`.
 - **GitHub Pages:** not used. The old Pages site was taken down.
 - **Deployment boundary:** the canonical site is served by the ASKA-managed
-  Team6 deployment; DNS and deployment settings are outside this repo.
-- **Visible navigation back to ASKA Digital:** the Team6 site (`index.html`)
+  Protean Team deployment; DNS and deployment settings are outside this repo.
+- **Visible navigation back to ASKA Digital:** the Protean Team site (`index.html`)
   carries visible nav + footer links back to `https://askaconsult.com/digital/`.
 
 ## Provenance

@@ -18,7 +18,8 @@
     "protean-drafts",
     "protean-github-flow",
     "protean-sym2p",
-    "protean-control-plane"
+    "protean-control-plane",
+    "protean-handoff"
   ],
   "ingredients": [
     {
@@ -294,6 +295,42 @@
           "cwd": ".",
           "postInstall": true,
           "cmd": "python3 gates/protean-control-plane/check-control-plane-gates.py"
+        }
+      ],
+      "open": []
+    },
+    {
+      "slug": "protean-handoff",
+      "repo": "https://github.com/aska-digital/protean-handoff",
+      "ref": "refs/tags/v1.0.0",
+      "sha": "4e47f6cd27a2f5fc1832e804399d82cf04053f59",
+      "version": "1.0.0",
+      "contract": "# Protean Handoff",
+      "kind": "skills",
+      "installTargets": [
+        "skills/protean-handoff",
+        "scripts/protean-handoff",
+        "gates/protean-handoff"
+      ],
+      "requires": [],
+      "recommends": [],
+      "integrity": {
+        "fileCount": 14,
+        "treeSha256": "de1739a0cfc304a5da9f377c19d657b5e4274d8301387a2cf5500920ef390829",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "payload",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/verify.py --payload-only --root ."
+        },
+        {
+          "name": "tests",
+          "cwd": ".",
+          "postInstall": false,
+          "cmd": "python3 tests/test_handoff.py"
         }
       ],
       "open": []

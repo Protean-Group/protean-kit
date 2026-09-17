@@ -1,6 +1,6 @@
-# Why Team6-kit Exists
+# Why Protean Kit Exists
 
-> **Short version:** Hermes is the engine. Team6-kit is the operating layer —
+> **Short version:** Hermes is the engine. Protean Kit is the operating layer —
 > the *crew* and the *playbook* that turn a single agent into a disciplined
 > multi-agent team. Different axis, not a feature add-on.
 
@@ -12,7 +12,7 @@ Hermes is what you install. You get profiles, skills, memory, cron, plugins
 (kanban, accent, etc.), and `hermes setup` for plumbing. It's an *engine* —
 the chassis, the dashboard, the wiring. It is excellent at what it does.
 
-Team6-kit is what you instantiate *on top of* the engine. You get
+Protean Kit is what you instantiate *on top of* the engine. You get
 persona archetypes, orchestration choreography, governance funnels, and a
 generator that turns a parameter file into a configured team. It's an
 *operating layer* — the crew, the playbook, the runbook.
@@ -21,9 +21,9 @@ A plugin (kanban, accent) is a *tool*. The kit is the *crew* that uses the
 tools. They are not competitors any more than a steering wheel competes with
 a driver. If you want a single agent with a task dashboard, you want
 Hermes + kanban. If you want multiple agents working a real workflow with
-governance, you want Hermes + Team6-kit.
+governance, you want Hermes + Protean Kit.
 
-| | Hermes | Team6-kit |
+| | Hermes | Protean Kit |
 |---|---|---|
 | **What it is** | The engine | The operating layer |
 | **What you install** | A binary + profiles | A parameter file + the kit |
@@ -215,7 +215,7 @@ Hermes uses: open-source engine, paid service on top.
 - ✅ Desert Ant framed as one optional implementation; separate vendor model license distinct from Apache-2.0 kit
 - ✅ No invented performance/cost figures — expected benefits as intended outcomes
 - ✅ Public docs + website updated to v1.2.0 (README, WHY, CHANGELOG, registry/kit.yaml, LICENSING, index.html)
-- ✅ Canonical-site routing: official site `team6.askaconsult.com`; GitHub Pages is not used; visible nav back to `askaconsult.com/digital/`
+- ✅ Canonical-site routing: official site `proteus.askaconsult.com`; GitHub Pages is not used; visible nav back to `askaconsult.com/digital/`
 
 ### v1.1.0 — operating upgrades (2026-09-09)
 
@@ -231,7 +231,7 @@ Hermes uses: open-source engine, paid service on top.
 
 ### v1.0.0 — efficiency update
 
-- ✅ Open core public (Apache-2.0) on GitHub — renamed airefea-kit → Team6-kit
+- ✅ Open core public (Apache-2.0) on GitHub — renamed airefea-kit → Protean Kit
 - ✅ Licensing coherent (MIT provenance + Apache-2.0 kits + proprietary-by-contract packs)
 - ✅ 8-surface hygiene gate (including S8 network-egress, enforcing no-telemetry by construction)
 - ✅ Knowledge router skill (MoE-style activation) — shipped in templates/
@@ -252,5 +252,5 @@ proof gates that turn this from a repo into a product.
 
 ---
 
-*Authored for the Team6-kit org. Reviewed by the build team. Open to
+*Authored for the Protean Kit org. Reviewed by the build team. Open to
 refinement as the proof points land.*
