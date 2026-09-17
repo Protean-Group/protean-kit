@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prediction Market Outlook · ASKA Research</title>
+<meta content="Near-future signals, regression analysis, and decision implications from publicly accessible prediction markets. As of September 8, 2026." name="description"/>
+<meta content="Prediction Market Outlook · ASKA Research" property="og:title"/>
+<meta content="Near-future signals, regression analysis, and decision implications from publicly accessible prediction markets." property="og:description"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/system.css?v=7.22" rel="stylesheet"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://askaconsult.com/digital/blog/prediction-market-outlook.html" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="https://askaconsult.com/digital/blog/prediction-market-outlook.html" property="og:url"/>
+<meta content="https://askaconsult.com/assets/svg/askadigital.svg" property="og:image"/>
+<link href="/frontier.css?v=1" rel="stylesheet"/>
+<meta content="noindex,nofollow" name="robots"/><link href="/completion.css?v=complete-1" rel="stylesheet"/><style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Geist-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Geist-Medium.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Geist-SemiBold.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Geist-Bold.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/GeistMono-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/GeistMono-SemiBold.woff2) format('woff2');}
+/* Research visual system (token-adapted): dark Digital surface, warm near-white
+   prose, warm grey muted, restrained gold/copper accent, dark cards. Matches the
+   canonical ASKA Digital editorial system shared by the sibling blog posts. */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e8e6e3;
+  --muted: #8b8680;
+  --accent: #d4a056;
+  --accent-dim: #d4a05633;
+  --border: #2a2e35;
+  --card: #161a20;
+  --copper: #c0783c;
+  --copper-dim: #c0783c26;
+  --grey-fill: #4a4f57;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 60px 40px;
+  line-height: 1.7;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.article { max-width: 760px; margin: 0 auto; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  letter-spacing: 0;
+  color: var(--fg);
+}
+.article-meta {
+  margin-bottom: 40px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.article-meta span { margin: 0 3px; }
+
+.subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 16px;
+}
+
+.opening {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 48px;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 32px;
+  color: var(--fg);
+}
+
+p { margin-bottom: 16px; }
+
+/* warm primary prose over dark; system.css `.article p` muted-steel leak is
+   overridden here (same rule as the canonical Digital posts) */
+.article p { color: var(--fg); }
+.article li { color: var(--fg); }
+.article p strong { color: var(--fg); }
+
+ul, ol { margin-bottom: 16px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+/* Kicker + lead */
+.kicker {
+  font-family: var(--font-mono, -apple-system, 'Helvetica Neue', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+.lead { font-size: 18px; line-height: 1.6; color: var(--fg); margin-bottom: 24px; }
+.sec { font-size: 26px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 16px; margin-top: 0; }
+
+/* ---- PROB CARDS ---- */
+.prob-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.prob-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.prob-card--highlight { border-color: var(--accent); }
+.prob-card__theme {
+  font-family: var(--font-mono, -apple-system, 'Helvetica Neue', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.prob-card__value {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.prob-card__value span { font-size: 22px; font-weight: 500; color: var(--muted); }
+.prob-card__label { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+/* ---- CALLOUT ---- */
+.callout {
+  background: var(--accent-dim);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 24px;
+  margin: 24px 0;
+}
+.callout p { margin-bottom: 8px; font-size: 15px; color: var(--fg); }
+.callout strong { color: var(--accent); font-weight: 600; }
+.callout--warm {
+  background: var(--copper-dim);
+  border-left-color: var(--copper);
+}
+.callout--warm strong { color: var(--copper); }
+
+/* ---- BARS ---- */
+.bar-row { display: grid; grid-template-columns: 160px 1fr 60px; align-items: center; gap: 16px; margin-bottom: 16px; }
+.bar-label { font-size: 14px; font-weight: 600; color: var(--fg); }
+.bar-track { height: 8px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 99px; background: var(--accent); transition: width 1s ease; }
+.bar-fill--orange { background: var(--copper); }
+.bar-fill--muted { background: var(--grey-fill); }
+.bar-val { font-size: 14px; font-weight: 600; color: var(--fg); text-align: right; }
+
+/* ---- TABLES ---- */
+.data-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; font-family: -apple-system, 'Helvetica Neue', sans-serif; }
+.data-table th { text-align: left; padding: 10px 12px; font-weight: 600; color: var(--accent); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 2px solid var(--border); }
+.data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--fg); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .num { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--accent); }
+
+/* ---- CHART WRAP ---- */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.chart-title { font-size: 15px; font-weight: 600; color: var(--fg); margin-bottom: 16px; }
+.chart-caption { font-size: 12px; color: var(--muted); margin-top: 8px; font-family: var(--font-mono, -apple-system, 'Helvetica Neue', sans-serif); }
+
+/* ---- SCENARIO CARDS ---- */
+.scenario-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 24px 0; }
+.scenario-card { border-radius: 12px; padding: 28px; border: 1px solid var(--border); background: var(--card); }
+.scenario-card--base { border-color: var(--accent); }
+.scenario-card--up { border-color: #5b9a8b; }
+.scenario-card--down { border-color: var(--copper); }
+.scenario-card__label {
+  font-family: var(--font-mono, -apple-system, 'Helvetica Neue', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.scenario-card--base .scenario-card__label { color: var(--accent); }
+.scenario-card--up .scenario-card__label { color: #7fbca8; }
+.scenario-card--down .scenario-card__label { color: var(--copper); }
+.scenario-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; color: var(--fg); }
+.scenario-card p { font-size: 14px; color: var(--fg); margin-bottom: 6px; }
+
+/* dark scenario panel */
+.scenario-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 32px 0;
+}
+
+/* ---- CHECKLIST ---- */
+.checklist { list-style: none; margin: 16px 0; }
+.checklist li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--fg);
+  line-height: 1.6;
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ---- DIVIDER ---- */
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+/* ---- SOURCES ---- */
+.article-sources {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.article-sources h4 {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.article-sources ul { list-style: none; padding-left: 0; }
+.article-sources li { margin-bottom: 10px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.article-sources a { color: var(--accent); }
+
+/* system.css shared `.article .article-sources` cream leak overridden for dark */
+.article .article-sources { background: var(--card); border-color: var(--border); }
+.article .article-sources h4 { color: var(--accent); }
+.article-sources li { color: var(--muted); }
+
+@media (max-width: 750px) {
+  body { padding: 24px 16px; font-size: 16px; }
+  h1 { font-size: 28px; }
+  .bar-row { grid-template-columns: 110px 1fr 48px; }
+  .prob-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .prob-grid { grid-template-columns: 1fr; }
+}
+</style><link href="/editorial.css?v=editorial-1" rel="stylesheet"/></head>
+<body class="article-digital frontier-aska editorial-site e-reader"><a class="skip-link" href="#main">Skip to content</a>
+<header class="f-nav f-wrap"><a aria-label="ASKA home" class="f-brand" href="/"><img alt="" height="40" src="/assets/svg/aska-logo.svg" width="40"/>ASKA <small>DIGITAL</small></a><nav aria-label="Main navigation" class="f-desktop-nav"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/about/">The firm</a><a href="/digital/blog/">Journal</a><a class="f-contact" href="mailto:info@askaconsult.com">Contact ↗</a></nav><details class="f-mobile-menu"><summary>Explore <span aria-hidden="true">＋</span></summary><nav aria-label="All pages" class="f-mobile-menu-panel"><a href="/">Home</a><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></details></header><main id="main"><section class="e-reader-hero e-wrap" id="article-top"><a class="e-backlink" href="/digital/blog/">← The Digital journal</a><div class="e-reader-title"><div><div class="article-meta">
+<span>ASKA RESEARCH</span>
+<span>·</span>
+<span><time datetime="2026-09-08">SEPTEMBER 8, 2026</time></span>
+<span>·</span>
+<span>PREDICTION MARKETS</span>
+</div><h1>Prediction Market Outlook</h1><div class="subtitle">Prepared for Adnan Ansari · Scope: September 8, 2026 · Public markets · n=23</div></div><div class="e-reader-art"><svg aria-hidden="true" class="e-motif" viewbox="0 0 480 330"><g fill="none" stroke="currentColor"><path d="M30 60C140 320,260 30,440 150" opacity="0.2"></path><path d="M30 71C140 313,260 36,440 158" opacity="0.32"></path><path d="M30 82C140 306,260 42,440 166" opacity="0.44"></path><path d="M30 93C140 299,260 48,440 174" opacity="0.56"></path><path d="M30 104C140 292,260 54,440 182" opacity="0.6799999999999999"></path><path d="M30 115C140 285,260 60,440 190" opacity="0.2"></path><path d="M30 126C140 278,260 66,440 198" opacity="0.32"></path><path d="M30 137C140 271,260 72,440 206" opacity="0.44"></path><path d="M30 148C140 264,260 78,440 214" opacity="0.56"></path><path d="M30 159C140 257,260 84,440 222" opacity="0.6799999999999999"></path><path d="M30 170C140 250,260 90,440 230" opacity="0.2"></path><path d="M30 181C140 243,260 96,440 238" opacity="0.32"></path><path d="M30 192C140 236,260 102,440 246" opacity="0.44"></path><path d="M30 203C140 229,260 108,440 254" opacity="0.56"></path><path d="M30 214C140 222,260 114,440 262" opacity="0.6799999999999999"></path></g></svg></div></div></section><div class="e-reader-layout e-wrap"><aside class="e-chapter-rail"><p class="e-label">IN THIS ARTICLE</p><nav aria-label="Article contents"><ol><li><a href="#section-1">What the markets are pricing</a></li><li><a href="#section-2">Scope and data coverage</a></li><li><a href="#section-3">What drives forecast extremity?</a></li><li><a href="#section-4">The Fed probability picture</a></li><li><a href="#section-5">Elevated volatility: severe escalation remains a tail risk</a></li><li><a href="#section-6">Direction appears clearer than timing</a></li><li><a href="#section-7">Exceptional heat is the highest-confidence broad signal</a></li><li><a href="#section-8">Milestones likely; US-China AI cooperation unlikely</a></li><li><a href="#section-9">A framework for decision-making</a></li><li><a href="#section-10">How to use these probabilities responsibly</a></li><li><a href="#section-11">What this report cannot do</a></li></ol></nav><a class="e-backtop" href="#article-top">Back to the beginning ↑</a></aside><article class="article e-manuscript"><details class="article-toc e-mobile-toc"><summary>In this article</summary><ol><li><a href="#section-1">What the markets are pricing</a></li><li><a href="#section-2">Scope and data coverage</a></li><li><a href="#section-3">What drives forecast extremity?</a></li><li><a href="#section-4">The Fed probability picture</a></li><li><a href="#section-5">Elevated volatility: severe escalation remains a tail risk</a></li><li><a href="#section-6">Direction appears clearer than timing</a></li><li><a href="#section-7">Exceptional heat is the highest-confidence broad signal</a></li><li><a href="#section-8">Milestones likely; US-China AI cooperation unlikely</a></li><li><a href="#section-9">A framework for decision-making</a></li><li><a href="#section-10">How to use these probabilities responsibly</a></li><li><a href="#section-11">What this report cannot do</a></li></ol></details>
+<div class="article">
+<div class="opening">Method: near-future signals, regression analysis, and decision implications drawn from publicly accessible markets and synthesized into a working base case for decision-makers. A dated outlook revisited against real outcomes, not held as a static claim.</div>
+<hr/>
+<p>The strongest cross-platform signal concerns US monetary policy. Polymarket and Kalshi both price the September 2026 Federal Reserve decision close to a coin toss, with a modest lean toward a 25-basis-point hike and a volume-weighted probability around 55%. Both platforms agree on something more decisive: zero rate cuts during 2026 are priced at 91% on Kalshi. Restrictive conditions are not the base case. They are the working assumption.</p>
+<p>Outside monetary policy, the most confident directional signals are exceptional global heat, additional China-focused tariffs during 2026, and a near-term SpaceX Starship milestone. Geopolitical markets indicate material but non-base-case escalation risk: a US invasion of Iran before 2027 is priced around 16%, while Israeli leadership changes by year-end sit close to evenly balanced at 48%.</p>
+<p>The market consensus is not a single prediction. It is a risk distribution. The practical base case is persistent restrictive rates, continued trade-policy pressure, exceptional climate conditions, and elevated geopolitical volatility, without assuming the most severe military outcome.</p>
+<h2 id="section-1">What the markets are pricing</h2>
+<div class="prob-grid">
+<div class="prob-card prob-card--highlight">
+<div class="prob-card__theme">US Monetary Policy</div>
+<div class="prob-card__value">~55<span>%</span></div>
+<div class="prob-card__label">Chance of 25bp Fed hike in September 2026</div>
+</div>
+<div class="prob-card">
+<div class="prob-card__theme">Year-End Rate Path</div>
+<div class="prob-card__value">91<span>%</span></div>
+<div class="prob-card__label">Probability of zero 2026 rate cuts (Kalshi)</div>
+</div>
+<div class="prob-card">
+<div class="prob-card__theme">Global Climate</div>
+<div class="prob-card__value">~97<span>%</span></div>
+<div class="prob-card__label">2026 finishes 1st or 2nd hottest year on record</div>
+</div>
+<div class="prob-card">
+<div class="prob-card__theme">Trade Policy</div>
+<div class="prob-card__value">90<span>%</span></div>
+<div class="prob-card__label">Section 301 tariffs on China during 2026</div>
+</div>
+<div class="prob-card">
+<div class="prob-card__theme">SpaceX</div>
+<div class="prob-card__value">97<span>%</span></div>
+<div class="prob-card__label">Starship Flight Test 14 by October 31</div>
+</div>
+<div class="prob-card">
+<div class="prob-card__theme">Israeli Leadership</div>
+<div class="prob-card__value">48<span>%</span></div>
+<div class="prob-card__label">Netanyahu exits by end of 2026</div>
+</div>
+</div>
+<h2 id="section-2">Scope and data coverage</h2>
+<p>The original ambition was to access every online prediction market. That standard cannot literally be met from public web access. Many venues require authentication, subscriptions, geographic eligibility, or non-indexed API calls. Predacle alone reports more than 16,000 active markets across Polymarket, Kalshi, Myriad, Manifold, Limitless, and Azuro, refreshed every 30 minutes.</p>
+<p>This report is built on a deliberately exploratory sample: 23 publicly observable forecasts selected from pages accessible at the time of analysis. It is not a random census of all active contracts and should not be used to estimate universal prediction-market accuracy.</p>
+<div class="callout">
+<p><strong>Coverage warning.</strong> The statistical sample is exploratory. It contains 23 publicly observable forecasts from Polymarket, Kalshi, and Metaculus. Selection bias is present: these are visible markets, not a representative slice of the full prediction-market universe.</p>
+</div>
+<div class="chart-wrap">
+<div class="chart-title">Platform comparison: mechanism and limits</div>
+<div aria-label="Data table; scroll horizontally to read all columns" class="table-scroll" role="region" tabindex="0"><table class="data-table">
+<thead>
+<tr>
+<th>Mechanism</th><th>Strength</th><th>Main limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-money exchanges<br/><span style="font-size:var(--t-xs,12px)">Polymarket, Kalshi</span></td>
+<td>Prices incorporate capital at risk</td>
+<td>Liquidity, fees, and position constraints can distort prices</td>
+</tr>
+<tr>
+<td>Forecasting communities<br/><span style="font-size:var(--t-xs,12px)">Metaculus</span></td>
+<td>Scoring incentives reward calibration</td>
+<td>No directly comparable dollar volume</td>
+</tr>
+<tr>
+<td>Web aggregators<br/><span style="font-size:var(--t-xs,12px)">Predacle, PredScope</span></td>
+<td>Broader cross-venue discovery</td>
+<td>Matching and refresh timing may differ by platform</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<h2 id="section-3">What drives forecast extremity?</h2>
+<p>Because active markets have not resolved, current correctness cannot yet be observed. The regression therefore models <em>forecast extremity</em> (how one-sided a probability is) rather than accuracy. Extremity is defined as |p − 0.50|, where p is the current probability. A value of zero represents maximum uncertainty; a value approaching 0.50 represents a highly one-sided forecast.</p>
+<p>The weighted least-squares specification includes log market volume, log days to resolution, and platform indicators. Real-money observations are weighted by the square root of volume, with capped weights to prevent a few large contracts from dominating. HC3 robust standard errors are used.</p>
+<div class="chart-wrap">
+<div class="chart-title">Regression coefficients: forecast extremity model</div>
+<div aria-label="Data table; scroll horizontally to read all columns" class="table-scroll" role="region" tabindex="0"><table class="data-table">
+<thead>
+<tr><th>Variable</th><th>Coefficient</th><th>p-value</th><th>Reading</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Log market volume</td>
+<td class="num">−0.096</td>
+<td class="num">0.118</td>
+<td>Directionally less extreme at higher volume; not significant</td>
+</tr>
+<tr>
+<td>Log days to resolution</td>
+<td class="num">+0.096</td>
+<td class="num" style="font-weight:700">0.012</td>
+<td><strong>Significant:</strong> longer horizons associated with more extreme probabilities</td>
+</tr>
+<tr>
+<td>Polymarket vs. Kalshi</td>
+<td class="num">+0.042</td>
+<td class="num">0.443</td>
+<td>No reliable platform difference</td>
+</tr>
+<tr>
+<td>Metaculus vs. Kalshi</td>
+<td class="num">−0.497</td>
+<td class="num">0.205</td>
+<td>Large but imprecise estimate</td>
+</tr>
+<tr>
+<td class="num" colspan="2">R² = 0.507</td>
+<td class="num">n = 23</td>
+<td>Explains ~half of in-sample variation</td>
+</tr>
+</tbody>
+</table></div>
+<p class="chart-caption">Dependent variable: |p − 0.50|. Estimator: weighted least squares. Robust covariance: HC3.</p>
+</div>
+<div class="callout">
+<p><strong>Key finding.</strong> Long-horizon markets in this sample express greater confidence. This does not establish greater accuracy. The pattern can arise because remote contracts often list many individually unlikely outcomes, because tail risk is underpriced, or because capital is tied up for longer periods without fresh news to reprice it.</p>
+</div>
+<div class="callout callout--warm">
+<p><strong>Diagnostic caution.</strong> The overall model is statistically informative within the sample, but residual diagnostics indicate non-normality and possible numerical instability. Multiple contracts may also react to the same news simultaneously, violating independence assumptions. Reported p-values must be treated as descriptive rather than definitive.</p>
+</div>
+<h2 id="section-4">The Fed probability picture</h2>
+<p>Polymarket priced a 25-basis-point September hike at approximately 56%, and Kalshi priced the same broad outcome near 53%. Using reported volumes of about $70.6M and $38.0M yields a volume-weighted probability of approximately 55%.</p>
+<div class="chart-wrap">
+<div class="chart-title">Cross-platform probability: September 2026 Fed 25bp hike</div>
+<div style="margin:24px 0">
+<div class="bar-row">
+<div class="bar-label">Polymarket</div>
+<div class="bar-track"><div class="bar-fill" style="width:56%"></div></div>
+<div class="bar-val">56%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Kalshi</div>
+<div class="bar-track"><div class="bar-fill bar-fill--muted" style="width:53%"></div></div>
+<div class="bar-val">53%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label" style="font-weight:700">Volume-weighted</div>
+<div class="bar-track"><div class="bar-fill bar-fill--orange" style="width:55%"></div></div>
+<div class="bar-val" style="font-weight:700">~55%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">50/50 baseline</div>
+<div class="bar-track"><div class="bar-fill bar-fill--muted" style="width:50%;opacity:.3"></div></div>
+<div class="bar-val">50%</div>
+</div>
+</div>
+<p class="chart-caption">Volume-weighted estimate: (0.56 × $70.6M + 0.53 × $38.0M) / ($70.6M + $38.0M) ≈ 54.95%</p>
+</div>
+<p>The more decisive signal is the year-end path. Kalshi priced exactly zero cuts in 2026 at 91%, and any cut before 2027 at roughly 10%. Together, these markets imply that organizations should not base near-term budgeting, borrowing, or valuation assumptions on rapid easing.</p>
+<div class="callout">
+<p><strong>Planning implication.</strong> Use persistent funding costs as the central scenario. Maintain a sensitivity case for a September hike, but do not treat the hike as certain, because the combined probability is only about 55%, and the path above 50% is narrow.</p>
+</div>
+<h2 id="section-5">Elevated volatility: severe escalation remains a tail risk</h2>
+<p>A Polymarket contract placed the probability of a US invasion of Iran before 2027 near 16%, while a separate contract priced Kharg Island no longer under Iranian control by year-end near 8%. These are material tail risks, but neither is the market's base case.</p>
+<p>A market on Israeli leadership was much more balanced, pricing Netanyahu out by end of 2026 around 48%. Another indexed market showed roughly 67% for an Israeli airspace closure by a near-term deadline, though the record did not expose enough resolution detail to quantify likely duration or breadth.</p>
+<div style="margin:32px 0">
+<div class="bar-row">
+<div class="bar-label">US invades Iran before 2027</div>
+<div class="bar-track"><div class="bar-fill bar-fill--orange" style="width:16%"></div></div>
+<div class="bar-val">16%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Kharg Island changes control</div>
+<div class="bar-track"><div class="bar-fill bar-fill--muted" style="width:8%"></div></div>
+<div class="bar-val">8%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Netanyahu exits by end-2026</div>
+<div class="bar-track"><div class="bar-fill" style="width:48%"></div></div>
+<div class="bar-val">48%</div>
+</div>
+</div>
+<div class="callout callout--warm">
+<p><strong>Planning implication.</strong> Prioritize contingency readiness for transport disruption, energy-price volatility, and rapid repricing. Avoid translating a material tail probability into a deterministic prediction of war. A 16% chance of invasion is not a 16% chance of impact if sanctions or other pressure mechanisms resolve differently. The contract wording matters.</p>
+</div>
+<h2 id="section-6">Direction appears clearer than timing</h2>
+<p>Metaculus displayed a 90% estimate that a Section 301 overcapacity determination would result in China-targeting tariffs during 2026, but only a 10% probability that the USTR would publish a final determination before September 24. The combination suggests expected policy pressure with procedural delay.</p>
+<p>Low participation on some displayed questions materially reduces confidence in those specific numbers. Treat the directional signal (more tariffs coming) as more reliable than the specific timing estimate.</p>
+<div class="chart-wrap">
+<div class="chart-title">Section 301 tariff probability: direction vs. timing</div>
+<div style="margin:24px 0">
+<div class="bar-row">
+<div class="bar-label" style="font-weight:700">China tariffs in 2026</div>
+<div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+<div class="bar-val" style="font-weight:700">90%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Final determination before Sep 24</div>
+<div class="bar-track"><div class="bar-fill bar-fill--muted" style="width:10%"></div></div>
+<div class="bar-val">10%</div>
+</div>
+</div>
+<p class="chart-caption">High directional probability + low near-term timing probability = expected pressure with procedural drag.</p>
+</div>
+<div class="callout">
+<p><strong>Planning implication.</strong> Map tariff exposure and supplier alternatives now. Avoid anchoring procurement decisions to a single near-term announcement date. The direction is clear; the calendar is not.</p>
+</div>
+<h2 id="section-7">Exceptional heat is the highest-confidence broad signal</h2>
+<p>A Polymarket market assigned approximately 76% to 2026 being the hottest year on record, and 21% to being second. Assuming those outcomes are mutually exclusive and normalized, the combined implication is about a 97% chance that 2026 finishes first or second. This is the highest-confidence signal in the dataset.</p>
+<div class="chart-wrap">
+<div class="chart-title">2026 global temperature ranking: market-implied probability</div>
+<div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin:24px 0">
+<svg aria-label="Donut chart showing 2026 temperature ranking probability" height="160" role="img" viewbox="0 0 160 160" width="160">
+<circle cx="80" cy="80" fill="none" r="60" stroke="rgba(255,255,255,0.08)" stroke-width="22"></circle>
+<!-- Hottest (76%) -->
+<circle cx="80" cy="80" fill="none" r="60" stroke="#d4a056" stroke-dasharray="286.5 376.9" stroke-dashoffset="0" stroke-linecap="round" stroke-width="22"></circle>
+<!-- 2nd hottest (21%) -->
+<circle cx="80" cy="80" fill="none" r="60" stroke="#c0783c" stroke-dasharray="79.1 376.9" stroke-dashoffset="-286.5" stroke-linecap="round" stroke-width="22"></circle>
+<!-- Other (3%) -->
+<circle cx="80" cy="80" fill="none" r="60" stroke="#4a4f57" stroke-dasharray="11.3 376.9" stroke-dashoffset="-365.6" stroke-linecap="round" stroke-width="22"></circle>
+<text fill="#e8e6e3" font-family="Geist,system-ui" font-size="22" font-weight="700" text-anchor="middle" x="80" y="76">~97%</text>
+<text fill="#8b8680" font-family="Geist,system-ui" font-size="10" text-anchor="middle" x="80" y="94">1st or 2nd</text>
+</svg>
+<div style="flex:1;min-width:220px">
+<div class="bar-row" style="margin-bottom:8px">
+<div class="bar-label">Hottest year</div>
+<div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+<div class="bar-val">76%</div>
+</div>
+<div class="bar-row" style="margin-bottom:8px">
+<div class="bar-label">2nd hottest</div>
+<div class="bar-track"><div class="bar-fill bar-fill--orange" style="width:21%"></div></div>
+<div class="bar-val">21%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">Other</div>
+<div class="bar-track"><div class="bar-fill bar-fill--muted" style="width:3%"></div></div>
+<div class="bar-val">~3%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout">
+<p><strong>Planning implication.</strong> Stress-test operations for heat-related energy demand, infrastructure strain, workplace disruption, and weather-sensitive supply chains. This signal has the highest confidence in the dataset. Treat it as a planning input, not background noise.</p>
+</div>
+<h2 id="section-8">Milestones likely; US-China AI cooperation unlikely</h2>
+<p>Polymarket priced a specified SpaceX Starship flight-test milestone by October 31 at approximately 97%. This is a strong short-term signal, but technical, regulatory, and weather delays can rapidly reprice launch markets. A 3% no-milestone probability is not negligible for scheduling purposes.</p>
+<p>Metaculus placed only a 10% probability on a 2026 US-China AI agreement that includes export-control concessions. The broader cross-market theme is continuing strategic competition rather than near-term policy breakthrough.</p>
+<div class="chart-wrap">
+<div class="chart-title">Selected technology and AI market signals</div>
+<div style="margin:24px 0">
+<div class="bar-row">
+<div class="bar-label" style="font-weight:700">Starship Flight 14 by Oct 31</div>
+<div class="bar-track"><div class="bar-fill" style="width:97%"></div></div>
+<div class="bar-val" style="font-weight:700">97%</div>
+</div>
+<div class="bar-row">
+<div class="bar-label">US-China AI agreement in 2026</div>
+<div class="bar-track"><div class="bar-fill bar-fill--muted" style="width:10%"></div></div>
+<div class="bar-val">10%</div>
+</div>
+</div>
+</div>
+<h2 id="section-9">A framework for decision-making</h2>
+<div class="scenario-panel">
+<p>Market probabilities are scenario weights, not instructions to trade or bet. The three scenarios below represent distinct but plausible futures, not the full distribution of outcomes.</p>
+<div class="scenario-grid">
+<div class="scenario-card scenario-card--base">
+<div class="scenario-card__label">Base Case</div>
+<h3>Restrictive persistence</h3>
+<p>The Federal Reserve holds or hikes modestly in September. No 2026 rate cuts. Trade restrictions on China materialize with procedural delay. Exceptional heat throughout the year. Geopolitical tension elevated but contained.</p>
+<p>This is the working assumption. Organizations should plan around it first.</p>
+</div>
+<div class="scenario-card scenario-card--up">
+<div class="scenario-card__label">Upside Case</div>
+<h3>Delayed pressure, contained risks</h3>
+<p>The Federal Reserve holds without subsequent hikes. Major trade measures are delayed past September 24 or softened in implementation. Geopolitical disruptions remain contained: no invasion, no airspace closures. SpaceX milestone hits on schedule.</p>
+<p>This is the scenario where conditions ease. Have a trigger to reprice if it materializes.</p>
+</div>
+<div class="scenario-card scenario-card--down">
+<div class="scenario-card__label">Downside Case</div>
+<h3>Simultaneous tightening</h3>
+<p>A September hike combines with trade restrictions and a Middle East logistics or energy shock, tightening financial and operating conditions simultaneously. A 16% invasion probability is not the base case, but its consequences are large enough to warrant contingency planning.</p>
+<p>Low probability, high impact. A monitoring trigger beats a fixed allocation.</p>
+</div>
+</div>
+<div class="callout">
+<p><strong>Monitoring triggers to watch:</strong> Fed communication, inflation data releases, USTR procedural notices, airspace restriction announcements, SpaceX launch notices, and, most importantly, material changes in cross-platform prices or volume. Track change over time, not only the current level. A 55% probability reached from 30% carries different information than one reached from 70%.</p>
+</div>
+</div>
+<h2 id="section-10">How to use these probabilities responsibly</h2>
+<ul class="checklist">
+<li>Separate events above 80% from events near 50%. They require fundamentally different planning responses. Near-50% events should generate sensitivity cases; high-confidence events should drive hard constraints.</li>
+<li>Require cross-platform confirmation before treating a probability as a strong signal. A 56% read on one platform is a lean, not a trend.</li>
+<li>Check liquidity, total volume, bid-ask spread, and resolution wording before relying on a price. A 90% probability on thin volume is fragile.</li>
+<li>Track change over time, not only the current level. A 55% probability reached from 30% implies momentum. A 55% reached from 70% implies reversal.</li>
+<li>Use market probabilities as scenario weights, not as instructions to trade or bet. A prediction market is a wisdom-of-crowds snapshot under a specific contract structure, not a verified forecast.</li>
+</ul>
+<h2 id="section-11">What this report cannot do</h2>
+<p>Every analytical framework has edges. Here are the ones that matter most for how you use this report.</p>
+<div class="chart-wrap">
+<div aria-label="Data table; scroll horizontally to read all columns" class="table-scroll" role="region" tabindex="0"><table class="data-table">
+<thead>
+<tr><th>Constraint</th><th>Why it matters</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Incomplete universe</td>
+<td>Public access did not permit a literal census of every venue or contract. Some signals are missing.</td>
+</tr>
+<tr>
+<td>Selection bias</td>
+<td>The 23-observation sample was assembled from publicly visible markets, not randomly sampled. Results may not generalize.</td>
+</tr>
+<tr>
+<td>No resolved outcomes</td>
+<td>The regression explains confidence extremity, not forecast accuracy or calibration. High conviction does not mean high accuracy.</td>
+</tr>
+<tr>
+<td>Correlated observations</td>
+<td>Multiple contracts react to the same information simultaneously, violating independence assumptions in the regression.</td>
+</tr>
+<tr>
+<td>Contract design effects</td>
+<td>Wording, settlement rules, fees, and capital lock-up can influence price independently of trader belief.</td>
+</tr>
+<tr>
+<td>Timestamp sensitivity</td>
+<td>Prediction market prices can move immediately and significantly in response to new information. This snapshot reflects September 8, 2026.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout callout--warm" style="margin-top:24px">
+<p><strong>Responsible-use statement.</strong> This report is informational and exploratory. It is not financial, investment, legal, policy, or betting advice. A market price is an estimate produced by a particular participant pool under a particular contract structure, not a verified fact. Use it to structure scenarios and calibrate judgment, not to replace them.</p>
+</div>
+<div class="article-sources">
+<h4>Sources</h4>
+<ul>
+<li>[1] Predacle, all-market aggregator · <a href="https://predacle.com/" rel="noopener" target="_blank">predacle.com</a></li>
+<li>[2] PredScope, public Polymarket API · <a href="https://predscope.com/api/" rel="noopener" target="_blank">predscope.com/api</a></li>
+<li>[3] Prediction Markets API, unified feed · <a href="https://predictionmarketapi.com/" rel="noopener" target="_blank">predictionmarketapi.com</a></li>
+<li>[4] Kalshi public markets · <a href="https://kalshi.com/" rel="noopener" target="_blank">kalshi.com</a></li>
+<li>[5] Metaculus question feed · <a href="https://www.metaculus.com/" rel="noopener" target="_blank">metaculus.com</a></li>
+<li>[6] Polymarket Analytics · <a href="https://polymarketanalytics.com/markets" rel="noopener" target="_blank">polymarketanalytics.com/markets</a></li>
+<li>[7] Kalshi Federal Reserve markets · <a href="https://kalshi.com/category/economics/fed" rel="noopener" target="_blank">kalshi.com/category/economics/fed</a></li>
+<li>[8] Metaculus, trade and AI forecasts · <a href="https://www.metaculus.com/" rel="noopener" target="_blank">metaculus.com</a></li>
+<li>[9] Polymarket, climate and pop-culture markets · <a href="https://polymarket.com/pop-culture" rel="noopener" target="_blank">polymarket.com/pop-culture</a></li>
+<li>[10] Merlin, trending Polymarket markets · <a href="https://merlin.trade/markets" rel="noopener" target="_blank">merlin.trade/markets</a></li>
+<li>[11] PredScope daily market insights · <a href="https://predscope.com/insights" rel="noopener" target="_blank">predscope.com/insights</a></li>
+</ul>
+</div>
+</div>
+</article></div><section class="e-related e-wrap"><p class="e-label">CONTINUE READING</p><div><a href="/insights/subtractive-fragility/"><span>ESSAY &amp; ANALYSIS</span><h2>Subtractive Fragility</h2><b aria-hidden="true">↗</b></a><a href="/digital/blog/the-agents-are-replaceable.html"><span>ESSAY &amp; ANALYSIS</span><h2>The Agents Are Replaceable. The Operating System Is Not.</h2><b aria-hidden="true">↗</b></a></div></section></main>
+<p style="font-size:var(--t-xs);padding:0 24px 16px;max-width:720px;border-bottom:1px solid var(--border);margin-bottom:0">Research content is analysis, not investment advice. ASKA does not provide investment advice through this site.</p>
+<footer class="f-footer-band"><div class="f-footer f-wrap"><div><a class="footer-wordmark" href="/">ASKA</a><p>Digital and physical.<br/>One connected practice.</p><p>© 2026 ASKA Business Solutions Inc.</p></div><nav aria-label="Footer navigation"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></div></footer>
+<script defer="" src="/assets/js/site-shell.js?v=complete-1"></script><script defer="" src="/assets/js/editorial.js?v=editorial-1"></script></body>
+</html>

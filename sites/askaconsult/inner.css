@@ -1,0 +1,206 @@
+/* ASKA inner-page compatibility layer.
+   Restyles the legacy page components onto the frontier palette so every route
+   matches the entrance, Digital, Physical, and Team6 pages. Loaded LAST. */
+
+/* --- Legacy tokens remapped to the frontier palette (dark ground) --- */
+.frontier-aska{
+  --navy:#0f2320;--navy-deep:#0b1a17;--cyan:#b8e9d2;--royal:#c9a86a;
+  --orange:#dfa25f;--steel:#7f8f86;--steel-light:#a9b8ae;
+  --warm-bg:#f2eee2;--warm-card:#fbf8f0;
+  --dark-bg:#0a0e12;--dark-1:#101d1b;--dark-2:#13211e;--dark-3:#182a26;
+  --ink:#ece7d9;--muted:#9db0a6;--line:#aec2b524;--line-strong:#b8c9bd52;
+  --text-muted:#9db0a6;--text-dark:#e8e3d5;--bg-light:#f2eee2;
+  background:#0a0e12;color:#ece7d9;
+}
+/* Legacy inline light card surfaces (style="background:var(--warm-bg)") must not
+   become invisible light-on-light against the dark frontier ground. Force the
+   dark surface; semantic structure and text tokens are preserved. */
+.frontier-aska .card[style*="warm-bg"],.frontier-aska .card[style*="--navy"]{
+  background:#0f1c1a!important;border-color:var(--f-line)!important;color:#ece7d9;
+}
+.frontier-aska .card[style*="warm-bg"] h3,.frontier-aska .card[style*="--navy"] h3{color:#f0ece0}
+.frontier-aska .card[style*="warm-bg"] p,.frontier-aska .card[style*="warm-bg"] li,
+.frontier-aska .card[style*="--navy"] p,.frontier-aska .card[style*="--navy"] li{color:#a9bdb4}
+.frontier-aska .page-body,.frontier-aska main{color:#d9e2da}
+
+/* --- Header block used by the legacy interior pages --- */
+.frontier-aska .page-hero{padding:64px 0 40px;border-bottom:1px solid var(--f-line)}
+/* Global microtype floor: no sub-10px secondary text except decorative annotation. */
+.frontier-aska .f-kicker,.frontier-aska .f-eyeline,.frontier-aska .term-title,
+.frontier-aska .supply-caption,.frontier-aska .f-terminal-note{font-size:10px}
+.frontier-aska .f-signals{font-size:9.5px}
+.frontier-aska .page-hero-inner{width:min(100% - 112px,1400px);margin-inline:auto}
+.frontier-aska .page-hero h1{font-size:clamp(42px,4.6vw,70px);letter-spacing:-.05em;line-height:1.1;margin:0;color:#f0ece0}
+.frontier-aska .page-hero .lede,.frontier-aska .page-hero p.lede{color:#a9bdb4;font-size:17px;max-width:74ch;margin-top:24px}
+.frontier-aska .breadcrumb{font:10px var(--font-mono);letter-spacing:.1em;color:#a9bdb1;margin-bottom:20px;text-transform:uppercase}
+.frontier-aska .breadcrumb a{color:#a9bdb1}
+.frontier-aska .breadcrumb a:hover{color:#dfbd84}
+.frontier-aska .sep{margin:0 8px;opacity:.6}
+
+/* --- Section rhythm --- */
+.frontier-aska .page-body{width:min(100% - 112px,1200px);margin-inline:auto;padding-block:20px 90px}
+.frontier-aska .page-section{padding-block:52px;border-bottom:1px solid var(--f-line)}
+.frontier-aska .page-section:last-child{border-bottom:0}
+.frontier-aska .page-section h2{font-size:clamp(30px,3.2vw,46px);letter-spacing:-.04em;line-height:1.14;margin:0 0 22px;color:#f0ece0}
+.frontier-aska .page-section h2.sec{font-size:clamp(26px,2.6vw,38px)}
+.frontier-aska .page-section h3{font-size:22px;letter-spacing:-.03em;margin:0 0 10px;color:#f0ece0}
+.frontier-aska .page-section p,.frontier-aska .page-section li{color:#a9bdb4;font-size:15px;line-height:1.72}
+.frontier-aska .page-section p+p{margin-top:16px}
+.frontier-aska .page-section a{color:#cfe4d6;border-bottom:1px solid #b8e9d255}
+.frontier-aska .page-section a:hover{color:#fff}
+.frontier-aska .kicker{font:9px var(--font-mono);letter-spacing:.14em;color:#dfbd84;text-transform:uppercase;margin:0 0 16px}
+.frontier-aska .mono-label{display:block;font:9px var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:#dfbd84;margin-bottom:10px}
+.frontier-aska .pill{display:inline-block;font:9px var(--font-mono);letter-spacing:.1em;padding:6px 10px;border-radius:2px;background:#b8e9d21a;color:#bfe6d2}
+.frontier-aska .pill.warm{background:#c9a86a22;color:#e2c58f}
+
+/* --- Cards: legacy .card/.card-light/.card-dark unified --- */
+.frontier-aska .card,.frontier-aska .card-light,.frontier-aska .card-dark{
+  border:1px solid var(--f-line);border-radius:5px;padding:26px;box-shadow:none;
+  background:#0f1c1a;
+}
+.frontier-aska .card-light{background:#f2eee2;border-color:#b8c9bd33}
+.frontier-aska .card-light p,.frontier-aska .card-light li{color:#3d4f45}
+.frontier-aska .card-light strong{color:#1f2f28}
+.frontier-aska .card-dark{background:radial-gradient(ellipse at 88% 8%,#dab67912,transparent 60%),#13201e}
+.frontier-aska .card h3,.frontier-aska .card-light h3,.frontier-aska .card-dark h3{font-size:21px;color:#f0ece0}
+.frontier-aska .card p,.frontier-aska .card li,.frontier-aska .card-dark p,.frontier-aska .card-dark li{color:#a9bdb4;font-size:13.5px}
+.frontier-aska .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.frontier-aska .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+
+/* --- Buttons --- */
+.frontier-aska .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:12px 20px;border-radius:3px;font-size:13px;border:1px solid #b8e9d2;background:#b8e9d2;color:#10241d;text-decoration:none;border-bottom-width:1px}
+.frontier-aska .btn:hover{background:#d2f2e1;color:#10241d}
+.frontier-aska .btn-sm{min-height:42px;padding:9px 15px;font-size:12px}
+.frontier-aska .btn-cyan{background:#b8e9d2;color:#10241d;border-color:#b8e9d2}
+.frontier-aska .btn-dark{background:transparent;color:#ece7d9;border-color:#aec2b560}
+.frontier-aska .btn-ghost-dark{background:transparent;color:#ece7d9;border-color:#aec2b560}
+.frontier-aska .btn-orange{background:#dfa25f;color:#2b1c0d;border-color:#dfa25f}
+
+/* --- Legacy portfolio ledger rows used on the method page --- */
+.frontier-aska .pledger{border-top:1px solid var(--f-line)}
+.frontier-aska .p-row{display:grid;grid-template-columns:52px 1fr 150px 110px;gap:18px;align-items:center;padding:22px 0;border-bottom:1px solid var(--f-line);color:inherit;border-bottom-width:1px}
+.frontier-aska .p-row:hover{background:#b8e9d20a}
+.frontier-aska .p-index{font:11px var(--font-mono);color:#c9b184}
+.frontier-aska .p-row h3{font-size:18px;margin:0 0 8px;color:#f0ece0}
+.frontier-aska .p-constraint{font:9px var(--font-mono);letter-spacing:.06em;color:#93a89f;display:block}
+.frontier-aska .p-out{font:10px var(--font-mono);color:#bfe6d2;text-align:right}
+
+/* --- Legacy list styles --- */
+.frontier-aska .d-list{margin:0;padding-left:18px;display:grid;gap:10px}
+.frontier-aska .d-list li{font-size:12.5px;color:#a9bdb4}
+.frontier-aska .stack-lede{color:#a9bdb4}
+
+/* --- Articles (journal + insights) --- */
+.frontier-aska .article-meta{font:9px var(--font-mono);letter-spacing:.12em;color:#93a89f;display:flex;gap:10px;flex-wrap:wrap;text-transform:uppercase;margin-bottom:24px}
+.frontier-aska .article-meta a{color:#93a89f}
+.frontier-aska .article h1{font-size:clamp(36px,4.2vw,62px);letter-spacing:-.05em;line-height:1.1;margin:0 0 20px;color:#f0ece0}
+.frontier-aska .article .subtitle{font-size:19px;color:#b9cdc2;max-width:70ch;line-height:1.6;margin-bottom:22px}
+.frontier-aska .article .opening{font-size:14px;color:#93a89f;border-left:2px solid #c9a86a66;padding-left:16px;margin:22px 0}
+.frontier-aska .article hr{border:0;border-top:1px solid var(--f-line);margin:34px 0}
+.frontier-aska .article h2{font-size:clamp(24px,2.4vw,34px);letter-spacing:-.035em;line-height:1.2;margin:44px 0 16px;color:#f0ece0}
+.frontier-aska .article h3{font-size:19px;margin:30px 0 12px;color:#f0ece0}
+.frontier-aska .article p,.frontier-aska .article li,.frontier-aska .article dd{color:#b3c6bc;font-size:16px;line-height:1.8}
+.frontier-aska .article p+p{margin-top:18px}
+.frontier-aska .article ul,.frontier-aska .article ol{margin:16px 0;padding-left:22px;display:grid;gap:10px}
+.frontier-aska .article a{color:#d7e8dd;border-bottom:1px solid #b8e9d255}
+.frontier-aska .article strong{color:#eae5d8;font-weight:600}
+.frontier-aska .article blockquote{border-left:2px solid #b8e9d266;padding:4px 0 4px 20px;margin:24px 0;color:#c6d8cf;font-size:17px;font-style:normal}
+.frontier-aska .source-quote{border:1px solid var(--f-line);border-left:2px solid #c9a86a;background:#0f1c1a;border-radius:3px;padding:20px 22px;margin:24px 0}
+.frontier-aska .source-quote p{color:#cfdcd4;font-size:15.5px;margin:0}
+.frontier-aska .source-quote-cite{font:9px var(--font-mono);letter-spacing:.08em;color:#93a89f;margin-top:12px;border:0;padding:0}
+.frontier-aska .callout{border:1px solid var(--f-line);border-left:2px solid #b8e9d2;background:#0f1c1a;border-radius:3px;padding:18px 20px;margin:22px 0}
+.frontier-aska .callout--warm{border-left-color:#c9a86a}
+.frontier-aska .callout p{margin:0;font-size:14.5px}
+.frontier-aska .checklist{list-style:none;padding-left:0;display:grid;gap:12px}
+.frontier-aska .checklist li{border-left:2px solid #b8e9d244;padding-left:14px}
+.frontier-aska .article-sources{border-top:1px solid var(--f-line);padding-top:22px;margin-top:40px;font-size:13px;color:#93a89f}
+
+/* --- Journal list --- */
+.frontier-aska .db-hero,.frontier-aska .blog-hero{padding:60px 0 34px;border-bottom:1px solid var(--f-line)}
+.frontier-aska .db-hero h1,.frontier-aska .blog-hero h1{font-size:clamp(36px,4vw,58px);letter-spacing:-.05em;line-height:1.12;color:#f0ece0;margin:0}
+.frontier-aska .db-list,.frontier-aska .blog-list{width:min(100% - 112px,1200px);margin-inline:auto;padding-block:20px 80px;display:grid;gap:0}
+.frontier-aska .db-list a,.frontier-aska .blog-list a{display:block;padding:26px 0;border-bottom:1px solid var(--f-line);text-decoration:none;border-bottom-width:1px}
+.frontier-aska .db-list a:hover,.frontier-aska .blog-list a:hover{background:#b8e9d208}
+.frontier-aska .db-list h2,.frontier-aska .blog-list h2{font-size:26px;letter-spacing:-.03em;margin:0 0 10px;color:#f0ece0}
+.frontier-aska .db-list p,.frontier-aska .blog-list p{color:#a3b8ae;font-size:14px;max-width:80ch}
+.frontier-aska .db-list .meta,.frontier-aska .blog-list .meta{font:9px var(--font-mono);letter-spacing:.1em;color:#93a89f;margin-top:12px;display:block}
+
+/* --- Predictions list (insights) --- */
+.frontier-aska .predictions-list{display:grid;gap:12px;margin:24px 0}
+.frontier-aska .prediction-item{display:grid;grid-template-columns:74px 1fr 92px;gap:18px;align-items:start;border:1px solid var(--f-line);border-left:2px solid #c9a86a;border-radius:3px;background:#0f1c1a;padding:18px 20px}
+.frontier-aska .prediction-item .year{font:15px var(--font-mono);color:#e2c58f}
+.frontier-aska .prediction-item .desc{font-size:14px;color:#b3c6bc}
+.frontier-aska .prediction-item .condition{display:block;font:10px var(--font-mono);color:#93a89f;margin-top:8px}
+.frontier-aska .prediction-item .status{font:9px var(--font-mono);letter-spacing:.1em;color:#bfe6d2;text-align:right}
+
+/* --- Legacy topbar cleanup (nav is replaced, but guard nested remnants) --- */
+.frontier-aska .topbar{display:none}
+.frontier-aska .brand-name{color:#ece7d9}
+
+/* --- 404 --- */
+.frontier-aska .notfound h1{font-size:clamp(40px,5vw,72px)}
+
+@media(max-width:1000px){
+  .frontier-aska .page-body,.frontier-aska .db-list,.frontier-aska .blog-list,.frontier-aska .page-hero-inner{width:min(100% - 56px,1200px)}
+  .frontier-aska .grid-3{grid-template-columns:1fr 1fr}
+  .frontier-aska .p-row{grid-template-columns:40px 1fr 120px}
+}
+@media(max-width:760px){
+  .frontier-aska .page-body,.frontier-aska .db-list,.frontier-aska .blog-list,.frontier-aska .page-hero-inner{width:min(100% - 36px,1200px)}
+  .frontier-aska .grid-2,.frontier-aska .grid-3{grid-template-columns:1fr}
+  .frontier-aska .page-hero{padding:44px 0 28px}
+  .frontier-aska .page-section{padding-block:38px}
+  .frontier-aska .article p,.frontier-aska .article li{font-size:15.5px}
+  .frontier-aska .prediction-item{grid-template-columns:1fr;gap:10px}
+  .frontier-aska .prediction-item .status{text-align:left}
+  .frontier-aska .p-row{grid-template-columns:1fr;gap:10px}
+  .frontier-aska .p-out{text-align:left}
+  .frontier-aska .card,.frontier-aska .card-light,.frontier-aska .card-dark{padding:20px}
+}
+
+/* --- Physical division: light materials-studio theme for inner routes --- */
+.frontier-aska.physical-frontier{
+  --navy:#13241f;--cyan:#355b4a;--royal:#8a6238;--orange:#9a6a33;
+  --warm-bg:#ece8dd;--warm-card:#f6f2e8;--dark-bg:#ece8dd;--dark-1:#e4e0d2;--dark-2:#f4f0e6;--dark-3:#e8e3d5;
+  --ink:#263d36;--muted:#66766a;--line:#52695830;--line-strong:#52695855;
+  --text-muted:#66766a;--text-dark:#263d36;--bg-light:#ece8dd;
+  background:#ece8dd;color:#263d36;
+}
+.frontier-aska.physical-frontier .page-body,.frontier-aska.physical-frontier main{color:#2b3f37}
+.frontier-aska.physical-frontier .page-hero,.frontier-aska.physical-frontier .db-hero,.frontier-aska.physical-frontier .blog-hero,.frontier-aska.physical-frontier .page-section{border-color:#52695830}
+.frontier-aska.physical-frontier .page-hero h1,.frontier-aska.physical-frontier .page-section h2,.frontier-aska.physical-frontier .page-section h3,.frontier-aska.physical-frontier .db-hero h1,.frontier-aska.physical-frontier .blog-hero h1,.frontier-aska.physical-frontier .db-list h2,.frontier-aska.physical-frontier .blog-list h2,.frontier-aska.physical-frontier .article h1,.frontier-aska.physical-frontier .article h2,.frontier-aska.physical-frontier .article h3,.frontier-aska.physical-frontier .card h3{color:#1f3129}
+.frontier-aska.physical-frontier .page-section p,.frontier-aska.physical-frontier .page-section li,.frontier-aska.physical-frontier .article p,.frontier-aska.physical-frontier .article li,.frontier-aska.physical-frontier .db-list p,.frontier-aska.physical-frontier .blog-list p,.frontier-aska.physical-frontier .card p,.frontier-aska.physical-frontier .card li{color:#4b6055}
+.frontier-aska.physical-frontier .page-hero .lede,.frontier-aska.physical-frontier .article .subtitle{color:#4b6055}
+.frontier-aska.physical-frontier .breadcrumb,.frontier-aska.physical-frontier .breadcrumb a,.frontier-aska.physical-frontier .article .opening,.frontier-aska.physical-frontier .article-meta,.frontier-aska.physical-frontier .article-meta a,.frontier-aska.physical-frontier .db-list .meta,.frontier-aska.physical-frontier .blog-list .meta{color:#5c6f60}
+.frontier-aska.physical-frontier .kicker,.frontier-aska.physical-frontier .mono-label{color:#8a6238}
+.frontier-aska.physical-frontier .article a,.frontier-aska.physical-frontier .page-section a{color:#33543f;border-bottom-color:#52695855}
+.frontier-aska.physical-frontier .article strong{color:#1f3129}
+.frontier-aska.physical-frontier .card,.frontier-aska.physical-frontier .card-light,.frontier-aska.physical-frontier .card-dark,.frontier-aska.physical-frontier .callout,.frontier-aska.physical-frontier .source-quote,.frontier-aska.physical-frontier .prediction-item{background:#f6f2e8;border-color:#52695830}
+.frontier-aska.physical-frontier .card-dark{background:#f6f2e8}
+.frontier-aska.physical-frontier .source-quote{border-left-color:#8a6238}
+.frontier-aska.physical-frontier .callout{border-left-color:#355b4a}
+.frontier-aska.physical-frontier .callout--warm{border-left-color:#8a6238}
+.frontier-aska.physical-frontier .btn,.frontier-aska.physical-frontier .btn-cyan{background:#315946;color:#f0eee2;border-color:#315946}
+.frontier-aska.physical-frontier .btn:hover{background:#426953;color:#fff}
+.frontier-aska.physical-frontier .btn-dark,.frontier-aska.physical-frontier .btn-ghost-dark{background:transparent;color:#263d36;border-color:#52695855}
+.frontier-aska.physical-frontier .pill{background:#355b4a1a;color:#2b4c3c}
+.frontier-aska.physical-frontier .prediction-item .desc{color:#4b6055}
+.frontier-aska.physical-frontier .prediction-item .year{color:#8a6238}
+.frontier-aska.physical-frontier .db-list a,.frontier-aska.physical-frontier .blog-list a{border-bottom-color:#52695830}
+.frontier-aska.physical-frontier .db-list a:hover,.frontier-aska.physical-frontier .blog-list a:hover{background:#52695808}
+
+/* table overflow: wide data tables scroll inside the column instead of the page */
+.frontier-aska .article table,.frontier-aska .page-body table,.frontier-aska .data-table{
+  display:block;width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border-collapse:collapse;font-size:13px;
+}
+.frontier-aska .article th,.frontier-aska .article td,.frontier-aska .page-body th,.frontier-aska .page-body td,.frontier-aska .data-table th,.frontier-aska .data-table td{
+  padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--f-line);white-space:nowrap;
+}
+.frontier-aska .article th,.frontier-aska .page-body th,.frontier-aska .data-table th{
+  font:9px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:#dfbd84;
+}
+.frontier-aska .article td,.frontier-aska .page-body td,.frontier-aska .data-table td{color:#b3c6bc}
+.frontier-aska.physical-frontier .article td,.frontier-aska.physical-frontier .page-body td,.frontier-aska.physical-frontier .data-table td{color:#4b6055}
+.frontier-aska.physical-frontier .article th,.frontier-aska.physical-frontier .page-body th,.frontier-aska.physical-frontier .data-table th{color:#8a6238}
+.frontier-aska .data-table caption,.frontier-aska .article caption{font-size:12px;color:#93a89f;text-align:left;padding-bottom:10px;white-space:normal}

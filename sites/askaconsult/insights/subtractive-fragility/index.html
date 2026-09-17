@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subtractive Fragility · ASKA Consulting Insights</title>
+<meta content="A traced argument: seven dated predictions about what breaks and what bends, tracked in real time. By ASKA Consulting research." name="description"/>
+<meta content="Subtractive Fragility · ASKA Consulting Insights" property="og:title"/>
+<meta content="Seven dated predictions about what breaks and what bends, tracked in real time." property="og:description"/>
+<meta content="https://askaconsult.com/assets/svg/askadigital.svg" property="og:image"/>
+<meta content="https://askaconsult.com/insights/subtractive-fragility/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://askaconsult.com/insights/subtractive-fragility/" rel="canonical"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/system.css?v=7.22" rel="stylesheet"/>
+<link href="/frontier.css?v=1" rel="stylesheet"/>
+<meta content="noindex,nofollow" name="robots"/><link href="/completion.css?v=complete-1" rel="stylesheet"/><style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Geist-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Geist-Medium.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Geist-SemiBold.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Geist-Bold.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/GeistMono-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/GeistMono-SemiBold.woff2) format('woff2');}
+/* Research visual system (from The Search compiled asset, token-adapted) */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e8e6e3;
+  --muted: #8b8680;
+  --accent: #d4a056;
+  --accent-dim: #d4a05633;
+  --survive: #5b9a8b;
+  --survive-dim: #5b9a8b22;
+  --hollow: #c4706b;
+  --hollow-dim: #c4706b22;
+  --border: #2a2e35;
+  --card: #161a20;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 60px 40px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  letter-spacing: 0;
+}
+.article-meta {
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 16px;
+}
+
+.opening {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 48px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+/* v7.18 contrast (KodeKoot): page re-asserts the research visual system's intended
+   warm primary text over system.css's shared `.article p` muted-steel leak
+   (--text-muted #51607F ≈ 3:1 on #0e1116), which made body prose read steel-blue
+   while headings/cards/labels stayed warm, the perceived "random two-tone". Body
+   prose → warm --fg (#e8e6e3, ≈15:1); classed captions/labels below keep --muted
+   #8b8680 and accent #d4a056 deliberately. Hierarchy consistent. */
+.article p { color: var(--fg); }
+.article li { color: var(--fg); }
+.article p strong { color: var(--fg); }
+.article blockquote,
+.article blockquote p { color: var(--accent); }
+.article blockquote .source-quote-cite { color: var(--muted); }
+.article-sources li { color: var(--muted); }
+
+ul, ol {
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 24px;
+  font-size: 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+td {
+  color: var(--fg);
+}
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 24px 0;
+  color: var(--accent);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.predictions-list {
+  margin: 24px 0;
+}
+
+.prediction-item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 18px 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.prediction-item .year {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.prediction-item .desc {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.prediction-item .desc .condition {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-top: 4px;
+}
+
+.prediction-item .status {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   VISUAL ASSET: PREDICTION TIMELINE
+   ============================================ */
+.timeline-container {
+  max-width: 720px;
+  margin: 32px auto 48px;
+  padding: 40px 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.timeline-header h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.timeline-header p {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.year-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.year-axis span { position: relative; }
+.year-axis span::before {
+  content: '';
+  position: absolute;
+  top: -17px;
+  left: 50%;
+  width: 1px;
+  height: 8px;
+  background: var(--border);
+}
+
+.timeline-row {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.timeline-row:hover { border-color: var(--border); }
+
+.timeline-row .year-marker {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.timeline-row .desc-text {
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.timeline-row .desc-text .fail-cond {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-top: 4px;
+}
+
+.timeline-row .desc-text .baseline-text {
+  display: block;
+  font-size: 12px;
+  color: var(--accent);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-top: 2px;
+  opacity: 0.8;
+}
+
+.duration-bar {
+  position: relative;
+  height: 3px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-top: 8px;
+  grid-column: 2;
+}
+
+.duration-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.status-tag {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   VISUAL ASSET: DESIGN LAW DIAGRAM
+   ============================================ */
+.designlaw-container {
+  max-width: 720px;
+  margin: 32px auto 48px;
+  padding: 40px 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.designlaw-header h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.designlaw-header .law-statement {
+  font-size: 17px;
+  color: var(--accent);
+  font-style: italic;
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+  margin-top: 16px;
+}
+
+.diagram {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.column {
+  padding: 28px;
+  border-radius: 8px;
+}
+
+.column.survive {
+  background: var(--survive-dim);
+  border: 1px solid var(--survive);
+}
+
+.column.hollow {
+  background: var(--hollow-dim);
+  border: 1px solid var(--hollow);
+}
+
+.column-label {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.column.survive .column-label { color: var(--survive); }
+.column.hollow .column-label { color: var(--hollow); }
+
+.mechanism {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.mechanism:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.mechanism-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.mechanism-funding {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 8px;
+}
+
+.mechanism-duration {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.duration-visual {
+  height: 6px;
+  border-radius: 3px;
+  min-width: 4px;
+}
+
+.column.survive .duration-visual { background: var(--survive); }
+.column.hollow .duration-visual { background: var(--hollow); }
+
+.duration-text {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.diagram-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ============================================
+   VISUAL ASSET: FOUR-MOVEMENT STRUCTURE MAP
+   ============================================ */
+.structure-container {
+  max-width: 720px;
+  margin: 32px auto 48px;
+  padding: 40px 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.structure-header h2 {
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+.movements {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.movement {
+  display: grid;
+  grid-template-columns: 60px 1fr auto;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+
+.movement:last-child { border-bottom: none; }
+
+.movement-number {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 32px;
+  font-weight: 200;
+  color: var(--accent);
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.movement-content h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 0;
+}
+
+.movement-content p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.movement-relation {
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: 6px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   TRACKER SECTION
+   ============================================ */
+.tracker-section {
+  max-width: 900px;
+  margin: 60px auto 0;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.tracker-section h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tracker-section > p {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 32px;
+}
+
+.predictions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.pred-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.pred-card:hover { border-color: var(--accent); }
+
+.pred-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.pred-num {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.status-badge {
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.status-tracking { background: rgba(74, 158, 255, 0.15); color: #4a9eff; }
+.status-pending { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+
+.pred-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.pred-details {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.metric-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.metric-label { color: var(--muted); }
+.metric-value { font-weight: 600; }
+
+.confidence-tag {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.confidence-high { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+.confidence-moderate { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+.confidence-low { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+
+.impl-section {
+  background: rgba(74, 158, 255, 0.05);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  font-size: 11px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.impl-title { color: #4a9eff; font-weight: 600; margin-bottom: 4px; }
+.impl-list { color: var(--muted); padding-left: 16px; }
+
+.methodology {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 32px;
+}
+
+.methodology h3 {
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.methodology ul {
+  font-size: 13px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+
+@media (max-width: 750px) {
+  body { padding: 24px 16px; font-size: 16px; }
+  .timeline-container, .designlaw-container, .structure-container { padding: 24px 18px; }
+  .diagram { grid-template-columns: 1fr; }
+  .timeline-row { grid-template-columns: 60px 1fr; }
+  .timeline-row .status-tag { display: none; }
+  .movement { grid-template-columns: 40px 1fr; }
+  .movement-relation { display: none; }
+  .year-axis { font-size: 10px; }
+  .predictions-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 28px; }
+}
+
+</style><link href="/editorial.css?v=editorial-1" rel="stylesheet"/></head>
+<body class="article-digital frontier-aska editorial-site e-reader"><a class="skip-link" href="#main">Skip to content</a>
+<header class="f-nav f-wrap"><a aria-label="ASKA home" class="f-brand" href="/"><img alt="" height="40" src="/assets/svg/aska-logo.svg" width="40"/>ASKA <small>DIGITAL</small></a><nav aria-label="Main navigation" class="f-desktop-nav"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/about/">The firm</a><a href="/digital/blog/">Journal</a><a class="f-contact" href="mailto:info@askaconsult.com">Contact ↗</a></nav><details class="f-mobile-menu"><summary>Explore <span aria-hidden="true">＋</span></summary><nav aria-label="All pages" class="f-mobile-menu-panel"><a href="/">Home</a><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></details></header><main id="main"><section class="e-reader-hero e-wrap" id="article-top"><a class="e-backlink" href="/digital/blog/">← The Digital journal</a><div class="e-reader-title"><div><div class="article-meta">
+<span>ASKA RESEARCH</span>
+<span>·</span>
+<span><time datetime="2026-09-10">SEPTEMBER 10, 2026</time></span>
+<span>·</span>
+<span>LAST UPDATED: LIVE TRACKER</span>
+</div><h1>Subtractive Fragility</h1><div class="subtitle">The Mechanism That Decides What Breaks and What Bends · A traced argument, September 10, 2026</div></div><div class="e-reader-art"><svg aria-hidden="true" class="e-motif" viewbox="0 0 480 330"><g fill="none" stroke="currentColor"><path d="M30 60C140 320,260 30,440 150" opacity="0.2"></path><path d="M30 71C140 313,260 36,440 158" opacity="0.32"></path><path d="M30 82C140 306,260 42,440 166" opacity="0.44"></path><path d="M30 93C140 299,260 48,440 174" opacity="0.56"></path><path d="M30 104C140 292,260 54,440 182" opacity="0.6799999999999999"></path><path d="M30 115C140 285,260 60,440 190" opacity="0.2"></path><path d="M30 126C140 278,260 66,440 198" opacity="0.32"></path><path d="M30 137C140 271,260 72,440 206" opacity="0.44"></path><path d="M30 148C140 264,260 78,440 214" opacity="0.56"></path><path d="M30 159C140 257,260 84,440 222" opacity="0.6799999999999999"></path><path d="M30 170C140 250,260 90,440 230" opacity="0.2"></path><path d="M30 181C140 243,260 96,440 238" opacity="0.32"></path><path d="M30 192C140 236,260 102,440 246" opacity="0.44"></path><path d="M30 203C140 229,260 108,440 254" opacity="0.56"></path><path d="M30 214C140 222,260 114,440 262" opacity="0.6799999999999999"></path></g></svg></div></div></section><div class="e-reader-layout e-wrap"><aside class="e-chapter-rail"><p class="e-label">IN THIS ARTICLE</p><nav aria-label="Article contents"><ol><li><a href="#section-1">The Predictions</a></li><li><a href="#section-2">Seven Claims, With Dates</a></li><li><a href="#section-3">Movement One: The Constraint Is Real, and It Is Not Chips</a></li><li><a href="#chapter-4">What the Thesis Gets Wrong, and What It Costs</a></li><li><a href="#movement-two">Movement Two: The Mechanism · Subtractive Fragility and Appropriability</a></li><li><a href="#chapter-6">Movement Three: The Filter · What Interventions Survive</a></li><li><a href="#chapter-7">Movement Four: The Design Law · Funding by Side Effect</a></li><li><a href="#chapter-8">The Design Law</a></li><li><a href="#chapter-9">Source Confidence, Stated Plainly</a></li><li><a href="#chapter-10">The Argument, Compressed</a></li><li><a href="#chapter-11">The Compressed Version</a></li><li><a href="#chapter-12">The Prediction Tracker</a></li></ol></nav><a class="e-backtop" href="#article-top">Back to the beginning ↑</a></aside><article class="article e-manuscript"><details class="article-toc e-mobile-toc"><summary>In this article</summary><ol><li><a href="#section-1">The Predictions</a></li><li><a href="#section-2">Seven Claims, With Dates</a></li><li><a href="#section-3">Movement One: The Constraint Is Real, and It Is Not Chips</a></li><li><a href="#chapter-4">What the Thesis Gets Wrong, and What It Costs</a></li><li><a href="#movement-two">Movement Two: The Mechanism · Subtractive Fragility and Appropriability</a></li><li><a href="#chapter-6">Movement Three: The Filter · What Interventions Survive</a></li><li><a href="#chapter-7">Movement Four: The Design Law · Funding by Side Effect</a></li><li><a href="#chapter-8">The Design Law</a></li><li><a href="#chapter-9">Source Confidence, Stated Plainly</a></li><li><a href="#chapter-10">The Argument, Compressed</a></li><li><a href="#chapter-11">The Compressed Version</a></li><li><a href="#chapter-12">The Prediction Tracker</a></li></ol></details>
+<div class="article">
+<div class="opening">Method: follow commitments, not sentiment. Sentiment is cheap and reverses overnight. Commitments are expensive, slow, and constrain the future whether or not anyone still believes in them.</div>
+<hr/>
+<h2 id="section-1">The Predictions</h2>
+<p>This essay makes seven claims with dates. Each can be checked. Each has a fail condition.</p>
+<div class="predictions-list">
+<div class="prediction-item">
+<div class="year">2027</div>
+<div class="desc">US large power transformer lead times will still exceed 80 weeks, notwithstanding announced capacity expansions. <span class="condition">Fails if: lead times drop below 80 weeks.</span></div>
+<div class="status">Pending</div>
+</div>
+<div class="prediction-item">
+<div class="year">2028</div>
+<div class="desc">Announced US gas turbine manufacturing capacity expansions will have increased annual heavy-duty output by less than 40% versus 2025. <span class="condition">Fails if: output rises more than 40%.</span></div>
+<div class="status">Pending</div>
+</div>
+<div class="prediction-item">
+<div class="year">2030</div>
+<div class="desc">Through 2030, US electricity demand growth stays in the 1.5–3.5% annual range. <span class="condition">Fails if: growth exceeds 4% in any year or falls below 1% for two consecutive years.</span></div>
+<div class="status">Pending</div>
+</div>
+<div class="prediction-item">
+<div class="year">2030</div>
+<div class="desc">Electricity affordability will be a first-tier issue in a US federal election cycle, with datacenter siting or ratepayer allocation as explicit policy planks. <span class="condition">Fails if: it stays a state-regulatory matter.</span></div>
+<div class="status">Pending</div>
+</div>
+<div class="prediction-item">
+<div class="year">2032</div>
+<div class="desc">If hyperscaler AI capex has fallen more than 50% from 2026 peak, US grid transmission and generation capacity will nonetheless be materially higher than 2026, and that capacity will be absorbed rather than stranded. <span class="condition">Fails if: an AI capex collapse is followed by measurable stranding.</span></div>
+<div class="status">Pending</div>
+</div>
+<div class="prediction-item">
+<div class="year">2032</div>
+<div class="desc">No US pull-incentive scheme for antibiotics comparable to PASTEUR has passed and disbursed at scale. <span class="condition">Fails if: one passes and pays out.</span></div>
+<div class="status">Pending</div>
+</div>
+<div class="prediction-item">
+<div class="year">2035</div>
+<div class="desc">In at least one high-skill profession, a measurable senior-expertise shortage appears that cannot be closed by hiring, because the cohort that would have been senior was never trained as junior. <span class="condition">Fails if: senior pipelines refill normally or seniorization restructured rather than eliminated.</span></div>
+<div class="status">Pending</div>
+</div>
+</div>
+<!-- VISUAL ASSET 1: PREDICTION TIMELINE -->
+<div class="timeline-container">
+<div class="timeline-header">
+<h2 id="section-2">Seven Claims, With Dates</h2>
+<p>This essay makes specific, falsifiable predictions. Each can be checked. If they fail, the thesis is wrong.</p>
+</div>
+<div class="year-axis">
+<span>2026</span><span>2027</span><span>2028</span><span>2029</span><span>2030</span><span>2031</span><span>2032</span><span>2033</span><span>2034</span><span>2035</span>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2027</div>
+<div>
+<div class="desc-text">US large power transformer lead times still exceed 80 weeks <span class="fail-cond">Fails if: lead times drop below 80 weeks</span><span class="baseline-text">Baseline: 128 weeks (IndustrialSage, 2026)</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 18%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2028</div>
+<div>
+<div class="desc-text">US gas turbine output up less than 40% versus 2025 <span class="fail-cond">Fails if: output rises more than 40%</span><span class="baseline-text">Baseline: GE Vernova sold out through 2030 (earnings, 2026)</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 30%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2030</div>
+<div>
+<div class="desc-text">US electricity demand growth stays 1.5–3.5% annually <span class="fail-cond">Fails if: growth exceeds 4% or falls below 1% for two consecutive years</span><span class="baseline-text">Baseline: 1.9% (2026), 2.5% (2027) · EIA STEO</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 42%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2030</div>
+<div>
+<div class="desc-text">Electricity affordability becomes a first-tier federal election issue <span class="fail-cond">Fails if: it stays a state-regulatory matter</span><span class="baseline-text">Baseline: 7/10 oppose datacenters; $31B+ rate hikes requested (Gallup, 2026)</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 42%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2032</div>
+<div>
+<div class="desc-text">If AI capex falls 50%+, grid capacity is still materially higher and absorbed <span class="fail-cond">Fails if: AI bust followed by measurable stranding</span><span class="baseline-text">Baseline: 2,600 GW in interconnection queues (FERC, 2026)</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 58%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2032</div>
+<div>
+<div class="desc-text">No US antibiotic pull-incentive scheme passes and disburses at scale <span class="fail-cond">Fails if: one passes and pays out</span><span class="baseline-text">Baseline: PASTEUR reintroduced Feb 2026, still unpassed (Congress.gov)</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 58%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+<div class="timeline-row">
+<div class="year-marker">2035</div>
+<div>
+<div class="desc-text">Senior-expertise shortage appears in at least one high-skill profession <span class="fail-cond">Fails if: pipelines refill normally or seniorization restructured rather than eliminated</span><span class="baseline-text">Baseline: Junior roles ~8% at AI firms (Harvard SSRN, 2026)</span></div>
+<div class="duration-bar"><div class="duration-fill" style="width: 72%"></div></div>
+</div>
+<div class="status-tag">Pending</div>
+</div>
+</div>
+<p>Predictions 5 and 7 are the thesis. The rest are load-bearing supports.</p>
+<hr/>
+<h2 id="section-3">Movement One: The Constraint Is Real, and It Is Not Chips</h2>
+<p>The AI capital cycle is, physically, an electrification cycle wearing a software costume. Its most durable consequence will be electrical rather than cognitive, and that consequence arrives whether or not the AI thesis pays out.</p>
+<p>Roughly $630–725 billion in hyperscaler capex is committed for 2026, up from about $410 billion in 2025. What that money hits:</p>
+<div aria-label="Data table; scroll horizontally to read all columns" class="table-scroll" role="region" tabindex="0"><table>
+<tr><th>Bottleneck</th><th>State as of mid-2026</th></tr>
+<tr><td>Large power transformers</td><td>~128 weeks average lead time; generator step-up units ~144 weeks. Some specialized units quoted at 4–5 years.</td></tr>
+<tr><td>Transformer OEM capacity</td><td>Siemens Energy backlog through 2030; Hitachi Energy and ABB committed through 2029.</td></tr>
+<tr><td>Gas turbines</td><td>GE Vernova, Siemens Energy, and Mitsubishi each report backlogs stretching ~5 years. GE Vernova is already sold out through 2030.</td></tr>
+<tr><td>Grid interconnection</td><td>~2,600 GW in US queues: more than double total existing operational capacity. Median wait approaching 5 years.</td></tr>
+<tr><td>Electricians</td><td>Microsoft's president has named this the single biggest obstacle to their US datacenter expansion.</td></tr>
+</table></div>
+<p>Note what is <em>absent</em> from that table: semiconductors. The chip constraint was real in 2023. It is no longer the binding one.</p>
+<p>The intuitive explanation is that AI demand is historically enormous. It is not. US electricity generation is growing roughly 2.5–2.7% per year. In the 1950s and 60s, growth ran above 5% most years and sometimes touched 10%. By historical standards this is a <em>moderate</em> demand shock.</p>
+<p>The shock is devastating anyway, because of what happened during the twenty years of flat load that preceded it. US electricity consumption was essentially flat from 2005 onward. In a flat-demand world, every piece of surge capacity is a cost with no return, so it was rationally, incrementally dismantled:</p>
+<ul>
+<li>Transformer manufacturing was offshored. Roughly 80% of US large power transformers are imported.</li>
+<li>Grain-oriented electrical steel, the input transformers cannot be made without, collapsed to a single domestic producer meeting roughly one fifth of US demand.</li>
+<li>The electrician pipeline was allowed to age. Industry publications report roughly 30% of union electricians at or near retirement. This figure is recruiting-industry sourced and the magnitude is unestablished; treat it as directional only.</li>
+<li>Turbine manufacturing lines were sized for replacement demand, not growth.</li>
+</ul>
+<p>So: an ordinary wave is hitting a coastline where the seawall was sold for scrap. <strong>The scarcity is not a measure of how much is being demanded. It is a measure of how completely the capacity to respond was optimized away.</strong></p>
+</div>
+<!-- What I Got Wrong section moved here after Movement One -->
+<div style="max-width:720px;margin:0 auto">
+<h2 id="chapter-4">What the Thesis Gets Wrong, and What It Costs</h2>
+<p>Every argument has failure modes. Here are mine, stated at full strength, because a thesis that cannot survive its own counter-evidence is not worth publishing.</p>
+<p><strong>Projects are already failing.</strong> Oracle and OpenAI cancelled expansion of the Abilene, Texas flagship. Microsoft froze ~1.5 GW of self-build. An estimated $150–200 billion of 2026 datacenter capex is expected to slip into 2027–28. But most of this evidence shows projects being delayed <em>by the physical constraint and by local politics</em>, not by collapsing demand. That is evidence for the constraint, not against it.</p>
+<p><strong>The politics are turning hard.</strong> Community opposition blocked or delayed roughly $130 billion of projects in Q1 2026 alone. A March 2026 Gallup survey found about 7 in 10 Americans opposed to datacenter construction in their communities. Utilities requested $31 billion in rate hikes in 2025 and $9.4 billion more in Q1 2026. Roughly 1 in 6 US households entered 2026 behind on utility bills. This is the profile of an issue about to become electorally decisive.</p>
+<p><strong>The stranding case is coherent.</strong> Efficiency gains in models and chips could dissolve much of the projected demand. Behind-the-meter generation built for a single tenant is far more strandable than grid assets. But my thesis survives projects slipping. It does not survive a demand reversal deep enough to void turbine slot reservations and interconnection positions.</p>
+<p><strong>Attribution is genuinely contested.</strong> Several credible studies find datacenters are not the primary driver of retail rate increases. Prices are rising for multiple reasons, including transmission investment and gas volatility.</p>
+<p>Read these four failures carefully. The first two are evidence <em>for</em> the constraint thesis. The third is a bounded failure mode: the thesis survives unless demand reverses far deeper than any current forecast. The fourth is a genuine contestation where credible sources disagree. The thesis absorbs all four and continues. Watch whether the argument that follows does the same.</p>
+</div>
+<hr/>
+<div class="article">
+<h2 id="movement-two">Movement Two: The Mechanism · Subtractive Fragility and Appropriability</h2>
+<p>The standard accounts of stability producing collapse are about accumulation. Minsky: leverage builds over good times until the structure migrates from hedge to speculative to Ponzi. Holling: the conservation phase accumulates connectedness and potential while resilience silently drops. Both are stories about something building up during calm: fuel load, leverage, biomass. The system becomes loaded, and release is violent because stored energy discharges.</p>
+<p>The transformer case has none of that. Nothing accumulated. There is no fuel load and there will be no violent release. Something was <em>removed</em> (transformer plants, electrical steel lines, apprenticeships, turbine capacity) because during flat demand each was a cost with no return.</p>
+<div aria-label="Data table; scroll horizontally to read all columns" class="table-scroll" role="region" tabindex="0"><table>
+<tr><th></th><th><strong>Accumulative fragility</strong></th><th><strong>Subtractive fragility</strong></th></tr>
+<tr><td>Mechanism</td><td>Something builds up</td><td>Something is removed</td></tr>
+<tr><td>Canonical case</td><td>2008, forest fire, Minsky</td><td>Transformers, drug shortages</td></tr>
+<tr><td>Failure mode</td><td>Violent release of stored energy</td><td>Silent inability to respond</td></tr>
+<tr><td>Recovery</td><td>Fast: capacity survived the crisis</td><td>Slow: capacity must be rebuilt</td></tr>
+<tr><td>Villain</td><td>Exists (someone levered up)</td><td>None (every decision was locally correct)</td></tr>
+</table></div>
+<p>That last row is the load-bearing one. Accumulative fragility produces defendants. Subtractive fragility produces nobody to blame, because offshoring transformers <em>was</em> rational, and not training electricians for demand that wasn't coming <em>was</em> rational. No individual erred. There is no regulatory hook, no prosecution, no narrative.</p>
+<p>And it is undetectable by construction. Accumulative fragility is measurable: leverage ratios, fuel load, biomass are all positive quantities you can count. Subtractive fragility is the absence of something nobody has a line item for. There is no metric for "transformer factories we no longer have." No indicator goes red.</p>
+<p>The danger of shedding a capacity is proportional to: <strong>rebuild time ÷ warning time.</strong> Cloud compute: rebuild time hours, warning minutes, ratio near 1, run lean, correct. Large power transformers: rebuild time ~4 years for the unit and a decade-plus for domestic manufacturing capacity, warning time approximately zero, ratio enormous.</p>
+<p>But warning is not the binding constraint. Antibiotics demonstrate this cleanly. Antimicrobial resistance has been forecast loudly, credibly, and unanimously for decades. Warning time here is maximal. The rebuild time is long (10–15 years for a new class). By the high-warning model, a response should have materialized.</p>
+<p>It has produced almost nothing. The PASTEUR Act (a subscription model paying developers up front, de-linked from sales volume) was introduced in 2019 and <strong>reintroduced again in February 2026</strong>, still unpassed after seven years.</p>
+<p>So warning was necessary and nowhere near sufficient. Something else is binding.</p>
+<p>It is <strong>appropriability</strong>: whether whoever rebuilds the capacity can capture the return. Antibiotics have the worst possible structure: a genuinely excellent new antibiotic should be held in reserve and used as little as possible. The better it is, the less revenue it earns. Value is real, large, and entirely diffuse. Nobody can bill for it. Hence seven years of a bipartisan bill going nowhere while everyone agrees it's a crisis.</p>
+<p>Now re-examine transformers with that lens, and the conclusion flips.</p>
+<p>The transformer shortage has <strong>excellent</strong> appropriability. Hyperscalers with hundreds of billions in capex urgently need this specific physical thing and will pay nearly anything for it. Which is why the response is already enormous and private: OEM expansion, domestic plant investment, behind-the-meter generation, wage signals pulling labor into the trades hard enough that commercial electrical apprenticeship applications rose ~70% between 2022 and 2024.</p>
+<p><strong>So the AI power crunch is self-correcting, and the drug shortage is not</strong>, despite identical underlying structure. Same disease. Opposite prognosis. The difference is not severity, foresight, or difficulty. It is purely whether a private party can bill for the fix.</p>
+<p>The real rule: <strong>The capacities that stay hollow are not the ones nobody saw coming, and not the ones hardest to rebuild. They are the ones whose value is diffuse.</strong></p>
+<hr/>
+<h2 id="chapter-6">Movement Three: The Filter · What Interventions Survive</h2>
+<p>The intuitive solution to hollowing is to stockpile. Hold the buffer. Keep the reserve.</p>
+<p>The Strategic National Stockpile is the controlled experiment on that idea, and it failed cleanly. Roughly 100 million N95 respirators were deployed during the 2009 H1N1 pandemic. They were never substantially replenished. Not by the administration that depleted them, not by the next one, not by the one after that: <strong>three administrations of both parties</strong>, across eleven years, with the requirement known and documented throughout.</p>
+<p>Note what that failure is. A stockpile <em>is</em> slack. It costs money continuously, decays, produces nothing visible, and has no constituency. So it gets hollowed by precisely the mechanism it was built to defend against.</p>
+<p><strong>This yields the design filter, and it disqualifies most proposals:</strong> A solution is viable only if it does not itself require sustained, unappropriated maintenance. Any intervention whose survival depends on someone voluntarily funding diffuse value year after year will be hollowed by the same process it was meant to fix.</p>
+<p>Three families survive that filter. They survive because each converts diffuse value into something with an owner: a contract, a priced risk, or a technical fact that doesn't decay.</p>
+<h3>Tier 1: passes the filter, with existence proofs</h3>
+<p><strong>Delinked payment: pay for availability, not volume.</strong> A buyer pays a fixed fee for <em>capacity to exist</em>, contractually separated from how much gets used. The UK awarded the world's first delinked antimicrobial subscription contracts in July 2022: fixed annual fee, payment severed from volume, contractual guarantees on surety of supply. NHS England expanded it to a £100M annual budget, with contracts valued at ~£1.9 billion over 16 years tendered in 2024.</p>
+<p>Compare: the US PASTEUR Act, same idea, introduced 2019, reintroduced February 2026, still unpassed after seven years. Same mechanism, same evidence, same expert consensus. Opposite outcomes. The difference is that the UK has a single concentrated buyer who internalizes the entire national benefit. The US has fragmented payers, so the benefit stays diffuse and no one will pay for it.</p>
+<p>For the UK model to count as a fair test, implementation must include: a single national buyer (NHS England) paying a fixed annual fee delinked from volume, with contractual supply guarantees and a defined critical-antimicrobial list. If antibiotic availability does not materially improve under these conditions by 2030, the concentrated-buyer mechanism fails, and the thesis fails with it.</p>
+<p>The whole lesson: <strong>The way to fix diffuse value is to manufacture a concentrated buyer.</strong></p>
+<p><strong>Insurance as the transmission mechanism.</strong> Insurance is the only institution that systematically converts diffuse tail risk into a concentrated party with a balance sheet reason to care. In the mid-1800s, boiler explosions were killing large numbers of Americans roughly every four days. The response that worked was not regulation. It was the Hartford Steam Boiler Inspection and Insurance Company, founded 1866, which made inspection a condition of coverage. Their "Hartford Standards" became the specifications for boiler design and manufacture, and were absorbed into the first ASME Boiler and Pressure Vessel Code in 1914. A private insurer created a national safety regime because it had priced the risk. That regime has been self-funding for 160 years.</p>
+<p><strong>Compress rebuild time instead of holding slack.</strong> The danger ratio was rebuild time ÷ warning time. Everyone attacks the numerator by holding inventory, which decays and needs funding. You can instead attack it by making rebuilding <em>fast</em>, and unlike a stockpile, <strong>a standard doesn't decay and doesn't need annual appropriation.</strong> It passes the filter permanently. Standardized transformer designs let factories use pre-engineered specifications, speed material sourcing, and make units transferable between utilities. This is a coordination problem, not a funding problem, which makes it unusually cheap and unusually neglected, since no single utility captures the benefit of standardizing alone.</p>
+<h3>Tier 2: works, but narrower than advertised</h3>
+<p><strong>Advance Market Commitments.</strong> The pneumococcal AMC (2007, $1.5B from six donors) is the canonical success: by 2020 it had supported immunization of more than 225 million children, an estimated 700,000 deaths averted. But the evaluation literature is blunt about the limit: there is no good evidence the AMC accelerated <em>innovation</em>, and little that it expanded productive capacity as intended. So AMCs pull existing capability to market. They do not create capability that doesn't exist.</p>
+<h3>Tier 3: fails the filter, and predictably</h3>
+<ul>
+<li><strong>Stockpiles and strategic reserves.</strong> Documented above. They are diffuse-value slack, so they decay by the same mechanism.</li>
+<li><strong>"Improve forecasting."</strong> Antibiotics settle this. Maximum warning for decades, no response.</li>
+<li><strong>Resilience mandates without a counterparty.</strong> "Firms must maintain adequate redundancy" produces compliance theater, because adequacy is unobservable and nobody is paying for it.</li>
+<li><strong>Disclosure alone.</strong> Necessary but weak by itself. It only bites when a concentrated party (an insurer, a lender, a single large buyer) reads it and acts.</li>
+</ul>
+<hr/>
+<h2 id="chapter-7">Movement Four: The Design Law · Funding by Side Effect</h2>
+<p>Sorting the successes from the failures produced something unexpected. Every mechanism that survived decades has its funding attached to a routine transaction. Every mechanism that got hollowed had its own budget line.</p>
+<!-- VISUAL ASSET 2: DESIGN LAW DIAGRAM -->
+<div class="designlaw-container">
+<div class="designlaw-header">
+<h2 id="chapter-8">The Design Law</h2>
+<p style="font-size: 14px; font-family: -apple-system, 'Helvetica Neue', sans-serif; margin-top: 8px">Sorting the successes from the failures produced something unexpected.</p>
+<div class="law-statement">Resilience survives when its funding is a side effect of routine transactions.<br/>It dies when it is its own budget category.</div>
+</div>
+<div class="diagram">
+<div class="column survive">
+<div class="column-label">Survived</div>
+<div class="mechanism">
+<div class="mechanism-name">Civil Reserve Air Fleet</div>
+<div class="mechanism-funding">Routine DoD airlift contracts</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 180px"></div><div class="duration-text">70 years</div></div>
+</div>
+<div class="mechanism">
+<div class="mechanism-name">Hartford Steam Boiler</div>
+<div class="mechanism-funding">Annual insurance premiums</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 160px"></div><div class="duration-text">160 years</div></div>
+</div>
+<div class="mechanism">
+<div class="mechanism-name">Electricity capacity markets</div>
+<div class="mechanism-funding">Continuous wholesale settlement</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 120px"></div><div class="duration-text">Decades</div></div>
+</div>
+<div class="mechanism">
+<div class="mechanism-name">Ise Jingu rebuild</div>
+<div class="mechanism-funding">Fixed ritual calendar</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 200px"></div><div class="duration-text">1,300 years</div></div>
+</div>
+</div>
+<div class="column hollow">
+<div class="column-label">Hollowed</div>
+<div class="mechanism">
+<div class="mechanism-name">Strategic National Stockpile</div>
+<div class="mechanism-funding">Annual preparedness appropriation</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 30px"></div><div class="duration-text">Depleted within a decade</div></div>
+</div>
+<div class="mechanism">
+<div class="mechanism-name">US antibiotic pipeline</div>
+<div class="mechanism-funding">A bill that must pass</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 18px"></div><div class="duration-text">7+ years, still unpassed</div></div>
+</div>
+<div class="mechanism">
+<div class="mechanism-name">Transformer manufacturing base</div>
+<div class="mechanism-funding">Nothing: pure margin</div>
+<div class="mechanism-duration"><div class="duration-visual" style="width: 10px"></div><div class="duration-text">Offshored over 20 years</div></div>
+</div>
+</div>
+</div>
+<div class="diagram-connector">← Funding attached to routine transactions   |   Funding as its own budget line →</div>
+</div>
+<p>One counterexample deserves a direct answer: Social Security is funded by its own dedicated appropriation and has survived 90 years. It survives because it has a permanent, politically mobilized constituency that votes on the program's existence: the elderly and near-elderly. The design law applies to resilience whose constituency is diffuse and whose funding must win a quiet annual argument against present needs. Social Security is not that kind of resilience. It is political infrastructure with a permanent electoral base. The mechanisms in this essay are for capacities that lack that kind of concentrated political constituency, which is precisely the condition that makes them vulnerable to hollowing in the first place.</p>
+<p>This is not a claim about political will. A budget category is a thing that must be re-justified annually against present needs by people who will not be in office during the rare event. That contest is lost by default, forever, regardless of who is in charge: three administrations of both parties failed to refill the same stockpile. A side effect is never re-justified, because killing it means killing the routine transaction it rides on.</p>
+<p>The design objective is not "get resilience funded." It is <strong>get resilience out of the preparedness budget entirely and into the plumbing of transactions that happen anyway.</strong></p>
+<h3>Transplant one: procurement conditioning (the CRAF pattern)</h3>
+<p>The Civil Reserve Air Fleet has maintained emergency airlift capacity for about 70 years. It has been activated three times: Desert Storm, Iraqi Freedom, and the 2021 Afghanistan evacuation. It has never been hollowed.</p>
+<p>The reason is the payment structure. <strong>The government does not pay airlines a standby fee.</strong> It buys routine peacetime airlift it needs anyway, and restricts eligibility to bid on those contracts to carriers who commit aircraft to the reserve: over $2.6 billion in such contracts in FY2018 alone. The reserve capacity therefore costs approximately zero net new dollars, and it cannot be defunded without also cancelling the military's actual transport.</p>
+<p>The transplant: condition eligibility for routine federal purchasing on maintenance of verified surge capacity. For drugs: only manufacturers holding qualified, inspected redundant capacity on a defined critical-shortage list may bid on VA, DoD, and Medicare Part B routine contracts. The federal government is already the largest drug purchaser in the world. It is currently buying on price alone from single-source suppliers, which is how the redundancy was competed away in the first place.</p>
+<p>This is better than the subscription model: the subscription still needs an appropriation. This needs none. It is a change to solicitation criteria, not a spending bill, which matters enormously, since the whole diagnosis is that spending bills for diffuse value don't pass.</p>
+<p>One weakness must be stated honestly: concentrated buyers are themselves fragile. NHS England could delist the subscription. The VA could change procurement criteria. If concentrated buyers depend on political continuity or institutional priority, then "manufacture a concentrated buyer" relocates the fragility rather than solving it. This is why the strongest mechanisms in this essay combine multiple transplants: procurement conditioning <em>plus</em> insurance pricing <em>plus</em> compression of rebuild time, so no single point of failure kills the resilience.</p>
+<h3>Transplant two: commoditizing an absence (the negawatt pattern)</h3>
+<p>FERC Order 745 (2011), upheld by the Supreme Court, requires wholesale markets to pay demand response the full locational marginal price, the same rate as generation. Electricity that is <em>not consumed</em> is bought and sold at market price. An absence became a tradeable commodity with settlement, verification, and legal standing.</p>
+<p>That matters because resilience is definitionally an absence: the failure that doesn't occur. The standard objection is "you can't price a counterfactual." Negawatts are the standing refutation. It required defining a baseline, a verification protocol, and a settlement rule: all hard, all solved, all now routine.</p>
+<p>The transplant: a market in <strong>recovery-time reduction</strong>. Define, for a critical input, a national time-to-restore-supply baseline. Firms bid to supply verified reductions against it: through standardized designs, pre-qualified alternate sites, maintained tooling, cross-trained labor. This reframes the problem usefully. It stops asking "how much slack should we hold" (an unanswerable question with no natural unit) and starts asking "what does one month of national recovery time cost, and who sells it cheapest."</p>
+<h3>Transplant three: the Ise interval</h3>
+<p>Ise Jingu has been rebuilt every twenty years for roughly 1,300 years. The explicit purpose is not preserving buildings. It is preserving the craft. Over 2,000 artisans participate, and the interval is set so that a person who assisted as a young apprentice leads the work at the next rebuild. <em>"Rather than preserving old timber, Ise preserves the craft itself."</em></p>
+<p>The design insight is in the interval, and it is exact: <strong>the cycle is shorter than a career.</strong> Every practitioner both learns and teaches at least once. The chain never has a gap.</p>
+<p>This yields a hard threshold for tacit capacity. <strong>If dormancy exceeds one career span, rebuild time goes from long to effectively infinite, because the people who could teach it are gone. Documentation does not survive the gap; only practice does.</strong></p>
+<p>Apply this to the junior-expertise pipeline. A Harvard working paper finds junior employment declined roughly 8% since Q1 2023 at firms adopting generative AI. PwC describes "seniorization": entry-level roles now demanding skills that historically appeared mid-career. IBM is tripling US entry-level hiring in 2026, and the declines are concentrated in AI-exposed roles rather than universal.</p>
+<p>Estimated rebuild time: ~15 years. <strong>Note:</strong> this rebuild-time estimate is not in the Harvard paper. It is an extrapolation based on the logic of intergenerational knowledge transfer. That is roughly one generational handoff, meaning it sits almost exactly at the Ise threshold. A pipeline that closes for one full cycle cannot be reopened by deciding to reopen it.</p>
+<p>I hold this finding at moderate confidence. The data is one working paper plus contested industry reporting, and IBM is moving the opposite direction. But the diagnostic signature is exact: terrible appropriability, short warning time, and a 15-year rebuild time that closes its decision window long before the evidence is conclusive. Which is itself the whole problem restated.</p>
+<h3>Transplant four: manufacturing a constituency</h3>
+<p>The self-sealing problem was: diffuse value has no constituency, and fixing diffuse value requires one. Catastrophe bonds suggest an escape.</p>
+<p>Issue securities that pay coupons and forfeit principal on a defined shortage event: sole-source drug unavailability beyond N days, transformer lead times above a threshold. The insight is that the payout is not the point. The point is that this creates a class of investors with capital at risk who will then monitor, publish, and lobby, continuously and at their own expense. It converts diffuse public risk into concentrated private exposure, which is the same trick Hartford Steam Boiler ran, run deliberately.</p>
+<p>I rank it last among survivors because the moral hazard runs the wrong way: holders of the securities benefit from shortages not occurring, which is fine, but anyone who shorts them benefits from causing one. Cat bonds work partly because nobody can cause a hurricane. Someone can absolutely cause a drug shortage. This needs careful thought about who is permitted to hold the short side.</p>
+<hr/>
+<h2 id="chapter-9">Source Confidence, Stated Plainly</h2>
+<p><strong>Solid:</strong> EIA demand data. SEC filings and earnings disclosures (GE Vernova, Siemens Energy, hyperscaler capex). Wood Mackenzie and Goldman Sachs supply-chain work. Gallup polling. Hannah Ritchie's historical demand comparison.</p>
+<p><strong>Moderate:</strong> Lead-time averages (industry trackers with inconsistent methodology). Junior hiring decline (one working paper plus contested industry reporting; IBM moving opposite direction).</p>
+<p><strong>Weak, treat with suspicion:</strong> Specific labor-shortage figures (the "499,000 worker shortage" originates largely from recruiting-industry publications with an obvious interest in the number being large). The <em>direction</em> is corroborated by Microsoft's own public statements. The magnitude is not established.</p>
+<p><strong>Contested:</strong> Datacenter attribution for retail rate increases. Credible sources genuinely disagree.</p>
+<hr/>
+<!-- VISUAL ASSET 3: FOUR-MOVEMENT STRUCTURE MAP -->
+<div class="structure-container">
+<div class="structure-header">
+<h2 id="chapter-10">The Argument, Compressed</h2>
+<p style="font-size: 14px; font-family: -apple-system, 'Helvetica Neue', sans-serif; margin-top: 8px">Four passes traced one thread from diagnosis to intervention.</p>
+</div>
+<div class="movements">
+<div class="movement">
+<div class="movement-number">1</div>
+<div class="movement-content"><h3>The Costume and the Body</h3><p>The AI capex cycle is physically an electrification cycle. $630–725B in committed capex is pouring into transformers, turbines, and grid infrastructure with 30–40 year lifespans, while the silicon layer depreciates in 5–6.</p></div>
+<div class="movement-relation">Empirical observation</div>
+</div>
+<div class="movement">
+<div class="movement-number">2</div>
+<div class="movement-content"><h3>What Stays Hollow</h3><p>Names the mechanism: subtractive fragility. Systems don't just collapse from accumulated leverage, they collapse from capacities that were removed because each removal was locally correct. The key variable is appropriability.</p></div>
+<div class="movement-relation">Theoretical contribution</div>
+</div>
+<div class="movement">
+<div class="movement-number">3</div>
+<div class="movement-content"><h3>Refilling the Hollow</h3><p>Every viable solution attacks appropriability. Three families survive: delinked availability payments, insurance as tail-risk transmitter, and compressing rebuild time through standardization.</p></div>
+<div class="movement-relation">Applied theory</div>
+</div>
+<div class="movement">
+<div class="movement-number">4</div>
+<div class="movement-content"><h3>Funding by Side Effect</h3><p>The design law: resilience survives when funded sideways. Four transplants follow: procurement conditioning, recovery-time markets, periodic full exercise, and catastrophe bonds.</p></div>
+<div class="movement-relation">Meta-principle</div>
+</div>
+</div>
+</div>
+<h2 id="chapter-11">The Compressed Version</h2>
+<p>Stability doesn't make systems fragile by loading them up. That's the well-studied case and it's not this one. Stability makes systems fragile by <em>removing</em> things whose value was only ever visible during turbulence, and it does this through a working optimization process making locally correct decisions on an evidence base that is systematically biased, because the sample is drawn entirely from the calm.</p>
+<p>That last part is the floor under all of it, and it isn't fixable by being smarter. You are estimating the value of insurance using data from the period when you didn't need insurance. Every additional year of stability adds another valid data point supporting the removal of resilience. <strong>The argument for shedding slack gets stronger and better-evidenced the closer you get to the moment it becomes catastrophic.</strong> Maximum confidence at maximum danger, not through error, but through correct inference on a biased sample.</p>
+<p>And what determines whether the hollow gets refilled is not whether anyone predicted it. It's whether anyone can bill for it.</p>
+<p>The reason resilience keeps dying is not that people are short-sighted. It is that we keep funding it in the one way that structurally cannot survive: as a line item that must win an annual argument against present needs, judged by people who will be gone before the rare event arrives. That argument is lost in advance. It was lost for the national stockpile under three administrations of both parties, which is as close to a controlled experiment on political will as the world is likely to offer.</p>
+<p>Everything that has actually lasted (seventy years of reserve airlift, a hundred and sixty of boiler inspection, thirteen hundred of carpentry) is funded sideways. The money arrives as a byproduct of something that happens anyway: a routine contract, an annual premium, a ritual calendar. Nobody ever has to decide to keep paying for it, because nobody is ever asked.</p>
+<p><strong>Stop trying to win the argument for resilience, and start trying to make the argument unnecessary.</strong> Attach it to the plumbing. What survives is what nobody has to defend.</p>
+<p style="margin-top: 32px; font-style: italic">The predictions in this essay are tracked in real time. If they fail, the thesis was wrong, and we'll say so.</p>
+<hr/>
+<!-- TRACKER SECTION -->
+<div class="tracker-section">
+<h2 id="chapter-12">The Prediction Tracker</h2>
+<p>All seven predictions are tracked here with independently sourced primary data. Quarterly updates assess pass/fail against pre-specified thresholds.</p>
+<div class="predictions-grid">
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 1 · Movement One</span><span class="status-badge status-tracking">Tracking</span></div>
+<div class="pred-title">By end of 2027, US large power transformer lead times will still exceed 80 weeks</div>
+<div class="pred-details">Despite announced capacity expansions, the physical constraint persists through 2027.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2026)</span><span class="metric-value">128 weeks avg</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Dec 2027</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">&gt;80 weeks = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-moderate">Moderate</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>OEM capacity expansions tracked (Siemens, GE Vernova, Hitachi)</li><li>Domestic plant investment monitored</li><li>Behind-the-meter generation adoption noted</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">IndustrialSage, Power Magazine</span></div>
+</div>
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 2 · Movement One</span><span class="status-badge status-tracking">Tracking</span></div>
+<div class="pred-title">By end of 2028, US gas turbine output expansion &lt;40% vs 2025</div>
+<div class="pred-details">Announced capacity expansions add 20-25% output; thesis claims less than 40% total increase.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2025)</span><span class="metric-value">GE Vernova 116 GW backlog</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Dec 2028</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">&lt;40% increase = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-high">High</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>OEM earnings reports tracked quarterly</li><li>New manufacturing capacity additions monitored</li><li>Backlog-to-shipment ratios noted</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">SEC Filings, Earnings Reports</span></div>
+</div>
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 3 · Movement One</span><span class="status-badge status-tracking">Tracking</span></div>
+<div class="pred-title">Through 2030, US electricity demand growth stays 1.5-3.5% annually</div>
+<div class="pred-details">Real, sustained, unremarkable by mid-century standards.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2025)</span><span class="metric-value">2.1% annual (5-yr avg)</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Through 2030</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">1.5-3.5% range = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-high">High</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>EIA STEO forecasts tracked</li><li>State-level demand data monitored</li><li>Datacenter load growth disaggregated</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">EIA Annual Energy Outlook</span></div>
+</div>
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 4 · Movement One</span><span class="status-badge status-tracking">Tracking</span></div>
+<div class="pred-title">By 2030, electricity affordability becomes first-tier federal election issue</div>
+<div class="pred-details">Datacenter siting or ratepayer allocation as explicit policy planks.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2026)</span><span class="metric-value">57-70% oppose local datacenters</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Nov 2030</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">Federal policy plank = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-high">High</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>Gallup/Brookings polling tracked</li><li>Rate hike requests monitored</li><li>Campaign platform language scanned</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">Gallup, Brookings, AP</span></div>
+</div>
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 5 · Movement One</span><span class="status-badge status-pending">Long-term</span></div>
+<div class="pred-title">By 2032, grid capacity absorbed post-AI-bust</div>
+<div class="pred-details">Even if AI capex falls &gt;50% from 2026 peak, grid capacity is higher and absorbed, not stranded.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2026)</span><span class="metric-value">2,600 GW in interconnection queues</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Dec 2032</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">Capacity higher + absorbed = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-moderate">Moderate</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>FERC interconnection queue data tracked</li><li>Hyperscaler capex monitored</li><li>Electrification load growth noted</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">FERC, EIA, Grid Operators</span></div>
+</div>
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 6 · Movement Two</span><span class="status-badge status-pending">Long-term</span></div>
+<div class="pred-title">By 2032, no US pull-incentive scheme for antibiotics comparable to PASTEUR passes</div>
+<div class="pred-details">PASTEUR Act (introduced 2019, reintroduced 2026) remains unpassed. Appropriation-based fixes fail.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2026)</span><span class="metric-value">PASTEUR reintroduced, unpassed</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Dec 2032</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">No passage = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-high">High</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>Congress.gov bill status tracked</li><li>UK subscription model outcomes monitored</li><li>Concentrated-buyer mechanism tested</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">Congress.gov, CIDRAP</span></div>
+</div>
+<div class="pred-card">
+<div class="pred-card-header"><span class="pred-num">Prediction 7 · Movement Four</span><span class="status-badge status-pending">Long-term</span></div>
+<div class="pred-title">By 2035, senior-expertise shortage appears in at least one high-skill profession</div>
+<div class="pred-details">The cohort that would have been senior was never trained as junior. Cannot be closed by hiring.</div>
+<div class="metric-row"><span class="metric-label">Baseline (2026)</span><span class="metric-value">Junior roles ~8% at AI firms</span></div>
+<div class="metric-row"><span class="metric-label">Target Date</span><span class="metric-value">Dec 2035</span></div>
+<div class="metric-row"><span class="metric-label">Threshold</span><span class="metric-value">Measurable shortage = pass</span></div>
+<div class="metric-row"><span class="metric-label">Confidence</span><span class="confidence-tag confidence-moderate">Moderate</span></div>
+<div class="impl-section"><div class="impl-title">Implementation Fidelity Check</div><ul class="impl-list"><li>Harvard working paper replication tracked</li><li>IBM counter-signal monitored</li><li>PwC seniorization data noted</li></ul></div>
+<div class="metric-row"><span class="metric-label">Data Source</span><span class="metric-value">Harvard SSRN, PwC, BLS</span></div>
+</div>
+</div>
+<div class="methodology">
+<h3>Methodology</h3>
+<ul>
+<li><strong>Binary pass/fail:</strong> Each prediction has a clear threshold. No partial credit.</li>
+<li><strong>Primary sources only:</strong> Data pulled directly from EIA, SEC filings, FERC, Congress.gov: not from thesis author's baselines.</li>
+<li><strong>Quarterly updates:</strong> New data assessed every 3 months. Status changes logged publicly.</li>
+<li><strong>Implementation fidelity:</strong> Each prediction tracks whether the mechanism is being tested fairly, not just whether it succeeds.</li>
+<li><strong>Differential test:</strong> Prediction 6 vs transformer resolution is the real test: same disease, opposite outcomes, appropriability is the only variable.</li>
+<li><strong>Honest failure:</strong> If predictions fail, the thesis is wrong. We publish failures the same way we publish successes.</li>
+</ul>
+</div>
+</div>
+<div class="footer-note">
+<p>Subtractive Fragility · A traced argument</p>
+<p style="margin-top: 8px">All seven predictions tracked publicly at the companion dashboard.</p>
+<p style="margin-top: 8px">If the predictions fail, the thesis is wrong. We publish failures the same way we publish successes.</p>
+</div>
+</div>
+</article></div><section class="e-related e-wrap"><p class="e-label">CONTINUE READING</p><div><a href="/digital/blog/prediction-market-outlook.html"><span>ESSAY &amp; ANALYSIS</span><h2>Prediction Market Outlook</h2><b aria-hidden="true">↗</b></a><a href="/digital/blog/the-agents-are-replaceable.html"><span>ESSAY &amp; ANALYSIS</span><h2>The Agents Are Replaceable. The Operating System Is Not.</h2><b aria-hidden="true">↗</b></a></div></section></main>
+<p style="font-size:var(--t-xs);padding:0 24px 16px;max-width:720px;border-bottom:1px solid var(--border);margin-bottom:0">Research content is analysis, not investment advice. ASKA does not provide investment advice through this site.</p>
+<footer class="f-footer-band"><div class="f-footer f-wrap"><div><a class="footer-wordmark" href="/">ASKA</a><p>Digital and physical.<br/>One connected practice.</p><p>© 2026 ASKA Business Solutions Inc.</p></div><nav aria-label="Footer navigation"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></div></footer>
+<script defer="" src="/assets/js/site-shell.js?v=complete-1"></script><script defer="" src="/assets/js/editorial.js?v=editorial-1"></script></body>
+</html>

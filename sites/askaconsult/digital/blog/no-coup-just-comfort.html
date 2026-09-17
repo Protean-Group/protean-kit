@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>No Coup, Just Comfort · ASKA Consulting Insights</title>
+<meta content="Decentralization isn't defeated by its enemies. It is surrendered through its own conveniences, and the industry's metrics cannot see it happening. By ASKA Consulting research." name="description"/>
+<link href="https://askaconsult.com/digital/blog/no-coup-just-comfort.html" rel="canonical"/>
+<meta content="No Coup, Just Comfort · ASKA Consulting Insights" property="og:title"/>
+<meta content="Decentralization is not defeated by its enemies. It is surrendered through its own conveniences." property="og:description"/>
+<meta content="https://askaconsult.com/assets/svg/askadigital.svg" property="og:image"/>
+<meta content="https://askaconsult.com/digital/blog/no-coup-just-comfort.html" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/system.css?v=7.22" rel="stylesheet"/>
+<link href="/frontier.css?v=1" rel="stylesheet"/>
+<meta content="noindex,nofollow" name="robots"/><link href="/completion.css?v=complete-1" rel="stylesheet"/><style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Geist-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Geist-Medium.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Geist-SemiBold.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Geist-Bold.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/GeistMono-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/GeistMono-SemiBold.woff2) format('woff2');}
+/* Research visual system (token-adapted) */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e8e6e3;
+  --muted: #8b8680;
+  --accent: #d4a056;
+  --accent-dim: #d4a05633;
+  --border: #2a2e35;
+  --card: #161a20;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 60px 40px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.article { max-width: 720px; margin: 0 auto; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  letter-spacing: 0;
+}
+.article-meta {
+  margin-bottom: 40px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.article-meta span { margin: 0 3px; }
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 16px;
+}
+
+.opening {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 48px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+p { margin-bottom: 16px; }
+
+/* v7.18 contrast (KodeKoot): page re-asserts the research visual system's intended
+   warm primary text over system.css's shared `.article p` muted-steel leak
+   (--text-muted #51607F ≈ 3:1 on #0e1116). Body prose → warm --fg (#e8e6e3, ≈15:1).
+   Muted #8b8680 stays reserved for .subtitle/.opening/.article-meta/caption roles;
+   accent #d4a056 stays for blockquote text and emphasis. Hierarchy deliberate. */
+.article p { color: var(--fg); }
+.article li { color: var(--fg); }
+.article p strong { color: var(--fg); }
+.article blockquote,
+.article blockquote p { color: var(--accent); }
+.article blockquote .source-quote-cite { color: var(--muted); }
+/* v7.18: system.css `.article .article-sources{background:var(--warm-card)}` was
+   leaking a cream box onto this dark page, dropping the gold SOURCES heading to
+   ~2.3:1 and the citation list to ~3.6:1. Restore the page's own dark-card intent
+   (page :root --card #161a20): gold heading 7.45:1, muted list 4.84:1. */
+.article .article-sources { background: var(--card); border-color: var(--border); }
+.article .article-sources h4 { color: var(--accent); }
+.article-sources li { color: var(--muted); }
+
+ul, ol { margin-bottom: 16px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 24px;
+  font-size: 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+td { color: var(--fg); }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 24px 0;
+  color: var(--accent);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Long primary-source manifesto excerpts must not render italic (delta spec) */
+blockquote.source-quote { font-style: normal; }
+blockquote.source-quote .source-quote-cite {
+  margin-top: 12px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+blockquote.source-quote .source-quote-cite em { font-style: normal; }
+
+.article-sources {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.article-sources h4 {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.article-sources ul { list-style: none; padding-left: 0; }
+.article-sources li { margin-bottom: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 750px) {
+  body { padding: 24px 16px; font-size: 16px; }
+  h1 { font-size: 28px; }
+}
+</style><link href="/editorial.css?v=editorial-1" rel="stylesheet"/></head>
+<body class="article-digital frontier-aska editorial-site e-reader"><a class="skip-link" href="#main">Skip to content</a>
+<header class="f-nav f-wrap"><a aria-label="ASKA home" class="f-brand" href="/"><img alt="" height="40" src="/assets/svg/aska-logo.svg" width="40"/>ASKA <small>DIGITAL</small></a><nav aria-label="Main navigation" class="f-desktop-nav"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/about/">The firm</a><a href="/digital/blog/">Journal</a><a class="f-contact" href="mailto:info@askaconsult.com">Contact ↗</a></nav><details class="f-mobile-menu"><summary>Explore <span aria-hidden="true">＋</span></summary><nav aria-label="All pages" class="f-mobile-menu-panel"><a href="/">Home</a><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></details></header><main id="main"><section class="e-reader-hero e-wrap" id="article-top"><a class="e-backlink" href="/digital/blog/">← The Digital journal</a><div class="e-reader-title"><div><div class="article-meta">
+<span>ASKA RESEARCH</span>
+<span>·</span>
+<span><time datetime="2026-08-13">AUGUST 13, 2026</time></span>
+<span>·</span>
+<span>DECENTRALIZATION</span>
+</div><h1>No Coup, Just Comfort</h1><div class="subtitle">Decentralization isn't defeated by its enemies. It is surrendered through its own conveniences, and the industry's metrics cannot see it happening.</div></div><div class="e-reader-art"><svg aria-hidden="true" class="e-motif" viewbox="0 0 480 330"><g fill="none" stroke="currentColor"><path d="M30 60C140 320,260 30,440 150" opacity="0.2"></path><path d="M30 71C140 313,260 36,440 158" opacity="0.32"></path><path d="M30 82C140 306,260 42,440 166" opacity="0.44"></path><path d="M30 93C140 299,260 48,440 174" opacity="0.56"></path><path d="M30 104C140 292,260 54,440 182" opacity="0.6799999999999999"></path><path d="M30 115C140 285,260 60,440 190" opacity="0.2"></path><path d="M30 126C140 278,260 66,440 198" opacity="0.32"></path><path d="M30 137C140 271,260 72,440 206" opacity="0.44"></path><path d="M30 148C140 264,260 78,440 214" opacity="0.56"></path><path d="M30 159C140 257,260 84,440 222" opacity="0.6799999999999999"></path><path d="M30 170C140 250,260 90,440 230" opacity="0.2"></path><path d="M30 181C140 243,260 96,440 238" opacity="0.32"></path><path d="M30 192C140 236,260 102,440 246" opacity="0.44"></path><path d="M30 203C140 229,260 108,440 254" opacity="0.56"></path><path d="M30 214C140 222,260 114,440 262" opacity="0.6799999999999999"></path></g></svg></div></div></section><div class="e-reader-layout e-wrap"><aside class="e-chapter-rail"><p class="e-label">IN THIS ARTICLE</p><nav aria-label="Article contents"><ol><li><a href="#section-1">The door most people walk through</a></li><li><a href="#section-2">What trustlessness actually requires</a></li><li><a href="#section-3">The conveniences</a></li><li><a href="#section-4">What is not being measured</a></li><li><a href="#section-5">The polite surrender: governance</a></li><li><a href="#section-6">The product that could not stay decentralized</a></li><li><a href="#section-7">What this argument gets wrong</a></li><li><a href="#section-8">The rule</a></li></ol></nav><a class="e-backtop" href="#article-top">Back to the beginning ↑</a></aside><article class="article e-manuscript"><details class="article-toc e-mobile-toc"><summary>In this article</summary><ol><li><a href="#section-1">The door most people walk through</a></li><li><a href="#section-2">What trustlessness actually requires</a></li><li><a href="#section-3">The conveniences</a></li><li><a href="#section-4">What is not being measured</a></li><li><a href="#section-5">The polite surrender: governance</a></li><li><a href="#section-6">The product that could not stay decentralized</a></li><li><a href="#section-7">What this argument gets wrong</a></li><li><a href="#section-8">The rule</a></li></ol></details>
+<div class="article">
+<div class="opening">Method: read the movement's own manifestos against its own defaults and its own metrics, and let the industry's instruments do the accusing, because erosion is an absence, and only a metric that measures subtraction can see it.</div>
+<hr/>
+<h2 id="section-1">The door most people walk through</h2>
+<p>Open a wallet and send a transaction. The request that leaves your phone does not go to the network. It goes to Infura, a hosted service that relays it on your behalf. That is MetaMask's default, and a default on the dominant wallet is a default on the network's retail floor. The blockchain beneath it is decentralized. The door nearly everyone walks through is not.</p>
+<p>The Trustless Manifesto, published in November 2025 and authored by Vitalik Buterin alongside Ethereum Foundation researchers Yoav Weiss and Marissa Posner, names this as the era's central threat, and it does not call it capture.</p>
+<blockquote class="source-quote">
+<p>Decentralization erodes not through capture, but through convenience. It drifts, automatically, continually, toward dependence on trust.</p>
+<footer class="source-quote-cite">· Vitalik Buterin, Yoav Weiss &amp; Marissa Posner, The Trustless Manifesto, 2025</footer>
+</blockquote>
+<blockquote class="source-quote">
+<p>No capture, no coup, just comfort. Help becomes habit; habit becomes dependence.</p>
+<footer class="source-quote-cite">· Vitalik Buterin, Yoav Weiss &amp; Marissa Posner, The Trustless Manifesto, 2025</footer>
+</blockquote>
+<p>That passage is the argument of this piece. Decentralization is not being defeated by an enemy. It is being surrendered through its own conveniences, one default at a time, and the industry does not see it happening because it is measuring the wrong thing.</p>
+<h2 id="section-2">What trustlessness actually requires</h2>
+<p>The manifesto is not vague about the bar. It specifies six requirements, self-sovereignty, verifiability, censorship resistance, the walkaway test, accessibility, and transparency of incentives, and three laws. The second law is the operative one: no indispensable intermediaries. Anyone who forwards, executes, or attests must be replaceable by anyone else following the same rules. And the manifesto sharpens this past the easy slogan. "Anyone can run one" is not enough; participation must be practically open, not reserved for people with servers, funding, and DevOps skill.</p>
+<p>The manifesto gives its canonical example of how this happens, and it is not crypto. It is email. Once, anyone could run their own mail server. In practice, spam filters, blocklists, and reputation systems made self-hosting nearly impossible. Email became effectively centralized not because the protocol was closed, but because practical trustlessness was lost. The protocol stayed open. The network stopped being usable that way.</p>
+<p>That is the shape of the whole problem. Nothing has to be seized for a system to stop being distributed. It only has to become easier not to run your own piece of it, until the people who still can are a shrinking, professionalized few, and the rest of the users are trusting a handful of intermediaries they never chose and cannot replace.</p>
+<p>The standard the manifesto sets for judging success is a single line: <strong>"We measure success not by transactions per second, but by trust reduced per transaction."</strong></p>
+<p>That metric is the whole story. Adopt it and the conveniences stop looking like progress. Reject it, and every act of erosion becomes invisible, because erosion is an absence, not a failure. Nothing goes red. No alert fires. The system keeps passing the metrics that were chosen because they were easy to count.</p>
+<h2 id="section-3">The conveniences</h2>
+<p>The erosion points are not exotic. They are the defaults everyone already uses.</p>
+<p>MetaMask routes through Infura as a default. A default is a choice made once and then never remade, so a permissioned company ends up standing between the user and a permissionless network. The community has a name for it: the access layer problem.</p>
+<p>The AWS outage of 2025 made the consequence concrete. Base, which ran its sequencer on a single AWS-hosted instance, saw its transaction throughput drop roughly 40% when that instance went down, with block-space utilization falling to about a sixth of normal (Metrika on-chain data). Arbitrum and Optimism, running across multiple providers, kept working. The community read the result as confirmation that the stack had single points of failure hidden inside convenient defaults. If one provider's failure can cut a layer-2's throughput by roughly two-fifths, the layer-2 was never really distributed.</p>
+<p>The pattern repeats at block production. Six relays operated by five entities account for roughly 99% of mev-boost blocks on Ethereum. The community treats this as a centralization bug to fix, not a market outcome to accept, but the reason it exists is convenience. Relays make the process work reliably, so everyone routes through them. Every individual operator's decision to use the reliable relay was correct. The aggregate is a bottleneck nobody chose.</p>
+<p>These are the same failure, wearing different labels. Each one is a single point of failure inside a "convenient" default, and each one persists because removing it would make the user experience worse. That is the trap. Decentralization is always traded for something the user can feel, and the trade is always framed as an improvement.</p>
+<p>The community knows this well enough to have a test question for it, applied to every new product: who do I have to trust, and can they be replaced without approval? The test is easy to state and hard to pass, because most of the stack fails it. The wallet routes through a company. The layer-2 runs on a cloud provider. The block production passes through a handful of relays. The user, asked to name who they trust and whether that party is replaceable, gives the same answer each time: a name, and no.</p>
+<p>The cultural weight of this anxiety is not a footnote. It reframes every user-experience convenience as a potential governance capture, which is why the forums argue about whether "local block production matters anymore" in the tones of people watching a flood.</p>
+<h2 id="section-4">What is not being measured</h2>
+<p>TPS, DAU, total value locked, funding raised. These are the industry's instruments, and every one of them measures what adoption adds. None of them measures what decentralization subtracts.</p>
+<p>This is the structural blind spot, and it deserves to be stated plainly: the metrics reward the erosion. A wallet that routes through Infura processes more transactions. A layer-2 that runs on one cloud provider is faster and cheaper. A relay pool with five operators is more reliable. The conveniences all move the counted numbers in the right direction, and the uncounted number, trust, moves the other way. The system is being optimized for the instruments it chose, and the instruments were chosen because they were easy to count, not because they described the thing the movement claimed to value.</p>
+<p>The manifesto's line, "trust reduced per transaction," is not sentimental. It is an attempt to build an instrument that can see subtraction. Without it, the movement is flying on adoption metrics that cannot distinguish a decentralized network from a centralized one with a blockchain in front of it.</p>
+<p>The community's own research discipline makes the same point from the other side. ethresear.ch draws a precise line between two properties that are routinely collapsed into one word: decentralization, the broad distribution of a system's intrinsic power, and autonomy, its resistance to extrinsic power. A system can be highly decentralized and entirely captive, or narrowly distributed and stubbornly autonomous. The convenience trap collapses them, treating "easy to use" as if it meant "resistant to control." It does not. And the community's instinct, when it wants to know whether a layer-2 is actually aligned, is to try to measure it, tracking how much of Ethereum's security the layer-2 really leverages, how much it uses the canonical bridge, how fast it settles, whether it allows force inclusion, rather than taking the alignment claim on faith. The point of the exercise is that decentralization, left unmeasured, becomes a marketing word. The settlement score exists because the people building these systems know the difference between a claim and a fact.</p>
+<h2 id="section-5">The polite surrender: governance</h2>
+<p>The same mechanism operates at the layer where decentralization is supposed to be most legible. DAOs were built to make control auditable, and the research and the forums agree the result is concentrated, low-participation governance. Academic work by Cong et al. documents low participation, concentrated voting power, and abnormal insider trading around proposals.</p>
+<p>The concentration is produced by conveniences. Delegation was built so busy token holders could hand their vote to someone who would actually use it. It produced ghost delegates, accounts people delegated to and then forgot, and an electorate that stopped reading. Uniswap's own governance forum warns the system is structurally precarious, with quorum margins near historic lows and the abstention of one or two key actors enough to stall a proposal.</p>
+<p>The research on delegation is blunt about the failure mode. Studies of MakerDAO's polls find that delegation can worsen outcomes when the delegates do not actually represent the people who delegated to them. The voter who delegates to be responsible is not reading, is not following, and has no idea what their proxy did. Participation, the very thing delegation promised to protect, is what delegation quietly removes. The vote is still cast; it is just cast by someone the original holder has never vetted. This is the convenience trap at the governance layer, and it is the same mechanism as the hosted RPC: a user hands a function to a party they have not chosen deliberately and then stops exercising it, and the system's counted metrics, participation, turnout, governance activity, all look healthy.</p>
+<p>Delegation is the convenience that empties participation in the name of participation. A token holder delegates to look responsible, stops reading, and the effective electorate shrinks to a small professional class. The governance-services industry that emerged to professionalize participation, firms like Gauntlet and StableLab, is the market's honest answer to a problem the market itself created: the convenience of delegation emptied the thing delegation was meant to serve.</p>
+<p>The market prices the damage. Peer-reviewed research (Bellavitis &amp; Momtaz, Journal of Business Venturing Insights, 2025) finds DAOs that vote off-chain raise 87% less funding than those that vote on-chain. Participation and legitimacy have a price, and the price is lower for the convenient path.</p>
+<h2 id="section-6">The product that could not stay decentralized</h2>
+<p>Farcaster is the cleanest case, because it failed openly. A decentralized social network, roughly $180 million raised, daily active users peaking near 70,000, a $2 billion memecoin in $DEGEN. And the community's own essay named the rot from inside: the social graph is a rank-ordered list by account age, low FIDs get revered, and the distribution mechanics make the hierarchy functionally permanent. The critique landed hard. "This is not decentralization. This is a gatekeeping system that happens to run on a decentralized protocol."</p>
+<p>The end state is a study in subtraction. Roughly $2.8 million in cumulative protocol revenue against $180 million raised, the co-founder stepping back in December 2025 with "we tried social-first for 4.5 years, it didn't work for us," and a VC-backed firm acquiring the protocol contracts, the app, and Clanker in January 2026. The community now argues over the meaning: whether the market punishes decentralization, or whether the VCs who funded it never wanted it in the first place.</p>
+<p>Farcaster shows both halves of the thesis at once. The protocol was decentralized enough to be bought and kept. The product on top of it was a gatekeeping system the entire time. Decentralization was the label; convenience, the rank order and the distribution mechanics that made early accounts powerful, was the reality. The metrics, daily active users, valuation, memecoin market cap, all read as success while the property was eroding underneath them.</p>
+<h2 id="section-7">What this argument gets wrong</h2>
+<p>The strongest objection is that this is a story told by the movement's own manifestos, and the manifestos are written by its leaders. The Trustless Manifesto is authored by Vitalik Buterin alongside Ethereum Foundation researchers, and it names hosted RPCs as a threat in an ecosystem whose dominant wallet routes through one. Reading it as pure diagnosis flatters the diagnosis. The convenience critique is itself a convenience, a way to blame "the market" and "defaults" while the people who set the defaults are the ones complaining.</p>
+<p>Second, the conveniences are not pure loss. MetaMask routing through Infura is why the network has retail users at all. A self-sovereign wallet that requires running your own node is a wallet only experts can use, which fails the manifesto's own accessibility requirement. The tension is real and it is the point: accessibility requires convenience, and convenience re-adds trust. There is no clean optimum. The manifesto's answer, trust reduced per transaction as the metric, is a direction, not a target.</p>
+<p>Third, the erosion may be more reversible than the framing suggests, because the community is already building instruments to see the absence. Buterin's CROPS articulation of censorship resistance, capture resistance, openness, privacy, and security; the proposed Ethereum Settlement Score to measure how much a layer-2 actually uses Ethereum's security; the ethresear principle that decentralization must be measured or it is just marketing. The walkaway test, can Ethereum survive without the Foundation, applies the same discipline to the people layer. These are attempts to make subtraction countable.</p>
+<p>Read all three honestly. The first cuts against the manifestos' authority but not against the evidence, the erosion happens regardless of who names it. The second is a genuine tension the argument absorbs, it does not claim convenience should be removed, only that it should be measured. The third is the argument's own solution.</p>
+<h2 id="section-8">The rule</h2>
+<p>The industry chose the wrong instrument, not the wrong values. Every metric it adopted, transactions per second, daily active users, funding raised, valuation, measures what adoption adds. None of them measures what decentralization subtracts, because subtraction is invisible and cannot be counted by an instrument aimed at accumulation. The system was optimized toward its instruments, and its instruments were pointed at the wrong thing.</p>
+<p>A network does not die in a coup. It dies in defaults. The default RPC, the default sequencer provider, the default delegation target, the default social-graph ranking. Each one locally correct, each one re-adding a trusted intermediary, each one invisible to the metrics that reward it.</p>
+<p>The fix is the one the manifestos already wrote, turned into a habit. Measure trust reduced per transaction, and ask the test question at every design decision: who do I have to trust, and can they be replaced without approval? When the answer is a name, and the name cannot be replaced, the network has become the thing it was built to replace. No coup was required.</p>
+<p><em>We build and audit systems like these at ASKA. The metric question is the first thing we check.</em></p>
+<div class="article-sources">
+<h4>Sources</h4>
+<ul>
+<li>Buterin, V., Weiss, Y., &amp; Posner, M. · The Trustless Manifesto (2025).</li>
+<li>Metrika · Base sequencer outage on-chain data (2025).</li>
+<li>Cong, L. W., et al. · DAO governance: low participation, concentrated voting power (2026).</li>
+<li>Bellavitis, C., &amp; Momtaz, P. P. · Journal of Business Venturing Insights: off-chain voting and the funding penalty (2025).</li>
+<li>Uniswap governance forum · quorum precarity and structural risk (2026).</li>
+<li>ethresear.ch · decentralization vs autonomy; the Ethereum Settlement Score (2026).</li>
+<li>Farcaster community essay · the rank-ordered social graph critique (2026).</li>
+</ul>
+</div>
+</div>
+</article></div><section class="e-related e-wrap"><p class="e-label">CONTINUE READING</p><div><a href="/insights/subtractive-fragility/"><span>ESSAY &amp; ANALYSIS</span><h2>Subtractive Fragility</h2><b aria-hidden="true">↗</b></a><a href="/digital/blog/prediction-market-outlook.html"><span>ESSAY &amp; ANALYSIS</span><h2>Prediction Market Outlook</h2><b aria-hidden="true">↗</b></a></div></section></main>
+<p style="font-size:var(--t-xs);padding:0 24px 16px;max-width:720px;border-bottom:1px solid var(--border);margin-bottom:0">Research content is analysis, not investment advice. ASKA does not provide investment advice through this site.</p>
+<footer class="f-footer-band"><div class="f-footer f-wrap"><div><a class="footer-wordmark" href="/">ASKA</a><p>Digital and physical.<br/>One connected practice.</p><p>© 2026 ASKA Business Solutions Inc.</p></div><nav aria-label="Footer navigation"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></div></footer>
+<script defer="" src="/assets/js/site-shell.js?v=complete-1"></script><script defer="" src="/assets/js/editorial.js?v=editorial-1"></script></body>
+</html>
