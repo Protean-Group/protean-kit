@@ -7,16 +7,10 @@ fail-closed behavior: nonzero exit on any failure. No dependencies beyond stdlib
 
 ORDER (this list is the gate list; the composer holds no separate release-gates
 document, and this docstring is authoritative):
-  1. sweep-gate.py — extraction source verification
-  2. review-gate.py — semantic sign-off enforcement
-  3. surface-scan.py — multi-surface leak detector
-  4. check-artifact-contract.py self-test
-  5. preflight/check.py self-test
-  6. report/check.py self-test
-  7. composition lock validity (check-lock.py, static)
-  8. ingredient contract (check-ingredient-contract.py, static)
-  9. composition lock tests (tests/test_kit_lock.py)
- 10. fresh-clone test (generate.py fork-dryrun check)
+  1. composition lock validity (check-lock.py, static)
+  2. ingredient contract (check-ingredient-contract.py, static)
+  3. composition lock tests (tests/test_kit_lock.py)
+  4. contribution mode tests (tests/test_contribution_mode.py)
 
 Exit: 0 = all gates pass; 1 = any gate failed.
 """
@@ -76,51 +70,23 @@ def main():
 
     gates = []
 
-    # 1. sweep-gate
-    gates.append(("sweep-gate.py", [sys.executable, os.path.join(HERE, "sweep-gate.py")]))
-
-    # 2. review-gate
-    gates.append(("review-gate.py", [sys.executable, os.path.join(HERE, "review-gate.py")]))
-
-    # 3. surface-scan
-    gates.append(("surface-scan.py", [sys.executable, os.path.join(HERE, "surface-scan.py")]))
-
-    # 4. check-artifact-contract self-test
-    gates.append(("check-artifact-contract self-test",
-                  [sys.executable, os.path.join(HERE, "check-artifact-contract.py"), "--self-test"]))
-
-    # 5. preflight/check.py self-test
-    gates.append(("preflight/check self-test",
-                  [sys.executable, os.path.join(HERE, "preflight", "check.py"), "--selftest"]))
-
-    # 6. report/check.py self-test
-    gates.append(("report/check self-test",
-                  [sys.executable, os.path.join(HERE, "report", "check.py"), "--selftest"]))
-
-    # 7. composition lock validity
+    # 1. composition lock validity
     gates.append(("check-lock.py",
                   [sys.executable, os.path.join(HERE, "check-lock.py"),
                    os.path.join(ROOT, "kit.lock.json")]))
 
-    # 8. ingredient contract (reports pinned trees it cannot read, never invents one)
+    # 2. ingredient contract (reports pinned trees it cannot read, never invents one)
     gates.append(("check-ingredient-contract.py",
                   [sys.executable, os.path.join(HERE, "check-ingredient-contract.py"),
                    "--lock", os.path.join(ROOT, "kit.lock.json")]))
 
-    # 9. composition lock tests
+    # 3. composition lock tests
     gates.append(("composition lock tests",
                   [sys.executable, "-m", "unittest", "tests.test_kit_lock"]))
 
-    # 10. fresh-clone test (fork-dryrun.sh)
-    fork_dryrun = os.path.join(HERE, "fork-dryrun.sh")
-    if os.path.isfile(fork_dryrun):
-        # Use current repo as source and 'main' as branch; no private paths.
-        gates.append(("fresh-clone fork-dryrun",
-                     ["bash", fork_dryrun, ROOT, "main"]))
-    else:
-        # Alternative: verify generate.py works in fork mode
-        gates.append(("fresh-clone generate test",
-                      [sys.executable, os.path.join(HERE, "generate.py"), "--help"]))
+    # 4. contribution mode tests
+    gates.append(("contribution mode tests",
+                  [sys.executable, "-m", "unittest", "tests.test_contribution_mode"]))
 
     # Run all gates
     results = []

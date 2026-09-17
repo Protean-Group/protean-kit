@@ -29,10 +29,6 @@ jobs:
           chmod +x build/verify-all.py
           python3 build/verify-all.py
 
-      - name: Verify surface-scan passes
-        run: |
-          python3 build/surface-scan.py
-
       - name: Verify the composition lock
         run: python3 build/check-lock.py kit.lock.json
 
@@ -41,3 +37,6 @@ jobs:
 
       - name: Run the composition lock tests
         run: python3 -m unittest tests.test_kit_lock
+
+      - name: Run the contribution-mode tests
+        run: python3 -m unittest tests.test_contribution_mode

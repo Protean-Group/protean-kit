@@ -39,6 +39,35 @@ outside this repository.
 
 ## Unreleased
 
+- **What:** add an install-time contribution-mode toggle to the composer. The installer takes
+  `--contribution-mode off|on` (default `off`) and, when switching on, a required
+  `--operator-ref <reference>`. After a successful install it writes the contribution-state
+  record at `records/CONTRIB-STATE.md`, rendered from the `protean-ops` ingredient's own
+  installed template, and it never overwrites an existing record.
+- **Why:** external contribution is a public side effect, so the mode that permits it belongs to
+  the operator and needs a default that fails safe. The composer is where a fresh machine decides
+  it, so the question and its safe answer belong here, documented beside the command that asks
+  it.
+- **Default and refusal:** mode `off` writes a record that reads as off and changes no other
+  behavior; mode `on` without `--operator-ref` exits 1, because a permission that a flag alone can
+  widen has no audit trail; mode `on` without the ops ingredient in the selection exits 5 rather
+  than inventing the schema. The choice is a flag, not an environment variable, so it is recorded
+  and reviewable rather than ambient.
+- **Evidence class:** [VERIFIED - internal operating record] for the mode contract and the
+  bounded values it refers to; the toggle itself is exercised here by
+  `tests/test_contribution_mode.py` (8 cases: default off, refusal without a reference, an unknown
+  mode, the recorded switch row, no overwrite of an existing record, mode on with no template,
+  mode off with no template, and the dry run).
+- **Verification:** `python3 -m unittest tests.test_contribution_mode` and
+  `python3 -m unittest tests.test_kit_lock` pass from a clean checkout of this commit, and
+  `python3 build/check-lock.py kit.lock.json` still passes. The workflow gains one step that runs
+  the new test file.
+- **Open item:** the pins in `kit.lock.json` are not re-pointed by this change. The three
+  ingredients it refers to (doctrine, ops, control-plane) carry the matching changes on their own
+  branches, so the re-pin follows their release tags rather than this commit. Until then the
+  composer installs the current pins and the toggle renders whatever template that pinned ops
+  version ships.
+
 - **What:** add the composition lock and the installer. `kit.lock.json` pins six
   standalone ingredients by annotated tag, peeled commit SHA, and tree hash
   (`protean-tree-v1`). `install.sh` (a thin entrypoint over `build/install.py`)

@@ -229,6 +229,50 @@ planned writes, and it writes nothing.
 bash install.sh --all --target ./protean-installed --dry-run
 ```
 
+### Contribution mode at install time
+
+The installer asks one question about continual contribution mode and answers it
+with a safe default. External contribution is **off** unless you ask for it:
+
+```
+bash install.sh --all --target ./protean-installed
+bash install.sh --all --target ./protean-installed --contribution-mode on --operator-ref <reference>
+```
+
+- **Default, and the safe one.** Without the flag the mode is recorded as off.
+  Nothing else changes; the run behaves exactly as it does today.
+- **Turning it on is a recorded decision.** `--contribution-mode on` is refused
+  without `--operator-ref <reference>`, because a permission that can be widened
+  by a flag alone has no audit trail. The reference is recorded in the state
+  record as a `switch` row.
+- **No environment variable.** The choice is a command-line flag, not a
+  `HERMES_*` setting: it is a one-time install decision, and a variable that sits
+  in a shell profile is neither recorded nor reviewable.
+- **The composer still vendors nothing.** The record is rendered from the
+  `protean-ops` ingredient's own template, installed beside it at
+  `records/CONTRIB-STATE.md`. When the ops ingredient is not in the selection,
+  mode off writes no record and reports it, and mode on fails closed (exit 5)
+  rather than inventing a schema. An existing record is never overwritten, so a
+  re-install cannot silently widen a permission.
+
+What the recorded mode means once the kit is running:
+
+| | internal mode | external mode |
+|---|---|---|
+| default | always on, no toggle | off |
+| what it governs | work on a repository the operator administers | work whose target is not such a repository |
+| while off | not affected | no remote write of any kind, including a push to a fork; a local branch, commit, test run, and rendered draft are allowed |
+| enforcement | the contribution-state gate, asserted, never assumed | the same gate, fail closed on an absent or unreadable record |
+
+Four bounded values belong to the gate, not to this document, and the gate
+recomputes all of them from timestamped rows: at most two live contribution lanes
+of which one may be external; the per-window rate table for pull requests, issues,
+comments, and reviews; the per-thread write limit and the per-repository burst
+detector; and a write window of 05:00-21:00 in the operator's local zone, outside
+which an external lane still runs to a ready draft but writes nothing remotely.
+The kill switch is one field, `external_contrib`, in the state record, and a
+missing record reads as off.
+
 The composer holds the lock, the installer, the documentation, and the gates. It
 **contains no ingredient payload and no submodule**: composition is manifest-only.
 Each ingredient is fetched from its pinned tag, verified against the tag's peeled
@@ -350,6 +394,7 @@ success zero.
 python3 build/check-lock.py kit.lock.json --verify
 python3 build/check-ingredient-contract.py --lock kit.lock.json --verify
 python3 -m unittest tests.test_kit_lock
+python3 -m unittest tests.test_contribution_mode
 ```
 
 `check-lock.py` validates the lock and, with `--verify`, recomputes every pin's
