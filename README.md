@@ -56,17 +56,25 @@ One AI agent can lose track, skip steps, or claim work is done when it isn't. Pr
 
 ## How you use it
 
-1. Pick a ready-made agent profile from `templates/` (each has a role and rules).
-2. Add a settings file from `registry/` with your own values.
-3. Run the builder, which checks everything and creates your team folder:
+1. Preview the full-kit install and review the resolved pins and install order:
 
 ```
-python3 build/sweep-gate.py      # check the source files are in order
-python3 build/review-gate.py     # check every item has been reviewed
-python3 build/generate.py --out my-team [--params my-settings.yaml]
+bash install.sh --all --target ./protean-installed --dry-run
 ```
 
-You get a folder with your team's agents, ready to run.
+2. Install the pinned ingredients into the target directory:
+
+```
+bash install.sh --all --target ./protean-installed
+```
+
+3. To install one ingredient, select it explicitly:
+
+```
+bash install.sh --ingredient protean-drafts --target ./protean-installed
+```
+
+The installer verifies each pinned tag and tree before promotion, then reads every written file back.
 
 ## What's in the repo
 
