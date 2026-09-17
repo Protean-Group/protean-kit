@@ -214,7 +214,7 @@ Read `choreography/run-evidence.md`.
 
 ## The Protean Kit distribution (lock version 1)
 
-This repository is also the composer of the Protean Kit: it pins six standalone
+This repository is also the composer of the Protean Kit: it pins seven standalone
 ingredients, and one command installs the whole set.
 
 ```
@@ -341,7 +341,7 @@ summary to stdout.
 | `5` | install failed | Fix the target permissions or the ingredient defect. The run is not successful. |
 | `6` | post-install verification failed | Understand the mismatch, then rerun. The target holds an incomplete install, and the summary reports it. |
 
-A run that installs five of six ingredients exits non-zero. There is no partial
+A run that installs six of seven ingredients exits non-zero. There is no partial
 success zero.
 
 ### Verify this release
@@ -363,7 +363,7 @@ rather than inventing a result.
 
 - The ingredient repositories ship under the MIT license. Each commits its own
   `LICENSE` file, which is authoritative for that repository.
-- The version 1 set pins six ingredients. Whether every one of them belongs in
+- The version 1 set pins seven ingredients. Whether every one of them belongs in
   version 1 is an open item recorded by the project, not a decision made here.
 - The protocol ingredient carries its own open items; the installer reports them
   in its summary and never resolves them.
