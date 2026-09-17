@@ -25,9 +25,9 @@
     {
       "slug": "protean-doctrine",
       "repo": "https://github.com/aska-digital/protean-doctrine",
-      "ref": "refs/tags/v1.0.2",
-      "sha": "f5d6f795181522249b6e8d18d483f6f2c85058a9",
-      "version": "1.0.2",
+      "ref": "refs/tags/v1.1.0",
+      "sha": "f72d6da9be8bdf11dfa300ace7cbd47e2453fa79",
+      "version": "1.1.0",
       "contract": "The operating doctrine: the default pipeline, role delegation map, handoff protocol, QA gates, and external-writing discipline.",
       "kind": "skills",
       "installTargets": [
@@ -38,8 +38,8 @@
       "requires": [],
       "recommends": [],
       "integrity": {
-        "fileCount": 18,
-        "treeSha256": "faeecb7ce747b2c7ad205d97f947e198e6240362908263fd90365a64f3463b27",
+        "fileCount": 20,
+        "treeSha256": "0d751b7b5227d8543e899de20ebd5e11a91b2a8854831df04b24a6ea28ab5a62",
         "algorithm": "protean-tree-v1"
       },
       "gates": [
@@ -61,9 +61,9 @@
     {
       "slug": "protean-ops",
       "repo": "https://github.com/aska-digital/protean-ops",
-      "ref": "refs/tags/v1.0.0",
-      "sha": "f2abc3bf6a7e0925d26e14606d0645a0ea765bad",
-      "version": "1.0.0",
+      "ref": "refs/tags/v1.1.0",
+      "sha": "0b78ff77a2ba32c1b0d1c6464a18ad36053ed303",
+      "version": "1.1.0",
       "contract": "The dispatch/rotation/inflight ops kit: append-only record schemas and the deterministic gates that check them.",
       "kind": "records",
       "installTargets": [
@@ -74,8 +74,8 @@
       "requires": [],
       "recommends": [],
       "integrity": {
-        "fileCount": 48,
-        "treeSha256": "09170568f2b0b112745a9f4c9bd13f300d61f6c523fefae06a17aff662e8789c",
+        "fileCount": 61,
+        "treeSha256": "05daa2e9cf5bec2fca085f79a1026b38f3bae7f892666678847edb291b04fc6f",
         "algorithm": "protean-tree-v1"
       },
       "gates": [
@@ -114,6 +114,12 @@
           "cwd": ".",
           "postInstall": true,
           "cmd": "python3 scripts/protean-ops/check-decision-report.py records/examples/valid/decision-report.html --evidence records/examples/valid/decision-evidence.md"
+        },
+        {
+          "name": "op-contrib-state",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-ops/check-contrib-state.py records/examples/valid/CONTRIB-STATE.md"
         }
       ],
       "open": []
@@ -260,9 +266,9 @@
     {
       "slug": "protean-control-plane",
       "repo": "https://github.com/aska-digital/protean-control-plane",
-      "ref": "refs/tags/v1.0.0",
-      "sha": "f593dd1f816e8b348e2a6f5b37b2da6392f9b47a",
-      "version": "1.0.0",
+      "ref": "refs/tags/v1.1.0",
+      "sha": "ca71a6686710e713a3dc8f2fad666b892c300d37",
+      "version": "1.1.0",
       "contract": "The control-plane skill pack: one canonical procedure home that routes a request to the minimum skill bundle, with the gate table and failure policy.",
       "kind": "skills",
       "installTargets": [
@@ -279,8 +285,8 @@
         "protean-sym2p"
       ],
       "integrity": {
-        "fileCount": 17,
-        "treeSha256": "c879d69ad8283bc40879334dbae415b4bb022f6d4e6dcb8a7f40aa82282e3fbd",
+        "fileCount": 19,
+        "treeSha256": "5a17769608d90942b246aa5e28657708c914704f958bb09b625d1e2f8630d323",
         "algorithm": "protean-tree-v1"
       },
       "gates": [
