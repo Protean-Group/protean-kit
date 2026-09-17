@@ -7,6 +7,29 @@ Canonical site: https://proteus.askaconsult.com/
 The canonical site is the public documentation for Protean Kit. For the
 service listing, see the canonical site.
 
+## What's new in this release (1.8.0)
+
+### What
+
+Add three choreography rules plus the README, CHANGELOG, and site entries that carry them:
+
+1. **Fresh-branch requirement** (choreography/open-source-contribution.md) — every contribution branch must be created from a fresh fetch of the target repository's default branch.
+2. **Commit serialization boundary** (choreography/orchestration.md) — stage and commit must be serialized for a declared file set.
+3. **Stale-tree hazard worked example** (choreography/self-improving-flywheel.md) — encodes the same incident as rule 1.
+4. **Session-start router** (templates/personas/SOUL.md.tmpl) — at session start, read the orchestration contract once and apply it before the first dispatch.
+5. **Mirror forks rule** (choreography/self-improving-flywheel.md) — when one repository has mirror forks, one change must reach every mirror with consistent author identity and file set.
+6. **Peer-team cross-review** (choreography/orchestration.md) — a second team may review a staged PR via a written handoff message carried by the operator.
+
+These rules prevent PRs that revert or duplicate existing work due to stale branches, enable multi-mirror consistency, and provide a clean cross-team review procedure. The README, CHANGELOG, and index.html surfaces carry the change.
+
+### Why
+
+During an orchestration test, a stale branch 14 commits behind origin/main was used as a PR base, which would have deleted content already shipped on main. A stale base produces a PR that reverts or duplicates existing work.
+
+### Evidence
+
+[VERIFIED — internal operating record] Grounded in the team's shared doctrine and dated session history.
+
 ## What problem does it solve?
 
 One AI agent can lose track, skip steps, or claim work is done when it isn't. Protean Kit sets up several agents with separate jobs — planner, builder, checker — and rules so that:
