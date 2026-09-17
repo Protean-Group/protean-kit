@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Agents Are Replaceable. The Operating System Is Not. · ASKA Consulting Insights</title>
+<meta content="Why Team6-kit treats agents as replaceable inputs and durable operating discipline as the system — now including automatic local preprocessing for privacy, routing hints, and artifact metadata. By The ASKA Team." name="description"/>
+<link href="https://askaconsult.com/digital/blog/the-agents-are-replaceable.html" rel="canonical"/>
+<meta content="The Agents Are Replaceable. The Operating System Is Not. · ASKA Consulting Insights" property="og:title"/>
+<meta content="Why Team6-kit makes operating discipline durable while models remain replaceable inputs." property="og:description"/>
+<meta content="https://askaconsult.com/assets/svg/askadigital.svg" property="og:image"/>
+<meta content="https://askaconsult.com/digital/blog/the-agents-are-replaceable.html" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/system.css?v=7.22" rel="stylesheet"/>
+<link href="/frontier.css?v=1" rel="stylesheet"/>
+<meta content="noindex,nofollow" name="robots"/><link href="/completion.css?v=complete-1" rel="stylesheet"/><style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Geist-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Geist-Medium.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Geist-SemiBold.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Geist-Bold.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/GeistMono-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/GeistMono-SemiBold.woff2) format('woff2');}
+/* Research visual system (token-adapted) */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e8e6e3;
+  --muted: #8b8680;
+  --accent: #d4a056;
+  --accent-dim: #d4a05633;
+  --border: #2a2e35;
+  --card: #161a20;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 60px 40px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.article { max-width: 720px; margin: 0 auto; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  letter-spacing: 0;
+}
+.article-meta {
+  margin-bottom: 40px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.article-meta span { margin: 0 3px; }
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 16px;
+}
+
+.opening {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 48px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+p { margin-bottom: 16px; }
+
+/* v7.18 contrast (KodeKoot): page re-asserts the research visual system's intended
+   warm primary text over system.css's shared `.article p` muted-steel leak
+   (--text-muted #51607F ≈ 3:1 on #0e1116). Body prose → warm --fg (#e8e6e3, ≈15:1).
+   Muted #8b8680 stays reserved for .subtitle/.opening/.article-meta/caption roles;
+   accent #d4a056 stays for blockquote text and emphasis. Hierarchy deliberate. */
+.article p { color: var(--fg); }
+.article li { color: var(--fg); }
+.article p strong { color: var(--fg); }
+.article blockquote,
+.article blockquote p { color: var(--accent); }
+.article blockquote .source-quote-cite { color: var(--muted); }
+.article-sources li { color: var(--muted); }
+
+ul, ol { margin-bottom: 16px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 24px;
+  font-size: 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+td { color: var(--fg); }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 24px 0;
+  color: var(--accent);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.article-sources {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.article-sources h4 {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.article-sources ul { list-style: none; padding-left: 0; }
+.article-sources li { margin-bottom: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.ops-diagram { margin: 36px 0; padding: 20px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; }
+.ops-flow { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: .08em; color: var(--accent); }
+.ops-flow span { padding: 8px 10px; border: 1px solid var(--accent-dim); border-radius: 4px; background: rgba(212,160,86,.06); }
+.ops-flow i { color: var(--muted); font-style: normal; }
+.ops-diagram figcaption { margin-top: 14px; color: var(--muted); font: 13px/1.5 -apple-system, 'Helvetica Neue', sans-serif; text-align: center; }
+/* Hidden-scale mini-stack — vertical operating chain, gold register. */
+.stack-mini { display: flex; flex-direction: column; gap: 4px; }
+.stack-mini-row { display: flex; align-items: baseline; gap: 12px; }
+.stack-mini-gauge { font-family: 'Geist Mono', monospace; font-weight: 600; font-size: 26px; line-height: 1; color: var(--accent); flex: none; min-width: 34px; }
+.stack-mini-label { font-family: 'Geist Mono', monospace; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg); }
+.stack-mini-coupling { font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: .06em; color: var(--muted); }
+.stack-mini-arrow { color: var(--accent); font-style: normal; margin-right: 6px; }
+.stack-mini-row--review { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--border); }
+.stack-mini-row--review .stack-mini-label { color: var(--muted); }
+
+@media (max-width: 750px) {
+  body { padding: 24px 16px; font-size: 16px; }
+  h1 { font-size: 28px; }
+}
+</style><link href="/editorial.css?v=editorial-1" rel="stylesheet"/></head>
+<body class="article-digital frontier-aska editorial-site e-reader"><a class="skip-link" href="#main">Skip to content</a>
+<header class="f-nav f-wrap"><a aria-label="ASKA home" class="f-brand" href="/"><img alt="" height="40" src="/assets/svg/aska-logo.svg" width="40"/>ASKA <small>DIGITAL</small></a><nav aria-label="Main navigation" class="f-desktop-nav"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/about/">The firm</a><a href="/digital/blog/">Journal</a><a class="f-contact" href="mailto:info@askaconsult.com">Contact ↗</a></nav><details class="f-mobile-menu"><summary>Explore <span aria-hidden="true">＋</span></summary><nav aria-label="All pages" class="f-mobile-menu-panel"><a href="/">Home</a><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></details></header><main id="main"><section class="e-reader-hero e-wrap" id="article-top"><a class="e-backlink" href="/digital/blog/">← The Digital journal</a><div class="e-reader-title"><div><div class="article-meta">
+<span>THE ASKA TEAM</span>
+<span>·</span>
+<span><time datetime="2026-09-02">SEPTEMBER 2, 2026</time></span>
+<span>·</span>
+<span>AGENT OPERATIONS</span>
+</div><h1>The Agents Are Replaceable. The Operating System Is Not.</h1><div class="subtitle">How a one-person consultancy runs like a ten-person firm on a team of AI agents whose real value was never the models.</div></div><div class="e-reader-art"><svg aria-hidden="true" class="e-motif" viewbox="0 0 480 330"><g fill="none" stroke="currentColor"><path d="M30 60C140 320,260 30,440 150" opacity="0.2"></path><path d="M30 71C140 313,260 36,440 158" opacity="0.32"></path><path d="M30 82C140 306,260 42,440 166" opacity="0.44"></path><path d="M30 93C140 299,260 48,440 174" opacity="0.56"></path><path d="M30 104C140 292,260 54,440 182" opacity="0.6799999999999999"></path><path d="M30 115C140 285,260 60,440 190" opacity="0.2"></path><path d="M30 126C140 278,260 66,440 198" opacity="0.32"></path><path d="M30 137C140 271,260 72,440 206" opacity="0.44"></path><path d="M30 148C140 264,260 78,440 214" opacity="0.56"></path><path d="M30 159C140 257,260 84,440 222" opacity="0.6799999999999999"></path><path d="M30 170C140 250,260 90,440 230" opacity="0.2"></path><path d="M30 181C140 243,260 96,440 238" opacity="0.32"></path><path d="M30 192C140 236,260 102,440 246" opacity="0.44"></path><path d="M30 203C140 229,260 108,440 254" opacity="0.56"></path><path d="M30 214C140 222,260 114,440 262" opacity="0.6799999999999999"></path></g></svg></div></div></section><div class="e-reader-layout e-wrap"><aside class="e-chapter-rail"><p class="e-label">IN THIS ARTICLE</p><nav aria-label="Article contents"><ol><li><a href="#section-1">1. The Set Piece</a></li><li><a href="#section-2">2. What People Actually Build</a></li><li><a href="#section-3">3. The Doctrine</a></li><li><a href="#section-4">4. The Lessons That Cost Something</a></li><li><a href="#section-5">5. Institutional Memory as Anti-Entropy</a></li><li><a href="#section-6">6. The Honest Limit</a></li><li><a href="#section-7">6.5. The Small Models Around the Team</a></li><li><a href="#section-8">7. Compressed Version</a></li></ol></nav><a class="e-backtop" href="#article-top">Back to the beginning ↑</a></aside><article class="article e-manuscript"><details class="article-toc e-mobile-toc"><summary>In this article</summary><ol><li><a href="#section-1">1. The Set Piece</a></li><li><a href="#section-2">2. What People Actually Build</a></li><li><a href="#section-3">3. The Doctrine</a></li><li><a href="#section-4">4. The Lessons That Cost Something</a></li><li><a href="#section-5">5. Institutional Memory as Anti-Entropy</a></li><li><a href="#section-6">6. The Honest Limit</a></li><li><a href="#section-7">6.5. The Small Models Around the Team</a></li><li><a href="#section-8">7. Compressed Version</a></li></ol></details>
+<div class="article">
+<div class="opening">Method: report on the operating discipline and the hidden machinery behind it: the agents, model tiers, local specialists, repositories, knowledge routes, gates, and verification techniques that make a one-person consultancy operate like a larger firm.</div>
+<figure aria-labelledby="scale-caption" class="ops-diagram">
+<div class="stack-mini">
+<div class="stack-mini-row"><span class="stack-mini-gauge">6</span><span class="stack-mini-label">COORDINATED AGENTS</span></div>
+<div class="stack-mini-coupling"><i aria-hidden="true" class="stack-mini-arrow">↓</i>bound to durable state</div>
+<div class="stack-mini-row"><span class="stack-mini-gauge">30</span><span class="stack-mini-label">PROJECT WORKSPACES</span></div>
+<div class="stack-mini-coupling"><i aria-hidden="true" class="stack-mini-arrow">↓</i>routed to the smallest capable model</div>
+<div class="stack-mini-row"><span class="stack-mini-gauge">22</span><span class="stack-mini-label">CATALOGUED CLOUD MODELS</span></div>
+<div class="stack-mini-coupling"><i aria-hidden="true" class="stack-mini-arrow">↓</i>gated before the cloud call</div>
+<div class="stack-mini-row"><span class="stack-mini-gauge">3</span><span class="stack-mini-label">LOCAL FUNCTIONS — REDACT · GIST · TITLE</span></div>
+<div class="stack-mini-coupling"><i aria-hidden="true" class="stack-mini-arrow">↓</i>verified on served bytes</div>
+<div class="stack-mini-row stack-mini-row--review"><span class="stack-mini-label">HUMAN REVIEW BOUNDARY</span></div>
+</div>
+<figcaption id="scale-caption">The public page shows one answer. It comes out of a stack: profiles → state → models → gates → review. Remove one layer and the rest stop being an operating system.</figcaption>
+</figure>
+<hr/>
+<p>The assumption driving most AI adoption is that the models are the product: buy better models, assemble more agents, and the work speeds up on its own. This post argues the reverse. Agents have become commodity inputs: interchangeable, cheap, replaceable. What actually persists, and what separates a firm that genuinely runs on AI from a demo that stalls, is the operating system wrapped around them: the handoffs, the gates, the discipline that decides what <em>done</em> means. Swap out every model and the discipline survives. Lose the discipline and no model choice will save you.</p>
+<p>That is a counterintuitive claim, because it runs against how multi-agent AI is usually sold. The evidence for it is a working system, not a pitch. The set-piece below is one real session: a solo consultant as principal, five agents doing the work, a sixth coordinating, a full website repositioning shipped end to end without a human grinding the copy. The point of the story is not the agents. It is that the system held together because the discipline, not any one model, was the thing actually doing the work. The team's operating layer is packaged publicly as <a href="https://askaconsult.com/team6/">Team6-kit</a>, and every rule below is a rule the kit encodes.</p>
+<hr/>
+<h2 id="section-1">1. The Set Piece</h2>
+<p>One session, a full website repositioning, end to end. Research passed to copy, copy to design, design to build, build to a QA gate that had to sign off before anything shipped. A solo consultant as principal, five persistent agents doing the work, and a sixth coordinating. No one human was grinding copy or closing tickets at 2 a.m. The work moved itself.</p>
+<p>That sounds like a product pitch for a chatbot. It isn't, and the difference is the whole point. What you could watch happen in that session was not six clever models trading messages. It was a doctrine doing its job: work flowing in parallel, sections moving downstream before any single piece was "finished," a gate refusing to pass work that wasn't ready, and a final check on the live artifact rather than on the agent's claim that the artifact was good.</p>
+<p>The people who have spent any time with AI agents know the embarrassing truth about the default setup: a single agent in a chat window, holding a whole project in its head, forgetting half of it the moment the context window rolls. Most "multi-agent" systems are that same fragility, multiplied by six. What this team did differently is not that it had more agents. It is that it stopped treating the agents as the system and started treating the operating discipline as the system.</p>
+<h2 id="section-2">2. What People Actually Build</h2>
+<p>Every new multi-agent demo looks the same. Six agents with names and personalities, told to "collaborate" on a task. They are given a room and a topic. What they produce is six chatbots in a conference call, each politely uncertain about what the others are doing, all of them waiting on a coordinator who is also a chatbot and has no authority.</p>
+<p>The failure is structural, not a matter of model quality. A group of agents with no shared contract has no way to know what "done" means, no way to stop one member from stamping its opinion onto a downstream decision, and no way to notice that something has silently drifted off course. It has, in the operating sense, no working memory. Each session is a cold start. The team is re-invented from scratch every morning, with none of the lessons from the previous day's near-misses carried over.</p>
+<p>The instinct is to blame the models and swap them for better ones. That is the wrong axis. The models are interchangeable; the discipline is not. A mediocre model inside a tight operating system will beat a brilliant model inside a chat window on anything that requires more than one session to finish, because the tight operating system is the thing that actually persists.</p>
+<h2 id="section-3">3. The Doctrine</h2>
+<p>Five mechanisms carry the weight, and the public kit packages all five. None of them are new, and none of them are AI. They are lifted wholesale from how a well-run firm has always worked, and the only novelty is that they are now being executed on machine labor. <a href="https://askaconsult.com/team6/">Team6-kit</a> ships them as choreography and governance files rather than as advice.</p>
+<figure aria-labelledby="ops-caption" class="ops-diagram">
+<div aria-label="Team6 workflow: frame, research, architecture, design, build, verify, report" class="ops-flow" role="img">
+<span>FRAME</span><i>→</i><span>RESEARCH</span><i>→</i><span>ARCHITECT</span><i>→</i><span>DESIGN</span><i>→</i><span>BUILD</span><i>→</i><span>VERIFY</span><i>→</i><span>REPORT</span>
+</div>
+<figcaption id="ops-caption">The durable system is the handoff contract: each stage has a lane, a gate, and a verifiable return path.</figcaption>
+</figure>
+<p><strong>Parallel, not sequential.</strong> The default is for one agent to finish before the next starts. That is slow and, worse, it bakes every early assumption into everything downstream before anyone can catch it. The doctrine instead runs Lean-style just-in-time handoffs: stable sections of a piece of work flow downstream while the agent that produced them is still working on the rest. A finished section does not wait for a finished whole. This is the same logic that separates a production line from a one-at-a-time craftsman, and it is the single largest reason the one-session website repositioning did not take a week.</p>
+<p><strong>WIP limits.</strong> The team does not let every agent work on everything at once. Work-in-progress is capped. When too much is in flight, something stops. This is counterintuitive in an environment where adding agents feels like adding throughput, but it is the same lesson every factory learned a century ago: throughput is not the number of things being worked on, it is the number of things being finished.</p>
+<p><strong>Role lanes with fixed mandates.</strong> Each agent holds one lane with a defined mandate, so a team is a set of distinct responsibilities rather than a crowd of interchangeable prompts. The orchestrator supervises and restarts workers under an explicit per-role contract, with a defined restart type and an intensity budget. When a worker exhausts its budget, it escalates instead of retrying forever. This is the difference between supervision and hoping.</p>
+<p><strong>QA gates that block.</strong> The build does not flow to publish because the builder said it was ready. It flows to a gate that has the authority to say no and to send it back. Halakukhan exists to be that no. The kit goes further with producer and verifier separation: the agent that produces an artifact never passes it, and the verdict has to rest on read-back receipts rather than on a self-report. More than once the gate has caught a release-blocking issue before anything was shipped, including inside the team's own tooling.</p>
+<p><strong>Verify on the live artifact, not the claim.</strong> The doctrine is genchi genbutsu, go see for yourself. The agent does not get credit for reporting success; the work is verified against the thing that actually exists. When the team builds a web page, the verification is against the served page, the bytes on disk, not against a summary of what the agent believes it built. The kit enforces this as a served-truth gate: staging first, then the live bytes, and nothing is called done until the served artifact proves it. The same discipline applies to the kit's own contents, where every source file must carry a manifest verdict and an unclassified file fails the build.</p>
+<h2 id="section-4">4. The Lessons That Cost Something</h2>
+<p>Doctrines like these are not downloaded; they are paid for. Two of the team's core rules have a price tag on them, and they are worth recounting honestly because they are the difference between a bullet-point list and a reason to believe.</p>
+<p><strong>The skeleton-first lesson.</strong> A subagent was dispatched on a task that required it to work through an external API. Mid-task, it hit a wall, and it died there. Not in a graceful way, and not after delivering a partial result that could be salvaged. It died with all of its progress inside a context that was gone, and the work had to be re-done from nothing. The failure mode was not the API. It was that the agent had been allowed to run to completion before anything was preserved. The lesson produced a rule: write the skeleton first. The structure, the headers, the empty sections, the decision points, committed to durable state before the real work begins. That way, when any agent dies on any wall, the work is never lost; it is re-dispatched into a skeleton that survives. This is exactly the pattern that keeps a site, or a team, from losing a day's work to a single point of failure.</p>
+<p><strong>The deploy incident.</strong> The team shipped a deployment, and something was wrong with what actually went live. The mistake was not caught in review, not caught in a preview, not caught in the staging step that everyone assumed was happening. It was caught by a byte-level check on the live output, comparing what was actually served against what was supposed to be there. The result was a permanent rule: staging first, always, and verification on the live artifact. That incident is the reason the rule exists, and the reason it is trusted. A rule that was born from a real catch has a credibility that a rule invented on a whiteboard does not.</p>
+<p>I am not going to give you the operational details of either event. The point is not the specifics; the point is that both lessons were discovered as failures and then encoded as doctrine so they would never be re-learned at the same cost. That is the whole mechanism this post is about.</p>
+<h2 id="section-5">5. Institutional Memory as Anti-Entropy</h2>
+<p>The deepest problem with AI agents is not intelligence; it is forgetting. Context windows roll. Sessions end. A team of agents has, by default, no memory of what it learned, and every new session has to re-invent the approach from scratch. Whatever it learned yesterday about a library, a client's preference, or a class of mistake is gone.</p>
+<p>The fix is not to hope for bigger context windows. It is to treat institutional memory as infrastructure, deliberately. The team keeps a shared knowledge store, a Nexus, that functions as the collective mind: the front door to the state of the whole operation, deep-work notes, a history of experiences, documented patterns, and documented tensions. When an agent learns something, the learning is written back to the store so the next session inherits it. Context loss no longer means knowledge loss, because knowledge lives in durable state, not in a context window. This is the same logic a real firm applies when it writes down how a procedure works instead of trusting that the person who knows it will always be there. In the public kit this appears as knowledge routing, a tiny always-on router with compartmentalized modules loaded on demand, so persistent memory stays small enough to fit inside a bounded context. <a href="https://askaconsult.com/team6/">Team6-kit</a> documents the pattern on the kit's own page.</p>
+<p>State has to survive more than context loss. Workers die, sessions end, and machines restart. The kit therefore treats durable append-only ledgers as the source of truth, so correctness is a pure function of what is on disk rather than of what happens to be in a session's memory. A respawned worker resumes from the ledger instead of from a context that no longer exists. The team also runs a five-minute live check-in over active work: a stalled worker gets a bounded nudge or is reclaimed under a recovery limit, and the orchestrator never assumes progress from silence.</p>
+<p><strong>The knowledge surface is wider than the public repo.</strong> The operating environment currently spans 30 local project workspaces, multiple project-specific working trees, internal routing modules, profile-local instructions, durable receipts, manifests, research notes, and generated artifacts. That material is not dumped into every prompt. It is classified, routed, loaded on demand, and kept separate by project and authority. The technique is not "put everything in context." It is selective retrieval, provenance-aware handoff, append-only state, source manifests, bounded memory, and explicit separation between canonical facts, working notes, and hints.</p>
+<p><strong>The technique count is the point.</strong> Parallel handoffs, work-in-progress limits, fixed role lanes, restart budgets, escalation boundaries, producer/verifier separation, phase gates, fresh-clone tests, source manifests, license checks, local redaction, hint-only routing, title generation, cache-busted served-byte verification, staging isolation, deployment-target locks, five-minute supervision, and recovery receipts are not separate tricks. They are interlocking controls. Remove one and a different part of the system has to carry the risk.</p>
+<p>The ruling axiom is the one the whole thing is built on: a system is correct when its correctness is a pure function of durable state, never of observation cadence. If you have to watch it every day to know it is working, it is not working; you are just attending to it. If you can walk away for a month and come back to a state that tells you exactly where everything stands, it is working. This is the anti-entropy requirement. The monitoring station runs over every project, and it tracks state from afar. It is not a requirement that something be happening at all times. During a planned hiatus, silence is correct behavior. A monitor that flags silence as failure is a monitor that does not understand the system it watches.</p>
+<p>This is where the whole design meets the subtractive-fragility idea this site wrote about in another essay. Fragility is not always the buildup of something; it is often the silent removal of the capacity to respond. A single-agent chat window is subtractively fragile in exactly that way: it has no durable memory, so the capacity to respond is re-created, incompletely, every session. The fix is to build the capacity that gets removed, and to build it so it does not need to be re-justified. The knowledge store is not a budget line that has to win an argument every quarter; it is the plumbing that the work itself writes to. Nobody has to decide to maintain it, because writing back to it is part of doing the work.</p>
+<h2 id="section-6">6. The Honest Limit</h2>
+<p>The whole system has been packaged as <a href="https://askaconsult.com/team6/">Team6-kit</a>, an open-source ASKA Digital portfolio project. It is a standalone repository external teams can inspect and use to adopt the operating model: role lanes, supervision, orchestration, governance, knowledge routing, durable state, provenance, and build gates. You give it a parameter file and the generator assembles a configured team with identity archetypes, skills, choreography, governance rules, and review gates. It does not make any single agent smarter, and it does not magically produce a well-run firm. It packages the discipline so you do not have to redesign it from scratch, and so the operating rules are explicit enough to inspect, review, and improve. The <a href="https://askaconsult.com/team6/">Team6 page</a> explains the boundary between the public kit and the service ASKA provides around a deployment.</p>
+<p>The upgrades made since the first version sharpen that contract. Team6 now encodes supervised workers and restart boundaries rather than silent retries, durable append-only state rather than context-bound memory, producer and verifier separation, and a served-truth gate that checks the artifact users actually receive. Those are operating constraints, not model features. They are what make a replaceable model useful inside a system that can be inspected.</p>
+<h2 id="section-7">6.5. The Small Models Around the Team</h2>
+<p>Version 1.2.0 adds another layer to the same argument: not every step deserves a large reasoning model. Team6 can apply narrow local models automatically when the workflow calls for cheap preparation, while leaving interpretation and judgment to the team.</p>
+<figure aria-labelledby="preprocess-caption" class="ops-diagram">
+<div aria-label="Local preprocessing flow: material, redact, review gate, gist or title, Team6 reasoning" class="ops-flow" role="img">
+<span>MATERIAL</span><i>→</i><span>REDACT</span><i>→</i><span>REVIEW GATE</span><i>→</i><span>GIST / TITLE</span><i>→</i><span>TEAM6</span>
+</div>
+<figcaption id="preprocess-caption">Local preparation happens before expensive reasoning. A questionable redaction stops the flow; a topic hint never becomes the decision.</figcaption>
+</figure>
+<p><strong>Redact</strong> is the privacy checkpoint. Before approved text leaves the device or enters a durable external record, it can identify likely personal data and replace it with placeholders. Address-like, numeric, or uncertain findings hold for review. It is a first-pass filter, not legal anonymization.</p>
+<p><strong>Gist</strong> is a cheap routing hint for bulk notes, research captures, and transcripts. <strong>Title</strong> drafts names and short descriptions for artifacts. Both remove repetitive work from the expensive reasoning path. Neither is allowed to make a final classification, a high-stakes judgment, or a synthesis decision.</p>
+<p>The policy is automatic when the task benefits from it, not indiscriminate. Ordinary conversation, final synthesis, legal interpretation, financial judgment, security decisions, and architecture decisions remain with the appropriate Team6 reasoning and review path. Media models remain explicit media-only tools; the workflow does not pull new weights during active work.</p>
+<p>This is also a provenance boundary. Desert Ant is one optional implementation of the adapter, not a required Team6 dependency. Its source-available model license is separate from the Team6-kit Apache-2.0 layer. The public contract describes the behavior and guardrails without pretending that a vendor model is part of the kit or that the filter guarantees compliance.</p>
+<p>What it does not prove is the thing every skeptic should check. Nothing is demonstrated until a stranger takes the kit and runs a real team on it. The kit asserts value; it does not yet demonstrate it. That is the honest position, and I am not going to paper over it. The proof will be a stranger instantiating a team from the repo and shipping real work on it. Until that happens, treat the kit as a playbook that has earned its rules, not as a guarantee.</p>
+<p>The deeper limit is harder to package. The thing that actually makes the system work, the thing no repo can hand you, is the willingness to treat failure as tuition and to encode the lesson. Two agents with the same kit, run by two different principals, will produce two different firms. The one whose principal treats every dead subagent and every caught incident as a doctrine to be written down will get compounding returns. The one who treats the kit as the product will get a folder of templates and wonder why it did not work.</p>
+<h2 id="section-8">7. Compressed Version</h2>
+<p>Most people building multi-agent systems are buying the wrong thing. They buy better models and more agents, expecting throughput, and they get six chatbots in a meeting. What actually separates a firm from a chat window is the operating doctrine: work in parallel with stable sections flowing downstream before anything is finished, capped work-in-progress, gates that can say no, and verification against the live artifact rather than against the agent's claim. The models are commodity inputs. The discipline is the system.</p>
+<p>The reason it compounds is memory. A team that writes its lessons back into durable state stops re-paying for the same mistakes and stops re-inventing its own approach every morning. A team that runs on context windows is subtractively fragile: the capacity to respond is silently removed every session and has to be rebuilt, incompletely, from nothing. The fix is to make correctness a function of durable state, not of observation cadence, and to attach the maintenance of that state to the work itself so it is never something someone has to remember to do.</p>
+<p>The agents are replaceable. The operating system is not. Build the system, and the models are an afterthought. Build the models, and you have built nothing that outlives the conversation.</p>
+</div>
+</article></div><section class="e-related e-wrap"><p class="e-label">CONTINUE READING</p><div><a href="/insights/subtractive-fragility/"><span>ESSAY &amp; ANALYSIS</span><h2>Subtractive Fragility</h2><b aria-hidden="true">↗</b></a><a href="/digital/blog/prediction-market-outlook.html"><span>ESSAY &amp; ANALYSIS</span><h2>Prediction Market Outlook</h2><b aria-hidden="true">↗</b></a></div></section></main>
+<p style="font-size:var(--t-xs);padding:0 24px 16px;max-width:720px;border-bottom:1px solid var(--border);margin-bottom:0">Research content is analysis, not investment advice. ASKA does not provide investment advice through this site.</p>
+<footer class="f-footer-band"><div class="f-footer f-wrap"><div><a class="footer-wordmark" href="/">ASKA</a><p>Digital and physical.<br/>One connected practice.</p><p>© 2026 ASKA Business Solutions Inc.</p></div><nav aria-label="Footer navigation"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></div></footer>
+<script defer="" src="/assets/js/site-shell.js?v=complete-1"></script><script defer="" src="/assets/js/editorial.js?v=editorial-1"></script></body>
+</html>

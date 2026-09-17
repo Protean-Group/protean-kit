@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Money Skips the Public Good · ASKA Consulting Insights</title>
+<meta content="Canada committed billions to 'AI for All', and structured the funding so the better a system serves the public, the harder it is to pay for. By ASKA Consulting research." name="description"/>
+<link href="https://askaconsult.com/digital/blog/the-money-skips-the-public-good.html" rel="canonical"/>
+<meta content="The Money Skips the Public Good · ASKA Consulting Insights" property="og:title"/>
+<meta content="Canada committed billions to AI for All, and structured the funding so the better a system serves the public, the harder it is to pay for." property="og:description"/>
+<meta content="https://askaconsult.com/assets/svg/askadigital.svg" property="og:image"/>
+<meta content="https://askaconsult.com/digital/blog/the-money-skips-the-public-good.html" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/system.css?v=7.22" rel="stylesheet"/>
+<link href="/frontier.css?v=1" rel="stylesheet"/>
+<meta content="noindex,nofollow" name="robots"/><link href="/completion.css?v=complete-1" rel="stylesheet"/><style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Geist-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Geist-Medium.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Geist-SemiBold.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Geist-Bold.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/GeistMono-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/GeistMono-SemiBold.woff2) format('woff2');}
+/* Research visual system (token-adapted) */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e8e6e3;
+  --muted: #8b8680;
+  --accent: #d4a056;
+  --accent-dim: #d4a05633;
+  --border: #2a2e35;
+  --card: #161a20;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 60px 40px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.article { max-width: 720px; margin: 0 auto; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  letter-spacing: 0;
+}
+.article-meta {
+  margin-bottom: 40px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.article-meta span { margin: 0 3px; }
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 16px;
+}
+
+.opening {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 48px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+p { margin-bottom: 16px; }
+
+/* v7.18 contrast (KodeKoot): page re-asserts the research visual system's intended
+   warm primary text over system.css's shared `.article p` muted-steel leak
+   (--text-muted #51607F ≈ 3:1 on #0e1116). Body prose → warm --fg (#e8e6e3, ≈15:1).
+   Muted #8b8680 stays reserved for .subtitle/.opening/.article-meta/caption roles;
+   accent #d4a056 stays for blockquote text and emphasis. Hierarchy deliberate. */
+.article p { color: var(--fg); }
+.article li { color: var(--fg); }
+.article p strong { color: var(--fg); }
+.article blockquote,
+.article blockquote p { color: var(--accent); }
+.article blockquote .source-quote-cite { color: var(--muted); }
+/* v7.18: system.css `.article .article-sources{background:var(--warm-card)}` was
+   leaking a cream box onto this dark page, dropping the gold SOURCES heading to
+   ~2.3:1 and the citation list to ~3.6:1. Restore the page's own dark-card intent
+   (page :root --card #161a20): gold heading 7.45:1, muted list 4.84:1. */
+.article .article-sources { background: var(--card); border-color: var(--border); }
+.article .article-sources h4 { color: var(--accent); }
+.article-sources li { color: var(--muted); }
+
+ul, ol { margin-bottom: 16px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 24px;
+  font-size: 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+td { color: var(--fg); }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 24px 0;
+  color: var(--accent);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.article-sources {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.article-sources h4 {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.article-sources ul { list-style: none; padding-left: 0; }
+.article-sources li { margin-bottom: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 750px) {
+  body { padding: 24px 16px; font-size: 16px; }
+  h1 { font-size: 28px; }
+}
+</style><link href="/editorial.css?v=editorial-1" rel="stylesheet"/></head>
+<body class="article-digital frontier-aska editorial-site e-reader"><a class="skip-link" href="#main">Skip to content</a>
+<header class="f-nav f-wrap"><a aria-label="ASKA home" class="f-brand" href="/"><img alt="" height="40" src="/assets/svg/aska-logo.svg" width="40"/>ASKA <small>DIGITAL</small></a><nav aria-label="Main navigation" class="f-desktop-nav"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/about/">The firm</a><a href="/digital/blog/">Journal</a><a class="f-contact" href="mailto:info@askaconsult.com">Contact ↗</a></nav><details class="f-mobile-menu"><summary>Explore <span aria-hidden="true">＋</span></summary><nav aria-label="All pages" class="f-mobile-menu-panel"><a href="/">Home</a><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></details></header><main id="main"><section class="e-reader-hero e-wrap" id="article-top"><a class="e-backlink" href="/digital/blog/">← The Digital journal</a><div class="e-reader-title"><div><div class="article-meta">
+<span>ASKA RESEARCH</span>
+<span>·</span>
+<span><time datetime="2026-08-19">AUGUST 19, 2026</time></span>
+<span>·</span>
+<span>AI &amp; PUBLIC GOOD</span>
+</div><h1>The Money Skips the Public Good</h1><div class="subtitle">Canada committed billions to "AI for All", and structured the funding so the better a system serves the public, the harder it is to pay for.</div></div><div class="e-reader-art"><svg aria-hidden="true" class="e-motif" viewbox="0 0 480 330"><g fill="none" stroke="currentColor"><path d="M30 60C140 320,260 30,440 150" opacity="0.2"></path><path d="M30 71C140 313,260 36,440 158" opacity="0.32"></path><path d="M30 82C140 306,260 42,440 166" opacity="0.44"></path><path d="M30 93C140 299,260 48,440 174" opacity="0.56"></path><path d="M30 104C140 292,260 54,440 182" opacity="0.6799999999999999"></path><path d="M30 115C140 285,260 60,440 190" opacity="0.2"></path><path d="M30 126C140 278,260 66,440 198" opacity="0.32"></path><path d="M30 137C140 271,260 72,440 206" opacity="0.44"></path><path d="M30 148C140 264,260 78,440 214" opacity="0.56"></path><path d="M30 159C140 257,260 84,440 222" opacity="0.6799999999999999"></path><path d="M30 170C140 250,260 90,440 230" opacity="0.2"></path><path d="M30 181C140 243,260 96,440 238" opacity="0.32"></path><path d="M30 192C140 236,260 102,440 246" opacity="0.44"></path><path d="M30 203C140 229,260 108,440 254" opacity="0.56"></path><path d="M30 214C140 222,260 114,440 262" opacity="0.6799999999999999"></path></g></svg></div></div></section><div class="e-reader-layout e-wrap"><aside class="e-chapter-rail"><p class="e-label">IN THIS ARTICLE</p><nav aria-label="Article contents"><ol><li><a href="#section-1">1. The strategy that funds everything but the good</a></li><li><a href="#section-2">2. Every dollar is keyed to a private return</a></li><li><a href="#section-3">3. The diffuse half gets the residue</a></li><li><a href="#section-4">4. The trap inside the "free" money</a></li><li><a href="#section-5">5. The structure is the strategy</a></li><li><a href="#section-6">6. What this argument gets wrong</a></li><li><a href="#section-7">7. The rule, landed</a></li></ol></nav><a class="e-backtop" href="#article-top">Back to the beginning ↑</a></aside><article class="article e-manuscript"><details class="article-toc e-mobile-toc"><summary>In this article</summary><ol><li><a href="#section-1">1. The strategy that funds everything but the good</a></li><li><a href="#section-2">2. Every dollar is keyed to a private return</a></li><li><a href="#section-3">3. The diffuse half gets the residue</a></li><li><a href="#section-4">4. The trap inside the "free" money</a></li><li><a href="#section-5">5. The structure is the strategy</a></li><li><a href="#section-6">6. What this argument gets wrong</a></li><li><a href="#section-7">7. The rule, landed</a></li></ol></details>
+<div class="article">
+<div class="opening">Method: follow the dollars in a national AI strategy, not the stated ambitions, and ask which structure the money actually rewards. The answer is that it rewards value that can be priced, and prices out the value that cannot.</div>
+<hr/>
+<p>In June 2026 Canada's government named a national strategy after the public. "AI for All" commits more than $2.3 billion to business adoption and AI training (ISED), with an additional $890 million for sovereign compute infrastructure, to make AI serve Canadians. The strategy sets public-benefit targets on purpose: 250,000 new AI-related jobs by 2031, adoption rising from 12% to 60% of businesses by 2034, and $200 billion in additional economic growth (PMO). The ambition is diffuse-value ambition. The money is not.</p>
+<p>Follow the dollars and the picture inverts. The strategy's flagship capital vehicle, the Canadian Tech Growth Fund, takes equity in the companies it backs, so the government becomes a shareholder in for-profit AI firms. Its loan program, BDC LIFT, advances money at a preferential 2.25% to businesses past a revenue threshold. Its adoption subsidies go to firms that can bill for the AI they deploy. Every pipeline the strategy built requires the thing it funds to be able to price its own value.</p>
+<p>Now ask where the actual public good lives (the AI that helps a community without a payer, the literacy that has no invoice, the inclusion nobody can bill for) and you find it has exactly one funding route left, and it is the one the strategy did not build. The registered charity. This essay argues that the mismatch is not a gap in the program. It is the design, and it decides everything downstream.</p>
+<hr/>
+<h2 id="section-1">1. The strategy that funds everything but the good</h2>
+<p>"AI for All" is a four-billion-dollar bet that AI should benefit Canadians, not just Canadian shareholders. Read its stated outcomes and you would think the money flows toward benefit. It does not. It flows toward the structures through which value can be captured, and public benefit is definitionally the value that cannot be.</p>
+<p>The report that this essay is drawn from was written for a specific founder: a Canadian of Middle Eastern and South Asian descent who wants to run an AI organization oriented toward public good. It is a funding and structure map. Strip the tables and what survives is a single, uncomfortable finding about how states actually spend on AI. The government has built every major funding channel around the assumption that AI's value is privately appropriable: that a company will exist to capture it. Equity, loans, adoption credits: each presumes a for-profit that will make the AI pay.</p>
+<p>There is a test this strategy has quietly failed, and it is the demographic one. Canada runs targeted funding for specific racialized communities: the $189 million Black Entrepreneurship Program (renewed 2025–2030) and the Aboriginal Entrepreneurship Program (ISED). No equivalent exists for South Asian or Middle Eastern founders. The founder this report is written for falls outside every named group. The report is honest about what that means: it does not close the door, but it makes the route through general, mission-agnostic programs rather than identity-specific ones.</p>
+<p>That, in miniature, is the whole argument. The state is willing to fund the private version of AI richly and the public version only if it happens to fit a demographic category. For public-good AI run by people outside those categories, the available money is whatever the general charitable infrastructure will yield.</p>
+<h2 id="section-2">2. Every dollar is keyed to a private return</h2>
+<p>Run down the strategy's funding channels and each one assumes the AI can capture its own value.</p>
+<p>The Canadian Tech Growth Fund, the flagship, is equity. The government buys a stake in "the most promising Canadian AI companies." This is a deliberate structural shift (government as shareholder) and it is only available to for-profit corporations. It is the clearest possible statement that Ottawa expects the best AI to be owned, priced, and sold.</p>
+<p>BDC LIFT lends at a preferential 2.25%, but only to firms with at least $1 million in revenue. A loan presumes repayment, which presumes earnings, which presumes the AI earns enough to service debt. The Regional AI Initiative and AI for Productivity Challenge subsidize adoption by SMEs (organizations that will use the AI to make money). SR&amp;ED, the R&amp;D tax credit, refunds 35% of qualifying research spend up to roughly $6 million (CRA), but only on work where a technological uncertainty was overcome and documented, the accounting spine of a research company, not a community program.</p>
+<p>None of these channels asks "does this benefit the public?" They ask "can this be priced?" And every one of them, read carefully, is a filter that lets the appropriable half of AI through and holds the diffuse half back. Public-good AI is not a sector of this strategy. It is the part of the strategy the money cannot reach.</p>
+<h2 id="section-3">3. The diffuse half gets the residue</h2>
+<p>Public good, in the economic sense the report uses, is value that no single party can bill for. An AI that helps a hospital triage fairly helps everyone and invoices no one. An AI literacy program lifts a community and produces no revenue line. This is not a design flaw in any one program. It is what "public good" means.</p>
+<p>Canada's diffuse-value infrastructure exists; it is just not part of the AI strategy. It is the charitable sector. A registered charity pays no income tax on its activities, issues tax receipts that give donors a federal credit, and, critically for this founder, can take government grants and repayable capital with no equity attached. It is the only structure where the state gives money without demanding a share of the thing it funded. The whole report's recommendation rests on this: incorporate federally as a not-for-profit, register as a charity, and stack the non-dilutive sources: SR&amp;ED, the Social Finance Fund's $755 million of repayable capital, regional development agency grants, cloud subsidies from AWS and the AI vendors.</p>
+<p>It works. And its economics are the residue of the state's real priorities. The Social Finance Fund, the one program that exists explicitly to direct capital to equity-deserving groups through nonprofits, is funded at $755 million against a $500 million equity fund and a $500 million loan pool for the private side. The charitable route is where the money that no one wants to own is parked.</p>
+<p>The timings tell the same story. Incorporating a federal not-for-profit takes days and about $200. Registering that corporation as a charity commonly takes six to twelve months and thousands in legal fees; the report budgets over $15,000 for charity counsel. The fast money is the private money. The good money is slow.</p>
+<h2 id="section-4">4. The trap inside the "free" money</h2>
+<p>The charitable route is not just slow. It is the most constrained money in the system, and the constraints bite hardest exactly where a public-good mission wants to move at AI speed.</p>
+<p>A charity must spend a minimum share of its assets annually on charitable activities (the disbursement quota), which forces a young organization to burn through reserves while it is still building (CRA). It must restrict itself to non-partisan advocacy, which limits the very public-policy work an AI-for-public-good org would naturally do. Every activity must be traceable to the stated purposes, or the status is at risk.</p>
+<p>Then the surveillance layer. Bill C-70's foreign-influence registry is expected to go live in 2026, and charities receiving foreign gifts face new reporting. A 2025 NSIRA report found CRA audit attention falling disproportionately on Muslim charities (NSIRA), which matters directly for a founder running a mission framed around Muslim communities. In Quebec, Bill 96's French-language regime is fully in force, and a bilingual web presence is no longer a safe harbour. And there is no horizontal Canadian AI statute to plan around: the proposed AI and Data Act died on the Order Paper in January 2025. What actually binds a deployer today is PIPEDA, Quebec's Law 25, and sector rules; for exporters, the EU AI Act's high-risk obligations begin December 2, 2027, a clock any serious public-good AI org serving international clients will feel.</p>
+<p>The free money is the slowest, most surveilled, most restrictively-scoped money available. That is not an accident. It is the price of value no one can bill for: because nobody captures the return, nobody is in a hurry to release it, and everyone is worried about being blamed for it. Charity is the one place where diffuse value is legal to produce, so it is also where the state keeps its eyes most carefully on you.</p>
+<h2 id="section-5">5. The structure is the strategy</h2>
+<p>Here is the counterintuitive core, and it is the report's real argument wearing a legal costume. The single highest-leverage decision a public-good AI founder makes is not the technology, the location, the team, or the pitch. It is the legal form of the organization. Because the form determines which funding pools you are allowed to touch, and therefore whether your mission survives contact with the money.</p>
+<p>The for-profit route is fast and richly funded, and it privatizes the good. The moment you take the Tech Growth Fund's equity, or venture money, the organization owes its future to its ability to price its output. That is the definition of ceasing to be public good. The charitable route is slow and constrained, and it keeps the good diffuse. Choosing charity over equity is not choosing less money. It is choosing which half of the strategy you belong to: the half that believes AI's value is owned, or the half that believes it is shared.</p>
+<p>That is why the report keeps insisting the structure comes first: before any grant application, before any pilot, before the team. Not out of caution. Because every subsequent decision inherits it. A nonprofit can stack grants, tax credits, repayable capital, and cloud subsidies without a single equity holder; a for-profit cannot coexist with a government shareholder without conflict. The structure is not one option among the roadmap. It is the roadmap.</p>
+<h2 id="section-6">6. What this argument gets wrong</h2>
+<p>Every argument should be able to survive its own counter-evidence. This one has real failure modes, stated at full strength.</p>
+<p>First, the demographic reading can be overstated. The report notes that Black founders received only 0.15% of Canadian VC in 2025, down from 2.27% in 2023 (BNN Bloomberg), and that this founder, being outside the named groups, has no targeted lane at all. But it is not true that identity-targeted funding is the only path, or even the main one. The Social Finance Fund and the regional development agencies route capital to "equity-deserving groups" broadly, and the report is honest that its own recommendation rests on a confirmation that a Middle Eastern/South Asian founder qualifies under those criteria, a moderate-confidence judgment, not a fact. The systemic-barriers argument is real; the conclusion that the founder is shut out is not proven.</p>
+<p>Second, the private market is a live counter-case, not a strawman. The report itself catalogs a $17.7 billion impact-investing pool in Canada (ISF/Rally Assets), private capital directed at social outcomes, which could in principle fund public-good AI without charity. If impact investors fund the mission, then "only charity can fund diffuse value" is false as a universal. The charitable route is the reliable one, not the only one.</p>
+<p>Third, and most honestly: the whole strategy collapses if charitable registration fails. Six to twelve months of registration, often only landing with charity counsel engaged, is a real chance that the foundation never lands. The report's answer (hire a charity lawyer from day one, spend the money) is sound but contingent. If the status fails, the founder is left with the two routes they refused, equity or donation-dependence, and the thesis that "structure is strategy" offers no consolation.</p>
+<p>Fourth, the timing bet is real. For any deployer serving international clients, the EU AI Act's high-risk obligations begin December 2, 2027. A six-to-twelve-month registration lag burns a meaningful slice of the runway a compliance deadline implies. The diffuse-value route is not only slow; it may be slow relative to the regulator's own clock.</p>
+<p>Read these four honestly. The first is a genuine uncertainty about eligibility, and the argument absorbs it: the strategy still holds if the founder qualifies. The second is a real alternative pool that narrows the claim from "only" to "reliably." The third is a bounded failure mode: if the status fails, the strategy fails, and nothing in this essay pretends otherwise. The fourth is a schedule risk. The argument survives all four, but it survives by being narrower and more honest than its opening promised, which is the point.</p>
+<h2 id="section-7">7. The rule, landed</h2>
+<p>Generalize past Canada and the mechanism is exact. When a government or a large funder says it wants diffuse value (the good, the benefit, the thing no one can bill for) it will almost always build the money around the appropriable case, because that is where the return, the story, and the credit are measurable. The diffuse-value work is then left to a residue: a legal status, a slow approval, a donation economy. The ambition points one way and the machinery points the other, and it is never a gap. It is a preference, stated in accounting.</p>
+<p>The workaround is not to campaign for a better line item. It is to find the one structure that lets diffuse value be funded without being privatized, and to choose it before anything else, because the money will reshape whatever you are into whatever it can price. A public-good AI organization is not decided by its model. It is decided by whether it is a company or a charity, and that decision is made on the first day, by a founder who may not yet know it is the whole argument.</p>
+<p>Ottawa will not fix this. It is not broken by accident. The strategy that names the public and prices the private is not a contradiction the government is unaware of. It is the shape of public funding for diffuse value everywhere, and the only founding act that escapes it is structural: make the good legally un-ownable, and then it can be funded without being bought.</p>
+<div class="article-sources">
+<h4>Sources</h4>
+<ul>
+<li>ISED · "AI for All" strategy; $2.3B business adoption and training; sovereign compute; targeted programs (2026).</li>
+<li>PMO · "AI for All" stated outcomes: 250,000 jobs, 12% to 60% adoption, $200B growth (2026).</li>
+<li>CRA · SR&amp;ED tax credit; charity disbursement quota (2026).</li>
+<li>NSIRA · audit-attention disparity across Muslim charities (2025).</li>
+<li>BNN Bloomberg · Black founders' share of Canadian VC (2025).</li>
+<li>ISF / Rally Assets · Canadian impact-investing pool (2026).</li>
+</ul>
+</div>
+</div>
+</article></div><section class="e-related e-wrap"><p class="e-label">CONTINUE READING</p><div><a href="/insights/subtractive-fragility/"><span>ESSAY &amp; ANALYSIS</span><h2>Subtractive Fragility</h2><b aria-hidden="true">↗</b></a><a href="/digital/blog/prediction-market-outlook.html"><span>ESSAY &amp; ANALYSIS</span><h2>Prediction Market Outlook</h2><b aria-hidden="true">↗</b></a></div></section></main>
+<p style="font-size:var(--t-xs);padding:0 24px 16px;max-width:720px;border-bottom:1px solid var(--border);margin-bottom:0">Research content is analysis, not investment advice. ASKA does not provide investment advice through this site.</p>
+<footer class="f-footer-band"><div class="f-footer f-wrap"><div><a class="footer-wordmark" href="/">ASKA</a><p>Digital and physical.<br/>One connected practice.</p><p>© 2026 ASKA Business Solutions Inc.</p></div><nav aria-label="Footer navigation"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></div></footer>
+<script defer="" src="/assets/js/site-shell.js?v=complete-1"></script><script defer="" src="/assets/js/editorial.js?v=editorial-1"></script></body>
+</html>

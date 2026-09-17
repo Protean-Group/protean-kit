@@ -1,0 +1,324 @@
+/* ASKA v5 — digital.css (page-specific for /digital/) */
+/* Sleek, futuristic wordmark + CTA treatment for the Digital division —
+   the blocky Rostex face belongs to Physical; Digital gets Geist Mono
+   (sleek terminal-grade) with light tracking. */
+.brand-name{
+  font-family:var(--font-mono);
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  font-size:.9em;
+}
+.digi-nav-cta,
+.topbar .btn-cyan,
+.topbar .btn-cyan.btn-sm{
+  font-family:var(--font-sans);
+  font-weight:600;
+  letter-spacing:normal;
+  text-transform:none;
+  font-size:var(--t-sm);
+  padding:10px 16px;
+}
+.d-hero{
+  min-height:92vh;display:flex;align-items:center;
+  padding:clamp(96px,18vh,160px) clamp(16px,5vw,32px) 96px;
+  background:
+    radial-gradient(50% 55% at 88% 15%,rgba(0,210,255,.18),transparent 62%),
+    radial-gradient(40% 45% at 10% 90%,rgba(30,90,168,.32),transparent 60%),
+    linear-gradient(160deg,#0A2463,#071A45 60%,#000);
+  position:relative;overflow:hidden;
+}
+/* light-stroke grid — visible on navy (higher opacity than the invisible default) */
+.d-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(85% 75% at 60% 35%,#000,transparent 78%);
+}
+.d-hero-inner{position:relative;display:grid;grid-template-columns:1fr minmax(300px,420px);gap:64px;align-items:center;max-width:1120px;margin:0 auto;width:100%;}
+@media(max-width:900px){.d-hero-inner{grid-template-columns:1fr;}.d-hero-visual{display:none;}}
+/* rendered terminal device */
+.d-device{
+  background:#0b1220;border:1px solid rgba(0,210,255,.28);border-radius:14px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 40px rgba(0,210,255,.10);transform:perspective(900px) rotateY(-4deg);
+}
+.d-device-head{display:flex;align-items:center;gap:8px;padding:12px 16px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.08);}
+.d-device-head .dot{width:10px;height:10px;border-radius:50%;}
+.d-device-head .r{background:#FF5F57;}.d-device-head .y{background:#FEBC2E;}.d-device-head .g{background:#28C840;}
+.d-device-title{margin-left:8px;font-family:var(--font-mono);font-size:var(--t-xs);color:rgba(255,255,255,.5);letter-spacing:.12em;}
+.d-device-body{padding:20px;font-family:var(--font-mono);font-size:var(--t-sm);line-height:1.8;color:#c9d4e8;}
+.d-device-body .tk{color:var(--cyan);font-weight:600;}
+.d-device-body .tc{color:#7dd3fc;}
+.d-device-body .ok{color:#4ade80;}
+.d-device-body .dim{color:rgba(255,255,255,.55);}
+.d-line{margin:0;}
+.caret{display:inline-block;width:8px;height:14px;background:var(--cyan);vertical-align:middle;margin-left:3px;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+/* contained cards for How It Works + contact (blanket rule) */
+.how-card,.cta-card{
+  background:linear-gradient(160deg,#0d1b45,#081330);
+  border:1px solid rgba(0,210,255,.14);border-radius:24px;
+  padding:80px 48px;position:relative;overflow:hidden;
+  box-shadow:0 24px 70px rgba(0,0,0,.35);
+}
+.how-card::before,.cta-card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:3px;
+  background:linear-gradient(90deg,var(--cyan),transparent 70%);
+}
+.how-card::after,.cta-card::after{
+  content:"";position:absolute;top:-40%;right:-20%;width:55%;height:120%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(0,210,255,.10),transparent);pointer-events:none;
+}
+@media(max-width:720px){.how-card,.cta-card{padding:48px 24px;}}
+/* tagline card matches too */
+.tagline-card{
+  max-width:min(100% - 48px,900px);margin:0 auto;padding:64px 48px;
+  background:linear-gradient(160deg,#0d1b45,#081330);
+  border:1px solid rgba(0,210,255,.14);border-radius:24px;position:relative;overflow:hidden;
+  color:#fff;font-weight:600;box-shadow:0 24px 70px rgba(0,0,0,.35);
+}
+.tagline-card::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--cyan),transparent 70%);}
+@media(max-width:720px){.tagline-card{padding:40px 24px;}}
+
+.d-list{list-style:none;margin-top:4px;}
+.d-list li{
+  position:relative;padding-left:24px;margin-bottom:12px;color:rgba(255,255,255,.75);
+  font-size:var(--t-base);line-height:24px;
+}
+.d-list li::before{content:"";position:absolute;left:4px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--cyan);}
+
+@media(max-width:720px){.d-hero{padding-top:156px;min-height:auto;padding-bottom:64px;}}
+
+@media(max-width:720px){
+  .d-hero{min-height:auto;padding-top:156px;padding-bottom:56px;}
+  .d-hero .hero-h{font-size:clamp(30px,8vw,44px);line-height:1.12;max-width:100%;}
+  .hero-sub{font-size:var(--t-lg);line-height:28px;}
+}
+
+/* v5.4: contained tagline card + CTA card (kill awkward full-bleed bands) */
+
+.cta-card{
+  background:var(--navy-deep);border:1px solid rgba(0,210,255,.18);border-radius:20px;
+  padding:80px 48px;
+}
+.switch-div{margin-right:8px;}
+@media(max-width:720px){.tagline-card{padding:40px 24px;}.cta-card{padding:48px 20px;}}
+
+/* v6.11.3: hero terminal affordance — unmistakably interactive at a glance */
+.d-hero-visual .term-input input{border:2px solid rgba(0,210,255,.5);background:rgba(0,210,255,.08);}
+.d-hero-visual .term-input input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,210,255,.25);}
+.d-hero-visual .term-input input::placeholder{color:rgba(140,225,255,.85);}
+.d-hero-visual .term{box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 30px rgba(0,210,255,.18);}
+
+/* v6.15: Geist Mono on the Digital-brand buttons (Book a consultation x2 + Explore the practice).
+   Scoped to the cyan/ghost Digital buttons only — the orange ASKA Physical switcher keeps its identity. */
+.btn-cyan,.btn-ghost-dark{font-family:var(--font-sans);letter-spacing:normal;text-transform:none;font-weight:600;}
+
+/* v7.7: proof grid — 4 case cards as a clean 2x2 at desktop; collapse tiers
+   mirror .grid-3 (2 cols <=900, 1 col <=560) so mobile behaviour is unchanged. */
+.proof-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-300);}
+@media(max-width:900px){.proof-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.proof-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   v7.16 — ASKA Digital is ONE continuous dark surface.
+   The shared system.css body default is warm-beige (--warm-bg),
+   which bled through the /digital/ lower body around the dark
+   cards — an old-school look that contradicts Digital's navy/cyan
+   terminal identity. The Digital blog's fully-dark editorial pages
+   are the continuity reference. digital.css loads ONLY on /digital/,
+   so every override below is page-scoped and cannot touch Physical
+   or the light interior pages (about/method/sectors/blog-index/404).
+   Keep the navy/cyan + terminal; just stop showing beige.
+   ============================================================ */
+body{
+  background:
+    radial-gradient(1050px 520px at 88% -8%,rgba(0,210,255,.05),transparent 62%),
+    linear-gradient(180deg,#050a16 0%,#070d1b 38%,#060b16 100%);
+  color:#e6ecf5;
+}
+/* section headers that sit directly on the page (not inside a card)
+   were tuned for beige; lift them onto the dark surface. */
+.section>.kicker,
+.section-narrow>.kicker{color:#7dd3fc;}
+.section>.sec-lead,
+.section-narrow>.sec-lead{color:#9fb1c8;}
+.section>.hero-h,
+.section-narrow>.hero-h{background:linear-gradient(90deg,#ffffff,#b7c4d6);-webkit-background-clip:text;background-clip:text;color:transparent;}
+/* interior link colour on the dark surface — never override .btn text (cyan buttons
+   keep their navy-on-cyan text; ghost/orange keep theirs) */
+.section a:not(.btn){color:var(--cyan);}
+.section a:not(.btn):hover{color:#7dd3fc;}
+
+/* FAQ on the dark surface — reuse the built-in .faq.dark treatment so the
+   page never shows a light card stack against the navy page. */
+.faq{border-color:rgba(0,210,255,.12);}
+.faq details{border-bottom-color:rgba(255,255,255,.1);}
+.faq summary{color:#fff;}
+.faq details p{color:rgba(255,255,255,.68);}
+.faq summary::after{color:rgba(255,255,255,.5);}
+
+/* The three supporting "capability beyond the ledger" cards were card-light
+   (white on beige). Swap their base to the dark card so the proof block stays
+   one dark family. Text is re-lifted in the HTML where these are used. */
+.proof-section-grid .card-light,
+.grid-3 .card-light{
+  background:linear-gradient(160deg,#0d1b45,#081330);
+  border:1px solid rgba(0,210,255,.14);
+}
+.grid-3 .card-light h3{color:#fff;}
+.grid-3 .card-light p{color:rgba(255,255,255,.72);}
+.grid-3 .card-light .mono-label{color:#7dd3fc;}
+.grid-3 .card-light a:not(.btn){color:var(--cyan);}
+@media(max-width:720px){.grid-3 .card-light{padding:var(--s-300);}}
+
+/* Emergency layout hardening: keep the ledger and track-record markup structured
+   even when Digital is deployed without the shared system.css extension. */
+.pledger{display:flex;flex-direction:column;}
+.p-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto auto;gap:var(--s-300);align-items:baseline;padding:var(--s-300) 0;border-bottom:1px solid rgba(0,210,255,.14);text-decoration:none;color:inherit;transition:background 300ms var(--ease);}
+.p-row:first-child{border-top:none;padding-top:0;}
+.p-row:hover{background:rgba(0,210,255,.05);}
+.p-row .p-index{font-family:var(--font-mono);font-size:var(--t-sm);font-weight:600;color:var(--cyan);letter-spacing:.06em;}
+.p-row .p-meta h3{font-size:var(--t-lg);font-weight:600;line-height:28px;color:#fff;margin:0;}
+.p-row .p-constraint{font-family:var(--font-mono);font-size:var(--t-sm);color:rgba(255,255,255,.5);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.p-row .p-tags{display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+.p-row .p-out{font-family:var(--font-mono);font-size:var(--t-sm);font-weight:600;color:var(--cyan);text-align:right;white-space:nowrap;transition:transform 300ms var(--ease);}
+.p-row:hover .p-out{transform:translateX(4px);}
+.proof-card{background:rgba(255,255,255,.03);border:1px solid rgba(0,210,255,.14);border-radius:var(--r-xl);padding:var(--s-400);display:flex;flex-direction:column;gap:var(--s-200);min-height:100%;transition:transform 300ms var(--ease),box-shadow 300ms var(--ease);}
+.proof-card:hover{transform:translateY(-4px);}
+.proof-card h3{font-size:var(--t-xl);font-weight:600;color:#fff;margin:0;}
+.proof-card .pc-constraint{font-family:var(--font-mono);font-size:var(--t-sm);color:rgba(255,255,255,.5);line-height:20px;margin:0;}
+.proof-card .pc-decision{font-size:var(--t-base);color:rgba(255,255,255,.72);line-height:24px;margin:0;}
+.proof-card .pc-foot{margin-top:auto;border-top:1px solid rgba(0,210,255,.14);padding-top:var(--s-200);display:flex;flex-direction:column;gap:var(--s-100);}
+.proof-card .pc-out{font-family:var(--font-mono);font-size:var(--t-sm);font-weight:600;color:var(--cyan);}
+.proof-card .pc-ctas{display:flex;gap:var(--s-100);align-items:center;flex-wrap:wrap;}
+.proof-card .pc-ghost{font-size:var(--t-sm);font-weight:600;text-decoration:none;color:rgba(255,255,255,.7);transition:color 300ms var(--ease);}
+.proof-card .pc-ghost:hover{color:var(--cyan);}
+@media(max-width:900px){.p-row{grid-template-columns:1fr auto;grid-template-areas:"idx tags" "meta meta" "out out";gap:var(--s-100) var(--s-200);align-items:start;}.p-row .p-index{grid-area:idx;}.p-row .p-tags{grid-area:tags;justify-content:flex-end;}.p-row .p-meta{grid-area:meta;}.p-row .p-out{grid-area:out;text-align:left;}}
+@media(max-width:720px){.proof-card{padding:var(--s-300);}}
+@media(max-width:560px){.p-row{padding:var(--s-200) 0;}.p-row .p-constraint{white-space:normal;line-height:1.5;}}
+
+/* Centered reading rhythm for Digital and its Team6 page */
+.digital-page .d-hero-copy{text-align:center;}
+.digital-page .d-hero-copy .hero-sub{margin-inline:auto;}
+.digital-page .d-hero .mono-label{margin-inline:auto;}
+.digital-page .section>.kicker,
+.digital-page .section>.sec,
+.digital-page .section>.sec-lead{text-align:center;margin-inline:auto;}
+.digital-page .section>.sec-lead{max-width:680px;}
+.page-team6 .page-hero-inner{text-align:center;}
+.page-team6 .page-hero-inner h1,
+.page-team6 .page-hero-inner .lede{margin-inline:auto;}
+.page-team6 .page-hero-inner .breadcrumb{justify-content:center;}
+.page-team6 .page-hero-inner>div[style*="display:flex"]{justify-content:center;}
+.page-team6 .page-section>.kicker,
+.page-team6 .page-section>h2,
+.page-team6 .page-section>p{text-align:center;margin-inline:auto;}
+.page-team6 .page-section>p{max-width:72ch;}
+.page-team6 .page-section>div[style*="display:flex"]{justify-content:center;}
+@media(max-width:720px){
+  .digital-page .section>.sec-lead,
+  .page-team6 .page-section>p{max-width:100%;}
+}
+
+/* Team6 boundary cards stay inside the Digital dark surface. */
+.page-team6 #boundary .card-light{
+  background:rgba(255,255,255,.035);
+  border-color:rgba(0,210,255,.16);
+  color:rgba(255,255,255,.82);
+  box-shadow:none;
+}
+.page-team6 #boundary .card-light p{color:rgba(255,255,255,.72);}
+.page-team6 #boundary .card-light strong{color:#fff;}
+
+/* ============================================================
+   v7.19 — Team6 page content axis.
+   The shared .page-hero band is full-bleed with a flat 32px gutter,
+   while .page-body centres on a 1120px axis (content box 1056px, plus
+   20px gutters under 720px). On /team6/ that left the uncontained hero
+   text (breadcrumb, kicker, h1, lede, CTAs) sitting ~160px left of every
+   section heading, paragraph, and card below it — two competing left
+   edges on one page. Wrap the hero content in .page-hero-inner and pin
+   it to the SAME axis as .page-body (max-width 1056px = 1120 - 2*32).
+   Because the hero's own gutter matches .page-body's at every breakpoint
+   (32px desktop, 20px <=720px), a single max-width + auto margins
+   reproduces the content axis at all widths — no media query needed.
+   Scoped to .page-team6: no other page's hero is touched.
+   ============================================================ */
+.page-team6 .page-hero-inner{max-width:1056px;margin-inline:auto;}
+
+/* ============================================================
+   v7.20 — Mobile Blog entry point on /digital/.
+   WHY: system.css hides the whole desktop nav row at <=720px
+   (`.nav .nav-links{display:none}` line 154 AND `.nav-links{display:none}`
+   line 206). The Blog link lives inside `.nav-links`, so on phones the
+   Mobile topbar exposed only "ASKA Physical" and "Book a consultation" —
+   the blog was unreachable. 
+   FIX: restore exactly ONE Blog affordance on mobile; do NOT re-enable
+   the desktop nav row.
+   GEOMETRY: the topbar is a 2-column flex (brand | .nav stack). At 390px
+   the brand is 28px tall and the .nav stack is 108px; the left column has
+   ~80px of dead vertical space around the brand. `.brand-block` becomes a
+   column at <=720px holding brand (28) + 8px gap + Blog pill (44) = 80px,
+   which is shorter than the 108px .nav stack — so the topbar height stays
+   133px and the 156px .d-hero padding-top that clears it is preserved.
+   DESKTOP: .brand-block collapses to the original inline brand and the pill
+   is display:none, so the existing desktop Blog link in .nav-links is the
+   only one rendered. Scoped to digital.css (/digital/ only).
+   ============================================================ */
+.brand-block{display:flex;align-items:center;}
+.nav-blog-mobile{display:none;}
+@media(max-width:720px){
+  .brand-block{flex-direction:column;align-items:flex-start;gap:8px;}
+  .nav-blog-mobile{
+    display:inline-flex;align-items:center;justify-content:center;
+    min-height:44px;padding:0 14px;
+    font-family:var(--font-mono);font-size:var(--t-xs);font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;
+    color:var(--cyan);text-decoration:none;
+    border:1px solid rgba(0,210,255,.4);border-radius:999px;
+    background:rgba(0,210,255,.08);
+    transition:background 300ms var(--ease),border-color 300ms var(--ease),color 300ms var(--ease);
+  }
+  .nav-blog-mobile:hover,.nav-blog-mobile:focus-visible{
+    background:rgba(0,210,255,.16);border-color:var(--cyan);color:#fff;
+  }
+}
+
+/* ============================================================
+   v7.25 — Team6 hidden-scale "operating stack" panel
+   (/team6/ hero). Replaces the generic 4-tile grid with a
+   vertical process-bay chain: gauges -> couplings -> review
+   boundary. Dark panel only; light/white primary text and
+   muted white secondary text. No white-on-light. No JS, no
+   images, no new fonts, chevrons are pure CSS.
+   ============================================================ */
+.scale-stack .stack-lede{color:rgba(255,255,255,.82);max-width:72ch;font-size:var(--t-sm);line-height:1.7;margin-bottom:var(--s-400);}
+.scale-stack .stack-diagram{display:flex;flex-direction:column;margin:0;}
+.scale-stack .stack-bay{display:grid;grid-template-columns:108px 1fr auto;gap:var(--s-200) var(--s-300);align-items:start;background:#101c3d;border:1px solid rgba(255,255,255,.07);border-left:3px solid var(--bay);border-radius:14px;padding:20px 24px;margin:0;}
+.scale-stack .stack-num{font-family:var(--font-mono);font-weight:700;font-size:clamp(34px,3vw,44px);line-height:1;color:var(--bay);display:block;}
+.scale-stack .stack-gauge-cap{display:block;margin-top:8px;font-family:var(--font-mono);font-size:var(--t-xs);text-transform:uppercase;letter-spacing:.14em;line-height:1.4;color:rgba(255,255,255,.55);}
+.scale-stack .stack-bay-h{color:var(--bay);}
+.scale-stack .stack-body p{font-size:var(--t-sm);line-height:1.65;color:rgba(255,255,255,.78);margin-top:10px;}
+.scale-stack .stack-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.scale-stack .stack-chips span{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:4px 8px;}
+.scale-stack .stack-tags{display:flex;flex-direction:column;gap:6px;align-items:flex-start;max-width:180px;}
+.scale-stack .stack-tags span{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.12);border-radius:4px;padding:3px 8px;white-space:nowrap;}
+.scale-stack .stack-coupling{display:flex;align-items:center;gap:12px;margin:8px 0 8px 26px;font-family:var(--font-mono);font-size:var(--t-xs);letter-spacing:.06em;color:rgba(125,211,252,.8);}
+.scale-stack .stack-chevron{width:8px;height:8px;border-right:1.5px solid #7dd3fc;border-bottom:1.5px solid #7dd3fc;transform:rotate(45deg);display:inline-block;flex:none;}
+.scale-stack .stack-coupling-short{display:none;}
+.scale-stack .stack-bay--review{grid-template-columns:1fr;}
+.scale-stack .stack-rules{list-style:none;padding:0;margin:12px 0 0;display:flex;flex-direction:column;gap:10px;}
+.scale-stack .stack-rules li{position:relative;padding-left:18px;font-size:var(--t-sm);line-height:1.6;color:rgba(255,255,255,.78);}
+.scale-stack .stack-rules li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:#5eb894;}
+.scale-stack .stack-close{margin-top:var(--s-400);padding-top:var(--s-200);border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:var(--t-sm);line-height:1.6;color:rgba(255,255,255,.6);}
+@media(max-width:900px){
+  .scale-stack{padding:28px 20px!important;}
+  .scale-stack .stack-bay{grid-template-columns:auto 1fr;}
+  .scale-stack .stack-tags{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;max-width:none;}
+  .scale-stack .stack-tags span{min-height:28px;display:inline-flex;align-items:center;}
+  .scale-stack .stack-coupling-long{display:none;}
+  .scale-stack .stack-coupling-short{display:inline;}
+}

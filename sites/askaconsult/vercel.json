@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    { "source": "/blog", "destination": "/digital/blog/", "permanent": true },
+    { "source": "/blog/", "destination": "/digital/blog/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/digital/blog/:path*", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.svg",
+      "headers": [
+        { "key": "Content-Type", "value": "image/svg+xml" }
+      ]
+    },
+    {
+      "source": "/(.*)\\.woff2",
+      "headers": [
+        { "key": "Content-Type", "value": "font/woff2" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    }
+  ]
+}

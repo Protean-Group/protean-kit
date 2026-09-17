@@ -1,0 +1,46 @@
+/* ASKA — enhancements.css (?v=1)
+   Shayba scoped enhancement (catalog-run, 2026-09-02).
+   SELF-AUTHORED, license-clean (no external code copied; N/A). Reversible: delete this
+   file + its <link> to revert. Do NOT add anything here that styles .term/#askterm or
+   gateway hero geometry — terminal is sacrosanct and its styles live in gateway.css.
+   Linked AFTER the page sheet so these add/refine without needing to edit system/gateway
+   /digital/physical.css (which the concurrent method/sectors builder owns). */
+
+/* 1. Anchor targets clear the fixed topbar.
+   No scroll-margin existed anywhere, yet .topbar is fixed (z-100) on every interior page,
+   so #benefits/#how/#proof/#faq/#cta and #askterm in-page jumps hid their heading under the bar. */
+[id]{scroll-margin-top:96px;}
+
+/* 2. prefers-reduced-motion completeness.
+   The existing block in system.css only neutralizes reveal/stagger/tagline. Under reduced
+   motion the hover-lift transforms and smooth-scroll below still animate. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .card,.card-dark,.card-warm,.card-light,.proof-card,.how-card,.tagline-card,.cta-card,
+  .p-row,.btn,a.enter,.half .mark,.enter span,a.enter span,.pc-ghost,.pc-out{
+    transform:none!important;transition:none!important;animation:none!important;
+  }
+}
+
+/* 3. Keyboard focus-visible affordance on interactive content links.
+   .btn and hero a.enter already have rings; interior proof/pledger links had none.
+   currentColor picks up each surface's accent (cyan on dark, ink/orange on warm). */
+.p-row:focus-visible,
+.pc-ghost:focus-visible,
+a:not(.btn):not(.brand):not([class*="nav"]):focus-visible,
+footer a:focus-visible,
+.post-item:focus-visible{
+  outline:2px solid currentColor;outline-offset:2px;border-radius:4px;
+}
+/* avoid double ring on brand/nav/btn which already handle focus or are exempt above;
+   ensure no ring reaches the terminal (it contains no <a>/<button>). */
+
+/* 4. Micro-affordance parity: carry the same restrained 4px arrow travel the physical
+   pledge rows already use (.p-row .p-out) over to the digital proof "ghost" case link,
+   plus a clickable underline cue so it reads as a link on hover/focus. */
+.proof-card .pc-ghost{display:inline-block;transition:color 300ms var(--ease),transform 300ms var(--ease);}
+.proof-card .pc-ghost:hover,
+.proof-card .pc-ghost:focus-visible{
+  color:var(--cyan);transform:translateX(4px);
+  text-decoration:underline;text-underline-offset:4px;text-decoration-color:rgba(0,210,255,.4);
+}

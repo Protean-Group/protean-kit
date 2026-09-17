@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Institution Is the Bottleneck · ASKA Consulting Insights</title>
+<meta content="Why healthcare, education, and government keep failing to adopt the same technologies, and the pattern they share. By ASKA Consulting research." name="description"/>
+<link href="https://askaconsult.com/digital/blog/endgame-the-institution-is-the-bottleneck.html" rel="canonical"/>
+<meta content="The Institution Is the Bottleneck · ASKA Consulting Insights" property="og:title"/>
+<meta content="Why healthcare, education, and government keep failing to adopt the same technologies, and the pattern they share." property="og:description"/>
+<meta content="https://askaconsult.com/assets/svg/askadigital.svg" property="og:image"/>
+<meta content="https://askaconsult.com/digital/blog/endgame-the-institution-is-the-bottleneck.html" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/system.css?v=7.22" rel="stylesheet"/>
+<link href="/frontier.css?v=1" rel="stylesheet"/>
+<meta content="noindex,nofollow" name="robots"/><link href="/completion.css?v=complete-1" rel="stylesheet"/><style>
+@font-face{font-family:'Geist';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/Geist-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/Geist-Medium.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/Geist-SemiBold.woff2) format('woff2');}
+@font-face{font-family:'Geist';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/Geist-Bold.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/GeistMono-Regular.woff2) format('woff2');}
+@font-face{font-family:'Geist Mono';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/GeistMono-SemiBold.woff2) format('woff2');}
+/* Research visual system (token-adapted) */
+
+:root {
+  --bg: #0e1116;
+  --fg: #e8e6e3;
+  --muted: #8b8680;
+  --accent: #d4a056;
+  --accent-dim: #d4a05633;
+  --border: #2a2e35;
+  --card: #161a20;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  padding: 60px 40px;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.article { max-width: 720px; margin: 0 auto; }
+
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 40px;
+  letter-spacing: 0;
+}
+.article-meta {
+  margin-bottom: 40px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.article-meta span { margin: 0 3px; }
+
+.subtitle {
+  font-size: 14px;
+  color: var(--muted);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  margin-bottom: 16px;
+}
+
+.opening {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 16px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 28px;
+  margin-top: 48px;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 32px;
+}
+
+p { margin-bottom: 16px; }
+
+/* v7.18 contrast (KodeKoot): page re-asserts the research visual system's intended
+   warm primary text over system.css's shared `.article p` muted-steel leak
+   (--text-muted #51607F ≈ 3:1 on #0e1116). Body prose → warm --fg (#e8e6e3, ≈15:1).
+   Muted #8b8680 stays reserved for .subtitle/.opening/.article-meta/caption roles;
+   accent #d4a056 stays for blockquote text and emphasis. Hierarchy deliberate. */
+.article p { color: var(--fg); }
+.article li { color: var(--fg); }
+.article p strong { color: var(--fg); }
+.article blockquote,
+.article blockquote p { color: var(--accent); }
+.article blockquote .source-quote-cite { color: var(--muted); }
+/* v7.18: system.css `.article .article-sources{background:var(--warm-card)}` was
+   leaking a cream box onto this dark page, dropping the gold SOURCES heading to
+   ~2.3:1 and the citation list to ~3.6:1. Restore the page's own dark-card intent
+   (page :root --card #161a20): gold heading 7.45:1, muted list 4.84:1. */
+.article .article-sources { background: var(--card); border-color: var(--border); }
+.article .article-sources h4 { color: var(--accent); }
+.article-sources li { color: var(--muted); }
+
+ul, ol { margin-bottom: 16px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0 24px;
+  font-size: 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+}
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+td { color: var(--fg); }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 24px 0;
+  color: var(--accent);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.article-sources {
+  margin-top: 48px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+.article-sources h4 {
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--accent);
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.article-sources ul { list-style: none; padding-left: 0; }
+.article-sources li { margin-bottom: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 750px) {
+  body { padding: 24px 16px; font-size: 16px; }
+  h1 { font-size: 28px; }
+}
+</style><link href="/editorial.css?v=editorial-1" rel="stylesheet"/></head>
+<body class="article-digital frontier-aska editorial-site e-reader"><a class="skip-link" href="#main">Skip to content</a>
+<header class="f-nav f-wrap"><a aria-label="ASKA home" class="f-brand" href="/"><img alt="" height="40" src="/assets/svg/aska-logo.svg" width="40"/>ASKA <small>DIGITAL</small></a><nav aria-label="Main navigation" class="f-desktop-nav"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/about/">The firm</a><a href="/digital/blog/">Journal</a><a class="f-contact" href="mailto:info@askaconsult.com">Contact ↗</a></nav><details class="f-mobile-menu"><summary>Explore <span aria-hidden="true">＋</span></summary><nav aria-label="All pages" class="f-mobile-menu-panel"><a href="/">Home</a><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></details></header><main id="main"><section class="e-reader-hero e-wrap" id="article-top"><a class="e-backlink" href="/digital/blog/">← The Digital journal</a><div class="e-reader-title"><div><div class="article-meta">
+<span>ASKA RESEARCH</span>
+<span>·</span>
+<span><time datetime="2026-08-27">AUGUST 27, 2026</time></span>
+<span>·</span>
+<span>INSTITUTIONAL ADOPTION</span>
+</div><h1>The Institution Is the Bottleneck</h1><div class="subtitle">Why healthcare, education, and government keep failing to adopt the same technologies, and the pattern they share</div></div><div class="e-reader-art"><svg aria-hidden="true" class="e-motif" viewbox="0 0 480 330"><g fill="none" stroke="currentColor"><path d="M30 60C140 320,260 30,440 150" opacity="0.2"></path><path d="M30 71C140 313,260 36,440 158" opacity="0.32"></path><path d="M30 82C140 306,260 42,440 166" opacity="0.44"></path><path d="M30 93C140 299,260 48,440 174" opacity="0.56"></path><path d="M30 104C140 292,260 54,440 182" opacity="0.6799999999999999"></path><path d="M30 115C140 285,260 60,440 190" opacity="0.2"></path><path d="M30 126C140 278,260 66,440 198" opacity="0.32"></path><path d="M30 137C140 271,260 72,440 206" opacity="0.44"></path><path d="M30 148C140 264,260 78,440 214" opacity="0.56"></path><path d="M30 159C140 257,260 84,440 222" opacity="0.6799999999999999"></path><path d="M30 170C140 250,260 90,440 230" opacity="0.2"></path><path d="M30 181C140 243,260 96,440 238" opacity="0.32"></path><path d="M30 192C140 236,260 102,440 246" opacity="0.44"></path><path d="M30 203C140 229,260 108,440 254" opacity="0.56"></path><path d="M30 214C140 222,260 114,440 262" opacity="0.6799999999999999"></path></g></svg></div></div></section><div class="e-reader-layout e-wrap"><aside class="e-chapter-rail"><p class="e-label">IN THIS ARTICLE</p><nav aria-label="Article contents"><ol><li><a href="#section-1">One failure, three rooms</a></li><li><a href="#section-2">Why it repeats: the structure decides what sticks</a></li><li><a href="#section-3">What actually sticks</a></li><li><a href="#section-4">What this argument gets wrong</a></li><li><a href="#section-5">The rule, landed</a></li></ol></nav><a class="e-backtop" href="#article-top">Back to the beginning ↑</a></aside><article class="article e-manuscript"><details class="article-toc e-mobile-toc"><summary>In this article</summary><ol><li><a href="#section-1">One failure, three rooms</a></li><li><a href="#section-2">Why it repeats: the structure decides what sticks</a></li><li><a href="#section-3">What actually sticks</a></li><li><a href="#section-4">What this argument gets wrong</a></li><li><a href="#section-5">The rule, landed</a></li></ol></details>
+<div class="article">
+<div class="opening">Method: set the three largest public sectors' failure accounts side by side and ask what structure all three share. The thesis is that they share one, and that it decides which technologies stick.</div>
+<hr/>
+<p>Every one of the three largest public sectors has been told the same story: the next technology will save it. Healthcare will be fixed by AI that reads the scan the radiologist misses. Education will be fixed by adaptive software that finally meets each child where they are. Government will be fixed by digital services that make the queue invisible.</p>
+<p>The story has not come true in any of the three. Not for lack of effort, and not for lack of working technology. The adoption rates are real. Physicians went from 38% to 66% AI use in two years, public-sector AI adoption tripled from 17% to 43% in two and a half (Gallup), and 86% of institutions have adopted generative AI, the highest rate of any industry. The tools work. The institutions do not change.</p>
+<p>What the three sectors share is not a technology problem. It is a structure problem, and it has a signature. When you read the failure accounts side by side, they are the same failure described three times, in three different vocabularies. This essay names that pattern, shows why it repeats, and shows what the rare cases that escaped it did differently.</p>
+<hr/>
+<h2 id="section-1">One failure, three rooms</h2>
+<p>Healthcare calls it <em>pilotitis</em>. High pilot activity coexists with low policy integration: AI and digital-health projects stay isolated and donor-driven, and collapse when the funding ends (Frontiers). Model drift, algorithmic bias, and unclear liability make AI especially hard to scale (Frontiers). Two decades after widespread EHR rollout in high-income countries, interoperability remains the largest obstacle, and the fragmented records are often 15–30% incomplete (Healthcare Basel 2025). The pilots fly; the system does not move.</p>
+<p>Education calls it the <em>storage-closet printer</em>. Schools buy a 3D printer, and it sits in a closet unused, because the purchase came with no curriculum, no training, and no maintenance plan. The failure is so common it has a name in the literature. It is the same failure at a different price point as the AI story: most teachers receive zero AI training, and tools move faster than policy, teacher training, and validation systems. The hardware arrives; the structure that would use it does not.</p>
+<p>Government gives the pattern its bluntest name. An IACIS review concluded that automating defective processes yields nothing: digitization without re-engineering the underlying system reproduces the old failures (IACIS). And the aggregate picture is damning: a majority of large-scale government digital-transformation efforts fail to achieve their expected results. The e-service portal is built; the process behind it is unchanged.</p>
+<p>Three sectors, three names, one failure. In each case a working technology was introduced on top of an institution that had not been changed to receive it, and the institution absorbed the technology without absorbing its logic. The scanner-reader AI remains a pilot. The printer stays in the closet. The portal replicates the paper queue. The technology does not fail. It is declined, politely, by a structure that is built to keep moving the way it already moves.</p>
+<p>That is the thesis of this essay, stated once: <strong>a technology inherits the incentive structure of the institution it lands in, and it will not outrun it.</strong></p>
+<hr/>
+<h2 id="section-2">Why it repeats: the structure decides what sticks</h2>
+<p>The easy explanation for all of this is short-sightedness. People are too busy, too siloed, too resistant to change. That explanation is comforting and wrong, because it implies that better communication would fix it. The evidence points somewhere harder: each institution is arranged so that nobody owns the outcome, and the technology inherits that vacancy.</p>
+<p>Healthcare is the cleanest case. The US system spends $372 billion a year on administrative and non-clinical costs, about 7% of national health expenditure (CMS), and the number has grown nearly tenfold since 1990 while hospital care itself grew about fourfold (CMS). Administrative friction is not an accident of the system; it is the system's actual product. A single EHR vendor, Epic, controls 42.3% of US acute-care hospitals and 54.9% of beds, entrenched by switching costs and bundling rather than by interoperability (PLOS Digital Health). No one is accountable for the patient whose records are fragmented; the fragmentation is what the billing structure rewards. The physician spends up to two hours on EHR and administrative tasks for every hour of direct care (Sinsky, 2016), and that is not a symptom someone is fixing, it is the operating model. Technology adopted into that structure (AI that writes the operative note, which does perform measurably better than a surgeon's own dictation) saves a little time in one room while the structure that created the two-to-one ratio goes untouched.</p>
+<p>Education has the same vacancy, shifted. The World Bank's diagnosis is that systems settle into a low-accountability, low-learning equilibrium: the technical problem is that systems fail to measure learning, and the political problem is that the key actors do not prioritize it (World Bank). Nothing owns the child's learning. The system owns enrollment, attendance, and headcount, which are measurable, and it is accountable for those. Learning is diffuse, slow, and owned by no one. The consequence is brutal and quantified: about 70% of 10-year-olds in low- and middle-income countries cannot read a simple text, up from about 57% before the pandemic (World Bank). The technology that could help (and here the evidence is genuinely strong: hands-on 3D-printing programs measurably improve retention, engagement, and spatial reasoning, and it is the cheapest lever in the report at roughly $16–80 per student a year) fails not because it is expensive or weak but because deploying it requires a structure that measures learning and no such structure exists. And under-financing compounds the vacancy: 2.7 billion people live in countries that spend more on interest than on education.</p>
+<p>Government is where the correlation becomes explicit. Across a systematic review of the governance literature, institutional inertia is the universal barrier: bureaucracy and resistance to change block reform everywhere. Corruption is measurable, and digitization's effect on it is real but strictly conditional: digitization reduces corruption only where robust institutions and political will already exist. Where they do not, digitizing a corrupt process reproduces the corruption with better software. The result is the majority-failure picture above. The technology inherits the incentive structure; the incentive structure is who gets paid, and it was not renegotiated by deploying a portal.</p>
+<p>The through-line across all three: <strong>adoption tracks accountability.</strong> Where an outcome has an owner, a measure, and a priced consequence, the technology sticks. Where the value is diffuse and no one is accountable, the technology becomes decoration: a pilot, a closet, a portal. The failure is not that people are short-sighted. It is that the incentive structure produces the failure by design, and every additional year of deploying technology into that structure produces another pilot to prove it.</p>
+<hr/>
+<h2 id="section-3">What actually sticks</h2>
+<p>The report is not a catalog of doom. In each sector, some interventions took root, and they share a second signature: they attach the technology to an outcome that is owned, measurable, and priced. They do not ask the institution to become good. They restructure a small part of it so that the technology has something to bite into.</p>
+<p>In healthcare, the lever that works is the enforced standard. Mandating interoperability (FHIR-based APIs, interoperable EHRs, electronic prior-authorization) is the single highest-leverage fix in the sector, because it converts fragmented, ownerless data into a substrate the AI and the exchange layer can actually run on (MDPI Healthcare). The point is not the API. The point is that a standard is an enforceable contract: it gives the fragmented system a structure to change toward. Alongside it, anti-fraud analytics with a concentrated enforcer attack the measurable leakage: roughly 8–12% of payer outlays lost to duplicate or erroneous claims, and $100–170 billion a year in US fraud losses (NHCAA). Both work because they give the technology an owner with a priced consequence: the payer who loses the money.</p>
+<p>In education, the lever that works is measurement itself. The principle the literature keeps returning to is pedagogy-first, technology-second: define the competency before choosing the tool, tie financing to measurable learning gains rather than enrollment or device counts. Where schools have done this (problem-driven programs rather than printer-first programs), the retention and engagement gains are real. The teacher-facing AI that saves roughly 5.9 hours a week (Gallup, self-reported) is the clearest near-term win precisely because teacher time is the one outcome that is visible, owned, and urgent. It sticks because a teacher feels the saved hour. The personalized-learning AI that would help the child has no such owner, and it is the sharpest equity risk in the whole report: with only 27% of people in low-income countries online versus 93% in high-income countries, it risks widening the divide it promises to close (UNESCO/ITU).</p>
+<p>In government, the lever that works is re-engineering before digitizing. The reforms that succeeded (Rwanda digitizing its services and sharply cutting reported petty bribery, Estonia's e-governance, e-procurement and e-tax applied to high-corruption functions first) all changed the process and the separation of duties before they added the software. The technology was the last step, not the first. Blockchain's strongest role in government is not as a revolution but as a trust and audit layer beneath procurement, land, welfare, and identity: precisely the functions where opacity is the corruption mechanism. It works where a country has already decided to make those flows transparent.</p>
+<p>Set the survivors next to the failures and the rule is exact. <strong>The technologies are real levers. They fail only when sequenced in front of the fix: when they are deployed to avoid changing the structure instead of to change it.</strong> 3D printing, AI, and blockchain are all capable of moving healthcare, education, and government. The evidence does not say otherwise. It says they move them only where an owner, a measure, and a priced consequence already exist to catch them. Underneath all three levers sits the same root constraint, a poverty of data standards: healthcare's missing interoperability standard, education's absent measure of learning, government's unstandardized records.</p>
+<hr/>
+<h2 id="section-4">What this argument gets wrong</h2>
+<p>Every argument has failure modes, and this one should be stated at full strength, because a thesis that cannot survive its own counter-evidence is not worth publishing.</p>
+<p>First, the sophistication gradient is real and it cuts against a single story. The technologies do not behave identically everywhere: developed countries lead in AI and blockchain while developing countries use 3D printing for housing and blockchain for identity and land records precisely where formal systems are weakest. One of these technologies, 3D printing, is, by the report's own evidence, the most equity-friendly and cheap. The claim is not that every technology fails everywhere. It is that the same <em>structure</em> decides success everywhere, and the lowest-structure, lowest-ownership technologies find their footholds.</p>
+<p>Second, much of the quantitative material in this space is weaker than it looks. Market-size figures for all three technologies vary widely across research houses (by as much as several billion for the same year), and any single number is an assertion, not a fact. This essay avoids those numbers on purpose. The strongest figures here are not market projections; they are the measured operational facts: the 15–30% incomplete records, the two-to-one care-to-admin ratio, the 70% learning-poverty figure, the 42.3% Epic share of US acute-care hospitals. Those are the load-bearing evidence. The market numbers are catalog filler and deserve no place in an argument.</p>
+<p>Third, pilots are not pure waste. A pilot can be the honest first test of a mechanism, and some of the "pilotitis" in the literature is the normal cost of learning what works. The failure is not that pilots exist. It is that they are the terminal state: that nothing is ever designed to survive the end of the pilot's funding. The thesis does not claim pilots are wrong. It claims a pilot that was never designed to scale is a ceremony, not a test.</p>
+<p>Fourth, the strongest counter-case is the one where concentrated buyers manufactured their own accountability. Where a single buyer internalizes the entire benefit (as in the concentrated procurement of interoperability, or a payer enforcing anti-fraud rules), the technology sticks precisely because the structure changed first. This is not counter-evidence; it is confirmation wearing a different label. The exceptions prove the rule by having an owner.</p>
+<p>Read these four honestly. The first is a genuine gradient, and the thesis absorbs it. The second is a discipline the essay already practices. The third is a bounded failure mode. The fourth is the rule stated from the other side. The argument continues.</p>
+<hr/>
+<h2 id="section-5">The rule, landed</h2>
+<p>Strip the sector detail and what remains is a single sentence: <strong>the technology you deploy is the institution you have, running slightly faster.</strong></p>
+<p>That is why the same three technologies (the printing that makes objects, the intelligence that makes decisions, the ledger that makes records tamper-proof) keep being adopted everywhere and kept everywhere nothing. They are not failing. They are being introduced into structures that have no owner for the outcome, no measure of the result, and no priced consequence, and they inherit exactly that. A printer in a school without a curriculum is a printer owned by no one. An AI in a health system that rewards billing over recovery is an AI owned by no one. A portal in a government that never renegotiated who gets paid is a portal owned by no one.</p>
+<p>The fix is not a better tool, and it is not a bigger budget. It is the same move in all three rooms: <strong>give the outcome an owner, a measure, and a price, and the technology will follow.</strong> Mandate the standard before deploying the AI. Measure learning before buying the software. Re-engineer the corrupt process before building the portal. Every intervention that stuck did this; every pilot, closet, and portal did not.</p>
+<p>The next time someone presents a sector overhaul as a technology problem (an AI for the doctors, a device for the children, a platform for the state), ask the one question that decides whether it will be a pilot or a practice: <em>who is accountable for the outcome, in what unit, and what happens to them if it does not improve?</em> If the answer is no one, nothing, and nothing, the technology will be excellent and unused. If the answer is a named owner, a measured result, and a real consequence, it will work, regardless of which technology you choose.</p>
+<p>The institution is the bottleneck. The technology is the mirror. Stop buying better mirrors.</p>
+<div class="article-sources">
+<h4>Sources</h4>
+<ul>
+<li>Gallup · workplace and public-sector generative AI adoption tracking (2026).</li>
+<li>Frontiers · healthcare digital-health and AI "pilotitis" literature (2026).</li>
+<li>Healthcare Basel · EHR interoperability and record completeness in high-income countries (2025).</li>
+<li>IACIS · review of government digitization of defective processes (2026).</li>
+<li>CMS · National Health Expenditure; administrative and non-clinical cost growth (2026).</li>
+<li>PLOS Digital Health · EHR vendor concentration in US acute-care hospitals (2026).</li>
+<li>Sinsky et al. · allocation of physician time in ambulatory practice (2016).</li>
+<li>World Bank · learning poverty and the low-accountability, low-learning equilibrium (2026).</li>
+<li>MDPI Healthcare · interoperability mandates and FHIR-based APIs in healthcare (2026).</li>
+<li>NHCAA · health care fraud losses and duplicate/erroneous claims leakage (2026).</li>
+<li>UNESCO / ITU · global internet connectivity and the online access divide (2026).</li>
+</ul>
+</div>
+</div>
+</article></div><section class="e-related e-wrap"><p class="e-label">CONTINUE READING</p><div><a href="/insights/subtractive-fragility/"><span>ESSAY &amp; ANALYSIS</span><h2>Subtractive Fragility</h2><b aria-hidden="true">↗</b></a><a href="/digital/blog/prediction-market-outlook.html"><span>ESSAY &amp; ANALYSIS</span><h2>Prediction Market Outlook</h2><b aria-hidden="true">↗</b></a></div></section></main>
+<p style="font-size:var(--t-xs);padding:0 24px 16px;max-width:720px;border-bottom:1px solid var(--border);margin-bottom:0">Research content is analysis, not investment advice. ASKA does not provide investment advice through this site.</p>
+<footer class="f-footer-band"><div class="f-footer f-wrap"><div><a class="footer-wordmark" href="/">ASKA</a><p>Digital and physical.<br/>One connected practice.</p><p>© 2026 ASKA Business Solutions Inc.</p></div><nav aria-label="Footer navigation"><a href="/digital/">Digital</a><a href="/physical/">Physical</a><a href="/team6/">Team6</a><a href="/about/">About</a><a href="/method/">Method</a><a href="/sectors/">Sectors</a><a href="/digital/blog/">Digital journal</a><a href="/physical/blog/">Field notes</a><a href="mailto:info@askaconsult.com">Contact ↗</a></nav></div></footer>
+<script defer="" src="/assets/js/site-shell.js?v=complete-1"></script><script defer="" src="/assets/js/editorial.js?v=editorial-1"></script></body>
+</html>

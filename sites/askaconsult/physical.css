@@ -1,0 +1,47 @@
+/* ASKA v5 — physical.css (page-specific for /physical/) */
+.p-hero{
+  min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(96px,18vh,160px) clamp(16px,5vw,32px) 96px;background:#F4EFE6;position:relative;overflow:hidden;
+}
+.p-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(74,85,104,.08) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(74,85,104,.08) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(#000 55%,transparent);
+}
+.p-hero>*{position:relative;}
+
+@media(max-width:720px){.p-hero{padding-top:120px;min-height:auto;padding-bottom:64px;}}
+
+@media(max-width:720px){
+  .p-hero{min-height:auto;padding-top:120px;padding-bottom:56px;}
+  .p-hero .hero-h{font-size:clamp(30px,8vw,44px);line-height:1.12;max-width:100%;}
+  .hero-sub{font-size:var(--t-lg);line-height:28px;}
+}
+
+.how-outer{
+  background:#fff;border:1px solid #D8D2C4;border-radius:24px;
+  box-shadow:0 20px 55px rgba(20,16,8,.10);padding:80px 48px;
+}
+@media(max-width:720px){.how-outer{padding:40px 20px;}}
+
+/* ============ Capability-proof layer (v7.6) — warm/Physical ledger + proof variants ============ */
+.card-warm .pledger .p-row{border-top:1px solid var(--line-strong);}
+.card-warm .pledger .p-row:hover{background:rgba(249,115,22,.05);}
+.card-warm .p-row .p-index{color:#B45309;}
+.card-warm .p-row .p-meta h3{color:var(--ink);}
+.card-warm .p-row .p-constraint{color:var(--muted);}
+.card-warm .p-row .p-out{color:#B45309;}
+.card-warm .proof-card{
+  background:var(--warm-card);border:1px solid var(--line-strong);
+  box-shadow:0 8px 30px rgba(10,36,99,.05);
+}
+.card-warm .proof-card h3{color:var(--ink);}
+.card-warm .proof-card .pc-constraint{color:var(--muted);}
+.card-warm .proof-card .pc-decision{color:var(--muted);}
+.card-warm .proof-card .pc-foot{border-top-color:var(--line-strong);}
+.card-warm .proof-card .pc-out{color:#B45309;}
+.card-warm .proof-card .pc-ghost{color:var(--muted);}
+.card-warm .proof-card .pc-ghost:hover{color:#B45309;}
