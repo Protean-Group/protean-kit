@@ -103,6 +103,6 @@ into a patch or fill missing evidence with assumptions.
 - `[REQUIRED — project record and upstream read-back]` — state and outcome
   evidence after submission.
 
-This contract adopts the four-step obligation as a generic Team6 operating rule.
+This contract adopts the four-step obligation as a generic Protean operating rule.
 It does not copy source code, prompts, templates, or license text from any
 external repository.
