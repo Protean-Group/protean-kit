@@ -39,6 +39,24 @@ outside this repository.
 
 ## Unreleased
 
+- **What:** add the composition lock and the installer. `kit.lock.json` pins six
+  standalone ingredients by annotated tag, peeled commit SHA, and tree hash
+  (`protean-tree-v1`). `install.sh` (a thin entrypoint over `build/install.py`)
+  resolves a selection, computes the hard `requires` closure, fetches and
+  verifies each pin, stages and installs in dependency order, and reads every
+  written file back. Two gates join the release run: `build/check-lock.py` and
+  `build/check-ingredient-contract.py`. Exit codes are fixed at `0` to `6`, and a
+  partial install is never reported as success. The composer contains no
+  ingredient payload and no submodule.
+  **Why:** the kit needs one command that installs the whole set, an install that
+  can be verified rather than trusted, and a manifest that a reader can audit
+  without executing anything.
+  **Evidence class:** [VERIFIED — internal operating record]; the loader,
+  the target, and the exit codes were exercised by `tests/test_kit_lock.py`
+  against fixture repositories.
+  **License:** the composer zone model is unchanged; each pinned ingredient is
+  MIT under its own committed `LICENSE` file. See `LICENSING.md`.
+
 - **What:** add the anti-loop discipline contract. It defines four rules to prevent
   thinking loops: load once then use, read once then act, plan once then execute,
   and trust tool output as the receipt. Published artifacts and live pages still

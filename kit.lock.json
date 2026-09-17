@@ -1,0 +1,302 @@
+{
+  "lockVersion": 1,
+  "kit": {
+    "name": "protean-kit",
+    "version": "2.0.0",
+    "tag": "v2.0.0"
+  },
+  "generatedAt": "2026-09-17T00:00:00Z",
+  "allowedHosts": [
+    "github.com"
+  ],
+  "allowedOwners": [
+    "aska-digital"
+  ],
+  "installOrder": [
+    "protean-doctrine",
+    "protean-ops",
+    "protean-drafts",
+    "protean-github-flow",
+    "protean-sym2p",
+    "protean-control-plane"
+  ],
+  "ingredients": [
+    {
+      "slug": "protean-doctrine",
+      "repo": "https://github.com/aska-digital/protean-doctrine",
+      "ref": "refs/tags/v1.0.2",
+      "sha": "f5d6f795181522249b6e8d18d483f6f2c85058a9",
+      "version": "1.0.2",
+      "contract": "The operating doctrine: the default pipeline, role delegation map, handoff protocol, QA gates, and external-writing discipline.",
+      "kind": "skills",
+      "installTargets": [
+        "skills/protean-operating-doctrine",
+        "skills/external-writing-discipline",
+        "gates/protean-doctrine"
+      ],
+      "requires": [],
+      "recommends": [],
+      "integrity": {
+        "fileCount": 18,
+        "treeSha256": "faeecb7ce747b2c7ad205d97f947e198e6240362908263fd90365a64f3463b27",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "internal-names",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-doctrine/check-internal-names.py ."
+        },
+        {
+          "name": "no-dangling-refs",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-doctrine/check-no-dangling-refs.py ."
+        }
+      ],
+      "open": []
+    },
+    {
+      "slug": "protean-ops",
+      "repo": "https://github.com/aska-digital/protean-ops",
+      "ref": "refs/tags/v1.0.0",
+      "sha": "f2abc3bf6a7e0925d26e14606d0645a0ea765bad",
+      "version": "1.0.0",
+      "contract": "The dispatch/rotation/inflight ops kit: append-only record schemas and the deterministic gates that check them.",
+      "kind": "records",
+      "installTargets": [
+        "records",
+        "scripts/protean-ops",
+        "gates/protean-ops"
+      ],
+      "requires": [],
+      "recommends": [],
+      "integrity": {
+        "fileCount": 48,
+        "treeSha256": "09170568f2b0b112745a9f4c9bd13f300d61f6c523fefae06a17aff662e8789c",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "internal-names",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-ops/check-internal-names.py ."
+        },
+        {
+          "name": "op-rotation",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-ops/check-rotation.py records/examples/valid/ROTATION-STATE.md --roster records/examples/valid/ROSTER.txt"
+        },
+        {
+          "name": "op-inflight",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-ops/check-inflight.py records/examples/valid/INFLIGHT.md"
+        },
+        {
+          "name": "op-learnings",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-ops/check-learnings.py records/examples/valid/LEARNINGS.md"
+        },
+        {
+          "name": "op-hotpath-freeze",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-ops/check-hotpath-freeze.py records/examples/valid/hotpath-manifest.md5"
+        },
+        {
+          "name": "op-decision-report",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-ops/check-decision-report.py records/examples/valid/decision-report.html --evidence records/examples/valid/decision-evidence.md"
+        }
+      ],
+      "open": []
+    },
+    {
+      "slug": "protean-drafts",
+      "repo": "https://github.com/aska-digital/protean-drafts",
+      "ref": "refs/tags/v1.0.0",
+      "sha": "f09703b05a5491074f870fe6fdc15f81baa71d0e",
+      "version": "1.0.0",
+      "contract": "The draft-review pipeline: render a draft as a self-contained dark HTML review page through one command that runs the prose, identifier, quote-integrity, and render-fidelity gates.",
+      "kind": "skills",
+      "installTargets": [
+        "skills/draft-review-html",
+        "scripts/protean-drafts",
+        "templates/protean-drafts",
+        "gates/protean-drafts"
+      ],
+      "requires": [],
+      "recommends": [
+        "protean-doctrine"
+      ],
+      "integrity": {
+        "fileCount": 22,
+        "treeSha256": "c7b37d090696aae67f84d20b76d702a3b05c9f6e9cc034dde8ddf4e7346ba99c",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "internal-names",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-drafts/check-internal-names.py ."
+        },
+        {
+          "name": "draft-prose",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 scripts/protean-drafts/check-prose.py skills/draft-review-html/SKILL.md"
+        },
+        {
+          "name": "draft-renderer-defaults",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-drafts/check-renderer-defaults.py ."
+        }
+      ],
+      "open": []
+    },
+    {
+      "slug": "protean-github-flow",
+      "repo": "https://github.com/aska-digital/protean-github-flow",
+      "ref": "refs/tags/v1.0.0",
+      "sha": "e79f1685b0d429676fd5e4a6273da35d334a9b60",
+      "version": "1.0.0",
+      "contract": "The GitHub workflow skill pack: issue triage, issue-to-PR, PR lifecycle, PR audit, and upstream-contribution procedures.",
+      "kind": "skills",
+      "installTargets": [
+        "skills/github-issues",
+        "skills/github-issue-to-pr",
+        "skills/github-pr-workflow",
+        "skills/github-pr-audit",
+        "skills/upstream-contribution-pr",
+        "gates/protean-github-flow"
+      ],
+      "requires": [],
+      "recommends": [
+        "protean-drafts",
+        "protean-doctrine"
+      ],
+      "integrity": {
+        "fileCount": 28,
+        "treeSha256": "db593d7bf25f1b860d625ec6c8fcfe82a8ac32881cb5e6d2f9929c0371ba8982",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "internal-names",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-github-flow/check-internal-names.py ."
+        },
+        {
+          "name": "skill-frontmatter",
+          "cwd": ".",
+          "postInstall": false,
+          "cmd": "python3 gates/protean-github-flow/check-skill-frontmatter.py ."
+        }
+      ],
+      "open": []
+    },
+    {
+      "slug": "protean-sym2p",
+      "repo": "https://github.com/aska-digital/protean-sym2p",
+      "ref": "refs/tags/v1.0.0",
+      "sha": "efeec42a77c04bf4d3b40dbc780e07885f16f02f",
+      "version": "1.0.0",
+      "contract": "SYM-2P: a compact versioned agentic message language - one canonical JSON packet per line over durable text artifacts - with validator, enums, and fixtures.",
+      "kind": "skills",
+      "installTargets": [
+        "SPEC.md",
+        "skills/sym2p",
+        "scripts/protean-sym2p",
+        "templates/protean-sym2p",
+        "examples/protean-sym2p",
+        "AUDIT/protean-sym2p",
+        "gates/protean-sym2p"
+      ],
+      "requires": [],
+      "recommends": [
+        "protean-ops"
+      ],
+      "integrity": {
+        "fileCount": 47,
+        "treeSha256": "b88d896f5539edaf323bc18d161388c4e1e616348444782e46451ab7dca9a312",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "internal-names",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-sym2p/check-internal-names.py ."
+        },
+        {
+          "name": "sym2p-suite",
+          "cwd": ".",
+          "postInstall": false,
+          "cmd": "python3 tests/run-tests.py"
+        }
+      ],
+      "open": [
+        "O-1",
+        "O-2",
+        "O-3",
+        "O-4",
+        "O-5",
+        "O-6",
+        "O-7",
+        "O-8",
+        "O-9"
+      ]
+    },
+    {
+      "slug": "protean-control-plane",
+      "repo": "https://github.com/aska-digital/protean-control-plane",
+      "ref": "refs/tags/v1.0.0",
+      "sha": "f593dd1f816e8b348e2a6f5b37b2da6392f9b47a",
+      "version": "1.0.0",
+      "contract": "The control-plane skill pack: one canonical procedure home that routes a request to the minimum skill bundle, with the gate table and failure policy.",
+      "kind": "skills",
+      "installTargets": [
+        "skills/protean-control-plane",
+        "gates/protean-control-plane"
+      ],
+      "requires": [
+        "protean-doctrine",
+        "protean-ops"
+      ],
+      "recommends": [
+        "protean-drafts",
+        "protean-github-flow",
+        "protean-sym2p"
+      ],
+      "integrity": {
+        "fileCount": 17,
+        "treeSha256": "c879d69ad8283bc40879334dbae415b4bb022f6d4e6dcb8a7f40aa82282e3fbd",
+        "algorithm": "protean-tree-v1"
+      },
+      "gates": [
+        {
+          "name": "internal-names",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-control-plane/check-internal-names.py ."
+        },
+        {
+          "name": "control-plane-gates",
+          "cwd": ".",
+          "postInstall": true,
+          "cmd": "python3 gates/protean-control-plane/check-control-plane-gates.py"
+        }
+      ],
+      "open": []
+    }
+  ]
+}

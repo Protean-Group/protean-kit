@@ -10,6 +10,8 @@ corporate page is the service listing for the team that uses it. The
 interactive experience is served by the Team6 Frontier Vercel project through
 ASKA's `/team6` route.
 
+Source of truth: https://github.com/aska-digital/protean-kit
+
 ## What problem does it solve?
 
 One AI agent can lose track, skip steps, or claim work is done when it isn't. Team6-kit sets up several agents with separate jobs — planner, builder, checker — and rules so that:
@@ -185,6 +187,148 @@ and establishes rules for token accounting (innermost spans only), cost honesty
 bounded retention with no secrets or raw prompts by default.
 Read `choreography/run-evidence.md`.
 
+## The Protean Kit distribution (lock version 1)
+
+This repository is also the composer of the Protean Kit: it pins six standalone
+ingredients, and one command installs the whole set.
+
+```
+bash install.sh --all --target ./protean-installed
+```
+
+Preview the plan first. The composer supports `--dry-run`; it prints the
+selection, the resolved install order, the target, the network mode, and the
+planned writes, and it writes nothing.
+
+```
+bash install.sh --all --target ./protean-installed --dry-run
+```
+
+The composer holds the lock, the installer, the documentation, and the gates. It
+**contains no ingredient payload and no submodule**: composition is manifest-only.
+Each ingredient is fetched from its pinned tag, verified against the tag's peeled
+commit SHA and its tree hash, installed, and then read back file by file.
+
+### Ingredients
+
+| slug | one-line contract | requires | recommends | installs to |
+|---|---|---|---|---|
+| `protean-doctrine` | The operating doctrine: the default pipeline, role delegation map, handoff protocol, QA gates, and external-writing discipline. | none | none | `skills/protean-operating-doctrine`, `skills/external-writing-discipline`, `gates/protean-doctrine` |
+| `protean-ops` | The dispatch/rotation/inflight ops kit: append-only record schemas and the deterministic gates that check them. | none | none | `records`, `scripts/protean-ops`, `gates/protean-ops` |
+| `protean-sym2p` | SYM-2P: a compact versioned agentic message language - one canonical JSON packet per line over durable text artifacts - with validator, enums, and fixtures. | none | `protean-ops` | `SPEC.md`, `skills/sym2p`, `scripts/protean-sym2p`, `templates/protean-sym2p`, `examples/protean-sym2p`, `AUDIT/protean-sym2p`, `gates/protean-sym2p` |
+| `protean-drafts` | The draft-review pipeline: render a draft as a self-contained dark HTML review page through one command that runs the prose, identifier, quote-integrity, and render-fidelity gates. | none | `protean-doctrine` | `skills/draft-review-html`, `scripts/protean-drafts`, `templates/protean-drafts`, `gates/protean-drafts` |
+| `protean-github-flow` | The GitHub workflow skill pack: issue triage, issue-to-PR, PR lifecycle, PR audit, and upstream-contribution procedures. | none | `protean-drafts`, `protean-doctrine` | `skills/github-issues`, `skills/github-issue-to-pr`, `skills/github-pr-workflow`, `skills/github-pr-audit`, `skills/upstream-contribution-pr`, `gates/protean-github-flow` |
+| `protean-control-plane` | The control-plane skill pack: one canonical procedure home that routes a request to the minimum skill bundle, with the gate table and failure policy. | `protean-doctrine`, `protean-ops` | `protean-drafts`, `protean-github-flow`, `protean-sym2p` | `skills/protean-control-plane`, `gates/protean-control-plane` |
+
+The exact install targets, the pinned SHA, and the tree hash of each ingredient
+are recorded in `kit.lock.json`, which is authoritative.
+
+### Dependency behaviour
+
+Two edge kinds exist. `requires` is hard: the closure is fetched and installed.
+`recommends` is soft: it is reported and never fetched.
+
+The lock declares the install order in `installOrder`, and the resolver validates
+that declaration against the dependency graph before it is used. A declaration
+that is not a valid topological order of the selection is reported, and the
+resolver's own topological order is used instead. A `requires` cycle is a hard
+failure with the cycle path printed, and it is never resolved by dropping an
+edge.
+
+Only `protean-control-plane` declares `requires` edges, on `protean-doctrine` and
+`protean-ops`. Every other edge in the version 1 set is `recommends`.
+
+```
+bash install.sh --ingredient protean-drafts --target ./protean-installed
+```
+
+`protean-drafts` has no hard requirements, so exactly one repository is fetched
+and written. The full kit is not touched and not fetched.
+
+```
+bash install.sh --ingredient protean-control-plane --target ./protean-installed
+```
+
+`protean-control-plane` resolves to exactly three repositories: doctrine, ops, and
+itself. Its skill cites the record gates, so it declares the dependency instead of
+copying the files.
+
+```
+bash install.sh --ingredient protean-control-plane --no-deps --target ./protean-installed
+```
+
+`--no-deps` is a deliberate degraded mode. It writes exactly one repository and
+reports the unresolved requirements as `degraded`, and the control plane reports
+its cited gates as `unavailable` instead of failing for it. The control plane is
+not fully operational in that mode, and the summary says so.
+
+### Offline and cache
+
+The cache is content-addressed by commit SHA: `<cache>/<slug>/<sha>/`, where the
+cache root is `$PROTEAN_CACHE`, else `${XDG_CACHE_HOME:-$HOME/.cache}/protean-kit`.
+A cache entry is immutable while it matches its SHA, and the same SHA is never
+fetched twice.
+
+```
+bash install.sh --all --target ./protean-installed --offline
+```
+
+`--offline` makes zero network calls and installs from the cache only. A missing
+or mismatched entry fails closed with exit 4, naming the slug. A warm cache run
+with `--offline` is the way to prove an install needs no network.
+
+### Target, staging, and read-back
+
+The default target is `$HERMES_TEAM_SKILLS` when that is set, else `./installed`;
+public instructions pass `--target` explicitly so the write boundary is visible.
+Writes are staged under `<target>/.protean-staging/<slug>/` and promoted only
+after that ingredient's own gates pass, so a mid-run failure leaves no half
+written ingredient on the target. Every written file is then re-hashed against
+its cached blob.
+
+### Troubleshooting
+
+The exit code is the reliable signal for automation. Errors go to stderr, the
+summary to stdout.
+
+| Exit | Meaning | Recovery |
+|---|---|---|
+| `1` | usage or input is invalid | Correct the flag or the slug, and read `--help`. |
+| `2` | the kit lock is invalid | Use a valid lock. Do not bypass the allowlist, the tag rule, or the schema check. |
+| `3` | dependency resolution failed | Repair the lock, or use `--no-deps` only when degraded operation is acceptable. |
+| `4` | integrity check failed | Refresh the cache in online mode from the pinned ref, or restore a matching warm cache. Never substitute another SHA. |
+| `5` | install failed | Fix the target permissions or the ingredient defect. The run is not successful. |
+| `6` | post-install verification failed | Understand the mismatch, then rerun. The target holds an incomplete install, and the summary reports it. |
+
+A run that installs five of six ingredients exits non-zero. There is no partial
+success zero.
+
+### Verify this release
+
+```
+python3 build/check-lock.py kit.lock.json --verify
+python3 build/check-ingredient-contract.py --lock kit.lock.json --verify
+python3 -m unittest tests.test_kit_lock
+```
+
+`check-lock.py` validates the lock and, with `--verify`, recomputes every pin's
+tag pairing and tree hash. `check-ingredient-contract.py` checks each pinned
+ingredient at its pinned commit for `README.md`, a committed `LICENSE`, its
+descriptor, its entrypoint, its declared gates, and a non-empty `tests/`. Without
+a warm cache or a sibling checkout, both gates report the pins as unverified
+rather than inventing a result.
+
+### Limits and open items
+
+- The ingredient repositories ship under the MIT license. Each commits its own
+  `LICENSE` file, which is authoritative for that repository.
+- The version 1 set pins six ingredients. Whether every one of them belongs in
+  version 1 is an open item recorded by the project, not a decision made here.
+- The protocol ingredient carries its own open items; the installer reports them
+  in its summary and never resolves them.
+- The composer's own brand strings and the site registry still name the
+  predecessor product; that rename is a user decision, not a packaging change.
+
 ## The main rules
 
 1. **Everything on disk.** Progress is saved to files, so months later you can still pick up where you left off.
@@ -209,7 +353,9 @@ The kit now includes a route-based model-policy catalogue for changing provider 
 
 - **Engine:** Hermes by Nous Research, MIT license. This is not a fork; we build on top of it.
 - **This kit (profiles, rules, builder):** Apache-2.0.
+- **Pinned ingredients (lock version 1):** MIT, each under its own committed `LICENSE` file.
 - **Vertical packs (paid settings files + service):** not in this repo; proprietary.
 - Optional local models used by an adapter have their own separate license.
 
-Full details: `LICENSING.md`.
+Licensing follows the zone model in `LICENSING.md`; the committed `LICENSE` file
+in each repository is authoritative for that repository.
